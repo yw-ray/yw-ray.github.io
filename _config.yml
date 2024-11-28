@@ -21,7 +21,7 @@ repository               : "academicpages/academicpages.github.io"
 #               Additional customization can be done by editing /_includes/author-profile.html
 author:
   # Biographic information
-  avatar           : "profile.png"
+  avatar           : "yw.png"
   name             : "Youngwoo (Ray) Jeong"
   pronouns         : # example: "she/her"  
   bio              : "Hi, I am working at MangoBoost, a DPU startup company, where I joined the architecture team in March 2024."
