@@ -3,7 +3,6 @@ title: "Lightweight and Error‑Tolerant Stereo Matching with a Stochastic Compu
 collection: publications
 category: manuscripts
 permalink: /publication/2024-11-01-stereo-matching-stochastic
-excerpt: 'Explores stereo matching with a stochastic computing approach.'
 date: 2024-11-01
 venue: 'Electronics'
 paperurl: 'http://yw-ray.github.io/files/2024-11-01-Electronics.pdf'
@@ -11,7 +10,5 @@ citation: 'Seongmo An, Jongwon Oh, Sangho Lee, Jinyeol Kim, Youngwoo Jeong, Jeon
 ---
 
 <a href='http://yw-ray.github.io/files/2024-11-01-Electronics.pdf'>Download paper here</a>
-
-Explores stereo matching with a stochastic computing approach.
 
 Recommended citation: Seongmo An, Jongwon Oh, Sangho Lee, Jinyeol Kim, Youngwoo Jeong, Jeongeun Kim, Seung Eun Lee. (2024). "Lightweight and Error‑Tolerant Stereo Matching with a Stochastic Computing Processor." <i>Electronics</i>.
