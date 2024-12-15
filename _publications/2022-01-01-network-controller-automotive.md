@@ -10,5 +10,3 @@ citation: 'Kwonneung Cho, Hyun Woo Oh, Jeongeun Kim, Young Woo Jeong, Seung Eun 
 ---
 
 <a href='http://yw-ray.github.io/files/2022-01-01-ICCE.pdf'>Download paper here</a>
-
-Recommended citation: Kwonneung Cho, Hyun Woo Oh, Jeongeun Kim, Young Woo Jeong, Seung Eun Lee. (2022). "A Local Interconnect Network Controller for Resource‑Constrained Automotive Devices." <i>ICCE</i>.

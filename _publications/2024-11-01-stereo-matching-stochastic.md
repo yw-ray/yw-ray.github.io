@@ -10,5 +10,3 @@ citation: 'Seongmo An, Jongwon Oh, Sangho Lee, Jinyeol Kim, Youngwoo Jeong, Jeon
 ---
 
 <a href='http://yw-ray.github.io/files/2024-11-01-Electronics.pdf'>Download paper here</a>
-
-Recommended citation: Seongmo An, Jongwon Oh, Sangho Lee, Jinyeol Kim, Youngwoo Jeong, Jeongeun Kim, Seung Eun Lee. (2024). "Lightweight and Error‑Tolerant Stereo Matching with a Stochastic Computing Processor." <i>Electronics</i>.

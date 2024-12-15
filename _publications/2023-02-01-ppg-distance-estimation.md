@@ -10,5 +10,3 @@ citation: 'Youngwoo Jeong, Joungmin Park, Sun Beom Kwon, Seung Eun Lee. (2023). 
 ---
 
 <a href='http://yw-ray.github.io/files/2023-02-01-Micromachines.pdf'>Download paper here</a>
-
-Recommended citation: Youngwoo Jeong, Joungmin Park, Sun Beom Kwon, Seung Eun Lee. (2023). "Photoplethysmography‑Based Distance Estimation for True Wireless Stereo." <i>Micromachines</i>.

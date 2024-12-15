@@ -10,5 +10,3 @@ citation: 'Soohee Kim, Joungmin Park, Youngwoo Jeong, Seung Eun Lee. (2023). &qu
 ---
 
 <a href='http://yw-ray.github.io/files/2023-01-01-ICCE.pdf'>Download paper here</a>
-
-Recommended citation: Soohee Kim, Joungmin Park, Youngwoo Jeong, Seung Eun Lee. (2023). "Embedded Monitoring System for Preventing Lonely Death based on Edge AI." <i>ICCE</i>.

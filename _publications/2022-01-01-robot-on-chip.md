@@ -10,5 +10,3 @@ citation: 'Young Woo Jeong, Kwang Hyun Go, Seung Eun Lee. (2022). &quot;Robot‑
 ---
 
 <a href='http://yw-ray.github.io/files/2022-01-01-ICCE.pdf'>Download paper here</a>
-
-Recommended citation: Young Woo Jeong, Kwang Hyun Go, Seung Eun Lee. (2022). "Robot‑on‑Chip: Computing on a Single Chip for an Autonomous Robot." <i>ICCE</i>.

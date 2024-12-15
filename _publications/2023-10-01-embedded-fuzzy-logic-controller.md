@@ -10,5 +10,3 @@ citation: 'Youngwoo Jeong, Won Sik Jeong, Jin Young Shin, Seung Eun Lee. (2023).
 ---
 
 <a href='http://yw-ray.github.io/files/2023-10-10-ISOCC.pdf'>Download paper here</a>
-
-Recommended citation: Youngwoo Jeong, Won Sik Jeong, Jin Young Shin, Seung Eun Lee. (2023). "The Design of Embedded Fuzzy Logic Controller for Autonomous Mobile Robots." <i>ISOCC</i>.

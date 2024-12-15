@@ -10,5 +10,3 @@ citation: 'Soohee Kim, Joungmin Park, Youngwoo Jeong, Seung Eun Lee. (2023). &qu
 ---
 
 <a href='http://yw-ray.github.io/files/2023-09-01-Micromachines.pdf'>Download paper here</a>
-
-Recommended citation: Soohee Kim, Joungmin Park, Youngwoo Jeong, Seung Eun Lee. (2023). "Intelligent Monitoring System with Privacy Preservation Based on Edge AI." <i>Micromachines</i>.

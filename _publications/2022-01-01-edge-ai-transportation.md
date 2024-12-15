@@ -10,5 +10,3 @@ citation: 'Young Woo Jeong, Hyun Woo Oh, Su Yeon Jang, Seung Eun Lee. (2022). &q
 ---
 
 <a href='http://yw-ray.github.io/files/2022-01-01-ICFICE.pdf'>Download paper here</a>
-
-Recommended citation: Young Woo Jeong, Hyun Woo Oh, Su Yeon Jang, Seung Eun Lee. (2022). "Intelligent Transportation System based on an Edge AI." <i>ICFICE</i>.

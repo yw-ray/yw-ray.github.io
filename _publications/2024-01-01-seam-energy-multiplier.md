@@ -10,5 +10,3 @@ citation: 'Youngwoo Jeong, Joungmin Park, Raehyeong Kim, Seung Eun Lee. (2024). 
 ---
 
 <a href='http://yw-ray.github.io/files/2024-01-01-Integration.pdf'>Download paper here</a>
-
-Recommended citation: Youngwoo Jeong, Joungmin Park, Raehyeong Kim, Seung Eun Lee. (2024). "SEAM: A Synergetic Energy‑Efficient Approximate Multiplier for Application Demanding Substantial Computational Resources." <i>Integration</i>.

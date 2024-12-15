@@ -10,5 +10,3 @@ citation: 'Yue Ri Jeong, Kwonneung Cho, Youngwoo Jeong, Sun Beom Kwon, Seung Eun
 ---
 
 <a href='http://yw-ray.github.io/files/2023-01-01-ICCE.pdf'>Download paper here</a>
-
-Recommended citation: Yue Ri Jeong, Kwonneung Cho, Youngwoo Jeong, Sun Beom Kwon, Seung Eun Lee. (2023). "A Real‑Time Reconfigurable AI Processor based on FPGA." <i>ICCE</i>.

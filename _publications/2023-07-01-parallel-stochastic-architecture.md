@@ -10,5 +10,3 @@ citation: 'Jeongeun Kim, Won Sik Jeong, Youngwoo Jeong, Seung Eun Lee. (2023). &
 ---
 
 <a href='http://yw-ray.github.io/files/2023-07-01-Electronics.pdf'>Download paper here</a>
-
-Recommended citation: Jeongeun Kim, Won Sik Jeong, Youngwoo Jeong, Seung Eun Lee. (2023). "Parallel Stochastic Computing Architecture for Computationally Intensive Applications." <i>Electronics</i>.

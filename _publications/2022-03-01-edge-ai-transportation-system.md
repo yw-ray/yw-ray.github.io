@@ -10,5 +10,3 @@ citation: 'Youngwoo Jeong, Hyun Woo Oh, Soohee Kim, Seung Eun Lee. (2022). &quot
 ---
 
 <a href='http://yw-ray.github.io/files/2022-03-01-JICCE.pdf'>Download paper here</a>
-
-Recommended citation: Youngwoo Jeong, Hyun Woo Oh, Soohee Kim, Seung Eun Lee. (2022). "An Edge AI Device Based Intelligent Transportation System." <i>JICCE</i>.

@@ -10,5 +10,3 @@ citation: 'Youngwoo Jeong, Kwang Hyun Go, Soohee Kim, Seung Eun Lee. (2022). &qu
 ---
 
 <a href='http://yw-ray.github.io/files/2022-10-01-RoboARCH.pdf'>Download paper here</a>
-
-Recommended citation: Youngwoo Jeong, Kwang Hyun Go, Soohee Kim, Seung Eun Lee. (2022). "Robot‑Specific Processor for Autonomous Driving." <i>RoboARCH</i>.
