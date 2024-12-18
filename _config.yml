@@ -8,9 +8,9 @@
 
 # Basic Site Settings
 locale                   : "en-US"
-title                    : "Youngwoo (Ray) Jeong"
+title                    : "Youngwoo(Ray) Jeong"
 title_separator          : "-"
-name                     : &name "Youngwoo (Ray) Jeong"
+name                     : &name "Youngwoo(Ray) Jeong"
 description              : &description "personal description"
 url                      : https://yw-ray.github.io # the base hostname & protocol for your site e.g. "https://[your GitHub username].github.io"
 baseurl                  : "" # the subpath of your site, e.g. "/blog"
@@ -22,7 +22,7 @@ repository               : "academicpages/academicpages.github.io"
 author:
   # Biographic information
   avatar           : "yw.jpeg"
-  name             : "Youngwoo (Ray) Jeong"
+  name             : "Youngwoo(Ray) Jeong"
   pronouns         : # example: "she/her"  
   bio              : "Hi, I am working at MangoBoost, a DPU startup company, where I joined the architecture team in March 2024."
   location         : "Seoul, South Korea"
