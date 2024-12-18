@@ -11,4 +11,4 @@ paperurl: 'http://yw-ray.github.io/files/2024-11-01-Electronics.pdf'
 
 <a href='http://yw-ray.github.io/files/2024-11-01-Electronics.pdf'>Download paper here</a>
 
-<small>Seongmo An, Jongwon Oh, Sangho Lee, Jinyeol Kim, Youngwoo Jeong, Jeongeun Kim, Seung Eun Lee. (2024). &quot;Lightweight and Error‑Tolerant Stereo Matching with a Stochastic Computing Processor.&quot; <i>Electronics</i>.</small>
+<small><small>Seongmo An, Jongwon Oh, Sangho Lee, Jinyeol Kim, Youngwoo Jeong, Jeongeun Kim, Seung Eun Lee. (2024). &quot;Lightweight and Error‑Tolerant Stereo Matching with a Stochastic Computing Processor.&quot; <i>Electronics</i>.</small></small>

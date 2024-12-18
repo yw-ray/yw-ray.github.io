@@ -11,4 +11,4 @@ paperurl: 'http://yw-ray.github.io/files/2024-01-01-Integration.pdf'
 
 <a href='http://yw-ray.github.io/files/2024-01-01-Integration.pdf'>Download paper here</a>
 
-<small>Youngwoo Jeong, Joungmin Park, Raehyeong Kim, Seung Eun Lee. (2024). &quot;SEAM: A Synergetic Energy‑Efficient Approximate Multiplier for Application Demanding Substantial Computational Resources.&quot; <i>Integration</i>.</small>
+<small><small>Youngwoo Jeong, Joungmin Park, Raehyeong Kim, Seung Eun Lee. (2024). &quot;SEAM: A Synergetic Energy‑Efficient Approximate Multiplier for Application Demanding Substantial Computational Resources.&quot; <i>Integration</i>.</small></small>
