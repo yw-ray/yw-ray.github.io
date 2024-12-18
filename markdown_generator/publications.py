@@ -31,7 +31,7 @@ for row, item in publications.iterrows():
 
     if len(str(item.excerpt)) > 5:
         #md += "\nexcerpt: '" + html_escape(item.excerpt) + "'"
-        md += "\n<small><small>" + html_escape(item.excerpt) + "</small></small>\n"
+        md += "\n<small>" + html_escape(item.excerpt) + "</small>\n"
 
     md += "\ndate: " + str(item.pub_date)
 
@@ -50,7 +50,7 @@ for row, item in publications.iterrows():
 
     if len(str(item.excerpt)) > 5:
         #md += "\n" + html_escape(item.excerpt) + "\n"
-        md += "\n<small><small>" + html_escape(item.excerpt) + "</small></small>\n"
+        md += "\n<small>" + html_escape(item.excerpt) + "</small>\n"
 
     #md += "\nRecommended citation: " + item.citation
 
