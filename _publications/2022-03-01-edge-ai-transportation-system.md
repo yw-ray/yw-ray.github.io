@@ -11,4 +11,4 @@ paperurl: 'http://yw-ray.github.io/files/2022-03-01-JICCE.pdf'
 
 <a href='http://yw-ray.github.io/files/2022-03-01-JICCE.pdf'>Download paper here</a>
 
-Youngwoo Jeong, Hyun Woo Oh, Soohee Kim, Seung Eun Lee. (2022). &quot;An Edge AI Device Based Intelligent Transportation System.&quot; <i>JICCE</i>.
+<small>Youngwoo Jeong, Hyun Woo Oh, Soohee Kim, Seung Eun Lee. (2022). &quot;An Edge AI Device Based Intelligent Transportation System.&quot; <i>JICCE</i>.</small>

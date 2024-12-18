@@ -11,4 +11,4 @@ paperurl: 'http://yw-ray.github.io/files/2023-01-01-ICCE.pdf'
 
 <a href='http://yw-ray.github.io/files/2023-01-01-ICCE.pdf'>Download paper here</a>
 
-Soohee Kim, Joungmin Park, Youngwoo Jeong, Seung Eun Lee. (2023). &quot;Embedded Monitoring System for Preventing Lonely Death based on Edge AI.&quot; <i>ICCE</i>.
+<small>Soohee Kim, Joungmin Park, Youngwoo Jeong, Seung Eun Lee. (2023). &quot;Embedded Monitoring System for Preventing Lonely Death based on Edge AI.&quot; <i>ICCE</i>.</small>

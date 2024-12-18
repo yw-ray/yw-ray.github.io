@@ -11,4 +11,4 @@ paperurl: 'http://yw-ray.github.io/files/2022-10-01-RoboARCH.pdf'
 
 <a href='http://yw-ray.github.io/files/2022-10-01-RoboARCH.pdf'>Download paper here</a>
 
-Youngwoo Jeong, Kwang Hyun Go, Soohee Kim, Seung Eun Lee. (2022). &quot;Robot‑Specific Processor for Autonomous Driving.&quot; <i>RoboARCH</i>.
+<small>Youngwoo Jeong, Kwang Hyun Go, Soohee Kim, Seung Eun Lee. (2022). &quot;Robot‑Specific Processor for Autonomous Driving.&quot; <i>RoboARCH</i>.</small>
