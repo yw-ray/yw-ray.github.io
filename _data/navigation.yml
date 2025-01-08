@@ -8,20 +8,15 @@ main:
   - title: "Publications"
     url: /publications/
 
-  - title: "Talks"
-    url: /talks/    
+  - title: "Awards"
+    url: /awards/    
 
-  - title: "Teaching"
-    url: /teaching/    
+  - title: "Patents"
+    url: /patents/    
     
-  - title: "Portfolio"
-    url: /portfolio/
+  - title: "teaching"
+    url: /teaching/
         
-  - title: "Blog Posts"
-    url: /year-archive/
+  - title: "ASIC Experience"
+    url: /asics/
     
-  - title: "CV"
-    url: /cv/
-    
-  - title: "Guide"
-    url: /markdown/
