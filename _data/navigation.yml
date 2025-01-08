@@ -8,15 +8,6 @@ main:
   - title: "Publications"
     url: /publications/
 
-  - title: "Awards"
-    url: /awards/    
-
-  - title: "Patents"
-    url: /patents/    
-    
-  - title: "teaching"
-    url: /teaching/
-        
   - title: "ASIC Experience"
     url: /asics/
     
