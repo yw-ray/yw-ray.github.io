@@ -10,7 +10,6 @@ redirect_from:
 Hi, I am a Hardware Engineer at MangoBoost, a DPU startup company, where I joined the System Solution Group in March 2024.
 
 During my master’s studies, I was advised by Professor [Seung Eun Lee](https://soc.seoultech.ac.kr/Professor/Professor.html) and worked as a member of the Computer Architecture Lab. My research interests are in the area of Computer Architecture, Domain‑specific Accelerator, HW/SW co‑design. 
-
 For more information about the lab, please visit the [Computer Architecture Lab](https://soc.seoultech.ac.kr/).
 
 ------
@@ -60,5 +59,6 @@ Graduate courses
 ======
 
 **[Seoultech]**
+
 Advanced Computer Architecture, SoC Design Methodology, Probability and Random Process, Resilient Processor Design, Advanced Digital Signal Processing, Advanced Artificial Intelligence Processor, Mixed-signal Circuit design, HDL Design Engineering CMOS Circuit Design Engineering, Special Topic in Network-on-Chip
 
