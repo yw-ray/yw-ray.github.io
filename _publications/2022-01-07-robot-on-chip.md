@@ -5,7 +5,7 @@ category: conferences
 permalink: /publication/2022-01-07-robot-on-chip
 excerpt: 'Young Woo Jeong, Kwang Hyun Go, Seung Eun Lee. (2022). &quot;Robot‑on‑Chip: Computing on a Single Chip for an Autonomous Robot.&quot; <i>ICCE</i>.'
 date: 2022-01-07
-venue: 'ICCE'
+venue: 'International Conference on Consumer Electronics (ICCE)'
 paperurl: 'http://yw-ray.github.io/files/2022-01-01-ICCE.pdf'
 ---
 
