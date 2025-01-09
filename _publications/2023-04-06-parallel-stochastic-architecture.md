@@ -2,9 +2,9 @@
 title: "Parallel Stochastic Computing Architecture for Computationally Intensive Applications"
 collection: publications
 category: manuscripts
-permalink: /publication/2023-07-01-parallel-stochastic-architecture
+permalink: /publication/2023-04-06-parallel-stochastic-architecture
 excerpt: 'Jeongeun Kim, Won Sik Jeong, Youngwoo Jeong, Seung Eun Lee. (2023). &quot;Parallel Stochastic Computing Architecture for Computationally Intensive Applications.&quot; <i>Electronics</i>.'
-date: 2023-07-01
+date: 2023-04-06
 venue: 'Electronics'
 paperurl: 'http://yw-ray.github.io/files/2023-07-01-Electronics.pdf'
 ---
