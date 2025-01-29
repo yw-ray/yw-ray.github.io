@@ -19,7 +19,7 @@ You can find more details in my [CV](http://yw-ray.github.io/files/YoungwooJeong
 Education
 ======
 * **2022-2024** M.S. in Electronic Engineering, Seoultech
-* **2015-2022** B.S. in Electronic Engineering, Seoultech
+* **2015-2022** B.S. in Electronic and IT Media Engineering, Seoultech
 
 ------
 
