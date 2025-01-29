@@ -9,4 +9,4 @@ redirect_from:
 
 {% include base_path %}
 
-[Download my CV here.](https://github.com/yw-ray/yw-ray.github.io/files/YoungwooJeong_CV.pdf)
+[Download my CV here.](http://yw-ray.github.io/files/YoungwooJeong_CV.pdf)
