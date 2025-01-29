@@ -1,5 +1,5 @@
 ---
-title: "SEAM: A Synergetic Energy‑Efficient Approximate Multiplier for Application Demanding Substantial Computational Resources"
+title: "SEAM: A synergetic energy‑efficient approximate multiplier for application demanding substantial computational resources"
 collection: publications
 category: manuscripts
 permalink: /publication/2025-01-09-seam-energy-multiplier
