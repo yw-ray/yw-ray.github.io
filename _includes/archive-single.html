@@ -40,7 +40,7 @@
 
     {% if post.excerpt and site.read_more != 'enabled' %}
     <p class="archive__item-excerpt" itemprop="description">
-      {{ post.excerpt | { post.date | default: "1900-01-01" | date: "%Y" } | markdownify }}
+      {{ post.excerpt | markdownify }} {{ post.date | default: "1900-01-01" | date: "%Y" }}
     </p>
 
     {% elsif post.excerpt and site.read_more == 'enabled' %}
