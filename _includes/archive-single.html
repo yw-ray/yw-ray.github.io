@@ -1,4 +1,4 @@
-</b>{% include base_path %}
+{% include base_path %}
 
 {% if post.header.teaser %}
   {% capture teaser %}{{ post.header.teaser }}{% endcapture %}
@@ -40,7 +40,7 @@
 
     {% if post.excerpt and site.read_more != 'enabled' %}
     <p class="archive__item-excerpt" itemprop="description">
-      {{ post.excerpt | markdownify | post.date}}
+      {{ post.excerpt | { post.date | default: "1900-01-01" | date: "%Y" } | markdownify }}
     </p>
 
     {% elsif post.excerpt and site.read_more == 'enabled' %}
