@@ -39,7 +39,10 @@
     {% endif %}
 
     {% if post.excerpt and site.read_more != 'enabled' %}
-    <p class="archive__item-excerpt" itemprop="description">{{ post.excerpt | markdownify }}, {{ post.date | default: "1900-01-01" | date: "%Y" }}</p>
+    <p class="archive__item-excerpt" itemprop="description">
+      {{ post.excerpt | markdownify }} <span>{{ post.date | default: "1900-01-01" | date: "%Y" }}</span>
+    </p>
+
     {% elsif post.excerpt and site.read_more == 'enabled' %}
     <p class="archive__item-excerpt" itemprop="description"><p>{{ post.excerpt | markdownify | remove: '<p>' | remove: '</p>' }}<strong><a href="{{ base_path }}{{ post.url }}" rel="permalink"> Read more</a></strong></p></p>
     {% endif %}
