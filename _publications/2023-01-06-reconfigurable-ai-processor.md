@@ -7,6 +7,7 @@ excerpt: 'Yue Ri Jeong, Kwonneung Cho, Youngwoo Jeong, Sun Beom Kwon, Seung Eun 
 date: 2023-01-06
 venue: 'International Conference on Consumer Electronics (ICCE)'
 paperurl: 'http://yw-ray.github.io/files/2023-01-06-ICCE.pdf'
+link: https://ieeexplore.ieee.org/document/10043575
 ---
 
 <a href='http://yw-ray.github.io/files/2023-01-06-ICCE.pdf'>Download paper here</a>

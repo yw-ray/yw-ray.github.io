@@ -7,6 +7,7 @@ excerpt: 'Soohee Kim, Joungmin Park, Youngwoo Jeong, Seung Eun Lee. &quot;Embedd
 date: 2023-01-06
 venue: 'International Conference on Consumer Electronics (ICCE)'
 paperurl: 'http://yw-ray.github.io/files/2023-01-06-ICCE.pdf'
+link: https://ieeexplore.ieee.org/document/10043431
 ---
 
 <a href='http://yw-ray.github.io/files/2023-01-06-ICCE.pdf'>Download paper here</a>

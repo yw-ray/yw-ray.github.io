@@ -7,6 +7,7 @@ excerpt: 'Kwonneung Cho, Hyun Woo Oh, Jeongeun Kim, Young Woo Jeong, Seung Eun L
 date: 2022-01-07
 venue: 'International Conference on Consumer Electronics (ICCE)'
 paperurl: 'http://yw-ray.github.io/files/2022-01-07-ICCE.pdf'
+link: https://ieeexplore.ieee.org/document/9730493
 ---
 
 <a href='http://yw-ray.github.io/files/2022-01-07-ICCE.pdf'>Download paper here</a>

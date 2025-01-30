@@ -7,6 +7,7 @@ excerpt: 'Youngwoo Jeong, Won Sik Jeong, Jin Young Shin, Seung Eun Lee. &quot;Th
 date: 2023-10-25
 venue: 'International SoC Design Conference (ISOCC)'
 paperurl: 'http://yw-ray.github.io/files/2023-10-25-ISOCC.pdf'
+link: https://ieeexplore.ieee.org/abstract/document/10396118
 ---
 
 <a href='http://yw-ray.github.io/files/2023-10-25-ISOCC.pdf'>Download paper here</a>

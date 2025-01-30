@@ -7,6 +7,7 @@ excerpt: 'Jeongeun Kim, Won Sik Jeong, Youngwoo Jeong, Seung Eun Lee. &quot;Para
 date: 2023-04-06
 venue: 'Electronics'
 paperurl: 'http://yw-ray.github.io/files/2023-04-06-Electronics.pdf'
+link: https://www.mdpi.com/2079-9292/12/7/1749
 ---
 
 <a href='http://yw-ray.github.io/files/2023-04-06-Electronics.pdf'>Download paper here</a>

@@ -7,6 +7,7 @@ excerpt: 'Youngwoo Jeong, Joungmin Park, Raehyeong Kim, Seung Eun Lee. &quot;SEA
 date: 2025-01-09
 venue: 'Integration'
 paperurl: 'http://yw-ray.github.io/files/2025-01-09-Integration.pdf'
+link: https://www.sciencedirect.com/science/article/abs/pii/S0167926024002013
 ---
 
 <a href='http://yw-ray.github.io/files/2025-01-09-Integration.pdf'>Download paper here</a>

@@ -39,6 +39,10 @@ for row, item in publications.iterrows():
     if len(str(item.paper_url)) > 5:
         md += "\npaperurl: '" + item.paper_url + "'"
 
+    # Adding category field
+    if 'link' in item:
+        md += """\nlink: """ + str(item.link)
+
     #md += "\ncitation: '" + html_escape(item.citation) + "'"
 
     md += "\n---"

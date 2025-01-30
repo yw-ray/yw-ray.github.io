@@ -7,6 +7,7 @@ excerpt: 'Soohee Kim, Joungmin Park, Youngwoo Jeong, Seung Eun Lee. &quot;Intell
 date: 2023-09-07
 venue: 'Micromachines'
 paperurl: 'http://yw-ray.github.io/files/2023-09-07-Micromachines.pdf'
+link: https://www.mdpi.com/2072-666x/14/9/1749
 ---
 
 <a href='http://yw-ray.github.io/files/2023-09-07-Micromachines.pdf'>Download paper here</a>

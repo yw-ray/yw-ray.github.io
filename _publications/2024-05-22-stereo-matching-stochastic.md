@@ -7,6 +7,7 @@ excerpt: 'Seongmo An, Jongwon Oh, Sangho Lee, Jinyeol Kim, Youngwoo Jeong, Jeong
 date: 2024-05-22
 venue: 'Electronics'
 paperurl: 'http://yw-ray.github.io/files/2024-05-22-Electronics.pdf'
+link: https://www.mdpi.com/2079-9292/13/11/2024
 ---
 
 <a href='http://yw-ray.github.io/files/2024-05-22-Electronics.pdf'>Download paper here</a>
