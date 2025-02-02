@@ -12,7 +12,7 @@ Hi, I am a Hardware Engineer at MangoBoost, a DPU startup company, where I joine
 During my master’s studies, I was advised by Professor [Seung Eun Lee](https://soc.seoultech.ac.kr/Professor/Professor.html) and was a member of the [Computer Architecture Lab](https://soc.seoultech.ac.kr/).
 My research interests include Computer Architecture, Domain-Specific Accelerators, and HW/SW Co-Design.
 
-You can find more details in my [CV](http://yw-ray.github.io/files/YoungwooJeong_CV.pdf). (last updated on January 31, 2025)
+You can find more details in my [CV](http://yw-ray.github.io/files/cv/YoungwooJeong_CV.pdf). (last updated on January 31, 2025)
 
 ------
 
