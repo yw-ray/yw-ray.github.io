@@ -9,6 +9,7 @@ venue: '1st Workshop on Robotics Acceleration with Computing Hardware (Co-locate
 paperurl: 'http://yw-ray.github.io/files/paper/2022-10-01-RoboARCH.pdf'
 link: nan
 ---
+http://yw-ray.github.io/files/image/2022_roboarch_yw.jpg
 
 <a href='http://yw-ray.github.io/files/paper/2022-10-01-RoboARCH.pdf'>Download paper here</a>
 
