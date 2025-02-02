@@ -10,7 +10,6 @@ paperurl: 'http://yw-ray.github.io/files/paper/2023-01-19-Micromachines.pdf'
 link: https://www.mdpi.com/2072-666x/14/2/252
 ---
 
-
 <a href='http://yw-ray.github.io/files/paper/2023-01-19-Micromachines.pdf'>Download paper here</a>
 
 <b>Youngwoo Jeong</b>, Joungmin Park, Sun Beom Kwon, Seung Eun Lee. &quot;Photoplethysmography‑Based Distance Estimation for True Wireless Stereo.&quot; <i>Micromachines</i>, 2023.

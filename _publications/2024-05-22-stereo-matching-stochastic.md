@@ -10,7 +10,6 @@ paperurl: 'http://yw-ray.github.io/files/paper/2024-05-22-Electronics.pdf'
 link: https://www.mdpi.com/2079-9292/13/11/2024
 ---
 
-
 <a href='http://yw-ray.github.io/files/paper/2024-05-22-Electronics.pdf'>Download paper here</a>
 
 Seongmo An, Jongwon Oh, Sangho Lee, Jinyeol Kim, <b>Youngwoo Jeong</b>, Jeongeun Kim, Seung Eun Lee. &quot;Lightweight and Error‑Tolerant Stereo Matching with a Stochastic Computing Processor.&quot; <i>Electronics</i>, 2024.
