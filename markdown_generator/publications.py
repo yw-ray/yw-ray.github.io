@@ -43,11 +43,23 @@ for row, item in publications.iterrows():
     if 'link' in item:
         md += """\nlink: """ + str(item.link)
 
+    if 'slide' in item and len(str(item.slide)) > 5:
+        md += "slide: '" + item.slide + "'\n"
+    
+    if 'image' in item and len(str(item.image)) > 5:
+        md += "image: '" + item.image + "'\n"
+
     #md += "\ncitation: '" + html_escape(item.citation) + "'"
 
-    md += "\n---"
+    md += "\n---\n"
 
     ## Markdown description for individual page
+    if len(str(item.image)) > 5:
+        md += "![Publication Image](" + item.image + ")\n\n"
+
+    if len(str(item.abstract)) > 5:
+        md += html_escape(item.abstract) + "\n"
+
     if len(str(item.paper_url)) > 5:
         md += "\n\n<a href='" + item.paper_url + "'>Download paper here</a>\n"
 
@@ -55,6 +67,9 @@ for row, item in publications.iterrows():
         md += "\n" + html_escape(item.excerpt) + "\n"
 
     #md += "\nRecommended citation: " + item.citation
+
+    if len(str(item.slide)) > 5:
+        md += "[\\[Slides\\]](" + item.slide + ")\n"
 
     md_filename = os.path.basename(md_filename)
 
