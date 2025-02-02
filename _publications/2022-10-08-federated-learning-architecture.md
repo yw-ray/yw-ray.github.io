@@ -18,4 +18,4 @@ Jeongeun Kim, <b>Youngwoo Jeong</b>, Suyeon Jang, Seung Eun Lee. &quot;An Archit
 ---
 ---
 
-![Publication Image](http://yw-ray.github.io/files/image/2022_pact_yw.jpg){: style="width: 50%; height: 50%;"}
+![Publication Image](http://yw-ray.github.io/files/image/2022_pact_yw_4.jpg)
