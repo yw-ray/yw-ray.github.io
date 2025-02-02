@@ -43,12 +43,6 @@ for row, item in publications.iterrows():
     if 'link' in item:
         md += """\nlink: """ + str(item.link)
 
-    if 'slide' in item and len(str(item.slide)) > 5:
-        md += "slide: '" + item.slide + "'\n"
-    
-    if 'image' in item and len(str(item.image)) > 5:
-        md += "image: '" + item.image + "'\n"
-
     #md += "\ncitation: '" + html_escape(item.citation) + "'"
 
     md += "\n---\n"
