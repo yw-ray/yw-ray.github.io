@@ -9,8 +9,8 @@ venue: '1st Workshop on Robotics Acceleration with Computing Hardware (Co-locate
 paperurl: 'http://yw-ray.github.io/files/paper/2022-10-01-RoboARCH.pdf'
 link: nan
 ---
-http://yw-ray.github.io/files/image/2022_roboarch_yw.jpg
 
 <a href='http://yw-ray.github.io/files/paper/2022-10-01-RoboARCH.pdf'>Download paper here</a>
 
 <b>Youngwoo Jeong</b>, Kwang Hyun Go, Soohee Kim, Seung Eun Lee. &quot;Robot‑Specific Processor for Autonomous Driving.&quot; <i>1st Workshop on Robotics Acceleration with Computing Hardware (Co-located with the IEEE/ACM International Symposium on Microarchitecture (MICRO))</i>, 2022.
+[\[Slides\]](http://yw-ray.github.io/files/image/2022_roboarch_yw.jpg)
