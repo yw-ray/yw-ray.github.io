@@ -25,6 +25,7 @@ Education
 
 Experience
 ======
+![MangoBoost Logo](http://yw-ray.github.io/files/mb_logo.png) **Mar 2024-Present** MangoBoost, System Solution Group, Hardware Engineer
 * **Mar 2024-Present** MangoBoost, System Solution Group, Hardware Enginner
 * **Mar 2022-Feb 2024** Seoultech, Computer Architecture Lab, Reseach Assistant
 * **Jul 2020-Feb 2022** Seoultech, Computer Architecture Lab, Undergraduate Researcher
