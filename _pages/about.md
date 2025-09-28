@@ -7,7 +7,7 @@ redirect_from:
   - /about.html
 ---
 
-Hi, I am a Hardware Engineer at MangoBoost, a DPU startup company, where I joined the System Solution Group in March 2024.
+Hi, I am a System Architect at MangoBoost, a DPU startup company, where I joined the System Solution Group in March 2024.
 
 During my master’s studies, I was advised by Professor [Seung Eun Lee](https://soc.seoultech.ac.kr/Professor/Professor.html) and was a member of the [Computer Architecture Lab](https://soc.seoultech.ac.kr/).
 My research interests include Computer Architecture, Domain-Specific Accelerators, and HW/SW Co-Design.
@@ -25,7 +25,7 @@ Education
 
 Experience
 ======
-![MangoBoost Logo](http://yw-ray.github.io/files/image/mb_logo_white.jpg){: width="30" height="30" } **Mar 2024-Present** MangoBoost, System Solution Group, Hardware Engineer<br>
+![MangoBoost Logo](http://yw-ray.github.io/files/image/mb_logo_white.jpg){: width="30" height="30" } **Mar 2024-Present** MangoBoost, System Solution Group, System Architect<br>
 ![Seoultech Logo](http://yw-ray.github.io/files/image/seoultech_logo.png){: width="30" height="30" } **Mar 2022-Feb 2024** Seoultech, Computer Architecture Lab, Reseach Assistant<br>
 ![Seoultech Logo](http://yw-ray.github.io/files/image/seoultech_logo.png){: width="30" height="30" } **Jul 2020-Feb 2022** Seoultech, Computer Architecture Lab, Undergraduate Researcher<br>
 
