@@ -47,10 +47,10 @@ Honors & Awards
 
 Skills
 ======
-&nbsp;&nbsp;• Hardware Description Languages: Verilog, System Verilog
-&nbsp;&nbsp;• High‑Level Computer Languages: SystemC, C/C++, Python, Matlab
-&nbsp;&nbsp;• Design and Implementation Tools: Design Compiler, IC Compiler II, Quartus II, Vivado
-&nbsp;&nbsp;• Verification and Analysis Tools: VCS, Verdi, ModelSim, PSpice, PrimeTime, Formality, StarRC
+&nbsp;&nbsp;• Hardware Description Languages: Verilog, System Verilog<br>
+&nbsp;&nbsp;• High‑Level Computer Languages: SystemC, C/C++, Python, Matlab<br>
+&nbsp;&nbsp;• Design and Implementation Tools: Design Compiler, IC Compiler II, Quartus II, Vivado<br>
+&nbsp;&nbsp;• Verification and Analysis Tools: VCS, Verdi, ModelSim, PSpice, PrimeTime, Formality, StarRC<br>
 
 ------
 
