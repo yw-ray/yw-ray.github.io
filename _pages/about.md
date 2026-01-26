@@ -18,8 +18,8 @@ You can find more details in my [CV](http://yw-ray.github.io/files/cv/YoungwooJe
 
 Education
 ======
-![Seoultech Logo](http://yw-ray.github.io/files/image/seoultech_logo.png){: width="30" height="30" } **2022-2024** M.S. in Electronic Engineering, Seoultech
-      • [Thesis](https://snut.dcollection.net/public_resource/pdf/200000733737_20260126233419.pdf): Approximate Arithmetic Circuits for Embedded Fuzzy Logic Controller<br>
+![Seoultech Logo](http://yw-ray.github.io/files/image/seoultech_logo.png){: width="30" height="30" } **2022-2024** M.S. in Electronic Engineering, Seoultech<br>
+&nbsp;&nbsp;• [Thesis](https://snut.dcollection.net/public_resource/pdf/200000733737_20260126233419.pdf): Approximate Arithmetic Circuits for Embedded Fuzzy Logic Controller<br>
 ![Seoultech Logo](http://yw-ray.github.io/files/image/seoultech_logo.png){: width="30" height="30" } **2015-2022** B.S. in Electronic Engineering, Seoultech<br>
 
 ------
@@ -35,22 +35,22 @@ Experience
 Honors & Awards
 ======
 ![Seoultech Logo](http://yw-ray.github.io/files/image/seoultech_logo.png){: width="30" height="30" } **2024** [Excellent Thesis Award from Seoultech](../files/image/excellent_thesis.jpg)<br>
-      • Topic: Approximate Arithmetic Circuits for Embedded Fuzzy Logic Controller<br>
+&nbsp;&nbsp;• Topic: Approximate Arithmetic Circuits for Embedded Fuzzy Logic Controller<br>
 ![KSIA Logo](http://yw-ray.github.io/files/image/ksia.jpg){: width="30" height="30" } **2022** [Corporate (LX Semicon) Special Award from Korea Semiconductor Industry Association](../files/image/graduate_exhibition_award.jpg)<br>
-      • Topic: AI Processor employing Stochastic Computing for Embedded Systems<br>
+&nbsp;&nbsp;• Topic: AI Processor employing Stochastic Computing for Embedded Systems<br>
 ![Seoultech Logo](http://yw-ray.github.io/files/image/seoultech_logo.png){: width="30" height="30" } **2022** [Department Chair Award from Seoultech](../files/image/graduate_exhibition_award.jpg)<br>
-      • Topic: Design of an Autonomous Indoor Robot for Robot‑on‑Chip<br>
+&nbsp;&nbsp;• Topic: Design of an Autonomous Indoor Robot for Robot‑on‑Chip<br>
 ![KSIA Logo](http://yw-ray.github.io/files/image/ksia.jpg){: width="30" height="30" } **2021** [Corporate (Silicon Mitus) Special Award from Korea Semiconductor Industry Association](../files/image/silicon_mitus_special_award.jpg)<br>
-      • Topic: In‑Vehicle Network Processor based on LIN and CAN‑FD Controller<br>
+&nbsp;&nbsp;• Topic: In‑Vehicle Network Processor based on LIN and CAN‑FD Controller<br>
 
 ------
 
 Skills
 ======
-• Hardware Description Languages: Verilog, System Verilog
-• High‑Level Computer Languages: SystemC, C/C++, Python, Matlab
-• Design and Implementation Tools: Design Compiler, IC Compiler II, Quartus II, Vivado
-• Verification and Analysis Tools: VCS, Verdi, ModelSim, PSpice, PrimeTime, Formality, StarRC
+&nbsp;&nbsp;• Hardware Description Languages: Verilog, System Verilog
+&nbsp;&nbsp;• High‑Level Computer Languages: SystemC, C/C++, Python, Matlab
+&nbsp;&nbsp;• Design and Implementation Tools: Design Compiler, IC Compiler II, Quartus II, Vivado
+&nbsp;&nbsp;• Verification and Analysis Tools: VCS, Verdi, ModelSim, PSpice, PrimeTime, Formality, StarRC
 
 ------
 
