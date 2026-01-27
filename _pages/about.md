@@ -19,7 +19,7 @@ You can find more details in my [CV](http://yw-ray.github.io/files/cv/YoungwooJe
 Education
 ======
 ![Seoultech Logo](http://yw-ray.github.io/files/image/seoultech_logo.png){: width="30" height="30" } **2022-2024** M.S. in Electronic Engineering, Seoultech<br>
-&nbsp;&nbsp;• [Thesis](https://snut.dcollection.net/public_resource/pdf/200000733737_20260126233419.pdf): Approximate Arithmetic Circuits for Embedded Fuzzy Logic Controller<br>
+&nbsp;&nbsp;• [Thesis](https://snut.dcollection.net/public_resource/pdf/200000733737_20260127233857.pdf): Approximate Arithmetic Circuits for Embedded Fuzzy Logic Controller<br>
 ![Seoultech Logo](http://yw-ray.github.io/files/image/seoultech_logo.png){: width="30" height="30" } **2015-2022** B.S. in Electronic Engineering, Seoultech<br>
 
 ------
