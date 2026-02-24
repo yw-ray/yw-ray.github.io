@@ -35,9 +35,9 @@ Experience
 
 Selected Publications
 ======
-&nbsp;&nbsp;• **Youngwoo (Ray) Jeong**, First Author, "Approximate Arithmetic Circuits for Embedded Fuzzy Logic Controller", Journal of Low-Power Embedded Systems, 2025.<br>
-&nbsp;&nbsp;• **Youngwoo (Ray) Jeong**, Co-authors, "Domain-Specific Accelerators for Fuzzy Logic on FPGA", International Conference on Computer Architecture and Embedded Systems (ICCAES), 2024.<br>
-&nbsp;&nbsp;• **Youngwoo (Ray) Jeong**, Co-authors, "High-Level Synthesis of Approximate Arithmetic Units for Edge AI", Workshop on Hardware/Software Co-Design and Optimization, 2023.<br>
+&nbsp;&nbsp;• **Youngwoo Jeong**, Joungmin Park, Raehyeong Kim, Seung Eun Lee. "SEAM: A Synergetic Energy‑Efficient Approximate Multiplier for Application Demanding Substantial Computational Resources." Integration, the VLSI journal, 2025.<br>
+&nbsp;&nbsp;• Jeongeun Kim, **Youngwoo Jeong**, Suyeon Jang, Seung Eun Lee. "An Architecture for Resilient Federated Learning through Parallel Recognition." International Conference on Parallel Architectures and Compilation Techniques (PACT), 2022.<br>
+&nbsp;&nbsp;• **Youngwoo Jeong**, Kwang Hyun Go, Soohee Kim, Seung Eun Lee. "Robot‑Specific Processor for Autonomous Driving." 1st Workshop on Robotics Acceleration with Computing Hardware (Co-located with the IEEE/ACM International Symposium on Microarchitecture (MICRO)), 2022.<br>
 
 ------
 
