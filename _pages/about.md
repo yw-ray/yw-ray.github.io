@@ -73,9 +73,10 @@ News
 
 ------
 
+<!--
 Graduate courses
 ======
 
 **[Seoultech]**  
 Advanced Computer Architecture, SoC Design Methodology, Probability and Random Process, Resilient Processor Design, Advanced Digital Signal Processing, Advanced Artificial Intelligence Processor, Mixed-signal Circuit design, HDL Design Engineering CMOS Circuit Design Engineering, Special Topic in Network-on-Chip
-
+-->
