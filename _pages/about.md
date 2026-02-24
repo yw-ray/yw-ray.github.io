@@ -63,16 +63,16 @@ Skills
 
 ------
 
+News
+====
+&nbsp;&nbsp;• **Jan 2026** – Joined MangoBoost Software Engineering Group as a Software Engineer.<br>
+&nbsp;&nbsp;• **Sep 2025** – Updated CV and personal website with recent research and industry experience.<br>
+
+------
+
 Graduate courses
 ======
 
 **[Seoultech]**  
 Advanced Computer Architecture, SoC Design Methodology, Probability and Random Process, Resilient Processor Design, Advanced Digital Signal Processing, Advanced Artificial Intelligence Processor, Mixed-signal Circuit design, HDL Design Engineering CMOS Circuit Design Engineering, Special Topic in Network-on-Chip
-
-------
-
-News
-====
-&nbsp;&nbsp;• **Jan 2026** – Joined MangoBoost Software Engineering Group as a Software Engineer.<br>
-&nbsp;&nbsp;• **Sep 2025** – Updated CV and personal website with recent research and industry experience.<br>
 
