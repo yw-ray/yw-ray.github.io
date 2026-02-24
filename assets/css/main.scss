@@ -39,3 +39,8 @@
 @import "vendor/font-awesome/brands";
 @import "vendor/magnific-popup/magnific-popup";
 @import "print";
+
+/* Custom anchor scroll offset for honors section */
+#honors-awards {
+  scroll-margin-top: 80px;
+}
