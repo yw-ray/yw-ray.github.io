@@ -65,8 +65,10 @@ Skills
 
 News
 ====
-&nbsp;&nbsp;• **Jan 2026** – Joined MangoBoost Software Engineering Group as a Software Engineer.<br>
-&nbsp;&nbsp;• **Sep 2025** – Updated CV and personal website with recent research and industry experience.<br>
+&nbsp;&nbsp;• **Jan 2026** – Transitioned to the Software Engineering Group at MangoBoost as a Software Engineer.<br>
+&nbsp;&nbsp;• **Mar 2025** – SEAM paper accepted for publication in *Integration, the VLSI journal*.<br>
+&nbsp;&nbsp;• **Mar 2024** – Joined MangoBoost as a System Architect in the System Solution Group.<br>
+&nbsp;&nbsp;• **Feb 2024** – Completed M.S. in Electronic Engineering at Seoul National University of Science and Technology (Seoultech).<br>
 
 ------
 
