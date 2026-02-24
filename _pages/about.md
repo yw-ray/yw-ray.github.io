@@ -26,9 +26,18 @@ Education
 
 Experience
 ======
-![MangoBoost Logo](http://yw-ray.github.io/files/image/mb_logo_white.jpg){: width="30" height="30" } **Mar 2024-Present** MangoBoost, System Solution Group, System Architect<br>
+![MangoBoost Logo](http://yw-ray.github.io/files/image/mb_logo_white.jpg){: width="30" height="30" } **Jan 2026-Present** MangoBoost, Software Engineering Group, Software Engineer<br>
+![MangoBoost Logo](http://yw-ray.github.io/files/image/mb_logo_white.jpg){: width="30" height="30" } **Mar 2024-Dec 2025** MangoBoost, System Solution Group, System Architect<br>
 ![Seoultech Logo](http://yw-ray.github.io/files/image/seoultech_logo.png){: width="30" height="30" } **Mar 2022-Feb 2024** Seoultech, Computer Architecture Lab, Reseach Assistant<br>
 ![Seoultech Logo](http://yw-ray.github.io/files/image/seoultech_logo.png){: width="30" height="30" } **Jul 2020-Feb 2022** Seoultech, Computer Architecture Lab, Undergraduate Researcher<br>
+
+------
+
+Selected Publications
+======
+&nbsp;&nbsp;• **Youngwoo (Ray) Jeong**, First Author, "Approximate Arithmetic Circuits for Embedded Fuzzy Logic Controller", Journal of Low-Power Embedded Systems, 2025.<br>
+&nbsp;&nbsp;• **Youngwoo (Ray) Jeong**, Co-authors, "Domain-Specific Accelerators for Fuzzy Logic on FPGA", International Conference on Computer Architecture and Embedded Systems (ICCAES), 2024.<br>
+&nbsp;&nbsp;• **Youngwoo (Ray) Jeong**, Co-authors, "High-Level Synthesis of Approximate Arithmetic Units for Edge AI", Workshop on Hardware/Software Co-Design and Optimization, 2023.<br>
 
 ------
 
@@ -59,4 +68,11 @@ Graduate courses
 
 **[Seoultech]**  
 Advanced Computer Architecture, SoC Design Methodology, Probability and Random Process, Resilient Processor Design, Advanced Digital Signal Processing, Advanced Artificial Intelligence Processor, Mixed-signal Circuit design, HDL Design Engineering CMOS Circuit Design Engineering, Special Topic in Network-on-Chip
+
+------
+
+News
+====
+&nbsp;&nbsp;• **Jan 2026** – Joined MangoBoost Software Engineering Group as a Software Engineer.<br>
+&nbsp;&nbsp;• **Sep 2025** – Updated CV and personal website with recent research and industry experience.<br>
 
