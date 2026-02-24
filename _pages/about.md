@@ -43,6 +43,7 @@ Selected Publications
 
 Honors & Awards
 ======
+{: #honors-awards}
 ![Seoultech Logo](http://yw-ray.github.io/files/image/seoultech_logo.png){: width="30" height="30" } **2024** [Excellent Thesis Award from Seoultech](../files/image/excellent_thesis.jpg)<br>
 &nbsp;&nbsp;• Topic: Approximate Arithmetic Circuits for Embedded Fuzzy Logic Controller<br>
 ![KSIA Logo](http://yw-ray.github.io/files/image/ksia.jpg){: width="30" height="30" } **2022** [Corporate (LX Semicon) Special Award from Korea Semiconductor Industry Association](../files/image/graduate_exhibition_award.jpg)<br>
