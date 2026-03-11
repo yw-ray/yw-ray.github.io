@@ -3,7 +3,7 @@ layout: home
 title:
 date: 2024-03-01
 ---
-### Hi, I'm Youngwoo(Ray) Jeong
+### Hi, I'm Youngwoo (Ray) Jeong
 
 I am a Software Engineer at [MangoBoost](https://www.mangoboost.io/), a DPU startup company, where I joined the System Solution Group in March 2024.
 
@@ -37,5 +37,3 @@ You can find more details in my [CV](/assets/pdf/YoungwooJeong_CV.pdf).
 - **Languages:** SystemC, C/C++, Python, Matlab
 - **Design Tools:** Design Compiler, IC Compiler II, Quartus II, Vivado
 - **Verification Tools:** VCS, Verdi, ModelSim, PSpice, PrimeTime, Formality, StarRC
-
-<a href="/contact.html" class="highlighted">Contact Me</a>

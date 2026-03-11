@@ -1,4 +1,4 @@
-- name: Publications
+- name: Selected Publications
   id: publications
   description: Selected research publications in computer architecture, domain-specific accelerators, and embedded systems.
   url: publications.html

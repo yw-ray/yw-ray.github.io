@@ -8,18 +8,18 @@
 # -----------BASE SETTINGS---------------#
 #========================================#
 
-title: "Youngwoo(Ray) Jeong"
+title: "Youngwoo (Ray) Jeong"
 email: youngwoo.jeong@mangoboost.io
-description: Personal website of Youngwoo(Ray) Jeong
+description: Personal website of Youngwoo (Ray) Jeong
 baseurl:                                       # the subpath of your site, e.g. /blog
 url: "https://yw-ray.github.io"               # the base hostname & protocol for your site, e.g. http://example.com
 image: /assets/img/avatar/yw.jpeg              # used to generate site link preview
-image_alt: Youngwoo(Ray) Jeong                 # image description
+image_alt: Youngwoo (Ray) Jeong                 # image description
 
 # =======================================#
 # -----------SITE SETTINGS---------------#
 #========================================#: 
-author: "Youngwoo(Ray) Jeong"
+author: "Youngwoo (Ray) Jeong"
 profile_image: /assets/img/avatar/yw.jpeg
 occupation: Software Engineer at MangoBoost
 snippet: Computer Architecture, Domain-Specific Accelerators, FPGA, HW/SW Co-Design

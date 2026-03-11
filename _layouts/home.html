@@ -74,10 +74,10 @@ layout: default
       <div class="tab-content mt-3">
         {% for section in site.data.sections %}
           {% if section.first %}
-            {% if section.name == "Publications" %}
+            {% if section.name == "Selected Publications" %}
               <div class="tab-pane active overflow-auto" id="{{section.id}}" role="tabpanel">
                 <p><i>{{section.description}}</i></p>
-                <p class="card-text">{% bibliography -f papers %}</p>
+                <p class="card-text">{% bibliography -f papers --query @*[selected=true] %}</p>
               </div>
             {% else %}
               <div class="tab-pane overflow-auto" id="{{section.id}}" role="tabpanel">
