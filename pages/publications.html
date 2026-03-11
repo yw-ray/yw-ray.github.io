@@ -20,11 +20,16 @@ ol.bibliography {
 }
 ol.bibliography > li {
   counter-increment: bibcount -1;
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 1em;
 }
 ol.bibliography > li::before {
-  content: "[" counter(bibcount) "] ";
+  content: "[" counter(bibcount) "]";
   font-weight: bold;
-  margin-right: 0.5em;
+  margin-right: 0.75em;
+  white-space: nowrap;
+  flex-shrink: 0;
 }
 </style>
 
