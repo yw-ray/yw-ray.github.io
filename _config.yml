@@ -24,7 +24,7 @@ profile_image: /assets/img/avatar/yw.jpeg
 occupation: Software Engineer at MangoBoost
 snippet: Computer Architecture, Domain-Specific Accelerators, FPGA, HW/SW Co-Design
 twitter:
-github: yw-ray
+github:
 linkedin: youngwoo-jeong-508b28264
 stackoverflow:
 website:
@@ -35,6 +35,8 @@ keybase:
 pgp:
 ctftime:
 phonenumber:
+orcid: "0000-0003-1002-5482"
+googlescholar: "https://scholar.google.co.kr/citations?user=cnUmAwwAAAAJ&hl=ko"
 
 #========================================#
 # --------- UI THEMES -------------------#
