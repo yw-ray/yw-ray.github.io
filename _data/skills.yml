@@ -1,0 +1,11 @@
+- Category: Hardware Description Languages
+  Items: Verilog, System Verilog
+
+- Category: High-Level Languages
+  Items: SystemC, C/C++, Python, Matlab
+
+- Category: Design Tools
+  Items: Design Compiler, IC Compiler II, Quartus II, Vivado
+
+- Category: Verification Tools
+  Items: VCS, Verdi, ModelSim, PSpice, PrimeTime, Formality, StarRC

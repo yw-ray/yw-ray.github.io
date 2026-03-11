@@ -1,0 +1,11 @@
+{% assign theme = site.data.themes[site.ui_theme] %}
+  <h5 class="card-title" style="font-family:{{ theme.education-title-font}};font-size:{{ theme.education-title-size }};color:{{theme.education-font-color}};">Skills</h5>
+  <ul class="list-unstyled">
+  {% for entry in site.data.skills %}
+    <li class="media">
+      <div class="media-body">
+        <p style="font-family:{{ theme.education-entry-font}};font-size:{{ theme.education-section-size }};color:{{theme.education-font-color}};"><strong>{{ entry.Category }}:</strong> {{ entry.Items }}</p>
+      </div>
+    </li>
+    {% endfor %}
+  </ul>
