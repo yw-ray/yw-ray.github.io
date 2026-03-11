@@ -3,7 +3,7 @@
   <ul class="list-unstyled">
   {% for entry in site.data.education %}
     <li class="media">
-      <img src="{{ entry.Icon }}" class="mr-3" alt="..." style="max-width:30px;max-height:30px;">
+      <img src="{{ entry.Icon }}" class="mr-3" alt="..." style="max-width:40px;max-height:40px;">
       <div class="media-body">
         <h5 style="font-family:{{ theme.education-entry-font}};font-size:{{ theme.education-entry-size }};color:{{theme.education-font-color}};">{{ entry.School }}</h5>
         <p style="font-family:{{ theme.education-entry-font}};font-size:{{ theme.education-section-size }};color:{{theme.education-font-color}};"><i>{% if entry.Degree %}{{ entry.Degree }} in {% endif %}{{ entry.Program }}</i></p>
