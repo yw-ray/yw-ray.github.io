@@ -41,7 +41,7 @@ layout: default
       {% else %}
       <div class="card-body mt-0" style="color:{{theme.education-font-color}};">
       {% endif %}
-        <p style="color:{{theme.education-font-color}};">{{ content | markdownify}}<p>
+        <div style="color:{{theme.education-font-color}};font-size:17px;">{{ content | markdownify}}</div>
         {% if site.home_option == "education" %}
           {% include education.html %}
         {% endif %}

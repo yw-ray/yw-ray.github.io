@@ -16,12 +16,12 @@ abyss:
     education-title-font: "Noto Sans JP"
     education-title-size: "18px"
     education-entry-font: "Noto Sans JP"
-    education-entry-size: "18px"
+    education-entry-size: "17px"
     education-section-size: "15px"
     certification-title-font: "Noto Sans JP"
     certification-title-size: "18px"
     certification-entry-font: "Noto Sans JP"
-    certification-entry-size: "18px"
+    certification-entry-size: "17px"
     certification-section-size: "15px"
     highlights-tab-color: "White"
     projects-color: "Black"
@@ -33,7 +33,7 @@ abyss:
     default-button-color: ""
     social-color-footer : black
 
-dark: 
+dark:
     name: dark
     background-color: "#000000"
     home-background-color: "#000000"
@@ -55,12 +55,12 @@ dark:
     education-title-size: "18px"
     education-entry-font: "Noto Sans JP"
     education-font-color: "#eeeeee"
-    education-entry-size: "18px"
+    education-entry-size: "17px"
     education-section-size: "15px"
     certification-title-font: "Noto Sans JP"
     certification-title-size: "18px"
     certification-entry-font: "Noto Sans JP"
-    certification-entry-size: "18px"
+    certification-entry-size: "17px"
     certification-section-size: "15px"
     highlights-tab-color: "White"
     projects-color: "Black"
