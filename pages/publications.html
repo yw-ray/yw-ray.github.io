@@ -2,7 +2,7 @@
 layout: page
 permalink: /publications.html
 title: Publications
-header-img: 
+header-img:
 last-updated: 2020-10-30 5:55 PM
 ---
 {% assign theme = site.data.themes[site.ui_theme] %}
@@ -11,7 +11,21 @@ last-updated: 2020-10-30 5:55 PM
     <h5 class="card-title text-center" style="font-size:{{ theme.post-title-size }};font-weight:{{ theme.post-font-weight }};">{{ page.title }}</h5>
   </div>
 </div>
+
+<style>
+ol.bibliography {
+  counter-reset: bibcount 16;
+  list-style: none;
+  padding-left: 0;
+}
+ol.bibliography > li {
+  counter-increment: bibcount -1;
+}
+ol.bibliography > li::before {
+  content: "[" counter(bibcount) "] ";
+  font-weight: bold;
+  margin-right: 0.5em;
+}
+</style>
+
 {% bibliography -f papers %}
-
-
-
