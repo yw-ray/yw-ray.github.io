@@ -2,26 +2,55 @@
 layout: page
 permalink: /about.html
 title: About Me
-description: Get to know what I'm up too
-header-img: 
-last-updated: 2020-10-30 5:55 PM
+description: Experience, Honors & Awards, Skills, and News
+header-img:
+last-updated: 2025-09-28 12:00 PM
 ---
 
 <h1 class="mx-auto" style="font-family:Courgette;">{{ page.title }}</h1>
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Libero id faucibus nisl tincidunt eget. Cursus metus aliquam eleifend mi in nulla posuere sollicitudin. Duis convallis convallis tellus id interdum velit. Ultricies mi eget mauris pharetra et. Odio pellentesque diam volutpat commodo sed egestas. Eu mi bibendum neque egestas congue quisque. Augue lacus viverra vitae congue eu consequat ac felis donec. Ultrices vitae auctor eu augue ut lectus arcu. Eu consequat ac felis donec et. Sollicitudin aliquam ultrices sagittis orci a scelerisque purus semper eget.
+## Experience
 
+- **Jan 2026 - Present** &mdash; MangoBoost, Software Engineering Group, Software Engineer
+- **Mar 2024 - Dec 2025** &mdash; MangoBoost, System Solution Group, System Architect
+- **Mar 2022 - Feb 2024** &mdash; Seoultech, Computer Architecture Lab, Research Assistant
+- **Jul 2020 - Feb 2022** &mdash; Seoultech, Computer Architecture Lab, Undergraduate Researcher
 
-*This is an example of code*
-```js
-<script>
-    $(document).ready(function() {
-        $(".toast").toast('show');
-    });
-</script>
-```
+---
 
-Semper eget duis at tellus at urna condimentum. Elit scelerisque mauris pellentesque pulvinar pellentesque habitant. Suspendisse faucibus interdum posuere lorem ipsum dolor. Volutpat commodo sed egestas egestas fringilla phasellus faucibus. Maecenas accumsan lacus vel facilisis volutpat est velit egestas dui. Massa placerat duis ultricies lacus. Fermentum et sollicitudin ac orci phasellus egestas tellus. Placerat orci nulla pellentesque dignissim enim sit amet. Tellus mauris a diam maecenas sed enim. Tortor vitae purus faucibus ornare. Lectus quam id leo in vitae turpis massa. Porttitor eget dolor morbi non arcu risus quis varius. Felis eget nunc lobortis mattis aliquam. Integer vitae justo eget magna fermentum.
+## Selected Publications
 
-Egestas congue quisque egestas diam in arcu cursus euismod quis. Ullamcorper eget nulla facilisi etiam dignissim diam. Nunc pulvinar sapien et ligula ullamcorper. Turpis in eu mi bibendum. Faucibus scelerisque eleifend donec pretium vulputate. Euismod lacinia at quis risus sed vulputate odio ut enim. Phasellus faucibus scelerisque eleifend donec pretium. Non enim praesent elementum facilisis leo vel fringilla est ullamcorper. Quis auctor elit sed vulputate. Eu mi bibendum neque egestas. Eu turpis egestas pretium aenean pharetra magna ac. Augue ut lectus arcu bibendum at. Urna condimentum mattis pellentesque id nibh tortor id aliquet lectus. Fermentum leo vel orci porta non pulvinar. Pellentesque eu tincidunt tortor aliquam nulla facilisi. Amet commodo nulla facilisi nullam vehicula ipsum a arcu.
+- "SEAM: A Synergetic Energy-Efficient Approximate Multiplier for Application Demanding Substantial Computational Resources." &mdash; *Integration, the VLSI journal*, 2025. **Youngwoo Jeong**, Joungmin Park, Raehyeong Kim, Seung Eun Lee.
+- "An Architecture for Resilient Federated Learning through Parallel Recognition." &mdash; *PACT*, 2022. Jeongeun Kim, **Youngwoo Jeong**, Suyeon Jang, Seung Eun Lee.
+- "Robot-Specific Processor for Autonomous Driving." &mdash; *RoboARCH (Co-located with MICRO)*, 2022. **Youngwoo Jeong**, Kwang Hyun Go, Soohee Kim, Seung Eun Lee.
 
+---
+
+## Honors & Awards
+
+- **2024** &mdash; Excellent Thesis Award from Seoultech
+  - Topic: Approximate Arithmetic Circuits for Embedded Fuzzy Logic Controller
+- **2022** &mdash; Corporate (LX Semicon) Special Award from Korea Semiconductor Industry Association
+  - Topic: AI Processor employing Stochastic Computing for Embedded Systems
+- **2022** &mdash; Department Chair Award from Seoultech
+  - Topic: Design of an Autonomous Indoor Robot for Robot-on-Chip
+- **2021** &mdash; Corporate (Silicon Mitus) Special Award from Korea Semiconductor Industry Association
+  - Topic: In-Vehicle Network Processor based on LIN and CAN-FD Controller
+
+---
+
+## Skills
+
+- **Hardware Description Languages:** Verilog, System Verilog
+- **High-Level Computer Languages:** SystemC, C/C++, Python, Matlab
+- **Design and Implementation Tools:** Design Compiler, IC Compiler II, Quartus II, Vivado
+- **Verification and Analysis Tools:** VCS, Verdi, ModelSim, PSpice, PrimeTime, Formality, StarRC
+
+---
+
+## News
+
+- **Jan 2026** &mdash; Transitioned to the Software Engineering Group at MangoBoost as a Software Engineer.
+- **Mar 2025** &mdash; SEAM paper accepted for publication in *Integration, the VLSI journal*.
+- **Mar 2024** &mdash; Joined MangoBoost as a System Architect in the System Solution Group.
+- **Feb 2024** &mdash; Completed M.S. in Electronic Engineering at Seoul National University of Science and Technology (Seoultech).

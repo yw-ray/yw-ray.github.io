@@ -1,6 +1,13 @@
-- School: Princeton
-  Degree: 
-  Program: School of Public and International Affairs
-  Start Date: 
-  End Date: 
-  Icon: /assets/img/icons/2x/princeton-crop.png      # Make this icon small, think 30px/30px
+- School: Seoul National University of Science and Technology (Seoultech)
+  Degree: M.S.
+  Program: Electronic Engineering
+  Start Date: 2022
+  End Date: 2024
+  Icon: /assets/img/icons/seoultech_logo.png
+
+- School: Seoul National University of Science and Technology (Seoultech)
+  Degree: B.S.
+  Program: Electronic Engineering
+  Start Date: 2015
+  End Date: 2022
+  Icon: /assets/img/icons/seoultech_logo.png

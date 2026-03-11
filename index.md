@@ -1,9 +1,14 @@
 ---
 layout: home
-title: 
-date: 2020-11-20 
+title:
+date: 2024-03-01
 ---
-### Hi, I'm Dumbarton 👋
-Dumbarton is a Jekyll Theme developed by [Tyler Butler](https://github.com/tcbutler320). The theme is designed for academics and features a simple home page with an about me section and an interactive highlights section to describe publications, coursework, courses taught, and projects. You can checkout the project on [Github](https://github.com/tcbutler320/Jekyll-Theme-Dumbarton), feel free to make contributions and feature requests and don't forget to give it a star.
+### Hi, I'm Youngwoo(Ray) Jeong
+
+I am a Software Engineer at [MangoBoost](https://www.mangoboost.io/), a DPU startup company, where I joined the System Solution Group in March 2024.
+
+During my master's studies, I was advised by Professor [Seung Eun Lee](https://soc.seoultech.ac.kr/Professor/Professor.html) and was a member of the [Computer Architecture Lab](https://soc.seoultech.ac.kr/). My research interests include **Computer Architecture**, **Domain-Specific Accelerators**, **FPGA prototyping**, **HW/SW Co-Design**, and **High-Level Synthesis (HLS)**.
+
+You can find more details in my [CV](/assets/pdf/YoungwooJeong_CV.pdf).
 
 <a href="/contact.html" class="highlighted">Contact Me</a>
