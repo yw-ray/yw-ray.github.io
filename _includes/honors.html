@@ -5,7 +5,7 @@
     <li class="media">
       <img src="{{ entry.Icon }}" class="mr-3" alt="..." style="max-width:50px;max-height:50px;">
       <div class="media-body">
-        <h5 style="font-family:{{ theme.education-entry-font}};font-size:{{ theme.education-entry-size }};color:{{theme.education-font-color}};">{% if entry.Image %}<a href="{{ entry.Image }}" target="_blank" style="color:inherit;text-decoration:underline;">{{ entry.Title }}</a>{% else %}{{ entry.Title }}{% endif %}</h5>
+        <h5 style="font-family:{{ theme.education-entry-font}};font-size:{{ theme.education-entry-size }};color:{{theme.education-font-color}};">{{ entry.Title }}{% if entry.Image %} <a href="{{ entry.Image }}" target="_blank" style="font-size:0.75em;">[view]</a>{% endif %}</h5>
         <p style="font-family:{{ theme.education-entry-font}};font-size:{{ theme.education-section-size }};color:{{theme.education-font-color}};"><i>{{ entry.Organization }} ({{ entry.Year }})</i></p>
       </div>
     </li>
