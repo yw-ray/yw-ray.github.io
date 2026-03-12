@@ -606,8 +606,8 @@ background-image: url(https://ionicframework.com/img/getting-started/ionic-nativ
 } 
 
 .links .btn-sm {
-  padding: .125rem .25rem;
-  margin-right: 0;
+  padding: .0625rem .125rem;
+  margin: 0;
 }
 
 a:link {color: #149f98;}      /* unvisited link */
