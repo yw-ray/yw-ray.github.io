@@ -119,6 +119,7 @@ exclude:
 #========================================#
 scholar:
   last_name: Jeong
+  first_name: Youngwoo
   style: apa
   locale: en
   source: /_bibliography/
