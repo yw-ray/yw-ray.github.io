@@ -4,6 +4,7 @@
 .sass-cache
 _site
 Gemfile.lock
+_config_dev.yml
 
 # Demo Site 
 /Demo

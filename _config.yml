@@ -9,7 +9,7 @@
 #========================================#
 
 title: "Youngwoo (Ray) Jeong"
-email: youngwoo.jeong@mangoboost.io
+email: tori961227@gmail.com
 description: Personal website of Youngwoo (Ray) Jeong
 baseurl:                                       # the subpath of your site, e.g. /blog
 url: "https://yw-ray.github.io"               # the base hostname & protocol for your site, e.g. http://example.com
@@ -21,7 +21,7 @@ image_alt: Youngwoo (Ray) Jeong                 # image description
 #========================================#: 
 author: "Youngwoo (Ray) Jeong"
 profile_image: /assets/img/avatar/yw.jpeg
-occupation: System Architect at MangoBoost
+occupation: Ph.D. Student at NYU
 snippet: Computer Architecture, Domain-Specific Accelerators, FPGA, HW/SW Co-Design
 twitter:
 github:
@@ -30,7 +30,7 @@ stackoverflow:
 website:
 codepen:
 medium:
-email: youngwoo.jeong@mangoboost.io
+email: tori961227@gmail.com
 keybase:
 pgp:
 ctftime:
