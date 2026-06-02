@@ -42,12 +42,9 @@
 
     <div class="periodical">
     {% if entry.type == "article" %}
-      <em>{{entry.journal}}</em>
+      <em>{{entry.journal}}</em>{% if entry.year %}, {{entry.year}}{% endif %}
     {% elsif entry.type == "inproceedings" %}
-      <em>In {{entry.booktitle}}</em>
-    {% endif %}
-    {% if entry.year %}
-      , {{entry.year}}
+      <em>In {{entry.booktitle}}</em>{% if entry.year %}, {{entry.year}}{% endif %}
     {% endif %}
     </div>
   {% endif %}
