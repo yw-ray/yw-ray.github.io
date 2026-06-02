@@ -24,48 +24,22 @@ Personal academic webpage for **Youngwoo (Ray) Jeong**, built with **Jekyll**
   `url: "http://localhost:4000"` so the `<base href>` doesn't redirect
   asset requests to production during local preview.
 
-## Current state (April 2026)
+## Current state (June 2026)
 
-Owner is transitioning from MangoBoost (Software Engineer, ending Jun 2026)
-to a **Ph.D. in ECE at NYU** advised by Prof. Austin Rovinski. The webpage
-is being pre-staged for deployment around that transition.
+Owner is incoming Fall 2026 Ph.D. student in ECE at NYU, advised by Prof.
+Austin Rovinski. The NYU transition content was shipped to `dev` on
+2026-06-02; the staging branch `june-deploy` has been deleted.
 
 ### Branch layout
 
-- `dev` (live/main) — production branch that GitHub Pages publishes at
-  `https://yw-ray.github.io`. **Do not push transition content here yet.**
-  Only this `CLAUDE.md` and the `_config_dev.yml` gitignore entry live
-  here ahead of the switch.
-- `june-deploy` — staging branch holding the NYU transition content.
-  When the switch happens (around Jun 2026), merge or fast-forward `dev`
-  to this branch.
+- `dev` — the only working branch. GitHub Pages auto-deploys from here to
+  `https://yw-ray.github.io`. Commit and push directly.
 
-### What's on `june-deploy` (not on `dev`)
+### Outstanding TODOs
 
-- `index.md` — new intro: "Ph.D. student in ECE at NYU, advised by
-  Austin Rovinski". Previous MangoBoost/Seoultech history kept as a
-  "Previously" paragraph. Research interests: Computer Architecture,
-  Domain-Specific Accelerators, HW/SW Co-Design, FPGA prototyping. HLS was
-  removed.
-- `_data/education.yml` — NYU Ph.D. in ECE (2026–) prepended; M.S./B.S.
-  Seoultech kept below.
-- `_data/experience.yml` — MangoBoost SW Engineer end date changed from
-  "Present" to `Jun 2026`.
-- `_bibliography/papers.bib` — new selected entry at top of file:
-  `MangoBoost SANA: Fast, Scalable, and Flexible Storage Architecture with
-  NVMe/TCP Acceleration`, ISCA 2026 Industry Track. Author currently
-  listed as `MangoBoost`; swap to individual authors when the real author
-  list is known.
-- `_includes/education.html`, `_includes/experience.html` — logo
-  `<img>` inline style changed from `max-width:50px;max-height:50px` to
-  `width:50px;height:50px;object-fit:contain;` so rectangular logos (e.g.
-  NYU) render without getting cropped or looking inconsistent next to
-  square logos.
-- `_config.yml` — `occupation: Ph.D. Student at NYU`; email changed to
-  `tori961227@gmail.com` (both `email` keys).
-- `assets/img/icons/nyu_logo.png` — NYU torch logo (300×168, PNG).
-
-To continue transition work, check out `june-deploy`, not `dev`.
+- `_bibliography/papers.bib` — the selected ISCA 2026 entry
+  (`MangoBoost SANA: ...`) currently lists the author as `MangoBoost`.
+  Swap to individual authors when the real author list is known.
 
 ## Local development workflow (this machine)
 
@@ -146,11 +120,6 @@ The live site is `https://yw-ray.github.io`. A GitHub Actions workflow
 (existing, configured before this session) handles the build. To ship:
 commit → push to `dev` → GitHub Pages rebuilds from production
 `_config.yml` (without the dev override).
-
-**Target deployment window: June 2026**, aligned with the NYU Ph.D.
-start date and end of the MangoBoost tenure. Until then, keep transition
-content on `june-deploy` and leave `dev` untouched except for
-documentation like this file.
 
 ## Commit style for this repo
 
