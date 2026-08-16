@@ -12,7 +12,7 @@
                 {{ content }}
             </p>
             {% if page.last-updated %}
-              <p class="card-text"><small class="text-muted">This page was last updated at {{ "now" | date: "%Y-%m-%d %H:%M" }}.</small></p>
+              <p class="card-text"><small class="text-muted">This page was last updated {% if page.updated-at-link %}<a href="{{ page.updated-at-link }}" class="text-muted" rel="nofollow">at</a>{% else %}at{% endif %} {{ "now" | date: "%Y-%m-%d %H:%M" }}.</small></p>
             {% endif %}
           </div>
       </div>
@@ -23,7 +23,7 @@
                 {{ content }}
             </p>
             {% if page.last-updated %}
-              <p class="card-text"><small class="text-muted">This page was last updated at {{ "now" | date: "%Y-%m-%d %H:%M" }}.</small></p>
+              <p class="card-text"><small class="text-muted">This page was last updated {% if page.updated-at-link %}<a href="{{ page.updated-at-link }}" class="text-muted" rel="nofollow">at</a>{% else %}at{% endif %} {{ "now" | date: "%Y-%m-%d %H:%M" }}.</small></p>
             {% endif %}
           </div>
       </div>

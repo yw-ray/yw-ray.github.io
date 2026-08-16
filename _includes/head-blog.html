@@ -20,8 +20,8 @@
 <meta name="description" content="{{ site.description }}">
 
 <!-- Control the behavior of search engine crawling and indexing -->
-<meta name="robots" content="index,follow"><!-- All Search Engines -->
-<meta name="googlebot" content="index,follow"><!-- Google Specific -->
+<meta name="robots" content="{{ page.robots | default: 'index,follow' }}"><!-- All Search Engines -->
+<meta name="googlebot" content="{{ page.robots | default: 'index,follow' }}"><!-- Google Specific -->
 
 <!-- Verify website ownership -->
 <meta name="google-site-verification" content="{{ site.google-site-verification }}"><!-- Google Search Console -->
