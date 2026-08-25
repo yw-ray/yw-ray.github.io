@@ -121,6 +121,23 @@ The live site is `https://yw-ray.github.io`. A GitHub Actions workflow
 commit → push to `dev` → GitHub Pages rebuilds from production
 `_config.yml` (without the dev override).
 
+### Git identity and push account
+
+Use this identity for commits in this repo:
+
+- Author name: `Youngwoo Jeong`
+- Author email: `tori961227@gmail.com`
+- GitHub account/repo owner: `yw-ray`
+
+Do not use the global `jini221220@gmail.com` identity for this repository.
+If this host rewrites `git@github.com:yw-ray/...` to HTTPS and authenticates
+as another GitHub account, push with an explicit config override, for example:
+
+```bash
+GIT_CONFIG_GLOBAL=/tmp/codex-empty-gitconfig \
+  git push git@github.com:yw-ray/yw-ray.github.io.git dev
+```
+
 ## Commit style for this repo
 
 Short imperative subject lines (see `git log --oneline`). Examples:
