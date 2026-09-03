@@ -238,4 +238,4 @@ Special thanks to the following individuals for their images
 [license-shield]: https://img.shields.io/github/license/tcbutler320Jekyll-Theme-Dumbarton.svg?style=flat-square
 [license-url]: https://github.com/tcbutler320/Jekyll-Theme-Dumbarton/blob/master/LICENSE.txt
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=flat-square&logo=linkedin&colorB=555
-[linkedin-url]: https://linkedin.com/in/tyler-b-a700a1aa
+[linkedin-url]: https://www.linkedin.com/in/youngwoo-ray-jeong-508b28264/
