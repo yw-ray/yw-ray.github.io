@@ -12,28 +12,327 @@ robots: noindex,nofollow,noarchive
     <meta name="googlebot" content="noindex,nofollow,noarchive">
     <title>Ledger</title>
     <style>
+      :root {
+        color-scheme: light;
+        --bg: #f5f7fa;
+        --panel: #ffffff;
+        --ink: #18212f;
+        --muted: #657083;
+        --line: #d9dee7;
+        --accent: #0f766e;
+        --accent-ink: #ffffff;
+        --header: #edf2f7;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
       html,
       body {
-        height: 100%;
+        min-height: 100%;
         margin: 0;
       }
 
       body {
-        background: #f7f7f7;
+        background: var(--bg);
+        color: var(--ink);
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       }
 
-      iframe {
+      .app-header {
+        position: sticky;
+        top: 0;
+        z-index: 10;
+        border-bottom: 1px solid var(--line);
+        background: rgba(255, 255, 255, 0.96);
+        backdrop-filter: blur(10px);
+      }
+
+      .topbar {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+        padding: 12px 16px 8px;
+      }
+
+      h1 {
+        margin: 0;
+        font-size: 18px;
+        font-weight: 700;
+        letter-spacing: 0;
+      }
+
+      .actions {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+
+      .action-link,
+      .sheet-tab {
+        min-height: 36px;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: var(--panel);
+        color: var(--ink);
+        cursor: pointer;
+        font: inherit;
+        font-size: 14px;
+        line-height: 1;
+        text-decoration: none;
+        white-space: nowrap;
+      }
+
+      .action-link {
+        display: inline-flex;
+        align-items: center;
+        padding: 0 12px;
+      }
+
+      .sheet-tabs {
+        display: flex;
+        gap: 8px;
+        overflow-x: auto;
+        padding: 0 16px 12px;
+        scrollbar-width: thin;
+      }
+
+      .sheet-tab {
+        flex: 0 0 auto;
+        padding: 0 12px;
+      }
+
+      .sheet-tab[aria-selected="true"] {
+        border-color: var(--accent);
+        background: var(--accent);
+        color: var(--accent-ink);
+      }
+
+      .status {
+        padding: 18px 16px;
+        color: var(--muted);
+        font-size: 14px;
+      }
+
+      .table-wrap {
         width: 100%;
-        height: 100vh;
-        border: 0;
-        display: block;
+        overflow: auto;
+        padding: 12px 16px 24px;
+      }
+
+      table {
+        width: max-content;
+        min-width: 100%;
+        border-collapse: collapse;
+        border: 1px solid var(--line);
+        background: var(--panel);
+        font-size: 13px;
+      }
+
+      td {
+        max-width: 360px;
+        min-width: 96px;
+        border: 1px solid var(--line);
+        padding: 8px 10px;
+        vertical-align: top;
+        white-space: nowrap;
+      }
+
+      td:empty {
+        background: #fafbfc;
+      }
+
+      .section-title td,
+      .header-row td {
+        background: var(--header);
+        font-weight: 700;
+      }
+
+      .currency,
+      .number {
+        text-align: right;
+        font-variant-numeric: tabular-nums;
+      }
+
+      .negative {
+        color: #b42318;
+      }
+
+      .positive {
+        color: #047857;
+      }
+
+      .sheet-title {
+        padding: 14px 16px 0;
+        font-size: 15px;
+        font-weight: 700;
+      }
+
+      .error {
+        color: #b42318;
+      }
+
+      @media (max-width: 720px) {
+        .topbar {
+          align-items: flex-start;
+          flex-direction: column;
+        }
+
+        .actions {
+          width: 100%;
+        }
+
+        .action-link {
+          justify-content: center;
+          flex: 1;
+        }
+
+        .table-wrap {
+          padding: 10px 8px 18px;
+        }
+
+        table {
+          font-size: 12px;
+        }
+
+        td {
+          max-width: 260px;
+          min-width: 82px;
+          padding: 7px 8px;
+        }
       }
     </style>
   </head>
   <body>
-    <iframe
-      title="Ledger workbook"
-      src="https://view.officeapps.live.com/op/embed.aspx?src=https%3A%2F%2Fyw-ray.github.io%2Fassets%2Fledger%2Fledger.xlsx">
-    </iframe>
+    <header class="app-header">
+      <div class="topbar">
+        <h1>Ledger</h1>
+        <div class="actions">
+          <a class="action-link" href="/assets/ledger/ledger.xlsx">XLSX</a>
+          <a
+            class="action-link"
+            href="https://view.officeapps.live.com/op/embed.aspx?src=https%3A%2F%2Fyw-ray.github.io%2Fassets%2Fledger%2Fledger.xlsx">
+            Office
+          </a>
+        </div>
+      </div>
+      <nav class="sheet-tabs" id="sheet-tabs" aria-label="Workbook sheets"></nav>
+    </header>
+
+    <main>
+      <div class="status" id="status">Loading ledger...</div>
+      <div class="sheet-title" id="sheet-title" hidden></div>
+      <div class="table-wrap" id="table-wrap" hidden></div>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
+    <script>
+      const workbookUrl = "/assets/ledger/ledger.xlsx";
+      const preferredSheet = "Sep 2026";
+      const hiddenSheets = new Set(["Lists"]);
+      const statusEl = document.getElementById("status");
+      const tabsEl = document.getElementById("sheet-tabs");
+      const titleEl = document.getElementById("sheet-title");
+      const tableWrapEl = document.getElementById("table-wrap");
+
+      let workbook;
+      let activeSheetName;
+
+      function cellClass(text) {
+        if (/^-?\$?\d[\d,]*(\.\d+)?$/.test(text)) {
+          return text.startsWith("-") ? "number negative" : "number";
+        }
+        if (/^\$/.test(text)) return "currency positive";
+        return "";
+      }
+
+      function renderSheet(sheetName) {
+        activeSheetName = sheetName;
+        const sheet = workbook.Sheets[sheetName];
+        const rows = XLSX.utils.sheet_to_json(sheet, {
+          header: 1,
+          blankrows: false,
+          defval: "",
+          raw: false
+        });
+
+        titleEl.textContent = sheetName;
+        titleEl.hidden = false;
+        tableWrapEl.hidden = false;
+        statusEl.hidden = true;
+
+        const table = document.createElement("table");
+        const tbody = document.createElement("tbody");
+        table.appendChild(tbody);
+
+        rows.forEach((row, rowIndex) => {
+          if (row.every((cell) => cell === "")) return;
+
+          const tr = document.createElement("tr");
+          const first = String(row[0] || "");
+          if (rowIndex === 0 || first === "Transactions" || first.includes("Overview") || first.includes("Summary")) {
+            tr.className = "section-title";
+          }
+          if (["Month", "Date", "Category", "Week"].includes(first)) {
+            tr.className = "header-row";
+          }
+
+          row.forEach((value) => {
+            const text = value === undefined || value === null ? "" : String(value);
+            const td = document.createElement("td");
+            td.textContent = text;
+            td.className = cellClass(text);
+            tr.appendChild(td);
+          });
+          tbody.appendChild(tr);
+        });
+
+        tableWrapEl.replaceChildren(table);
+
+        tabsEl.querySelectorAll(".sheet-tab").forEach((tab) => {
+          tab.setAttribute("aria-selected", String(tab.dataset.sheet === sheetName));
+        });
+      }
+
+      function renderTabs(sheetNames) {
+        tabsEl.replaceChildren();
+        sheetNames.forEach((sheetName) => {
+          const button = document.createElement("button");
+          button.type = "button";
+          button.className = "sheet-tab";
+          button.dataset.sheet = sheetName;
+          button.textContent = sheetName;
+          button.setAttribute("aria-selected", "false");
+          button.addEventListener("click", () => renderSheet(sheetName));
+          tabsEl.appendChild(button);
+        });
+      }
+
+      async function loadWorkbook() {
+        try {
+          const response = await fetch(`${workbookUrl}?v=${Date.now()}`);
+          if (!response.ok) throw new Error(`HTTP ${response.status}`);
+          const data = await response.arrayBuffer();
+          workbook = XLSX.read(data, { type: "array", cellFormula: false });
+          const sheetNames = workbook.SheetNames.filter((name) => !hiddenSheets.has(name));
+          renderTabs(sheetNames);
+          renderSheet(sheetNames.includes(preferredSheet) ? preferredSheet : sheetNames[0]);
+        } catch (error) {
+          statusEl.hidden = false;
+          statusEl.className = "status error";
+          statusEl.textContent = "Ledger could not be loaded.";
+          console.error(error);
+        }
+      }
+
+      if (window.XLSX) {
+        loadWorkbook();
+      } else {
+        statusEl.className = "status error";
+        statusEl.textContent = "Ledger viewer could not be loaded.";
+      }
+    </script>
   </body>
 </html>
