@@ -1,0 +1,158 @@
+{
+  "metric": "TV distance between normalized 48-direction required-bandwidth sums; only native rotation=0; baseline K3-off; includes feasible uncertified allocations",
+  "rows": [
+    {
+      "workload": "darknet19",
+      "profiles": 156,
+      "unique_48direction_vectors": 8,
+      "max_TV_pct": 18.3,
+      "disjoint_peak_vectors": 6,
+      "example": "90cf253d8db995375bbbce582b1d9130d6c3e1cbfe302e6755b65f3c92027112",
+      "point": "whole_cycle_3"
+    },
+    {
+      "workload": "vgg19",
+      "profiles": 147,
+      "unique_48direction_vectors": 2,
+      "max_TV_pct": 11.54,
+      "disjoint_peak_vectors": 1,
+      "example": "d7a9d2d89d129a68cbb346b77aa11af201a58115c7efbbc01403a6e1ed868682",
+      "point": "incumbent"
+    },
+    {
+      "workload": "resnet50",
+      "profiles": 307,
+      "unique_48direction_vectors": 2,
+      "max_TV_pct": 6.49,
+      "disjoint_peak_vectors": 0,
+      "example": "5b08e192ed2d180797f27d8354ba2750dbeaa036fcf24e5d85955f8ef3ad0634",
+      "point": "incumbent"
+    },
+    {
+      "workload": "googlenet",
+      "profiles": 275,
+      "unique_48direction_vectors": 10,
+      "max_TV_pct": 6.51,
+      "disjoint_peak_vectors": 0,
+      "example": "1b83ff5d30b9c4afa9b4d8e5ca19a4ee2e252ea894f47839c62e1691e2b2a5c4",
+      "point": "incumbent"
+    },
+    {
+      "workload": "resnet101",
+      "profiles": 599,
+      "unique_48direction_vectors": 2,
+      "max_TV_pct": 6.49,
+      "disjoint_peak_vectors": 0,
+      "example": "45bced070e30fe9b11bdac31859796458360a4b1c660adc24d5e00709c3cf637",
+      "point": "incumbent"
+    },
+    {
+      "workload": "densenet",
+      "profiles": 719,
+      "unique_48direction_vectors": 5,
+      "max_TV_pct": 11.42,
+      "disjoint_peak_vectors": 1,
+      "example": "c22fb126b7f6628fea70013b4fb06c09f66aea36370903e41cdada6b763903ac",
+      "point": "incumbent"
+    },
+    {
+      "workload": "inception_resnet_v1",
+      "profiles": 630,
+      "unique_48direction_vectors": 18,
+      "max_TV_pct": 17.68,
+      "disjoint_peak_vectors": 13,
+      "example": "5a9db8d6ae89a4e78702e0612cbe0885844161eb95dc0586c61275d6c2bd6b7b",
+      "point": "whole_cycle_3"
+    },
+    {
+      "workload": "pnasnet",
+      "profiles": 1465,
+      "unique_48direction_vectors": 5,
+      "max_TV_pct": 8.15,
+      "disjoint_peak_vectors": 1,
+      "example": "2dcf242c2d423eff51ec3223a770c096f3b3ad1d41ad769f198b079611dec6c7",
+      "point": "incumbent"
+    },
+    {
+      "workload": "resnext50",
+      "profiles": 329,
+      "unique_48direction_vectors": 2,
+      "max_TV_pct": 6.49,
+      "disjoint_peak_vectors": 0,
+      "example": "77e2b4b559624ddbc0499f0059527abecd4d9a6648af93ace1eb00622a1dfac9",
+      "point": "incumbent"
+    },
+    {
+      "workload": "resnet152",
+      "profiles": 846,
+      "unique_48direction_vectors": 2,
+      "max_TV_pct": 6.49,
+      "disjoint_peak_vectors": 0,
+      "example": "f6d586ab17c4e7a54f6f3f2495a721c1adfccfee8d2f89a5af8349c89375b59f",
+      "point": "incumbent"
+    },
+    {
+      "workload": "gnmt",
+      "profiles": 539,
+      "unique_48direction_vectors": 47,
+      "max_TV_pct": 12.99,
+      "disjoint_peak_vectors": 2,
+      "example": "e8795e5d678c82fa9b777fdb596cdf01d60743a3320a716d368ea1008470c061",
+      "point": "incumbent"
+    },
+    {
+      "workload": "lstm",
+      "profiles": 485,
+      "unique_48direction_vectors": 55,
+      "max_TV_pct": 13.28,
+      "disjoint_peak_vectors": 3,
+      "example": "e2175215477f4fd14bc94297d5f7d8c4daab3376659043ac8777a010673af78d",
+      "point": "incumbent"
+    },
+    {
+      "workload": "transformer",
+      "profiles": 1727,
+      "unique_48direction_vectors": 3,
+      "max_TV_pct": 14.29,
+      "disjoint_peak_vectors": 1,
+      "example": "05c1826dab561b7aae606ec6dae5885c44e3df522ebaaad59e0f0f1e0e3a56f3",
+      "point": "incumbent"
+    },
+    {
+      "workload": "transformer_cell",
+      "profiles": 329,
+      "unique_48direction_vectors": 3,
+      "max_TV_pct": 14.29,
+      "disjoint_peak_vectors": 1,
+      "example": "59ac99e1bc20fc7672d98296ccb3ffce8dec2424d7100a80aa65606c54eec357",
+      "point": "incumbent"
+    },
+    {
+      "workload": "bert_block",
+      "profiles": 200,
+      "unique_48direction_vectors": 2,
+      "max_TV_pct": 14.29,
+      "disjoint_peak_vectors": 1,
+      "example": "2c2f84c47146137e91b75d9abfd1d08c65bb709e080ad6a9177dbf8049a4c8e9",
+      "point": "incumbent"
+    },
+    {
+      "workload": "gpt_prefill_block",
+      "profiles": 226,
+      "unique_48direction_vectors": 2,
+      "max_TV_pct": 12.07,
+      "disjoint_peak_vectors": 1,
+      "example": "3bb9a5b7e88cbbaaba827b40bdc232c06341f30bae7805abb851ac1c69683a94",
+      "point": "incumbent"
+    },
+    {
+      "workload": "gpt_decode_block",
+      "profiles": 1039,
+      "unique_48direction_vectors": 154,
+      "max_TV_pct": 7.5,
+      "disjoint_peak_vectors": 115,
+      "example": "05b9a6593ef403768e333b75e3c59517c63eca1535b4e51abb4bad03a09bd8ed",
+      "point": "whole_cycle_2"
+    }
+  ]
+}

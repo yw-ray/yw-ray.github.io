@@ -1,0 +1,46 @@
+{
+  "workload": "googlenet",
+  "originals_compared": 235,
+  "rotation": 0,
+  "selection": "farthest pair then greedy maximum minimum total-variation distance; not an optimal six-subset proof",
+  "metric": "0.5 * sum(abs(normalized directed-link traffic difference)); global cumulative root-node traffic, 8 channels aggregated",
+  "maximum_pairwise_TV_percent": 3.9468889447224154,
+  "selected": [
+    {
+      "label": "D1",
+      "original_mapping": "61d9cd5fa857d691eacc670a164518c3051c4dddd4f1233053674be2e5a4fb9a",
+      "mapping": "ee234f2bebea3b4e6f15781c5fc7b29aac5566823e6b063b4442fc4b3f26c1ca",
+      "distance_from_D1_pct": 0.0
+    },
+    {
+      "label": "D2",
+      "original_mapping": "933741dcd07a94e9b0508c76edfda71377e5a21798d178bbbe28360c5e86a71b",
+      "mapping": "6f3659c471114ca9aa7deeaca4dfaa145ab766ce8c6b55e6b7ddfc3807bcd21d",
+      "distance_from_D1_pct": 3.9468889447224154
+    },
+    {
+      "label": "D3",
+      "original_mapping": "b430e6c9c435c6e519ee488a2c8646bacae5d2d2de7f9eabab4eabcfa9e629c8",
+      "mapping": "bdfc4b0e167020fead2bf4608a3dfd5cb69baad8dceb7f21e1582b16c1bbd611",
+      "distance_from_D1_pct": 2.818462537775336
+    },
+    {
+      "label": "D4",
+      "original_mapping": "8d421c872836375ba47883e5f681b071a6cb18ff245fd98a9668a11f9b0cd3ba",
+      "mapping": "75f0c7294b86dee31a076c9815eba55b413cad7901d618957bc12e68428ab260",
+      "distance_from_D1_pct": 3.566890906972478
+    },
+    {
+      "label": "D5",
+      "original_mapping": "3ebe71da1023712fbe1777b16243ee55a76f412eb24310891ce6488dc5443a47",
+      "mapping": "11c57db230a409dbeb25434d8d83d1bf38cdd4f996dc5b1550120a52e611f1cb",
+      "distance_from_D1_pct": 1.9794131346420711
+    },
+    {
+      "label": "D6",
+      "original_mapping": "01a8b55818eec668c9f723d276ded5c85b7ded9d567cac2784049b3fa12e80c9",
+      "mapping": "a924ebf00a9bf2a9725b2694e90153b391c1622889ed18f83d5fb0a56f59e3aa",
+      "distance_from_D1_pct": 2.419592362062405
+    }
+  ]
+}

@@ -1,0 +1,109 @@
+{
+  "updated_at": "2026-10-02T14:18:47+00:00",
+  "available": 503,
+  "missing": 172,
+  "previous_validated": 0,
+  "overflow": [
+    {
+      "workload": "lstm",
+      "chiplets": 4,
+      "cores_per_chiplet": 4,
+      "mesh": "2 \u00d7 2",
+      "reduction_pct": 1.6666666666666667,
+      "reduction_Bpc": 64.0,
+      "baseline1_Bpc": 7680.0,
+      "baseline2_Bpc": 3840.0,
+      "capacity_Bpc": 3776.0,
+      "search_profile": "original",
+      "revision_status": "latest",
+      "source": "/home/yj3616/workspace/phd-research/research-notes/max-resource-sweep-20260928/link-sizing/runs/05267a5c988dfa423677/1a64832d4dd95914/asymmetric-analyses/lstm-K3-x8.json",
+      "b1_reduction_Bpc": 3904.0,
+      "b1_reduction_pct": 50.833333333333336,
+      "baseline": "B1"
+    },
+    {
+      "workload": "pnasnet",
+      "chiplets": 8,
+      "cores_per_chiplet": 1,
+      "mesh": "2 \u00d7 4",
+      "reduction_pct": 20.625,
+      "reduction_Bpc": 2112.0,
+      "baseline1_Bpc": 16384.0,
+      "baseline2_Bpc": 10240.0,
+      "capacity_Bpc": 8128.0,
+      "search_profile": "original",
+      "revision_status": "latest",
+      "source": "/home/yj3616/workspace/phd-research/research-notes/max-resource-sweep-20260928/link-sizing/runs/c04e1fb4c3373304083d/7a9b1a587eea87d3/asymmetric-analyses/pnasnet-K3-x8.json",
+      "b1_reduction_Bpc": 8256.0,
+      "b1_reduction_pct": 50.390625,
+      "baseline": "B1"
+    },
+    {
+      "workload": "RNN_common",
+      "chiplets": 4,
+      "cores_per_chiplet": 4,
+      "mesh": "2 \u00d7 2",
+      "reduction_pct": 1.6666666666666667,
+      "reduction_Bpc": 64,
+      "baseline1_Bpc": 7680,
+      "baseline2_Bpc": 3840,
+      "capacity_Bpc": 3776,
+      "search_profile": "joint optimization",
+      "revision_status": "latest",
+      "source": "/home/yj3616/workspace/phd-research/research-notes/max-resource-sweep-20260928/shared-groups-20261001/cases/4x4/RNN/3592c3ce8838274e9634/design.json",
+      "b1_reduction_Bpc": 3904,
+      "b1_reduction_pct": 50.833333333333336,
+      "baseline": "B1"
+    }
+  ],
+  "sources": [
+    {
+      "path": "execution-time-summary-20260930/single-workload-batch1-ch1-k3-x8.csv",
+      "sha256": "e7b100e04fb89de6d625b5bb410bca9326fda66edeacf555c02c0fbcdd8f9ab7"
+    },
+    {
+      "path": "core-limit-extension-20260930/all-single-workload-b1-ch1-x8-extended.csv",
+      "sha256": "a5e24cea991b5095635f7e4bbe524adbda93753b52886ffafda2fabb4720d385"
+    },
+    {
+      "path": "fast-search-round1-20261001/all-single-workload-b1-ch1-x8-extended.csv",
+      "sha256": "fcaff876307a024bcc343f6ba1bfea87d9833c19c0923d5a2b64a7cda5858157"
+    },
+    {
+      "path": "link-sizing/asymmetric-ch1-results.csv",
+      "sha256": "ede34c312833152553246436fc0a8228d33b315a12804b3c481b71ab1e5c913e"
+    },
+    {
+      "path": "/home/yj3616/workspace/phd-research/research-notes/max-resource-sweep-20260928/shared-groups-20261001/results.json",
+      "sha256": "58a0bf4c77268b13c1f3719fbe92d7c36fe6b88fb6774ba71c0b776ed1eb6ca4"
+    }
+  ],
+  "selection": "Original rows; additional rounds=1 preferred, validated rounds=10 fallback. previous_validated accepted.",
+  "workload_order": [
+    "darknet19",
+    "vgg19",
+    "resnet50",
+    "googlenet",
+    "resnet101",
+    "densenet",
+    "inception_resnet_v1",
+    "gnmt",
+    "lstm",
+    "transformer",
+    "transformer_cell",
+    "pnasnet",
+    "resnext50",
+    "resnet152",
+    "bert_block",
+    "gpt_prefill_block",
+    "gpt_decode_block",
+    "CNN_common",
+    "Transformer_common",
+    "ALL17_common",
+    "RNN_common",
+    "archived_CNN",
+    "archived_RNN",
+    "archived_Transformer",
+    "archived_ALL17"
+  ]
+}

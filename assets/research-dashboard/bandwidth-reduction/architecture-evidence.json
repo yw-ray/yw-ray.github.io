@@ -1,0 +1,57 @@
+{
+  "inputs": "research-notes/max-resource-sweep-20260928/fast-search-round1-20261001/additional/c128-k16/darknet19/input.txt",
+  "input_line": "12 0 0 32 64 2 1 1 0 8 16 SI USR 256 GDDR6X 4194304 128 512 2048 2097152",
+  "main_MACs_per_core": 512,
+  "PE_grid": [
+    4,
+    4
+  ],
+  "lanes_per_PE": 8,
+  "MACs_per_lane": 4,
+  "UL3_KiB_per_core": 2048,
+  "separate_LR_units": 32,
+  "evidence": [
+    {
+      "path": "research-notes/max-resource-sweep-20260928/core-limit-extension-20260930/native-source/src/main.cpp",
+      "start_line": 850,
+      "end_line": 895,
+      "sha256": "5f622bef05dd1893949094ec42a17745bdaebcf9f66e4cae4c02208e03fbc708"
+    },
+    {
+      "path": "research-notes/max-resource-sweep-20260928/core-limit-extension-20260930/native-source/src/main.cpp",
+      "start_line": 910,
+      "end_line": 918,
+      "sha256": "5f622bef05dd1893949094ec42a17745bdaebcf9f66e4cae4c02208e03fbc708"
+    },
+    {
+      "path": "research-notes/max-resource-sweep-20260928/core-limit-extension-20260930/native-source/src/main.cpp",
+      "start_line": 992,
+      "end_line": 1037,
+      "sha256": "5f622bef05dd1893949094ec42a17745bdaebcf9f66e4cae4c02208e03fbc708"
+    },
+    {
+      "path": "research-notes/max-resource-sweep-20260928/core-limit-extension-20260930/native-source/src/main.cpp",
+      "start_line": 1266,
+      "end_line": 1275,
+      "sha256": "5f622bef05dd1893949094ec42a17745bdaebcf9f66e4cae4c02208e03fbc708"
+    },
+    {
+      "path": "research-notes/max-resource-sweep-20260928/core-limit-extension-20260930/native-source/src/core.cpp",
+      "start_line": 8,
+      "end_line": 35,
+      "sha256": "0f2c307d7b0c358a60e581a18271dc0367bebb04a4dba0ebcda71dbc752874d4"
+    },
+    {
+      "path": "research-notes/max-resource-sweep-20260928/core-limit-extension-20260930/native-source/src/coremapping.cpp",
+      "start_line": 70,
+      "end_line": 89,
+      "sha256": "93bea5eb45792196747a3a5f5feb3f312408498fd324df315a2d176e7f304bcf"
+    },
+    {
+      "path": "research-notes/max-resource-sweep-20260928/core-limit-extension-20260930/native-source/src/coremapping.cpp",
+      "start_line": 225,
+      "end_line": 251,
+      "sha256": "93bea5eb45792196747a3a5f5feb3f312408498fd324df315a2d176e7f304bcf"
+    }
+  ]
+}

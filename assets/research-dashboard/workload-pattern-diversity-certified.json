@@ -1,0 +1,138 @@
+[
+  {
+    "workload": "darknet19",
+    "certified_profiles": 116,
+    "unique_direction_vectors": 7,
+    "max_TV_pct": 18.3,
+    "disjoint_peak_vectors": 5,
+    "example": "61b22970287711c4b8856e36fe32539b582d8034fca9826b7627ad8a0fbd4849"
+  },
+  {
+    "workload": "vgg19",
+    "certified_profiles": 107,
+    "unique_direction_vectors": 1,
+    "max_TV_pct": 0.0,
+    "disjoint_peak_vectors": 0,
+    "example": "692cc93fd574dc8f45cc638d205e08c816ccd1d66134e90a2ae5cb3ba1836853"
+  },
+  {
+    "workload": "resnet50",
+    "certified_profiles": 267,
+    "unique_direction_vectors": 1,
+    "max_TV_pct": 0.0,
+    "disjoint_peak_vectors": 0,
+    "example": "6051e6d947c57ee1775f6166c097638bfaf50655fbeb08ba183ee1938c2ca437"
+  },
+  {
+    "workload": "googlenet",
+    "certified_profiles": 235,
+    "unique_direction_vectors": 9,
+    "max_TV_pct": 2.52,
+    "disjoint_peak_vectors": 0,
+    "example": "20b971b72336aafa50040f02757436f4df47147ae6556a32369955d1ca2b488f"
+  },
+  {
+    "workload": "resnet101",
+    "certified_profiles": 559,
+    "unique_direction_vectors": 1,
+    "max_TV_pct": 0.0,
+    "disjoint_peak_vectors": 0,
+    "example": "122770d9243e264aec3f365e6d580cfa6a0860130145ed84a043ef4913205e5d"
+  },
+  {
+    "workload": "densenet",
+    "certified_profiles": 679,
+    "unique_direction_vectors": 4,
+    "max_TV_pct": 2.58,
+    "disjoint_peak_vectors": 0,
+    "example": "021b3f3f0597745755d28c1813bb35a38d9632085fbbf22016b6cbc4cce0a0d4"
+  },
+  {
+    "workload": "inception_resnet_v1",
+    "certified_profiles": 592,
+    "unique_direction_vectors": 17,
+    "max_TV_pct": 17.68,
+    "disjoint_peak_vectors": 12,
+    "example": "5a9db8d6ae89a4e78702e0612cbe0885844161eb95dc0586c61275d6c2bd6b7b"
+  },
+  {
+    "workload": "pnasnet",
+    "certified_profiles": 1425,
+    "unique_direction_vectors": 4,
+    "max_TV_pct": 0.58,
+    "disjoint_peak_vectors": 0,
+    "example": "5d02e93825bf81600385292fbb9907a7498ced6b45930800b75031541b7ef7d6"
+  },
+  {
+    "workload": "resnext50",
+    "certified_profiles": 289,
+    "unique_direction_vectors": 1,
+    "max_TV_pct": 0.0,
+    "disjoint_peak_vectors": 0,
+    "example": "6527b08125d33b90a8ac4fd065b9125138c242a68a6fcd6ab7f119013b362596"
+  },
+  {
+    "workload": "resnet152",
+    "certified_profiles": 806,
+    "unique_direction_vectors": 1,
+    "max_TV_pct": 0.0,
+    "disjoint_peak_vectors": 0,
+    "example": "440f158088a8b2a1822dcca36678e33c2bfdd0210f8a25a484ee726702e3e0ac"
+  },
+  {
+    "workload": "gnmt",
+    "certified_profiles": 499,
+    "unique_direction_vectors": 46,
+    "max_TV_pct": 1.84,
+    "disjoint_peak_vectors": 1,
+    "example": "75ada4393e2f9bd1993dbe605059380ad877cfcf1e683cd1bfc2884d7a4035ef"
+  },
+  {
+    "workload": "lstm",
+    "certified_profiles": 445,
+    "unique_direction_vectors": 54,
+    "max_TV_pct": 1.2,
+    "disjoint_peak_vectors": 2,
+    "example": "5b1e6fbc8dd16c28254f87cf0e6dd62af85c1aa6852938defe41546e14c3ad6f"
+  },
+  {
+    "workload": "transformer",
+    "certified_profiles": 1687,
+    "unique_direction_vectors": 2,
+    "max_TV_pct": 3.08,
+    "disjoint_peak_vectors": 0,
+    "example": "8fc82d7c1034cb41bf3b09dc39b679d8b564faaae7a27b8eb1ad39f8e4a91f40"
+  },
+  {
+    "workload": "transformer_cell",
+    "certified_profiles": 289,
+    "unique_direction_vectors": 2,
+    "max_TV_pct": 3.08,
+    "disjoint_peak_vectors": 0,
+    "example": "761ef49ef84c8d1a185f9331077eba34a35cceee0f61c27805874fa644776773"
+  },
+  {
+    "workload": "bert_block",
+    "certified_profiles": 160,
+    "unique_direction_vectors": 1,
+    "max_TV_pct": 0.0,
+    "disjoint_peak_vectors": 0,
+    "example": "5c9552739dd0cb855a432c16699fb7c4423d19e1466aa1cac072cc9fa9dc1e2a"
+  },
+  {
+    "workload": "gpt_prefill_block",
+    "certified_profiles": 186,
+    "unique_direction_vectors": 1,
+    "max_TV_pct": 0.0,
+    "disjoint_peak_vectors": 0,
+    "example": "29f6a01f16a20d4149900246c80e8ae51c6ddc7490a526505644934bd3cf58f5"
+  },
+  {
+    "workload": "gpt_decode_block",
+    "certified_profiles": 1,
+    "unique_direction_vectors": 1,
+    "max_TV_pct": 5.55,
+    "disjoint_peak_vectors": 1,
+    "example": "455cadbf66bfa0dfb6d97e0ad61a23542dbeda37c104204e64cd032b828cf260"
+  }
+]

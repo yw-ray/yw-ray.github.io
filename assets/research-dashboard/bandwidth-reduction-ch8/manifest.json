@@ -1,0 +1,23 @@
+{
+  "updated_at": 1790950727.4131267,
+  "channels_per_port": 8,
+  "batch": 1,
+  "allocation_step_Bpc": 8,
+  "available": 420,
+  "missing": 147,
+  "previous_validated": 0,
+  "sources": [
+    {
+      "path": "asymmetric-ch8-snapshot-20260929T124812Z.csv",
+      "sha256": "0c8f2b12dea5d647f4efa88ae4009560c374e798637bfbaf8726c3f3b02d4b1d"
+    },
+    {
+      "path": "asymmetric-ch8-results.csv",
+      "sha256": "b24f72716e41e7939dc1dc58814f6152b9549eaf68f8106a706e41634cfe86fb"
+    },
+    {
+      "path": "/home/yj3616/workspace/phd-research/research-notes/max-resource-sweep-20260928/channel8-completion-20261001/results.json",
+      "sha256": "c289627670ab55da0bc2f88a76af1014275431c10020fa4bf0f654e8762cea19"
+    }
+  ]
+}

@@ -1,0 +1,180 @@
+<!doctype html><html lang="en"><meta name="robots" content="noindex, nofollow"><meta charset="utf-8"><title>Core architecture: code evidence</title><style>body{font:15px system-ui;max-width:1100px;margin:30px auto}pre{background:#f1f5f9;padding:16px;overflow:auto}h2{font-size:18px}</style><h1>Core architecture: source evidence</h1><p>Read from the core-limit extension source used by the current sweep. These are simulator model parameters, not an RTL floorplan.</p><p><a href="bandwidth-reduction/architecture-evidence.json">File paths and SHA-256 hashes</a></p><h2>Actual sweep input</h2><pre>12 0 0 32 64 2 1 1 0 8 16 SI USR 256 GDDR6X 4194304 128 512 2048 2097152</pre><h2>src/main.cpp:850–895</h2><pre>850: 	std::cout.precision(4);
+851: 
+852: 	// Get input parameters.
+853: 	int mm, nn, xx, yy, ss, bb, rr, ff, xcut, ycut, _NoP_bw, _DRAM_bw, _NoC_bw, _mac_dim, _ul3, total_tops;
+854: 	string tech, package_type, IO_type, DDR_type;
+855: 	cin &gt;&gt; tech &gt;&gt; mm &gt;&gt; nn &gt;&gt; xx &gt;&gt; yy &gt;&gt; ss &gt;&gt; bb &gt;&gt; rr &gt;&gt; ff &gt;&gt; xcut &gt;&gt; ycut &gt;&gt; package_type &gt;&gt; IO_type &gt;&gt; _NoP_bw &gt;&gt; DDR_type &gt;&gt; _DRAM_bw &gt;&gt; _NoC_bw &gt;&gt; _mac_dim &gt;&gt; _ul3 &gt;&gt; total_tops;
+856:     if (!cin || xx &lt;= 0 || yy &lt;= 0 || static_cast&lt;long long&gt;(xx) * yy &gt; MAX_CHIPS ||
+857:         xcut &lt;= 0 || ycut &lt;= 0 || xx % xcut || yy % ycut) {
+858:         std::cerr &lt;&lt; &quot;Unsupported mesh: positive divisible dimensions and total cores &lt;= &quot; &lt;&lt; MAX_CHIPS &lt;&lt; &quot; required\n&quot;;
+859:         return 2;
+860:     }
+861: 	// assert(total_tops == 2*xx*yy*_mac_dim*_mac_dim);
+862: 	//mm means core_microarch: 0 means PolarCore (NVDLA-STYLE), which is recommenmanded; 1 means Eyeriss Core.
+863: 	//nn means network choice
+864: 	//xx &amp; yy means the number of cores in the x and y axis, respectively. Default noc topology is mesh.
+865: 	//ss means stride, whose definition can be found in ISCA2023 SET, HPCA2024GEMINI, ASPLOS2019TANGRAM.
+866: 	//bb means batch size (2^n is recommanded).
+867: 	//rr means exploration rounds number, which will be multiplied with a coefficient.
+868: 	//ff means optimization goal, concrete formula can be found in this main.cpp.
+869: 	//xcut &amp; ycut means the chiplet partition granularity at the x and y dimension.
+870: 	//the remaining few parameters represent the architecture parameters as their names.
+871: 	/********************* INPUT *********************/
+872: 	bw_t NoP_bw = _NoP_bw;
+873: 	NoC::DRAM_bw = _DRAM_bw/1024/4;     
+874: 	SchNode::DRAM_bw = _DRAM_bw/1024/4;   
+875: 	double DRAM_bw_each = _DRAM_bw / 1024 / 4;
+876: 	NoC::NoC_bw = _NoC_bw;     
+877: 	//core &amp; chiplet num
+878: 	Cluster::xlen = xx;     
+879: 	Cluster::ylen = yy;     
+880: 	NoC::x_cut = xcut;   
+881: 	NoC::y_cut = ycut;
+882: 	NoC::soc = xcut * ycut == 1;
+883: 	std::uint16_t mac_dim = _mac_dim;  
+884: 	vol_t ul3_ = _ul3 KB;            
+885: 
+886: 	NoC::NoP_bw = _NoP_bw;
+887: 	NoC::x_step = Cluster::xlen / NoC::x_cut;
+888: 	NoC::y_step = Cluster::ylen / NoC::y_cut;
+889:     if(const char* channels=getenv(&quot;GEMINI_PORT_CHANNELS&quot;)) {
+890:         NoC::physical_port_channels=std::stoi(channels);
+891:         int p=NoC::physical_port_channels;
+892:         assert(p&gt;0 &amp;&amp; NoC::x_step==NoC::y_step &amp;&amp; (p%NoC::x_step==0 || NoC::x_step%p==0));
+893:         for(int q=0;q&lt;xcut*ycut;q++) for(int dir=0;dir&lt;4;dir++) for(int i=0;i&lt;p;i++)
+894:             NoC::NoP_links.insert(1000000+(q*4+dir)*p+i);
+895:     }</pre><h2>src/main.cpp:910–918</h2><pre>910: 		power_factor = 1;
+911: 		SchNode::frequency = 1;//GHz
+912: 	}
+913: 	//DENSITY
+914: 	density_t SRAM_den = 0.0964 * 8 * scale_factor;
+915: 	density_t MAC_den = 57.9 * scale_factor;//8-bit
+916: 	density_t LR_mac_den = MAC_den * 8;
+917: 	density_t NoC_den = 16781.312*scale_factor;
+918: 	density_t NoP_den = 0;</pre><h2>src/main.cpp:992–1037</h2><pre>992: 	std::uint16_t vector_len;
+993: 	std::uint16_t lane_len;
+994: 	if (mac_dim == 512) {
+995: 		vector_len = 4;
+996: 		lane_len = 8;
+997: 	}
+998: 	else if (mac_dim == 1024) {
+999: 		vector_len = 8;
+1000: 		lane_len = 8;
+1001: 	}
+1002: 	else if (mac_dim == 2048) {
+1003: 		vector_len = 8;
+1004: 		lane_len = 16;
+1005: 	}
+1006: 	else if (mac_dim == 4096) {
+1007: 		vector_len = 16;
+1008: 		lane_len = 16;
+1009: 	}
+1010: 	else if (mac_dim == 8192) {
+1011: 		vector_len = 16;
+1012: 		lane_len = 32;
+1013: 	}
+1014: 	else {
+1015: 		throw runtime_error(&quot;MAC scale not supported·&quot;);
+1016: 	}
+1017: 	NoC::seperate_IO = true;
+1018: 	double turnover_factor = 0.3/0.5;
+1019: 	ofm_ubuf_vol = 10 KB;
+1020: 	// NoC::NoP_hop_cost = 2 * 8; //DSE-&gt;3.3*8 ; Simba-&gt;2*8
+1021: 	NoC::NoC_hop_cost = 0.4 * 8 * power_factor;
+1022: 	
+1023: 	energy_t LR_mac_cost = 0.0873 * power_factor; //IEEE FP16
+1024: 	Core::numMac_t LR_mac_num = vector_len * lane_len * 16 / 16;
+1025: 	PolarCore::Buffer al1, wl1, ol1, al2, wl2, ol2, ul3;
+1026: 	PolarCore::PESetting s(vector_len, lane_len, 0.018);
+1027: 	PolarCore::Bus bus(4, 4, 0.018, 64);
+1028: 	al1.Size = 8 * vector_len / 8 KB; 
+1029: 	ol1.Size = 2 * lane_len / 8 KB; 
+1030: 	wl1.Size = 4 * lane_len*vector_len / 64 KB; 
+1031: 	ol2.Size = 28 * vector_len * lane_len / 64 KB; 
+1032: 	wl2.Size = 0;//256 KB;
+1033: 	ul3.Size = ul3_; //16 64-bit IO 64KB 1-port MBSRAM
+1034: 	SchNode::ubuf = ul3.Size;
+1035: 
+1036: 	double tops = 16*vector_len*lane_len * Cluster::xlen * Cluster::ylen * 2;
+1037: 	tops /= 1024;</pre><h2>src/main.cpp:1266–1275</h2><pre>1266: 	EyerissCore core2(s2, ibus, wbus, pbus, _al1, _wl1, pl1, ul2, LR_mac_num, LR_mac_cost);
+1267: 	EyerissMapper mapper2(core2);
+1268: 
+1269: 	CoreMapper* cMapper;
+1270: 	if(mm == 0){
+1271: 		cMapper = &amp;mapper;
+1272: 	}else{
+1273: 		cMapper = &amp;mapper2;
+1274: 	}
+1275: 	// TOPS</pre><h2>src/core.cpp:8–35</h2><pre>8: PolarCore::PolarCore(const PESetting&amp; _pes, const Bus&amp; _noc,
+9: 					 const Buffer&amp; _al1,
+10: 					 const Buffer&amp; _wl1, const Buffer&amp; _ol1,
+11: 					 const Buffer&amp; _al2, const Buffer&amp; _wl2,
+12: 					 const Buffer&amp; _ol2, const Buffer&amp; _ul3,
+13: 					 numMac_t _LR_mac_num, energy_t _LR_mac_cost):
+14: 	Core(_noc.aLen * _noc.oLen * _pes.laneNum * _pes.vecSize, _LR_mac_num, _LR_mac_cost),
+15: 	pes(_pes),bus(_noc),al1(_al1),wl1(_wl1),ol1(_ol1),
+16: 	al2(_al2),wl2(_wl2),ol2(_ol2),ul3(_ul3){
+17: 	assert(al2.Size == 0 || al2.Size &gt;= al1.Size * bus.totNum);
+18: 	assert(wl2.Size == 0 || wl2.Size &gt;= wl1.Size * bus.totNum * pes.laneNum);
+19: }
+20: 
+21: const Core::Buffer&amp; PolarCore::ubuf() const{
+22: 	return ul3;
+23: }
+24: 
+25: PolarCore::PESetting::PESetting(vmac_t _vecSize, vmac_t _laneNum, energy_t _macCost):
+26: 	vecSize(_vecSize),laneNum(_laneNum),MACCost(_macCost){}
+27: 
+28: Core::Buffer::Buffer(vol_t _size, energy_t _rCost, bw_t _rBW, energy_t _wCost, bw_t _wBW):
+29: 	Size(_size), RCost(_rCost), WCost(_wCost &lt;= 0?_rCost:_wCost),
+30: 	RBW(_rBW), WBW(_wBW&lt;=0?_rBW:_wBW){}
+31: 
+32: PolarCore::Bus::Bus(numpe_t _aLen, numpe_t _oLen, energy_t _hopCost, bw_t _busBW):
+33: 	aLen(_aLen),oLen(_oLen),totNum(_aLen*_oLen),
+34: 	hopCost(_hopCost),busBW(_busBW){}
+35: </pre><h2>src/coremapping.cpp:70–89</h2><pre>70: }
+71: 
+72: void PolarMapper::set_conv_utime(ConvLayer&amp; l) const{
+73: 	utime_t t;
+74: 	if(REF_IS_INSTANCE(l, GroupConvLayer)){
+75: 		GroupConvLayer::Workload gwl = static_cast&lt;GroupConvLayer&amp;&gt;(l).get_workload();
+76: 		gwl.C = DIVCEIL(gwl.GC, core.pes.vecSize)*core.pes.vecSize;
+77: 		gwl.K = DIVCEIL(gwl.GK, core.pes.laneNum)*core.pes.laneNum;
+78: 		gwl.update_op();
+79: 		t = gwl.calc_op(1) * gwl.G;
+80: 		if(gwl.GC &lt; core.pes.vecSize &amp;&amp; gwl.GK &lt; core.pes.laneNum){
+81: 			len_t cDup = core.pes.vecSize / gwl.GC;
+82: 			len_t kDup = core.pes.laneNum / gwl.GK;
+83: 			t /= MIN(cDup, kDup);
+84: 		}
+85: 	}else{
+86: 		ConvLayer::Workload wl = l.get_workload();
+87: 		wl.C = DIVCEIL(wl.C, core.pes.vecSize)*core.pes.vecSize;
+88: 		wl.K = DIVCEIL(wl.K, core.pes.laneNum)*core.pes.laneNum;
+89: 		wl.update_op();</pre><h2>src/coremapping.cpp:225–251</h2><pre>225: 	for(size_t i=0;i&lt;sizeof(all_parts)/sizeof(Part);++i){
+226: 		const Part&amp; p = all_parts[i];
+227: 
+228: 		// Calculate part. dup. and total loops.
+229: 		pnum_c = pnum_k = pnum_h = pnum_w = pnum_b = 1;
+230: 		switch (p.dimA) {
+231: 			case PartDim::C: pnum_c*=core.bus.aLen; break;
+232: 			case PartDim::K: pnum_k*=core.bus.aLen; break;
+233: 			case PartDim::H: pnum_h*=core.bus.aLen; break;
+234: 			case PartDim::W: pnum_w*=core.bus.aLen; break;
+235: 			case PartDim::B: pnum_b*=core.bus.aLen; break;
+236: 			default: assert(false);
+237: 		}
+238: 		switch (p.dimO) {
+239: 			case PartDim::C: pnum_c*=core.bus.oLen; break;
+240: 			case PartDim::K: pnum_k*=core.bus.oLen; break;
+241: 			case PartDim::H: pnum_h*=core.bus.oLen; break;
+242: 			case PartDim::W: pnum_w*=core.bus.oLen; break;
+243: 			case PartDim::B: pnum_b*=core.bus.oLen; break;
+244: 			default: assert(false);
+245: 		}
+246: 		wdup = pnum_h * pnum_w * pnum_b;
+247: 		adup = pnum_k;
+248: 
+249: 		totTC = DIVCEIL(wl.C,core.pes.vecSize * pnum_c);
+250: 		totTK = DIVCEIL(wl.K,core.pes.laneNum * pnum_k);
+251: 		totOC = DIVCEIL(wl.C,pnum_c);</pre></html>

@@ -1,0 +1,29 @@
+{
+  "compared_originals": 235,
+  "rotation": 0,
+  "metric": "sum over 8 channels of attainable componentwise minimum bandwidth; channel requirement is maximum segment traffic/allowable time rounded to x4; channel peaks can occur at different times",
+  "hotspot_patterns": [
+    {
+      "count": 234,
+      "links": [
+        "C1->C2",
+        "C2->C1",
+        "C5->C6",
+        "C6->C5",
+        "C9->C10",
+        "C10->C9",
+        "C13->C14",
+        "C14->C13"
+      ]
+    },
+    {
+      "count": 1,
+      "links": [
+        "C2->C1",
+        "C6->C5",
+        "C10->C9",
+        "C14->C13"
+      ]
+    }
+  ]
+}

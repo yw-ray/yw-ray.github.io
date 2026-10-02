@@ -1,0 +1,7 @@
+{
+  "channels_per_port": 8,
+  "orientation": "rotation_and_reflection",
+  "available": 455,
+  "missing": 112,
+  "source": "reflection-sweep-20261001/results.json + patterns-2x2-mirror-results.json"
+}
