@@ -13,6 +13,12 @@
   "evidence": [
     {
       "path": "research-notes/max-resource-sweep-20260928/core-limit-extension-20260930/native-source/src/main.cpp",
+      "start_line": 1412,
+      "end_line": 1434,
+      "sha256": "5f622bef05dd1893949094ec42a17745bdaebcf9f66e4cae4c02208e03fbc708"
+    },
+    {
+      "path": "research-notes/max-resource-sweep-20260928/core-limit-extension-20260930/native-source/src/main.cpp",
       "start_line": 850,
       "end_line": 895,
       "sha256": "5f622bef05dd1893949094ec42a17745bdaebcf9f66e4cae4c02208e03fbc708"

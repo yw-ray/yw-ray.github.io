@@ -1,4 +1,26 @@
-<!doctype html><html lang="en"><meta name="robots" content="noindex, nofollow"><meta charset="utf-8"><title>Core architecture: code evidence</title><style>body{font:15px system-ui;max-width:1100px;margin:30px auto}pre{background:#f1f5f9;padding:16px;overflow:auto}h2{font-size:18px}</style><h1>Core architecture: source evidence</h1><p>Read from the core-limit extension source used by the current sweep. These are simulator model parameters, not an RTL floorplan.</p><p><a href="bandwidth-reduction/architecture-evidence.json">File paths and SHA-256 hashes</a></p><h2>Actual sweep input</h2><pre>12 0 0 32 64 2 1 1 0 8 16 SI USR 256 GDDR6X 4194304 128 512 2048 2097152</pre><h2>src/main.cpp:850–895</h2><pre>850: 	std::cout.precision(4);
+<!doctype html><html lang="en"><meta charset="utf-8"><title>Core architecture: code evidence</title><style>body{font:15px system-ui;max-width:1100px;margin:30px auto}pre{background:#f1f5f9;padding:16px;overflow:auto}h2{font-size:18px}</style><h1>Core architecture: source evidence</h1><p>Read from the core-limit extension source used by the current sweep. These are simulator model parameters, not an RTL floorplan.</p><p><a href="bandwidth-reduction/architecture-evidence.json">File paths and SHA-256 hashes</a></p><h2>Actual sweep input</h2><pre>12 0 0 32 64 2 1 1 0 8 16 SI USR 256 GDDR6X 4194304 128 512 2048 2097152</pre><h2>src/main.cpp:1412–1434</h2><pre>1412: 	NoC::DRAM_num = 4;
+1413: 	NoC::DRAM_router_num = Cluster::ylen / 2;
+1414: 	NoC::dram_list.resize(NoC::DRAM_num);
+1415: 	for (mlen_t y = 0; y &lt; NoC::DRAM_num; ++y) {
+1416: 		NoC::dram_list[y].resize(NoC::DRAM_router_num);
+1417: 	}
+1418: 
+1419: 	for (mlen_t y = 0; y &lt; Cluster::ylen; ++y) {
+1420: 		if (y &lt; NoC::DRAM_router_num) {
+1421: 			NoC::dram_list[0][y] = {-1, y};
+1422: 			NoC::dram_list[2][y] = {static_cast&lt;mlen_t&gt;(Cluster::xlen), y};
+1423: 		}
+1424: 		else if(y&gt;= Cluster::ylen - NoC::DRAM_router_num){
+1425: 			NoC::dram_list[1][y - Cluster::ylen / 2] = { -1, y };
+1426: 			NoC::dram_list[3][y - Cluster::ylen / 2] = { static_cast&lt;mlen_t&gt;(Cluster::xlen), y };
+1427: 		}
+1428: 	}
+1429: 	
+1430: 	NoC::dram_list_base.resize(2*Cluster::ylen);
+1431: 	for (mlen_t y = 0; y &lt; Cluster::ylen; ++y) {
+1432: 		NoC::dram_list_base[y] = { -1, y};
+1433: 		NoC::dram_list_base[Cluster::ylen + y] = { static_cast&lt;mlen_t&gt;(Cluster::xlen), y };
+1434: 	}</pre><h2>src/main.cpp:850–895</h2><pre>850: 	std::cout.precision(4);
 851: 
 852: 	// Get input parameters.
 853: 	int mm, nn, xx, yy, ss, bb, rr, ff, xcut, ycut, _NoP_bw, _DRAM_bw, _NoC_bw, _mac_dim, _ul3, total_tops;
