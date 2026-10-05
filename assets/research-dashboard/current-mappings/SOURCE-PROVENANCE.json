@@ -1,0 +1,752 @@
+{
+  "created": 1791237771.2779999,
+  "files": {
+    "PLAN.json": "ef5e657a4ab51b08e4d7a9070ab184f5c31a24b7f176fdc5d130d3b2eec48c5e",
+    "COLLECTION-SNAPSHOT.json": "90d3ee5c34f0c790641abe1e6b3d61dc8d336713798dac8f30d59141464db738",
+    "manifest.json": "9d329ac5e20b8e528d8bff438c30d7413b0f07efb6457bdfaa47d193cdb76103",
+    "mapping-inventory.csv": "3a25f579bba752f7853df60096e75a09944bc1af7fd950e8b2728b00f102262e",
+    "mapping-counts.csv": "19d0f98247942bfdb69afababbcde3e091ef243519d450f383796abb80a02373",
+    "coverage.csv": "a92d688f2f4ceef7369afcfbf57d904bd4f53e6edc1cf1a1d5b2a04b30f730e4",
+    "worker.py": "91b2d3f09da42d8857cfe3ab29d8b25529ba4ed7d1b62159d72373831bc0215e",
+    "run.py": "599d3cce5301fe4e2821ead63e9f6d944ad093260976d0fd2e58cf7e9814850b",
+    "export.py": "2b6c8d588eed8b8246921d61dd582e1487552fbe8d827a13fc511c760ac20625",
+    "verify-inputs.py": "a94b0a9c7854418cf0a7a9e64b09e9a28b73624b6b057972b6c960b008eeebcd",
+    "audit-config.py": "9336f448582ed75907cc9d9c4b43fa4720de1186bb1fd7afe969d440af9ea65f",
+    "compiled_sparse.py": "aef9a347e00d605ee80e00305fe33ca251780a8d28041ba6db1ece199279553e",
+    "replay_kernel.cpp": "4bdb0e6f10367d071cec8aa90a7c0d42e507c8d5d0fec4318825d19c6d6d35a8",
+    "worker-original-python.py": "2a67e43e0f29e0f09d371f71ebb8160bf29ed6c4591d11c23ec7205a0d1f8d80",
+    "worker-pruned.py": "94061635be3e1db70a110c5d5639e990d6921948c2a3d7798d20b7e31a834e61",
+    "sizing_pruned.py": "fc1702efdbe4016300cabc497fdf562df8eb469963bbb5bbc23f9e945cd3514b",
+    "build-site.py": "ba44b661b6bdf02324372e283793f8bcc6549966be223adb9df26a5e51a947be",
+    "integrate-site.py": "d38d362ecf01cbbf3679b2be97c7c11a19959d9d340287b818668da8c25ca3e7",
+    "verify-site.js": "5b9cb200eb54732029d7da589532db7242fd862dbedc544cfb6af61330a01ac9",
+    "verify-publication.py": "6fc15057bb20c65d8ba5f20e9a6f418f4e611c2a1787d5f87c1c29259f37b444",
+    "site-output/current-mappings/app.js": "bf0f9f7fe2c75186d095ad77ce31b74d3f2120575d91ec80b64bebb6205a49df"
+  },
+  "reused_designs": [
+    {
+      "chiplets": 4,
+      "core": 16,
+      "name": "darknet19",
+      "reused_from": "/home/yj3616/workspace/phd-research/research-notes/reflection-core16-chiplet-sweep-20261005/cases/c4-core16/darknet19"
+    },
+    {
+      "chiplets": 4,
+      "core": 16,
+      "name": "vgg19",
+      "reused_from": "/home/yj3616/workspace/phd-research/research-notes/reflection-core16-chiplet-sweep-20261005/cases/c4-core16/vgg19"
+    },
+    {
+      "chiplets": 4,
+      "core": 16,
+      "name": "resnet50",
+      "reused_from": "/home/yj3616/workspace/phd-research/research-notes/reflection-core16-chiplet-sweep-20261005/cases/c4-core16/resnet50"
+    },
+    {
+      "chiplets": 4,
+      "core": 16,
+      "name": "googlenet",
+      "reused_from": "/home/yj3616/workspace/phd-research/research-notes/reflection-core16-chiplet-sweep-20261005/cases/c4-core16/googlenet"
+    },
+    {
+      "chiplets": 4,
+      "core": 16,
+      "name": "resnet101",
+      "reused_from": "/home/yj3616/workspace/phd-research/research-notes/reflection-core16-chiplet-sweep-20261005/cases/c4-core16/resnet101"
+    },
+    {
+      "chiplets": 4,
+      "core": 16,
+      "name": "densenet",
+      "reused_from": "/home/yj3616/workspace/phd-research/research-notes/reflection-core16-chiplet-sweep-20261005/cases/c4-core16/densenet"
+    },
+    {
+      "chiplets": 4,
+      "core": 16,
+      "name": "inception_resnet_v1",
+      "reused_from": "/home/yj3616/workspace/phd-research/research-notes/reflection-core16-chiplet-sweep-20261005/cases/c4-core16/inception_resnet_v1"
+    },
+    {
+      "chiplets": 4,
+      "core": 16,
+      "name": "gnmt",
+      "reused_from": "/home/yj3616/workspace/phd-research/research-notes/reflection-core16-chiplet-sweep-20261005/cases/c4-core16/gnmt"
+    },
+    {
+      "chiplets": 4,
+      "core": 16,
+      "name": "lstm",
+      "reused_from": "/home/yj3616/workspace/phd-research/research-notes/reflection-core16-chiplet-sweep-20261005/cases/c4-core16/lstm"
+    },
+    {
+      "chiplets": 4,
+      "core": 16,
+      "name": "transformer",
+      "reused_from": "/home/yj3616/workspace/phd-research/research-notes/reflection-core16-chiplet-sweep-20261005/cases/c4-core16/transformer"
+    },
+    {
+      "chiplets": 4,
+      "core": 16,
+      "name": "transformer_cell",
+      "reused_from": "/home/yj3616/workspace/phd-research/research-notes/reflection-core16-chiplet-sweep-20261005/cases/c4-core16/transformer_cell"
+    },
+    {
+      "chiplets": 4,
+      "core": 16,
+      "name": "pnasnet",
+      "reused_from": "/home/yj3616/workspace/phd-research/research-notes/reflection-core16-chiplet-sweep-20261005/cases/c4-core16/pnasnet"
+    },
+    {
+      "chiplets": 4,
+      "core": 16,
+      "name": "resnext50",
+      "reused_from": "/home/yj3616/workspace/phd-research/research-notes/reflection-core16-chiplet-sweep-20261005/cases/c4-core16/resnext50"
+    },
+    {
+      "chiplets": 4,
+      "core": 16,
+      "name": "resnet152",
+      "reused_from": "/home/yj3616/workspace/phd-research/research-notes/reflection-core16-chiplet-sweep-20261005/cases/c4-core16/resnet152"
+    },
+    {
+      "chiplets": 4,
+      "core": 16,
+      "name": "bert_block",
+      "reused_from": "/home/yj3616/workspace/phd-research/research-notes/reflection-core16-chiplet-sweep-20261005/cases/c4-core16/bert_block"
+    },
+    {
+      "chiplets": 4,
+      "core": 16,
+      "name": "gpt_prefill_block",
+      "reused_from": "/home/yj3616/workspace/phd-research/research-notes/reflection-core16-chiplet-sweep-20261005/cases/c4-core16/gpt_prefill_block"
+    },
+    {
+      "chiplets": 4,
+      "core": 16,
+      "name": "gpt_decode_block",
+      "reused_from": "/home/yj3616/workspace/phd-research/research-notes/reflection-core16-chiplet-sweep-20261005/cases/c4-core16/gpt_decode_block"
+    },
+    {
+      "chiplets": 4,
+      "core": 16,
+      "name": "CNN",
+      "reused_from": "/home/yj3616/workspace/phd-research/research-notes/reflection-core16-chiplet-sweep-20261005/cases/c4-core16/CNN"
+    },
+    {
+      "chiplets": 4,
+      "core": 16,
+      "name": "RNN",
+      "reused_from": "/home/yj3616/workspace/phd-research/research-notes/reflection-core16-chiplet-sweep-20261005/cases/c4-core16/RNN"
+    },
+    {
+      "chiplets": 4,
+      "core": 16,
+      "name": "Transformer",
+      "reused_from": "/home/yj3616/workspace/phd-research/research-notes/reflection-core16-chiplet-sweep-20261005/cases/c4-core16/Transformer"
+    },
+    {
+      "chiplets": 4,
+      "core": 16,
+      "name": "ALL17",
+      "reused_from": "/home/yj3616/workspace/phd-research/research-notes/reflection-core16-chiplet-sweep-20261005/cases/c4-core16/ALL17"
+    },
+    {
+      "chiplets": 8,
+      "core": 16,
+      "name": "darknet19",
+      "reused_from": "/home/yj3616/workspace/phd-research/research-notes/reflection-core16-chiplet-sweep-20261005/cases/c8-core16/darknet19"
+    },
+    {
+      "chiplets": 8,
+      "core": 16,
+      "name": "vgg19",
+      "reused_from": "/home/yj3616/workspace/phd-research/research-notes/reflection-core16-chiplet-sweep-20261005/cases/c8-core16/vgg19"
+    },
+    {
+      "chiplets": 8,
+      "core": 16,
+      "name": "resnet50",
+      "reused_from": "/home/yj3616/workspace/phd-research/research-notes/reflection-core16-chiplet-sweep-20261005/cases/c8-core16/resnet50"
+    },
+    {
+      "chiplets": 8,
+      "core": 16,
+      "name": "googlenet",
+      "reused_from": "/home/yj3616/workspace/phd-research/research-notes/reflection-core16-chiplet-sweep-20261005/cases/c8-core16/googlenet"
+    },
+    {
+      "chiplets": 8,
+      "core": 16,
+      "name": "resnet101",
+      "reused_from": "/home/yj3616/workspace/phd-research/research-notes/reflection-core16-chiplet-sweep-20261005/cases/c8-core16/resnet101"
+    },
+    {
+      "chiplets": 8,
+      "core": 16,
+      "name": "densenet",
+      "reused_from": "/home/yj3616/workspace/phd-research/research-notes/reflection-core16-chiplet-sweep-20261005/cases/c8-core16/densenet"
+    },
+    {
+      "chiplets": 8,
+      "core": 16,
+      "name": "inception_resnet_v1",
+      "reused_from": "/home/yj3616/workspace/phd-research/research-notes/reflection-core16-chiplet-sweep-20261005/cases/c8-core16/inception_resnet_v1"
+    },
+    {
+      "chiplets": 8,
+      "core": 16,
+      "name": "gnmt",
+      "reused_from": "/home/yj3616/workspace/phd-research/research-notes/reflection-core16-chiplet-sweep-20261005/cases/c8-core16/gnmt"
+    },
+    {
+      "chiplets": 8,
+      "core": 16,
+      "name": "lstm",
+      "reused_from": "/home/yj3616/workspace/phd-research/research-notes/reflection-core16-chiplet-sweep-20261005/cases/c8-core16/lstm"
+    },
+    {
+      "chiplets": 8,
+      "core": 16,
+      "name": "transformer",
+      "reused_from": "/home/yj3616/workspace/phd-research/research-notes/reflection-core16-chiplet-sweep-20261005/cases/c8-core16/transformer"
+    },
+    {
+      "chiplets": 8,
+      "core": 16,
+      "name": "transformer_cell",
+      "reused_from": "/home/yj3616/workspace/phd-research/research-notes/reflection-core16-chiplet-sweep-20261005/cases/c8-core16/transformer_cell"
+    },
+    {
+      "chiplets": 8,
+      "core": 16,
+      "name": "pnasnet",
+      "reused_from": "/home/yj3616/workspace/phd-research/research-notes/reflection-core16-chiplet-sweep-20261005/cases/c8-core16/pnasnet"
+    },
+    {
+      "chiplets": 8,
+      "core": 16,
+      "name": "resnext50",
+      "reused_from": "/home/yj3616/workspace/phd-research/research-notes/reflection-core16-chiplet-sweep-20261005/cases/c8-core16/resnext50"
+    },
+    {
+      "chiplets": 8,
+      "core": 16,
+      "name": "resnet152",
+      "reused_from": "/home/yj3616/workspace/phd-research/research-notes/reflection-core16-chiplet-sweep-20261005/cases/c8-core16/resnet152"
+    },
+    {
+      "chiplets": 8,
+      "core": 16,
+      "name": "bert_block",
+      "reused_from": "/home/yj3616/workspace/phd-research/research-notes/reflection-core16-chiplet-sweep-20261005/cases/c8-core16/bert_block"
+    },
+    {
+      "chiplets": 8,
+      "core": 16,
+      "name": "gpt_prefill_block",
+      "reused_from": "/home/yj3616/workspace/phd-research/research-notes/reflection-core16-chiplet-sweep-20261005/cases/c8-core16/gpt_prefill_block"
+    },
+    {
+      "chiplets": 8,
+      "core": 16,
+      "name": "gpt_decode_block",
+      "reused_from": "/home/yj3616/workspace/phd-research/research-notes/reflection-core16-chiplet-sweep-20261005/cases/c8-core16/gpt_decode_block"
+    },
+    {
+      "chiplets": 8,
+      "core": 16,
+      "name": "CNN",
+      "reused_from": "/home/yj3616/workspace/phd-research/research-notes/reflection-core16-chiplet-sweep-20261005/cases/c8-core16/CNN"
+    },
+    {
+      "chiplets": 8,
+      "core": 16,
+      "name": "RNN",
+      "reused_from": "/home/yj3616/workspace/phd-research/research-notes/reflection-core16-chiplet-sweep-20261005/cases/c8-core16/RNN"
+    },
+    {
+      "chiplets": 8,
+      "core": 16,
+      "name": "Transformer",
+      "reused_from": "/home/yj3616/workspace/phd-research/research-notes/reflection-core16-chiplet-sweep-20261005/cases/c8-core16/Transformer"
+    },
+    {
+      "chiplets": 8,
+      "core": 16,
+      "name": "ALL17",
+      "reused_from": "/home/yj3616/workspace/phd-research/research-notes/reflection-core16-chiplet-sweep-20261005/cases/c8-core16/ALL17"
+    },
+    {
+      "chiplets": 16,
+      "core": 1,
+      "name": "darknet19",
+      "reused_from": "/home/yj3616/workspace/phd-research/research-notes/reflection-4x4-multimapping-20261005/cases/c16-core1/darknet19"
+    },
+    {
+      "chiplets": 16,
+      "core": 1,
+      "name": "vgg19",
+      "reused_from": "/home/yj3616/workspace/phd-research/research-notes/reflection-4x4-multimapping-20261005/cases/c16-core1/vgg19"
+    },
+    {
+      "chiplets": 16,
+      "core": 1,
+      "name": "resnet50",
+      "reused_from": "/home/yj3616/workspace/phd-research/research-notes/reflection-4x4-multimapping-20261005/cases/c16-core1/resnet50"
+    },
+    {
+      "chiplets": 16,
+      "core": 1,
+      "name": "googlenet",
+      "reused_from": "/home/yj3616/workspace/phd-research/research-notes/reflection-4x4-multimapping-20261005/cases/c16-core1/googlenet"
+    },
+    {
+      "chiplets": 16,
+      "core": 1,
+      "name": "resnet101",
+      "reused_from": "/home/yj3616/workspace/phd-research/research-notes/reflection-4x4-multimapping-20261005/cases/c16-core1/resnet101"
+    },
+    {
+      "chiplets": 16,
+      "core": 1,
+      "name": "densenet",
+      "reused_from": "/home/yj3616/workspace/phd-research/research-notes/reflection-4x4-multimapping-20261005/cases/c16-core1/densenet"
+    },
+    {
+      "chiplets": 16,
+      "core": 1,
+      "name": "inception_resnet_v1",
+      "reused_from": "/home/yj3616/workspace/phd-research/research-notes/reflection-4x4-multimapping-20261005/cases/c16-core1/inception_resnet_v1"
+    },
+    {
+      "chiplets": 16,
+      "core": 1,
+      "name": "gnmt",
+      "reused_from": "/home/yj3616/workspace/phd-research/research-notes/reflection-4x4-multimapping-20261005/cases/c16-core1/gnmt"
+    },
+    {
+      "chiplets": 16,
+      "core": 1,
+      "name": "lstm",
+      "reused_from": "/home/yj3616/workspace/phd-research/research-notes/reflection-4x4-multimapping-20261005/cases/c16-core1/lstm"
+    },
+    {
+      "chiplets": 16,
+      "core": 1,
+      "name": "transformer",
+      "reused_from": "/home/yj3616/workspace/phd-research/research-notes/reflection-4x4-multimapping-20261005/cases/c16-core1/transformer"
+    },
+    {
+      "chiplets": 16,
+      "core": 1,
+      "name": "transformer_cell",
+      "reused_from": "/home/yj3616/workspace/phd-research/research-notes/reflection-4x4-multimapping-20261005/cases/c16-core1/transformer_cell"
+    },
+    {
+      "chiplets": 16,
+      "core": 1,
+      "name": "pnasnet",
+      "reused_from": "/home/yj3616/workspace/phd-research/research-notes/reflection-4x4-multimapping-20261005/cases/c16-core1/pnasnet"
+    },
+    {
+      "chiplets": 16,
+      "core": 1,
+      "name": "resnext50",
+      "reused_from": "/home/yj3616/workspace/phd-research/research-notes/reflection-4x4-multimapping-20261005/cases/c16-core1/resnext50"
+    },
+    {
+      "chiplets": 16,
+      "core": 1,
+      "name": "resnet152",
+      "reused_from": "/home/yj3616/workspace/phd-research/research-notes/reflection-4x4-multimapping-20261005/cases/c16-core1/resnet152"
+    },
+    {
+      "chiplets": 16,
+      "core": 1,
+      "name": "bert_block",
+      "reused_from": "/home/yj3616/workspace/phd-research/research-notes/reflection-4x4-multimapping-20261005/cases/c16-core1/bert_block"
+    },
+    {
+      "chiplets": 16,
+      "core": 1,
+      "name": "gpt_prefill_block",
+      "reused_from": "/home/yj3616/workspace/phd-research/research-notes/reflection-4x4-multimapping-20261005/cases/c16-core1/gpt_prefill_block"
+    },
+    {
+      "chiplets": 16,
+      "core": 1,
+      "name": "gpt_decode_block",
+      "reused_from": "/home/yj3616/workspace/phd-research/research-notes/reflection-4x4-multimapping-20261005/cases/c16-core1/gpt_decode_block"
+    },
+    {
+      "chiplets": 16,
+      "core": 1,
+      "name": "CNN",
+      "reused_from": "/home/yj3616/workspace/phd-research/research-notes/reflection-4x4-multimapping-20261005/cases/c16-core1/CNN"
+    },
+    {
+      "chiplets": 16,
+      "core": 1,
+      "name": "RNN",
+      "reused_from": "/home/yj3616/workspace/phd-research/research-notes/reflection-4x4-multimapping-20261005/cases/c16-core1/RNN"
+    },
+    {
+      "chiplets": 16,
+      "core": 1,
+      "name": "Transformer",
+      "reused_from": "/home/yj3616/workspace/phd-research/research-notes/reflection-4x4-multimapping-20261005/cases/c16-core1/Transformer"
+    },
+    {
+      "chiplets": 16,
+      "core": 1,
+      "name": "ALL17",
+      "reused_from": "/home/yj3616/workspace/phd-research/research-notes/reflection-4x4-multimapping-20261005/cases/c16-core1/ALL17"
+    },
+    {
+      "chiplets": 16,
+      "core": 4,
+      "name": "darknet19",
+      "reused_from": "/home/yj3616/workspace/phd-research/research-notes/reflection-4x4-multimapping-20261005/cases/c16-core4/darknet19"
+    },
+    {
+      "chiplets": 16,
+      "core": 4,
+      "name": "vgg19",
+      "reused_from": "/home/yj3616/workspace/phd-research/research-notes/reflection-4x4-multimapping-20261005/cases/c16-core4/vgg19"
+    },
+    {
+      "chiplets": 16,
+      "core": 4,
+      "name": "resnet50",
+      "reused_from": "/home/yj3616/workspace/phd-research/research-notes/reflection-4x4-multimapping-20261005/cases/c16-core4/resnet50"
+    },
+    {
+      "chiplets": 16,
+      "core": 4,
+      "name": "googlenet",
+      "reused_from": "/home/yj3616/workspace/phd-research/research-notes/reflection-4x4-multimapping-20261005/cases/c16-core4/googlenet"
+    },
+    {
+      "chiplets": 16,
+      "core": 4,
+      "name": "resnet101",
+      "reused_from": "/home/yj3616/workspace/phd-research/research-notes/reflection-4x4-multimapping-20261005/cases/c16-core4/resnet101"
+    },
+    {
+      "chiplets": 16,
+      "core": 4,
+      "name": "densenet",
+      "reused_from": "/home/yj3616/workspace/phd-research/research-notes/reflection-4x4-multimapping-20261005/cases/c16-core4/densenet"
+    },
+    {
+      "chiplets": 16,
+      "core": 4,
+      "name": "inception_resnet_v1",
+      "reused_from": "/home/yj3616/workspace/phd-research/research-notes/reflection-4x4-multimapping-20261005/cases/c16-core4/inception_resnet_v1"
+    },
+    {
+      "chiplets": 16,
+      "core": 4,
+      "name": "gnmt",
+      "reused_from": "/home/yj3616/workspace/phd-research/research-notes/reflection-4x4-multimapping-20261005/cases/c16-core4/gnmt"
+    },
+    {
+      "chiplets": 16,
+      "core": 4,
+      "name": "lstm",
+      "reused_from": "/home/yj3616/workspace/phd-research/research-notes/reflection-4x4-multimapping-20261005/cases/c16-core4/lstm"
+    },
+    {
+      "chiplets": 16,
+      "core": 4,
+      "name": "transformer",
+      "reused_from": "/home/yj3616/workspace/phd-research/research-notes/reflection-4x4-multimapping-20261005/cases/c16-core4/transformer"
+    },
+    {
+      "chiplets": 16,
+      "core": 4,
+      "name": "transformer_cell",
+      "reused_from": "/home/yj3616/workspace/phd-research/research-notes/reflection-4x4-multimapping-20261005/cases/c16-core4/transformer_cell"
+    },
+    {
+      "chiplets": 16,
+      "core": 4,
+      "name": "pnasnet",
+      "reused_from": "/home/yj3616/workspace/phd-research/research-notes/reflection-4x4-multimapping-20261005/cases/c16-core4/pnasnet"
+    },
+    {
+      "chiplets": 16,
+      "core": 4,
+      "name": "resnext50",
+      "reused_from": "/home/yj3616/workspace/phd-research/research-notes/reflection-4x4-multimapping-20261005/cases/c16-core4/resnext50"
+    },
+    {
+      "chiplets": 16,
+      "core": 4,
+      "name": "resnet152",
+      "reused_from": "/home/yj3616/workspace/phd-research/research-notes/reflection-4x4-multimapping-20261005/cases/c16-core4/resnet152"
+    },
+    {
+      "chiplets": 16,
+      "core": 4,
+      "name": "bert_block",
+      "reused_from": "/home/yj3616/workspace/phd-research/research-notes/reflection-4x4-multimapping-20261005/cases/c16-core4/bert_block"
+    },
+    {
+      "chiplets": 16,
+      "core": 4,
+      "name": "gpt_prefill_block",
+      "reused_from": "/home/yj3616/workspace/phd-research/research-notes/reflection-4x4-multimapping-20261005/cases/c16-core4/gpt_prefill_block"
+    },
+    {
+      "chiplets": 16,
+      "core": 4,
+      "name": "gpt_decode_block",
+      "reused_from": "/home/yj3616/workspace/phd-research/research-notes/reflection-4x4-multimapping-20261005/cases/c16-core4/gpt_decode_block"
+    },
+    {
+      "chiplets": 16,
+      "core": 4,
+      "name": "CNN",
+      "reused_from": "/home/yj3616/workspace/phd-research/research-notes/reflection-4x4-multimapping-20261005/cases/c16-core4/CNN"
+    },
+    {
+      "chiplets": 16,
+      "core": 4,
+      "name": "RNN",
+      "reused_from": "/home/yj3616/workspace/phd-research/research-notes/reflection-4x4-multimapping-20261005/cases/c16-core4/RNN"
+    },
+    {
+      "chiplets": 16,
+      "core": 4,
+      "name": "Transformer",
+      "reused_from": "/home/yj3616/workspace/phd-research/research-notes/reflection-4x4-multimapping-20261005/cases/c16-core4/Transformer"
+    },
+    {
+      "chiplets": 16,
+      "core": 4,
+      "name": "ALL17",
+      "reused_from": "/home/yj3616/workspace/phd-research/research-notes/reflection-4x4-multimapping-20261005/cases/c16-core4/ALL17"
+    },
+    {
+      "chiplets": 16,
+      "core": 16,
+      "name": "darknet19",
+      "reused_from": "/home/yj3616/workspace/phd-research/research-notes/reflection-4x4-multimapping-20261005/cases/c16-core16/darknet19"
+    },
+    {
+      "chiplets": 16,
+      "core": 16,
+      "name": "vgg19",
+      "reused_from": "/home/yj3616/workspace/phd-research/research-notes/reflection-4x4-multimapping-20261005/cases/c16-core16/vgg19"
+    },
+    {
+      "chiplets": 16,
+      "core": 16,
+      "name": "resnet50",
+      "reused_from": "/home/yj3616/workspace/phd-research/research-notes/reflection-4x4-multimapping-20261005/cases/c16-core16/resnet50"
+    },
+    {
+      "chiplets": 16,
+      "core": 16,
+      "name": "googlenet",
+      "reused_from": "/home/yj3616/workspace/phd-research/research-notes/reflection-4x4-multimapping-20261005/cases/c16-core16/googlenet"
+    },
+    {
+      "chiplets": 16,
+      "core": 16,
+      "name": "resnet101",
+      "reused_from": "/home/yj3616/workspace/phd-research/research-notes/reflection-4x4-multimapping-20261005/cases/c16-core16/resnet101"
+    },
+    {
+      "chiplets": 16,
+      "core": 16,
+      "name": "densenet",
+      "reused_from": "/home/yj3616/workspace/phd-research/research-notes/reflection-4x4-multimapping-20261005/cases/c16-core16/densenet"
+    },
+    {
+      "chiplets": 16,
+      "core": 16,
+      "name": "inception_resnet_v1",
+      "reused_from": "/home/yj3616/workspace/phd-research/research-notes/reflection-4x4-multimapping-20261005/cases/c16-core16/inception_resnet_v1"
+    },
+    {
+      "chiplets": 16,
+      "core": 16,
+      "name": "gnmt",
+      "reused_from": "/home/yj3616/workspace/phd-research/research-notes/reflection-4x4-multimapping-20261005/cases/c16-core16/gnmt"
+    },
+    {
+      "chiplets": 16,
+      "core": 16,
+      "name": "lstm",
+      "reused_from": "/home/yj3616/workspace/phd-research/research-notes/reflection-4x4-multimapping-20261005/cases/c16-core16/lstm"
+    },
+    {
+      "chiplets": 16,
+      "core": 16,
+      "name": "transformer",
+      "reused_from": "/home/yj3616/workspace/phd-research/research-notes/reflection-4x4-multimapping-20261005/cases/c16-core16/transformer"
+    },
+    {
+      "chiplets": 16,
+      "core": 16,
+      "name": "transformer_cell",
+      "reused_from": "/home/yj3616/workspace/phd-research/research-notes/reflection-4x4-multimapping-20261005/cases/c16-core16/transformer_cell"
+    },
+    {
+      "chiplets": 16,
+      "core": 16,
+      "name": "pnasnet",
+      "reused_from": "/home/yj3616/workspace/phd-research/research-notes/reflection-4x4-multimapping-20261005/cases/c16-core16/pnasnet"
+    },
+    {
+      "chiplets": 16,
+      "core": 16,
+      "name": "resnext50",
+      "reused_from": "/home/yj3616/workspace/phd-research/research-notes/reflection-4x4-multimapping-20261005/cases/c16-core16/resnext50"
+    },
+    {
+      "chiplets": 16,
+      "core": 16,
+      "name": "resnet152",
+      "reused_from": "/home/yj3616/workspace/phd-research/research-notes/reflection-4x4-multimapping-20261005/cases/c16-core16/resnet152"
+    },
+    {
+      "chiplets": 16,
+      "core": 16,
+      "name": "bert_block",
+      "reused_from": "/home/yj3616/workspace/phd-research/research-notes/reflection-4x4-multimapping-20261005/cases/c16-core16/bert_block"
+    },
+    {
+      "chiplets": 16,
+      "core": 16,
+      "name": "gpt_decode_block",
+      "reused_from": "/home/yj3616/workspace/phd-research/research-notes/reflection-4x4-multimapping-20261005/cases/c16-core16/gpt_decode_block"
+    },
+    {
+      "chiplets": 16,
+      "core": 16,
+      "name": "CNN",
+      "reused_from": "/home/yj3616/workspace/phd-research/research-notes/reflection-4x4-multimapping-20261005/cases/c16-core16/CNN"
+    },
+    {
+      "chiplets": 16,
+      "core": 16,
+      "name": "RNN",
+      "reused_from": "/home/yj3616/workspace/phd-research/research-notes/reflection-4x4-multimapping-20261005/cases/c16-core16/RNN"
+    },
+    {
+      "chiplets": 32,
+      "core": 16,
+      "name": "darknet19",
+      "reused_from": "/home/yj3616/workspace/phd-research/research-notes/reflection-core16-chiplet-sweep-20261005/cases/c32-core16/darknet19"
+    },
+    {
+      "chiplets": 32,
+      "core": 16,
+      "name": "vgg19",
+      "reused_from": "/home/yj3616/workspace/phd-research/research-notes/reflection-core16-chiplet-sweep-20261005/cases/c32-core16/vgg19"
+    },
+    {
+      "chiplets": 32,
+      "core": 16,
+      "name": "resnet50",
+      "reused_from": "/home/yj3616/workspace/phd-research/research-notes/reflection-core16-chiplet-sweep-20261005/cases/c32-core16/resnet50"
+    },
+    {
+      "chiplets": 32,
+      "core": 16,
+      "name": "googlenet",
+      "reused_from": "/home/yj3616/workspace/phd-research/research-notes/reflection-core16-chiplet-sweep-20261005/cases/c32-core16/googlenet"
+    },
+    {
+      "chiplets": 32,
+      "core": 16,
+      "name": "resnet101",
+      "reused_from": "/home/yj3616/workspace/phd-research/research-notes/reflection-core16-chiplet-sweep-20261005/cases/c32-core16/resnet101"
+    },
+    {
+      "chiplets": 32,
+      "core": 16,
+      "name": "densenet",
+      "reused_from": "/home/yj3616/workspace/phd-research/research-notes/reflection-core16-chiplet-sweep-20261005/cases/c32-core16/densenet"
+    },
+    {
+      "chiplets": 32,
+      "core": 16,
+      "name": "inception_resnet_v1",
+      "reused_from": "/home/yj3616/workspace/phd-research/research-notes/reflection-core16-chiplet-sweep-20261005/cases/c32-core16/inception_resnet_v1"
+    },
+    {
+      "chiplets": 32,
+      "core": 16,
+      "name": "gnmt",
+      "reused_from": "/home/yj3616/workspace/phd-research/research-notes/reflection-core16-chiplet-sweep-20261005/cases/c32-core16/gnmt"
+    },
+    {
+      "chiplets": 32,
+      "core": 16,
+      "name": "lstm",
+      "reused_from": "/home/yj3616/workspace/phd-research/research-notes/reflection-core16-chiplet-sweep-20261005/cases/c32-core16/lstm"
+    },
+    {
+      "chiplets": 32,
+      "core": 16,
+      "name": "transformer_cell",
+      "reused_from": "/home/yj3616/workspace/phd-research/research-notes/reflection-core16-chiplet-sweep-20261005/cases/c32-core16/transformer_cell"
+    },
+    {
+      "chiplets": 32,
+      "core": 16,
+      "name": "resnext50",
+      "reused_from": "/home/yj3616/workspace/phd-research/research-notes/reflection-core16-chiplet-sweep-20261005/cases/c32-core16/resnext50"
+    },
+    {
+      "chiplets": 32,
+      "core": 16,
+      "name": "resnet152",
+      "reused_from": "/home/yj3616/workspace/phd-research/research-notes/reflection-core16-chiplet-sweep-20261005/cases/c32-core16/resnet152"
+    },
+    {
+      "chiplets": 32,
+      "core": 16,
+      "name": "bert_block",
+      "reused_from": "/home/yj3616/workspace/phd-research/research-notes/reflection-core16-chiplet-sweep-20261005/cases/c32-core16/bert_block"
+    },
+    {
+      "chiplets": 32,
+      "core": 16,
+      "name": "gpt_prefill_block",
+      "reused_from": "/home/yj3616/workspace/phd-research/research-notes/reflection-core16-chiplet-sweep-20261005/cases/c32-core16/gpt_prefill_block"
+    },
+    {
+      "chiplets": 32,
+      "core": 16,
+      "name": "gpt_decode_block",
+      "reused_from": "/home/yj3616/workspace/phd-research/research-notes/reflection-core16-chiplet-sweep-20261005/cases/c32-core16/gpt_decode_block"
+    },
+    {
+      "chiplets": 32,
+      "core": 16,
+      "name": "RNN",
+      "reused_from": "/home/yj3616/workspace/phd-research/research-notes/reflection-core16-chiplet-sweep-20261005/cases/c32-core16/RNN"
+    },
+    {
+      "chiplets": 64,
+      "core": 16,
+      "name": "darknet19",
+      "reused_from": "/home/yj3616/workspace/phd-research/research-notes/reflection-core16-chiplet-sweep-20261005/cases/c64-core16/darknet19"
+    },
+    {
+      "chiplets": 64,
+      "core": 16,
+      "name": "vgg19",
+      "reused_from": "/home/yj3616/workspace/phd-research/research-notes/reflection-core16-chiplet-sweep-20261005/cases/c64-core16/vgg19"
+    }
+  ],
+  "snapshot_hashes": "mapping-metadata/*.json:snapshot_sha256; independently verified in INPUT-VALIDATION.json",
+  "updated": 1791241689.8677747,
+  "replay_validation": "COMPILED-REPLAY-VALIDATION.json",
+  "pruning_validation": "PRUNING-VALIDATION.json"
+}

@@ -1,0 +1,35 @@
+category,parameter,value,unit,scope,notes,evidence
+architecture,Core microarchitecture,PolarCore (NVDLA-style),,fixed,mm=0,/home/yj3616/workspace/phd-research/research-notes/max-resource-sweep-20260928/batch1-diverse-mappings-20261002/local-candidates/native-source/src/main.cpp:864
+architecture,Process model,12,nm,fixed,"Model technology setting, not fabricated silicon",/home/yj3616/workspace/phd-research/research-notes/max-resource-sweep-20260928/batch1-diverse-mappings-20261002/local-candidates/native-source/src/main.cpp:910
+architecture,Clock frequency,1,GHz,fixed,tech=12 branch,/home/yj3616/workspace/phd-research/research-notes/max-resource-sweep-20260928/batch1-diverse-mappings-20261002/local-candidates/native-source/src/main.cpp:913
+architecture,MAC units per core,512,MAC units,fixed,4x4 bus array x8 lanes x4 vector elements; 8-bit MAC cost/density model,/home/yj3616/workspace/phd-research/research-notes/max-resource-sweep-20260928/batch1-diverse-mappings-20261002/local-candidates/native-source/src/core.cpp:14
+architecture,MAC lane/vector settings,8 lanes x4 vector elements,,fixed,Native mac_scale=512; not a512x512 array,/home/yj3616/workspace/phd-research/research-notes/max-resource-sweep-20260928/batch1-diverse-mappings-20261002/local-candidates/native-source/src/main.cpp:996
+memory,Unified SRAM per core,2048,KiB,fixed,2MiB unified buffer; does not mean total system SRAM is fixed,/home/yj3616/workspace/phd-research/research-notes/max-resource-sweep-20260928/batch1-diverse-mappings-20261002/local-candidates/native-source/src/main.cpp:1041
+memory,Activation L1 per bank,4,KiB,fixed,al1.Size=8*vector_len/8 KiB,/home/yj3616/workspace/phd-research/research-notes/max-resource-sweep-20260928/batch1-diverse-mappings-20261002/local-candidates/native-source/src/main.cpp:1031
+memory,Weight L1 per bank,2,KiB,fixed,wl1.Size=4*lane_len*vector_len/64 KiB,/home/yj3616/workspace/phd-research/research-notes/max-resource-sweep-20260928/batch1-diverse-mappings-20261002/local-candidates/native-source/src/main.cpp:1033
+memory,Output L1 per bank,2,KiB,fixed,ol1.Size=2*lane_len/8 KiB,/home/yj3616/workspace/phd-research/research-notes/max-resource-sweep-20260928/batch1-diverse-mappings-20261002/local-candidates/native-source/src/main.cpp:1032
+memory,Output L2 model size,14,KiB,fixed,ol2.Size=28*vector_len*lane_len/64 KiB; code describes as part of unified buffer,/home/yj3616/workspace/phd-research/research-notes/max-resource-sweep-20260928/batch1-diverse-mappings-20261002/local-candidates/native-source/src/main.cpp:1034
+memory,Activation/weight L2 size,0,bytes,fixed,al2.Size=0; wl2.Size=0,/home/yj3616/workspace/phd-research/research-notes/max-resource-sweep-20260928/batch1-diverse-mappings-20261002/local-candidates/native-source/src/main.cpp:1232
+memory,DRAM model,GDDR6X,,fixed,Native model label; provisioned bandwidth set independently,/home/yj3616/workspace/phd-research/research-notes/max-resource-sweep-20260928/batch1-diverse-mappings-20261002/local-candidates/native-source/src/main.cpp:978
+memory,Total system DRAM bandwidth,4096,B/cycle,fixed,Across4 modeled DRAM endpoints; NOT per chiplet,/home/yj3616/workspace/phd-research/research-notes/max-resource-sweep-20260928/batch1-diverse-mappings-20261002/local-candidates/native-source/src/main.cpp:875
+memory,DRAM endpoints,4,endpoints,fixed,1024B/cycle per endpoint,/home/yj3616/workspace/phd-research/research-notes/max-resource-sweep-20260928/batch1-diverse-mappings-20261002/local-candidates/native-source/src/main.cpp:875
+network,Intra-chiplet NoC link bandwidth,128,B/cycle,fixed,Per modeled NoC link,/home/yj3616/workspace/phd-research/research-notes/max-resource-sweep-20260928/batch1-diverse-mappings-20261002/local-candidates/native-source/src/main.cpp:878
+network,Topology,2D mesh,,fixed topology family,Chiplet and core dimensions vary with sweep; see sweep-configs.csv,/home/yj3616/workspace/phd-research/research-notes/max-resource-sweep-20260928/batch1-diverse-mappings-20261002/local-candidates/native-source/src/main.cpp:866
+network,D2D channels per directional port,8,channels,fixed,Separate parameter from8B/cycle allocation quantum,architecture.channels; GEMINI_PORT_CHANNELS
+network,D2D reference bandwidth per channel,256,B/cycle,fixed reference ceiling,Post-sizing bandwidth is variable between8 and256,/home/yj3616/workspace/phd-research/research-notes/max-resource-sweep-20260928/batch1-diverse-mappings-20261002/local-candidates/native-source/src/main.cpp:888
+network,Capacity allocation quantum,8,B/cycle,fixed,TX/RX capacities independently sized; x8 means quantum,worker.py; sizing_optimize_ch8.py
+network,Package / I/O model,SI / USR,,fixed,Raw native model settings,native-input-audit.csv
+experiment,Batch size,1,sample,fixed,Workloads/mappings execute individually,native-input-audit.csv
+experiment,Mapping search objective,Latency,,fixed native objective,ff=0; candidate collection also enforces diversity,/home/yj3616/workspace/phd-research/research-notes/max-resource-sweep-20260928/batch1-diverse-mappings-20261002/local-candidates/native-source/src/main.cpp:1443
+experiment,Mapping stride parameter,2,native ss,fixed,Mapper parameter; not convolution stride,native-input-audit.csv
+experiment,Latency allowance,0.1,percent,fixed constraint,cycles <=floor(frozen original reference*1001/1000),mapping-timing-checks.csv
+experiment,Pattern diversity threshold,0.05,normalized L1,fixed collection criterion,Directed D2D capacity profiles; topology-preserving rotations removed,grouped-frontier/controller.py:distance
+experiment,Mapping count per workload,All retained (up to5),,varies,Include1/2 mappings without waiting for3; exact count in inventory,mapping-counts.csv
+experiment,Seeds and mapping search rounds,Varied,,not fixed,Preserved mapping provenance; native-input-audit.csv includes observed rounds,mapping-inventory.csv; native-input-audit.csv
+design,Baseline1 templates,Uniform four-port (K=1),,baseline definition,Unused exterior-facing TX/RX included,README.txt
+design,Baseline2 templates,Uniform A/H/I (up to K=3),,baseline definition,"Corner2, edge3, interior4 ports; absent types omitted in small meshes",README.txt
+design,Proposed templates,Asymmetric A/H/I (up to K=3),,design variable,Independent direction/channel TX/RX sizing; legal orientations,worker.py
+design,Orientation comparison,Rotation only; rotation+reflection,,controlled comparison,Same mappings and latency caps; reflection initialized from rotation result,run.py
+design,Reflection implementation cost,Not modeled,,assumption,Mirrored tiles assumed available without additional template/physical cost,worker.py; README.txt
+design,Area policy,"Hypothetical, area excess allowed",,assumption,Capacity analysis does not certify physical area feasibility,native mapping provenance; max-resource sweep PLAN.md
+metric,Reported capacity,Sum of fabricated TX+RX capacity,B/cycle,objective,Counts every manufactured tile instance; not speedup/link count/area,comparison-all.csv

@@ -1,0 +1,12 @@
+{
+  "case": "c8-core4/CNN/reflection",
+  "identical": {
+    "template": true,
+    "rotations": true,
+    "bw": true,
+    "counts": true,
+    "checks": true,
+    "queries": true,
+    "search_starts": true
+  }
+}

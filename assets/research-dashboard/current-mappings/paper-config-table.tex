@@ -1,0 +1,27 @@
+% Source: fixed-parameters.csv, verified against native-input-audit.csv.
+\begin{tabular}{ll}
+\hline
+Parameter & Setting \\
+\hline
+Core microarchitecture & PolarCore (NVDLA-style)  \\
+Process model & 12 nm \\
+Clock frequency & 1 GHz \\
+MAC units per core & 512 MAC units \\
+Unified SRAM per core & 2048 KiB \\
+DRAM model & GDDR6X  \\
+Total system DRAM bandwidth & 4096 B/cycle \\
+DRAM endpoints & 4 endpoints \\
+Intra-chiplet NoC link bandwidth & 128 B/cycle \\
+D2D channels per directional port & 8 channels \\
+D2D reference bandwidth per channel & 256 B/cycle \\
+Capacity allocation quantum & 8 B/cycle \\
+Package / I/O model & SI / USR  \\
+Batch size & 1 sample \\
+Latency allowance & 0.1 percent \\
+Pattern diversity threshold & 0.05 normalized L1 \\
+Chiplet count & 4, 8, 16, 32, 64 \\
+Cores per chiplet & 1, 4, 16 \\
+\hline
+\end{tabular}
+% Sweep axes and derived total resources are in sweep-configs.csv.
+% Seeds/search rounds vary; reflection cost and area feasibility are not modeled.

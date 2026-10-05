@@ -1,0 +1,22 @@
+{
+  "updated": 1791237518.1197748,
+  "mappings": 886,
+  "config_workloads": 255,
+  "pairwise_distances_checked": 1398,
+  "minimum_distance": 0.05,
+  "scope_chiplets": [
+    4,
+    8,
+    16,
+    32,
+    64
+  ],
+  "cores_per_chiplet": [
+    1,
+    4,
+    16
+  ],
+  "snapshot_hashes_verified": true,
+  "latency_limits_verified": true,
+  "distinct_profile_criterion_verified": true
+}

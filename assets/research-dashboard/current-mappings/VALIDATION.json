@@ -1,0 +1,2844 @@
+{
+  "updated": 1791241662.108535,
+  "requested_designs": 315,
+  "counts": {
+    "complete": 315
+  },
+  "checks": [
+    {
+      "chiplets": 4,
+      "cores_per_chiplet": 1,
+      "name": "darknet19",
+      "same_mapping_set": true,
+      "same_limits": true,
+      "monotonic": true,
+      "mapping_count": 1
+    },
+    {
+      "chiplets": 4,
+      "cores_per_chiplet": 1,
+      "name": "vgg19",
+      "same_mapping_set": true,
+      "same_limits": true,
+      "monotonic": true,
+      "mapping_count": 1
+    },
+    {
+      "chiplets": 4,
+      "cores_per_chiplet": 1,
+      "name": "resnet50",
+      "same_mapping_set": true,
+      "same_limits": true,
+      "monotonic": true,
+      "mapping_count": 1
+    },
+    {
+      "chiplets": 4,
+      "cores_per_chiplet": 1,
+      "name": "googlenet",
+      "same_mapping_set": true,
+      "same_limits": true,
+      "monotonic": true,
+      "mapping_count": 1
+    },
+    {
+      "chiplets": 4,
+      "cores_per_chiplet": 1,
+      "name": "resnet101",
+      "same_mapping_set": true,
+      "same_limits": true,
+      "monotonic": true,
+      "mapping_count": 1
+    },
+    {
+      "chiplets": 4,
+      "cores_per_chiplet": 1,
+      "name": "densenet",
+      "same_mapping_set": true,
+      "same_limits": true,
+      "monotonic": true,
+      "mapping_count": 1
+    },
+    {
+      "chiplets": 4,
+      "cores_per_chiplet": 1,
+      "name": "inception_resnet_v1",
+      "same_mapping_set": true,
+      "same_limits": true,
+      "monotonic": true,
+      "mapping_count": 1
+    },
+    {
+      "chiplets": 4,
+      "cores_per_chiplet": 1,
+      "name": "gnmt",
+      "same_mapping_set": true,
+      "same_limits": true,
+      "monotonic": true,
+      "mapping_count": 1
+    },
+    {
+      "chiplets": 4,
+      "cores_per_chiplet": 1,
+      "name": "lstm",
+      "same_mapping_set": true,
+      "same_limits": true,
+      "monotonic": true,
+      "mapping_count": 1
+    },
+    {
+      "chiplets": 4,
+      "cores_per_chiplet": 1,
+      "name": "transformer",
+      "same_mapping_set": true,
+      "same_limits": true,
+      "monotonic": true,
+      "mapping_count": 3
+    },
+    {
+      "chiplets": 4,
+      "cores_per_chiplet": 1,
+      "name": "transformer_cell",
+      "same_mapping_set": true,
+      "same_limits": true,
+      "monotonic": true,
+      "mapping_count": 1
+    },
+    {
+      "chiplets": 4,
+      "cores_per_chiplet": 1,
+      "name": "pnasnet",
+      "same_mapping_set": true,
+      "same_limits": true,
+      "monotonic": true,
+      "mapping_count": 1
+    },
+    {
+      "chiplets": 4,
+      "cores_per_chiplet": 1,
+      "name": "resnext50",
+      "same_mapping_set": true,
+      "same_limits": true,
+      "monotonic": true,
+      "mapping_count": 1
+    },
+    {
+      "chiplets": 4,
+      "cores_per_chiplet": 1,
+      "name": "resnet152",
+      "same_mapping_set": true,
+      "same_limits": true,
+      "monotonic": true,
+      "mapping_count": 1
+    },
+    {
+      "chiplets": 4,
+      "cores_per_chiplet": 1,
+      "name": "bert_block",
+      "same_mapping_set": true,
+      "same_limits": true,
+      "monotonic": true,
+      "mapping_count": 1
+    },
+    {
+      "chiplets": 4,
+      "cores_per_chiplet": 1,
+      "name": "gpt_prefill_block",
+      "same_mapping_set": true,
+      "same_limits": true,
+      "monotonic": true,
+      "mapping_count": 1
+    },
+    {
+      "chiplets": 4,
+      "cores_per_chiplet": 1,
+      "name": "gpt_decode_block",
+      "same_mapping_set": true,
+      "same_limits": true,
+      "monotonic": true,
+      "mapping_count": 2
+    },
+    {
+      "chiplets": 4,
+      "cores_per_chiplet": 1,
+      "name": "CNN",
+      "same_mapping_set": true,
+      "same_limits": true,
+      "monotonic": true,
+      "mapping_count": 10
+    },
+    {
+      "chiplets": 4,
+      "cores_per_chiplet": 1,
+      "name": "RNN",
+      "same_mapping_set": true,
+      "same_limits": true,
+      "monotonic": true,
+      "mapping_count": 2
+    },
+    {
+      "chiplets": 4,
+      "cores_per_chiplet": 1,
+      "name": "Transformer",
+      "same_mapping_set": true,
+      "same_limits": true,
+      "monotonic": true,
+      "mapping_count": 8
+    },
+    {
+      "chiplets": 4,
+      "cores_per_chiplet": 1,
+      "name": "ALL17",
+      "same_mapping_set": true,
+      "same_limits": true,
+      "monotonic": true,
+      "mapping_count": 20
+    },
+    {
+      "chiplets": 4,
+      "cores_per_chiplet": 4,
+      "name": "darknet19",
+      "same_mapping_set": true,
+      "same_limits": true,
+      "monotonic": true,
+      "mapping_count": 3
+    },
+    {
+      "chiplets": 4,
+      "cores_per_chiplet": 4,
+      "name": "vgg19",
+      "same_mapping_set": true,
+      "same_limits": true,
+      "monotonic": true,
+      "mapping_count": 1
+    },
+    {
+      "chiplets": 4,
+      "cores_per_chiplet": 4,
+      "name": "resnet50",
+      "same_mapping_set": true,
+      "same_limits": true,
+      "monotonic": true,
+      "mapping_count": 1
+    },
+    {
+      "chiplets": 4,
+      "cores_per_chiplet": 4,
+      "name": "googlenet",
+      "same_mapping_set": true,
+      "same_limits": true,
+      "monotonic": true,
+      "mapping_count": 2
+    },
+    {
+      "chiplets": 4,
+      "cores_per_chiplet": 4,
+      "name": "resnet101",
+      "same_mapping_set": true,
+      "same_limits": true,
+      "monotonic": true,
+      "mapping_count": 1
+    },
+    {
+      "chiplets": 4,
+      "cores_per_chiplet": 4,
+      "name": "densenet",
+      "same_mapping_set": true,
+      "same_limits": true,
+      "monotonic": true,
+      "mapping_count": 2
+    },
+    {
+      "chiplets": 4,
+      "cores_per_chiplet": 4,
+      "name": "inception_resnet_v1",
+      "same_mapping_set": true,
+      "same_limits": true,
+      "monotonic": true,
+      "mapping_count": 2
+    },
+    {
+      "chiplets": 4,
+      "cores_per_chiplet": 4,
+      "name": "gnmt",
+      "same_mapping_set": true,
+      "same_limits": true,
+      "monotonic": true,
+      "mapping_count": 5
+    },
+    {
+      "chiplets": 4,
+      "cores_per_chiplet": 4,
+      "name": "lstm",
+      "same_mapping_set": true,
+      "same_limits": true,
+      "monotonic": true,
+      "mapping_count": 5
+    },
+    {
+      "chiplets": 4,
+      "cores_per_chiplet": 4,
+      "name": "transformer",
+      "same_mapping_set": true,
+      "same_limits": true,
+      "monotonic": true,
+      "mapping_count": 1
+    },
+    {
+      "chiplets": 4,
+      "cores_per_chiplet": 4,
+      "name": "transformer_cell",
+      "same_mapping_set": true,
+      "same_limits": true,
+      "monotonic": true,
+      "mapping_count": 3
+    },
+    {
+      "chiplets": 4,
+      "cores_per_chiplet": 4,
+      "name": "pnasnet",
+      "same_mapping_set": true,
+      "same_limits": true,
+      "monotonic": true,
+      "mapping_count": 3
+    },
+    {
+      "chiplets": 4,
+      "cores_per_chiplet": 4,
+      "name": "resnext50",
+      "same_mapping_set": true,
+      "same_limits": true,
+      "monotonic": true,
+      "mapping_count": 1
+    },
+    {
+      "chiplets": 4,
+      "cores_per_chiplet": 4,
+      "name": "resnet152",
+      "same_mapping_set": true,
+      "same_limits": true,
+      "monotonic": true,
+      "mapping_count": 1
+    },
+    {
+      "chiplets": 4,
+      "cores_per_chiplet": 4,
+      "name": "bert_block",
+      "same_mapping_set": true,
+      "same_limits": true,
+      "monotonic": true,
+      "mapping_count": 2
+    },
+    {
+      "chiplets": 4,
+      "cores_per_chiplet": 4,
+      "name": "gpt_prefill_block",
+      "same_mapping_set": true,
+      "same_limits": true,
+      "monotonic": true,
+      "mapping_count": 1
+    },
+    {
+      "chiplets": 4,
+      "cores_per_chiplet": 4,
+      "name": "gpt_decode_block",
+      "same_mapping_set": true,
+      "same_limits": true,
+      "monotonic": true,
+      "mapping_count": 5
+    },
+    {
+      "chiplets": 4,
+      "cores_per_chiplet": 4,
+      "name": "CNN",
+      "same_mapping_set": true,
+      "same_limits": true,
+      "monotonic": true,
+      "mapping_count": 17
+    },
+    {
+      "chiplets": 4,
+      "cores_per_chiplet": 4,
+      "name": "RNN",
+      "same_mapping_set": true,
+      "same_limits": true,
+      "monotonic": true,
+      "mapping_count": 10
+    },
+    {
+      "chiplets": 4,
+      "cores_per_chiplet": 4,
+      "name": "Transformer",
+      "same_mapping_set": true,
+      "same_limits": true,
+      "monotonic": true,
+      "mapping_count": 12
+    },
+    {
+      "chiplets": 4,
+      "cores_per_chiplet": 4,
+      "name": "ALL17",
+      "same_mapping_set": true,
+      "same_limits": true,
+      "monotonic": true,
+      "mapping_count": 39
+    },
+    {
+      "chiplets": 4,
+      "cores_per_chiplet": 16,
+      "name": "darknet19",
+      "same_mapping_set": true,
+      "same_limits": true,
+      "monotonic": true,
+      "mapping_count": 4
+    },
+    {
+      "chiplets": 4,
+      "cores_per_chiplet": 16,
+      "name": "vgg19",
+      "same_mapping_set": true,
+      "same_limits": true,
+      "monotonic": true,
+      "mapping_count": 1
+    },
+    {
+      "chiplets": 4,
+      "cores_per_chiplet": 16,
+      "name": "resnet50",
+      "same_mapping_set": true,
+      "same_limits": true,
+      "monotonic": true,
+      "mapping_count": 2
+    },
+    {
+      "chiplets": 4,
+      "cores_per_chiplet": 16,
+      "name": "googlenet",
+      "same_mapping_set": true,
+      "same_limits": true,
+      "monotonic": true,
+      "mapping_count": 5
+    },
+    {
+      "chiplets": 4,
+      "cores_per_chiplet": 16,
+      "name": "resnet101",
+      "same_mapping_set": true,
+      "same_limits": true,
+      "monotonic": true,
+      "mapping_count": 2
+    },
+    {
+      "chiplets": 4,
+      "cores_per_chiplet": 16,
+      "name": "densenet",
+      "same_mapping_set": true,
+      "same_limits": true,
+      "monotonic": true,
+      "mapping_count": 3
+    },
+    {
+      "chiplets": 4,
+      "cores_per_chiplet": 16,
+      "name": "inception_resnet_v1",
+      "same_mapping_set": true,
+      "same_limits": true,
+      "monotonic": true,
+      "mapping_count": 2
+    },
+    {
+      "chiplets": 4,
+      "cores_per_chiplet": 16,
+      "name": "gnmt",
+      "same_mapping_set": true,
+      "same_limits": true,
+      "monotonic": true,
+      "mapping_count": 5
+    },
+    {
+      "chiplets": 4,
+      "cores_per_chiplet": 16,
+      "name": "lstm",
+      "same_mapping_set": true,
+      "same_limits": true,
+      "monotonic": true,
+      "mapping_count": 5
+    },
+    {
+      "chiplets": 4,
+      "cores_per_chiplet": 16,
+      "name": "transformer",
+      "same_mapping_set": true,
+      "same_limits": true,
+      "monotonic": true,
+      "mapping_count": 3
+    },
+    {
+      "chiplets": 4,
+      "cores_per_chiplet": 16,
+      "name": "transformer_cell",
+      "same_mapping_set": true,
+      "same_limits": true,
+      "monotonic": true,
+      "mapping_count": 2
+    },
+    {
+      "chiplets": 4,
+      "cores_per_chiplet": 16,
+      "name": "pnasnet",
+      "same_mapping_set": true,
+      "same_limits": true,
+      "monotonic": true,
+      "mapping_count": 3
+    },
+    {
+      "chiplets": 4,
+      "cores_per_chiplet": 16,
+      "name": "resnext50",
+      "same_mapping_set": true,
+      "same_limits": true,
+      "monotonic": true,
+      "mapping_count": 2
+    },
+    {
+      "chiplets": 4,
+      "cores_per_chiplet": 16,
+      "name": "resnet152",
+      "same_mapping_set": true,
+      "same_limits": true,
+      "monotonic": true,
+      "mapping_count": 2
+    },
+    {
+      "chiplets": 4,
+      "cores_per_chiplet": 16,
+      "name": "bert_block",
+      "same_mapping_set": true,
+      "same_limits": true,
+      "monotonic": true,
+      "mapping_count": 2
+    },
+    {
+      "chiplets": 4,
+      "cores_per_chiplet": 16,
+      "name": "gpt_prefill_block",
+      "same_mapping_set": true,
+      "same_limits": true,
+      "monotonic": true,
+      "mapping_count": 4
+    },
+    {
+      "chiplets": 4,
+      "cores_per_chiplet": 16,
+      "name": "gpt_decode_block",
+      "same_mapping_set": true,
+      "same_limits": true,
+      "monotonic": true,
+      "mapping_count": 5
+    },
+    {
+      "chiplets": 4,
+      "cores_per_chiplet": 16,
+      "name": "CNN",
+      "same_mapping_set": true,
+      "same_limits": true,
+      "monotonic": true,
+      "mapping_count": 26
+    },
+    {
+      "chiplets": 4,
+      "cores_per_chiplet": 16,
+      "name": "RNN",
+      "same_mapping_set": true,
+      "same_limits": true,
+      "monotonic": true,
+      "mapping_count": 10
+    },
+    {
+      "chiplets": 4,
+      "cores_per_chiplet": 16,
+      "name": "Transformer",
+      "same_mapping_set": true,
+      "same_limits": true,
+      "monotonic": true,
+      "mapping_count": 16
+    },
+    {
+      "chiplets": 4,
+      "cores_per_chiplet": 16,
+      "name": "ALL17",
+      "same_mapping_set": true,
+      "same_limits": true,
+      "monotonic": true,
+      "mapping_count": 52
+    },
+    {
+      "chiplets": 8,
+      "cores_per_chiplet": 1,
+      "name": "darknet19",
+      "same_mapping_set": true,
+      "same_limits": true,
+      "monotonic": true,
+      "mapping_count": 1
+    },
+    {
+      "chiplets": 8,
+      "cores_per_chiplet": 1,
+      "name": "vgg19",
+      "same_mapping_set": true,
+      "same_limits": true,
+      "monotonic": true,
+      "mapping_count": 1
+    },
+    {
+      "chiplets": 8,
+      "cores_per_chiplet": 1,
+      "name": "resnet50",
+      "same_mapping_set": true,
+      "same_limits": true,
+      "monotonic": true,
+      "mapping_count": 3
+    },
+    {
+      "chiplets": 8,
+      "cores_per_chiplet": 1,
+      "name": "googlenet",
+      "same_mapping_set": true,
+      "same_limits": true,
+      "monotonic": true,
+      "mapping_count": 2
+    },
+    {
+      "chiplets": 8,
+      "cores_per_chiplet": 1,
+      "name": "resnet101",
+      "same_mapping_set": true,
+      "same_limits": true,
+      "monotonic": true,
+      "mapping_count": 2
+    },
+    {
+      "chiplets": 8,
+      "cores_per_chiplet": 1,
+      "name": "densenet",
+      "same_mapping_set": true,
+      "same_limits": true,
+      "monotonic": true,
+      "mapping_count": 3
+    },
+    {
+      "chiplets": 8,
+      "cores_per_chiplet": 1,
+      "name": "inception_resnet_v1",
+      "same_mapping_set": true,
+      "same_limits": true,
+      "monotonic": true,
+      "mapping_count": 2
+    },
+    {
+      "chiplets": 8,
+      "cores_per_chiplet": 1,
+      "name": "gnmt",
+      "same_mapping_set": true,
+      "same_limits": true,
+      "monotonic": true,
+      "mapping_count": 2
+    },
+    {
+      "chiplets": 8,
+      "cores_per_chiplet": 1,
+      "name": "lstm",
+      "same_mapping_set": true,
+      "same_limits": true,
+      "monotonic": true,
+      "mapping_count": 3
+    },
+    {
+      "chiplets": 8,
+      "cores_per_chiplet": 1,
+      "name": "transformer",
+      "same_mapping_set": true,
+      "same_limits": true,
+      "monotonic": true,
+      "mapping_count": 1
+    },
+    {
+      "chiplets": 8,
+      "cores_per_chiplet": 1,
+      "name": "transformer_cell",
+      "same_mapping_set": true,
+      "same_limits": true,
+      "monotonic": true,
+      "mapping_count": 2
+    },
+    {
+      "chiplets": 8,
+      "cores_per_chiplet": 1,
+      "name": "pnasnet",
+      "same_mapping_set": true,
+      "same_limits": true,
+      "monotonic": true,
+      "mapping_count": 4
+    },
+    {
+      "chiplets": 8,
+      "cores_per_chiplet": 1,
+      "name": "resnext50",
+      "same_mapping_set": true,
+      "same_limits": true,
+      "monotonic": true,
+      "mapping_count": 2
+    },
+    {
+      "chiplets": 8,
+      "cores_per_chiplet": 1,
+      "name": "resnet152",
+      "same_mapping_set": true,
+      "same_limits": true,
+      "monotonic": true,
+      "mapping_count": 2
+    },
+    {
+      "chiplets": 8,
+      "cores_per_chiplet": 1,
+      "name": "bert_block",
+      "same_mapping_set": true,
+      "same_limits": true,
+      "monotonic": true,
+      "mapping_count": 1
+    },
+    {
+      "chiplets": 8,
+      "cores_per_chiplet": 1,
+      "name": "gpt_prefill_block",
+      "same_mapping_set": true,
+      "same_limits": true,
+      "monotonic": true,
+      "mapping_count": 1
+    },
+    {
+      "chiplets": 8,
+      "cores_per_chiplet": 1,
+      "name": "gpt_decode_block",
+      "same_mapping_set": true,
+      "same_limits": true,
+      "monotonic": true,
+      "mapping_count": 1
+    },
+    {
+      "chiplets": 8,
+      "cores_per_chiplet": 1,
+      "name": "CNN",
+      "same_mapping_set": true,
+      "same_limits": true,
+      "monotonic": true,
+      "mapping_count": 22
+    },
+    {
+      "chiplets": 8,
+      "cores_per_chiplet": 1,
+      "name": "RNN",
+      "same_mapping_set": true,
+      "same_limits": true,
+      "monotonic": true,
+      "mapping_count": 5
+    },
+    {
+      "chiplets": 8,
+      "cores_per_chiplet": 1,
+      "name": "Transformer",
+      "same_mapping_set": true,
+      "same_limits": true,
+      "monotonic": true,
+      "mapping_count": 6
+    },
+    {
+      "chiplets": 8,
+      "cores_per_chiplet": 1,
+      "name": "ALL17",
+      "same_mapping_set": true,
+      "same_limits": true,
+      "monotonic": true,
+      "mapping_count": 33
+    },
+    {
+      "chiplets": 8,
+      "cores_per_chiplet": 4,
+      "name": "darknet19",
+      "same_mapping_set": true,
+      "same_limits": true,
+      "monotonic": true,
+      "mapping_count": 4
+    },
+    {
+      "chiplets": 8,
+      "cores_per_chiplet": 4,
+      "name": "vgg19",
+      "same_mapping_set": true,
+      "same_limits": true,
+      "monotonic": true,
+      "mapping_count": 1
+    },
+    {
+      "chiplets": 8,
+      "cores_per_chiplet": 4,
+      "name": "resnet50",
+      "same_mapping_set": true,
+      "same_limits": true,
+      "monotonic": true,
+      "mapping_count": 4
+    },
+    {
+      "chiplets": 8,
+      "cores_per_chiplet": 4,
+      "name": "googlenet",
+      "same_mapping_set": true,
+      "same_limits": true,
+      "monotonic": true,
+      "mapping_count": 2
+    },
+    {
+      "chiplets": 8,
+      "cores_per_chiplet": 4,
+      "name": "resnet101",
+      "same_mapping_set": true,
+      "same_limits": true,
+      "monotonic": true,
+      "mapping_count": 4
+    },
+    {
+      "chiplets": 8,
+      "cores_per_chiplet": 4,
+      "name": "densenet",
+      "same_mapping_set": true,
+      "same_limits": true,
+      "monotonic": true,
+      "mapping_count": 3
+    },
+    {
+      "chiplets": 8,
+      "cores_per_chiplet": 4,
+      "name": "inception_resnet_v1",
+      "same_mapping_set": true,
+      "same_limits": true,
+      "monotonic": true,
+      "mapping_count": 2
+    },
+    {
+      "chiplets": 8,
+      "cores_per_chiplet": 4,
+      "name": "gnmt",
+      "same_mapping_set": true,
+      "same_limits": true,
+      "monotonic": true,
+      "mapping_count": 2
+    },
+    {
+      "chiplets": 8,
+      "cores_per_chiplet": 4,
+      "name": "lstm",
+      "same_mapping_set": true,
+      "same_limits": true,
+      "monotonic": true,
+      "mapping_count": 2
+    },
+    {
+      "chiplets": 8,
+      "cores_per_chiplet": 4,
+      "name": "transformer",
+      "same_mapping_set": true,
+      "same_limits": true,
+      "monotonic": true,
+      "mapping_count": 1
+    },
+    {
+      "chiplets": 8,
+      "cores_per_chiplet": 4,
+      "name": "transformer_cell",
+      "same_mapping_set": true,
+      "same_limits": true,
+      "monotonic": true,
+      "mapping_count": 3
+    },
+    {
+      "chiplets": 8,
+      "cores_per_chiplet": 4,
+      "name": "pnasnet",
+      "same_mapping_set": true,
+      "same_limits": true,
+      "monotonic": true,
+      "mapping_count": 5
+    },
+    {
+      "chiplets": 8,
+      "cores_per_chiplet": 4,
+      "name": "resnext50",
+      "same_mapping_set": true,
+      "same_limits": true,
+      "monotonic": true,
+      "mapping_count": 4
+    },
+    {
+      "chiplets": 8,
+      "cores_per_chiplet": 4,
+      "name": "resnet152",
+      "same_mapping_set": true,
+      "same_limits": true,
+      "monotonic": true,
+      "mapping_count": 2
+    },
+    {
+      "chiplets": 8,
+      "cores_per_chiplet": 4,
+      "name": "bert_block",
+      "same_mapping_set": true,
+      "same_limits": true,
+      "monotonic": true,
+      "mapping_count": 1
+    },
+    {
+      "chiplets": 8,
+      "cores_per_chiplet": 4,
+      "name": "gpt_prefill_block",
+      "same_mapping_set": true,
+      "same_limits": true,
+      "monotonic": true,
+      "mapping_count": 2
+    },
+    {
+      "chiplets": 8,
+      "cores_per_chiplet": 4,
+      "name": "gpt_decode_block",
+      "same_mapping_set": true,
+      "same_limits": true,
+      "monotonic": true,
+      "mapping_count": 5
+    },
+    {
+      "chiplets": 8,
+      "cores_per_chiplet": 4,
+      "name": "CNN",
+      "same_mapping_set": true,
+      "same_limits": true,
+      "monotonic": true,
+      "mapping_count": 31
+    },
+    {
+      "chiplets": 8,
+      "cores_per_chiplet": 4,
+      "name": "RNN",
+      "same_mapping_set": true,
+      "same_limits": true,
+      "monotonic": true,
+      "mapping_count": 4
+    },
+    {
+      "chiplets": 8,
+      "cores_per_chiplet": 4,
+      "name": "Transformer",
+      "same_mapping_set": true,
+      "same_limits": true,
+      "monotonic": true,
+      "mapping_count": 12
+    },
+    {
+      "chiplets": 8,
+      "cores_per_chiplet": 4,
+      "name": "ALL17",
+      "same_mapping_set": true,
+      "same_limits": true,
+      "monotonic": true,
+      "mapping_count": 47
+    },
+    {
+      "chiplets": 8,
+      "cores_per_chiplet": 16,
+      "name": "darknet19",
+      "same_mapping_set": true,
+      "same_limits": true,
+      "monotonic": true,
+      "mapping_count": 4
+    },
+    {
+      "chiplets": 8,
+      "cores_per_chiplet": 16,
+      "name": "vgg19",
+      "same_mapping_set": true,
+      "same_limits": true,
+      "monotonic": true,
+      "mapping_count": 2
+    },
+    {
+      "chiplets": 8,
+      "cores_per_chiplet": 16,
+      "name": "resnet50",
+      "same_mapping_set": true,
+      "same_limits": true,
+      "monotonic": true,
+      "mapping_count": 2
+    },
+    {
+      "chiplets": 8,
+      "cores_per_chiplet": 16,
+      "name": "googlenet",
+      "same_mapping_set": true,
+      "same_limits": true,
+      "monotonic": true,
+      "mapping_count": 2
+    },
+    {
+      "chiplets": 8,
+      "cores_per_chiplet": 16,
+      "name": "resnet101",
+      "same_mapping_set": true,
+      "same_limits": true,
+      "monotonic": true,
+      "mapping_count": 3
+    },
+    {
+      "chiplets": 8,
+      "cores_per_chiplet": 16,
+      "name": "densenet",
+      "same_mapping_set": true,
+      "same_limits": true,
+      "monotonic": true,
+      "mapping_count": 3
+    },
+    {
+      "chiplets": 8,
+      "cores_per_chiplet": 16,
+      "name": "inception_resnet_v1",
+      "same_mapping_set": true,
+      "same_limits": true,
+      "monotonic": true,
+      "mapping_count": 3
+    },
+    {
+      "chiplets": 8,
+      "cores_per_chiplet": 16,
+      "name": "gnmt",
+      "same_mapping_set": true,
+      "same_limits": true,
+      "monotonic": true,
+      "mapping_count": 5
+    },
+    {
+      "chiplets": 8,
+      "cores_per_chiplet": 16,
+      "name": "lstm",
+      "same_mapping_set": true,
+      "same_limits": true,
+      "monotonic": true,
+      "mapping_count": 5
+    },
+    {
+      "chiplets": 8,
+      "cores_per_chiplet": 16,
+      "name": "transformer",
+      "same_mapping_set": true,
+      "same_limits": true,
+      "monotonic": true,
+      "mapping_count": 5
+    },
+    {
+      "chiplets": 8,
+      "cores_per_chiplet": 16,
+      "name": "transformer_cell",
+      "same_mapping_set": true,
+      "same_limits": true,
+      "monotonic": true,
+      "mapping_count": 5
+    },
+    {
+      "chiplets": 8,
+      "cores_per_chiplet": 16,
+      "name": "pnasnet",
+      "same_mapping_set": true,
+      "same_limits": true,
+      "monotonic": true,
+      "mapping_count": 3
+    },
+    {
+      "chiplets": 8,
+      "cores_per_chiplet": 16,
+      "name": "resnext50",
+      "same_mapping_set": true,
+      "same_limits": true,
+      "monotonic": true,
+      "mapping_count": 3
+    },
+    {
+      "chiplets": 8,
+      "cores_per_chiplet": 16,
+      "name": "resnet152",
+      "same_mapping_set": true,
+      "same_limits": true,
+      "monotonic": true,
+      "mapping_count": 2
+    },
+    {
+      "chiplets": 8,
+      "cores_per_chiplet": 16,
+      "name": "bert_block",
+      "same_mapping_set": true,
+      "same_limits": true,
+      "monotonic": true,
+      "mapping_count": 5
+    },
+    {
+      "chiplets": 8,
+      "cores_per_chiplet": 16,
+      "name": "gpt_prefill_block",
+      "same_mapping_set": true,
+      "same_limits": true,
+      "monotonic": true,
+      "mapping_count": 4
+    },
+    {
+      "chiplets": 8,
+      "cores_per_chiplet": 16,
+      "name": "gpt_decode_block",
+      "same_mapping_set": true,
+      "same_limits": true,
+      "monotonic": true,
+      "mapping_count": 5
+    },
+    {
+      "chiplets": 8,
+      "cores_per_chiplet": 16,
+      "name": "CNN",
+      "same_mapping_set": true,
+      "same_limits": true,
+      "monotonic": true,
+      "mapping_count": 27
+    },
+    {
+      "chiplets": 8,
+      "cores_per_chiplet": 16,
+      "name": "RNN",
+      "same_mapping_set": true,
+      "same_limits": true,
+      "monotonic": true,
+      "mapping_count": 10
+    },
+    {
+      "chiplets": 8,
+      "cores_per_chiplet": 16,
+      "name": "Transformer",
+      "same_mapping_set": true,
+      "same_limits": true,
+      "monotonic": true,
+      "mapping_count": 24
+    },
+    {
+      "chiplets": 8,
+      "cores_per_chiplet": 16,
+      "name": "ALL17",
+      "same_mapping_set": true,
+      "same_limits": true,
+      "monotonic": true,
+      "mapping_count": 61
+    },
+    {
+      "chiplets": 16,
+      "cores_per_chiplet": 1,
+      "name": "darknet19",
+      "same_mapping_set": true,
+      "same_limits": true,
+      "monotonic": true,
+      "mapping_count": 5
+    },
+    {
+      "chiplets": 16,
+      "cores_per_chiplet": 1,
+      "name": "vgg19",
+      "same_mapping_set": true,
+      "same_limits": true,
+      "monotonic": true,
+      "mapping_count": 5
+    },
+    {
+      "chiplets": 16,
+      "cores_per_chiplet": 1,
+      "name": "resnet50",
+      "same_mapping_set": true,
+      "same_limits": true,
+      "monotonic": true,
+      "mapping_count": 5
+    },
+    {
+      "chiplets": 16,
+      "cores_per_chiplet": 1,
+      "name": "googlenet",
+      "same_mapping_set": true,
+      "same_limits": true,
+      "monotonic": true,
+      "mapping_count": 5
+    },
+    {
+      "chiplets": 16,
+      "cores_per_chiplet": 1,
+      "name": "resnet101",
+      "same_mapping_set": true,
+      "same_limits": true,
+      "monotonic": true,
+      "mapping_count": 5
+    },
+    {
+      "chiplets": 16,
+      "cores_per_chiplet": 1,
+      "name": "densenet",
+      "same_mapping_set": true,
+      "same_limits": true,
+      "monotonic": true,
+      "mapping_count": 5
+    },
+    {
+      "chiplets": 16,
+      "cores_per_chiplet": 1,
+      "name": "inception_resnet_v1",
+      "same_mapping_set": true,
+      "same_limits": true,
+      "monotonic": true,
+      "mapping_count": 5
+    },
+    {
+      "chiplets": 16,
+      "cores_per_chiplet": 1,
+      "name": "gnmt",
+      "same_mapping_set": true,
+      "same_limits": true,
+      "monotonic": true,
+      "mapping_count": 5
+    },
+    {
+      "chiplets": 16,
+      "cores_per_chiplet": 1,
+      "name": "lstm",
+      "same_mapping_set": true,
+      "same_limits": true,
+      "monotonic": true,
+      "mapping_count": 5
+    },
+    {
+      "chiplets": 16,
+      "cores_per_chiplet": 1,
+      "name": "transformer",
+      "same_mapping_set": true,
+      "same_limits": true,
+      "monotonic": true,
+      "mapping_count": 5
+    },
+    {
+      "chiplets": 16,
+      "cores_per_chiplet": 1,
+      "name": "transformer_cell",
+      "same_mapping_set": true,
+      "same_limits": true,
+      "monotonic": true,
+      "mapping_count": 5
+    },
+    {
+      "chiplets": 16,
+      "cores_per_chiplet": 1,
+      "name": "pnasnet",
+      "same_mapping_set": true,
+      "same_limits": true,
+      "monotonic": true,
+      "mapping_count": 5
+    },
+    {
+      "chiplets": 16,
+      "cores_per_chiplet": 1,
+      "name": "resnext50",
+      "same_mapping_set": true,
+      "same_limits": true,
+      "monotonic": true,
+      "mapping_count": 5
+    },
+    {
+      "chiplets": 16,
+      "cores_per_chiplet": 1,
+      "name": "resnet152",
+      "same_mapping_set": true,
+      "same_limits": true,
+      "monotonic": true,
+      "mapping_count": 5
+    },
+    {
+      "chiplets": 16,
+      "cores_per_chiplet": 1,
+      "name": "bert_block",
+      "same_mapping_set": true,
+      "same_limits": true,
+      "monotonic": true,
+      "mapping_count": 5
+    },
+    {
+      "chiplets": 16,
+      "cores_per_chiplet": 1,
+      "name": "gpt_prefill_block",
+      "same_mapping_set": true,
+      "same_limits": true,
+      "monotonic": true,
+      "mapping_count": 5
+    },
+    {
+      "chiplets": 16,
+      "cores_per_chiplet": 1,
+      "name": "gpt_decode_block",
+      "same_mapping_set": true,
+      "same_limits": true,
+      "monotonic": true,
+      "mapping_count": 5
+    },
+    {
+      "chiplets": 16,
+      "cores_per_chiplet": 1,
+      "name": "CNN",
+      "same_mapping_set": true,
+      "same_limits": true,
+      "monotonic": true,
+      "mapping_count": 50
+    },
+    {
+      "chiplets": 16,
+      "cores_per_chiplet": 1,
+      "name": "RNN",
+      "same_mapping_set": true,
+      "same_limits": true,
+      "monotonic": true,
+      "mapping_count": 10
+    },
+    {
+      "chiplets": 16,
+      "cores_per_chiplet": 1,
+      "name": "Transformer",
+      "same_mapping_set": true,
+      "same_limits": true,
+      "monotonic": true,
+      "mapping_count": 25
+    },
+    {
+      "chiplets": 16,
+      "cores_per_chiplet": 1,
+      "name": "ALL17",
+      "same_mapping_set": true,
+      "same_limits": true,
+      "monotonic": true,
+      "mapping_count": 85
+    },
+    {
+      "chiplets": 16,
+      "cores_per_chiplet": 4,
+      "name": "darknet19",
+      "same_mapping_set": true,
+      "same_limits": true,
+      "monotonic": true,
+      "mapping_count": 5
+    },
+    {
+      "chiplets": 16,
+      "cores_per_chiplet": 4,
+      "name": "vgg19",
+      "same_mapping_set": true,
+      "same_limits": true,
+      "monotonic": true,
+      "mapping_count": 2
+    },
+    {
+      "chiplets": 16,
+      "cores_per_chiplet": 4,
+      "name": "resnet50",
+      "same_mapping_set": true,
+      "same_limits": true,
+      "monotonic": true,
+      "mapping_count": 3
+    },
+    {
+      "chiplets": 16,
+      "cores_per_chiplet": 4,
+      "name": "googlenet",
+      "same_mapping_set": true,
+      "same_limits": true,
+      "monotonic": true,
+      "mapping_count": 5
+    },
+    {
+      "chiplets": 16,
+      "cores_per_chiplet": 4,
+      "name": "resnet101",
+      "same_mapping_set": true,
+      "same_limits": true,
+      "monotonic": true,
+      "mapping_count": 2
+    },
+    {
+      "chiplets": 16,
+      "cores_per_chiplet": 4,
+      "name": "densenet",
+      "same_mapping_set": true,
+      "same_limits": true,
+      "monotonic": true,
+      "mapping_count": 3
+    },
+    {
+      "chiplets": 16,
+      "cores_per_chiplet": 4,
+      "name": "inception_resnet_v1",
+      "same_mapping_set": true,
+      "same_limits": true,
+      "monotonic": true,
+      "mapping_count": 3
+    },
+    {
+      "chiplets": 16,
+      "cores_per_chiplet": 4,
+      "name": "gnmt",
+      "same_mapping_set": true,
+      "same_limits": true,
+      "monotonic": true,
+      "mapping_count": 5
+    },
+    {
+      "chiplets": 16,
+      "cores_per_chiplet": 4,
+      "name": "lstm",
+      "same_mapping_set": true,
+      "same_limits": true,
+      "monotonic": true,
+      "mapping_count": 5
+    },
+    {
+      "chiplets": 16,
+      "cores_per_chiplet": 4,
+      "name": "transformer",
+      "same_mapping_set": true,
+      "same_limits": true,
+      "monotonic": true,
+      "mapping_count": 4
+    },
+    {
+      "chiplets": 16,
+      "cores_per_chiplet": 4,
+      "name": "transformer_cell",
+      "same_mapping_set": true,
+      "same_limits": true,
+      "monotonic": true,
+      "mapping_count": 2
+    },
+    {
+      "chiplets": 16,
+      "cores_per_chiplet": 4,
+      "name": "pnasnet",
+      "same_mapping_set": true,
+      "same_limits": true,
+      "monotonic": true,
+      "mapping_count": 5
+    },
+    {
+      "chiplets": 16,
+      "cores_per_chiplet": 4,
+      "name": "resnext50",
+      "same_mapping_set": true,
+      "same_limits": true,
+      "monotonic": true,
+      "mapping_count": 3
+    },
+    {
+      "chiplets": 16,
+      "cores_per_chiplet": 4,
+      "name": "resnet152",
+      "same_mapping_set": true,
+      "same_limits": true,
+      "monotonic": true,
+      "mapping_count": 1
+    },
+    {
+      "chiplets": 16,
+      "cores_per_chiplet": 4,
+      "name": "bert_block",
+      "same_mapping_set": true,
+      "same_limits": true,
+      "monotonic": true,
+      "mapping_count": 2
+    },
+    {
+      "chiplets": 16,
+      "cores_per_chiplet": 4,
+      "name": "gpt_prefill_block",
+      "same_mapping_set": true,
+      "same_limits": true,
+      "monotonic": true,
+      "mapping_count": 4
+    },
+    {
+      "chiplets": 16,
+      "cores_per_chiplet": 4,
+      "name": "gpt_decode_block",
+      "same_mapping_set": true,
+      "same_limits": true,
+      "monotonic": true,
+      "mapping_count": 5
+    },
+    {
+      "chiplets": 16,
+      "cores_per_chiplet": 4,
+      "name": "CNN",
+      "same_mapping_set": true,
+      "same_limits": true,
+      "monotonic": true,
+      "mapping_count": 32
+    },
+    {
+      "chiplets": 16,
+      "cores_per_chiplet": 4,
+      "name": "RNN",
+      "same_mapping_set": true,
+      "same_limits": true,
+      "monotonic": true,
+      "mapping_count": 10
+    },
+    {
+      "chiplets": 16,
+      "cores_per_chiplet": 4,
+      "name": "Transformer",
+      "same_mapping_set": true,
+      "same_limits": true,
+      "monotonic": true,
+      "mapping_count": 17
+    },
+    {
+      "chiplets": 16,
+      "cores_per_chiplet": 4,
+      "name": "ALL17",
+      "same_mapping_set": true,
+      "same_limits": true,
+      "monotonic": true,
+      "mapping_count": 59
+    },
+    {
+      "chiplets": 16,
+      "cores_per_chiplet": 16,
+      "name": "darknet19",
+      "same_mapping_set": true,
+      "same_limits": true,
+      "monotonic": true,
+      "mapping_count": 5
+    },
+    {
+      "chiplets": 16,
+      "cores_per_chiplet": 16,
+      "name": "vgg19",
+      "same_mapping_set": true,
+      "same_limits": true,
+      "monotonic": true,
+      "mapping_count": 2
+    },
+    {
+      "chiplets": 16,
+      "cores_per_chiplet": 16,
+      "name": "resnet50",
+      "same_mapping_set": true,
+      "same_limits": true,
+      "monotonic": true,
+      "mapping_count": 5
+    },
+    {
+      "chiplets": 16,
+      "cores_per_chiplet": 16,
+      "name": "googlenet",
+      "same_mapping_set": true,
+      "same_limits": true,
+      "monotonic": true,
+      "mapping_count": 5
+    },
+    {
+      "chiplets": 16,
+      "cores_per_chiplet": 16,
+      "name": "resnet101",
+      "same_mapping_set": true,
+      "same_limits": true,
+      "monotonic": true,
+      "mapping_count": 5
+    },
+    {
+      "chiplets": 16,
+      "cores_per_chiplet": 16,
+      "name": "densenet",
+      "same_mapping_set": true,
+      "same_limits": true,
+      "monotonic": true,
+      "mapping_count": 4
+    },
+    {
+      "chiplets": 16,
+      "cores_per_chiplet": 16,
+      "name": "inception_resnet_v1",
+      "same_mapping_set": true,
+      "same_limits": true,
+      "monotonic": true,
+      "mapping_count": 5
+    },
+    {
+      "chiplets": 16,
+      "cores_per_chiplet": 16,
+      "name": "gnmt",
+      "same_mapping_set": true,
+      "same_limits": true,
+      "monotonic": true,
+      "mapping_count": 5
+    },
+    {
+      "chiplets": 16,
+      "cores_per_chiplet": 16,
+      "name": "lstm",
+      "same_mapping_set": true,
+      "same_limits": true,
+      "monotonic": true,
+      "mapping_count": 5
+    },
+    {
+      "chiplets": 16,
+      "cores_per_chiplet": 16,
+      "name": "transformer",
+      "same_mapping_set": true,
+      "same_limits": true,
+      "monotonic": true,
+      "mapping_count": 2
+    },
+    {
+      "chiplets": 16,
+      "cores_per_chiplet": 16,
+      "name": "transformer_cell",
+      "same_mapping_set": true,
+      "same_limits": true,
+      "monotonic": true,
+      "mapping_count": 5
+    },
+    {
+      "chiplets": 16,
+      "cores_per_chiplet": 16,
+      "name": "pnasnet",
+      "same_mapping_set": true,
+      "same_limits": true,
+      "monotonic": true,
+      "mapping_count": 3
+    },
+    {
+      "chiplets": 16,
+      "cores_per_chiplet": 16,
+      "name": "resnext50",
+      "same_mapping_set": true,
+      "same_limits": true,
+      "monotonic": true,
+      "mapping_count": 5
+    },
+    {
+      "chiplets": 16,
+      "cores_per_chiplet": 16,
+      "name": "resnet152",
+      "same_mapping_set": true,
+      "same_limits": true,
+      "monotonic": true,
+      "mapping_count": 5
+    },
+    {
+      "chiplets": 16,
+      "cores_per_chiplet": 16,
+      "name": "bert_block",
+      "same_mapping_set": true,
+      "same_limits": true,
+      "monotonic": true,
+      "mapping_count": 5
+    },
+    {
+      "chiplets": 16,
+      "cores_per_chiplet": 16,
+      "name": "gpt_prefill_block",
+      "same_mapping_set": true,
+      "same_limits": true,
+      "monotonic": true,
+      "mapping_count": 3
+    },
+    {
+      "chiplets": 16,
+      "cores_per_chiplet": 16,
+      "name": "gpt_decode_block",
+      "same_mapping_set": true,
+      "same_limits": true,
+      "monotonic": true,
+      "mapping_count": 5
+    },
+    {
+      "chiplets": 16,
+      "cores_per_chiplet": 16,
+      "name": "CNN",
+      "same_mapping_set": true,
+      "same_limits": true,
+      "monotonic": true,
+      "mapping_count": 44
+    },
+    {
+      "chiplets": 16,
+      "cores_per_chiplet": 16,
+      "name": "RNN",
+      "same_mapping_set": true,
+      "same_limits": true,
+      "monotonic": true,
+      "mapping_count": 10
+    },
+    {
+      "chiplets": 16,
+      "cores_per_chiplet": 16,
+      "name": "Transformer",
+      "same_mapping_set": true,
+      "same_limits": true,
+      "monotonic": true,
+      "mapping_count": 20
+    },
+    {
+      "chiplets": 16,
+      "cores_per_chiplet": 16,
+      "name": "ALL17",
+      "same_mapping_set": true,
+      "same_limits": true,
+      "monotonic": true,
+      "mapping_count": 74
+    },
+    {
+      "chiplets": 32,
+      "cores_per_chiplet": 1,
+      "name": "darknet19",
+      "same_mapping_set": true,
+      "same_limits": true,
+      "monotonic": true,
+      "mapping_count": 5
+    },
+    {
+      "chiplets": 32,
+      "cores_per_chiplet": 1,
+      "name": "vgg19",
+      "same_mapping_set": true,
+      "same_limits": true,
+      "monotonic": true,
+      "mapping_count": 5
+    },
+    {
+      "chiplets": 32,
+      "cores_per_chiplet": 1,
+      "name": "resnet50",
+      "same_mapping_set": true,
+      "same_limits": true,
+      "monotonic": true,
+      "mapping_count": 3
+    },
+    {
+      "chiplets": 32,
+      "cores_per_chiplet": 1,
+      "name": "googlenet",
+      "same_mapping_set": true,
+      "same_limits": true,
+      "monotonic": true,
+      "mapping_count": 5
+    },
+    {
+      "chiplets": 32,
+      "cores_per_chiplet": 1,
+      "name": "resnet101",
+      "same_mapping_set": true,
+      "same_limits": true,
+      "monotonic": true,
+      "mapping_count": 3
+    },
+    {
+      "chiplets": 32,
+      "cores_per_chiplet": 1,
+      "name": "densenet",
+      "same_mapping_set": true,
+      "same_limits": true,
+      "monotonic": true,
+      "mapping_count": 5
+    },
+    {
+      "chiplets": 32,
+      "cores_per_chiplet": 1,
+      "name": "inception_resnet_v1",
+      "same_mapping_set": true,
+      "same_limits": true,
+      "monotonic": true,
+      "mapping_count": 5
+    },
+    {
+      "chiplets": 32,
+      "cores_per_chiplet": 1,
+      "name": "gnmt",
+      "same_mapping_set": true,
+      "same_limits": true,
+      "monotonic": true,
+      "mapping_count": 5
+    },
+    {
+      "chiplets": 32,
+      "cores_per_chiplet": 1,
+      "name": "lstm",
+      "same_mapping_set": true,
+      "same_limits": true,
+      "monotonic": true,
+      "mapping_count": 5
+    },
+    {
+      "chiplets": 32,
+      "cores_per_chiplet": 1,
+      "name": "transformer",
+      "same_mapping_set": true,
+      "same_limits": true,
+      "monotonic": true,
+      "mapping_count": 5
+    },
+    {
+      "chiplets": 32,
+      "cores_per_chiplet": 1,
+      "name": "transformer_cell",
+      "same_mapping_set": true,
+      "same_limits": true,
+      "monotonic": true,
+      "mapping_count": 5
+    },
+    {
+      "chiplets": 32,
+      "cores_per_chiplet": 1,
+      "name": "pnasnet",
+      "same_mapping_set": true,
+      "same_limits": true,
+      "monotonic": true,
+      "mapping_count": 5
+    },
+    {
+      "chiplets": 32,
+      "cores_per_chiplet": 1,
+      "name": "resnext50",
+      "same_mapping_set": true,
+      "same_limits": true,
+      "monotonic": true,
+      "mapping_count": 1
+    },
+    {
+      "chiplets": 32,
+      "cores_per_chiplet": 1,
+      "name": "resnet152",
+      "same_mapping_set": true,
+      "same_limits": true,
+      "monotonic": true,
+      "mapping_count": 4
+    },
+    {
+      "chiplets": 32,
+      "cores_per_chiplet": 1,
+      "name": "bert_block",
+      "same_mapping_set": true,
+      "same_limits": true,
+      "monotonic": true,
+      "mapping_count": 5
+    },
+    {
+      "chiplets": 32,
+      "cores_per_chiplet": 1,
+      "name": "gpt_prefill_block",
+      "same_mapping_set": true,
+      "same_limits": true,
+      "monotonic": true,
+      "mapping_count": 5
+    },
+    {
+      "chiplets": 32,
+      "cores_per_chiplet": 1,
+      "name": "gpt_decode_block",
+      "same_mapping_set": true,
+      "same_limits": true,
+      "monotonic": true,
+      "mapping_count": 5
+    },
+    {
+      "chiplets": 32,
+      "cores_per_chiplet": 1,
+      "name": "CNN",
+      "same_mapping_set": true,
+      "same_limits": true,
+      "monotonic": true,
+      "mapping_count": 41
+    },
+    {
+      "chiplets": 32,
+      "cores_per_chiplet": 1,
+      "name": "RNN",
+      "same_mapping_set": true,
+      "same_limits": true,
+      "monotonic": true,
+      "mapping_count": 10
+    },
+    {
+      "chiplets": 32,
+      "cores_per_chiplet": 1,
+      "name": "Transformer",
+      "same_mapping_set": true,
+      "same_limits": true,
+      "monotonic": true,
+      "mapping_count": 25
+    },
+    {
+      "chiplets": 32,
+      "cores_per_chiplet": 1,
+      "name": "ALL17",
+      "same_mapping_set": true,
+      "same_limits": true,
+      "monotonic": true,
+      "mapping_count": 76
+    },
+    {
+      "chiplets": 32,
+      "cores_per_chiplet": 4,
+      "name": "darknet19",
+      "same_mapping_set": true,
+      "same_limits": true,
+      "monotonic": true,
+      "mapping_count": 3
+    },
+    {
+      "chiplets": 32,
+      "cores_per_chiplet": 4,
+      "name": "vgg19",
+      "same_mapping_set": true,
+      "same_limits": true,
+      "monotonic": true,
+      "mapping_count": 3
+    },
+    {
+      "chiplets": 32,
+      "cores_per_chiplet": 4,
+      "name": "resnet50",
+      "same_mapping_set": true,
+      "same_limits": true,
+      "monotonic": true,
+      "mapping_count": 3
+    },
+    {
+      "chiplets": 32,
+      "cores_per_chiplet": 4,
+      "name": "googlenet",
+      "same_mapping_set": true,
+      "same_limits": true,
+      "monotonic": true,
+      "mapping_count": 5
+    },
+    {
+      "chiplets": 32,
+      "cores_per_chiplet": 4,
+      "name": "resnet101",
+      "same_mapping_set": true,
+      "same_limits": true,
+      "monotonic": true,
+      "mapping_count": 3
+    },
+    {
+      "chiplets": 32,
+      "cores_per_chiplet": 4,
+      "name": "densenet",
+      "same_mapping_set": true,
+      "same_limits": true,
+      "monotonic": true,
+      "mapping_count": 4
+    },
+    {
+      "chiplets": 32,
+      "cores_per_chiplet": 4,
+      "name": "inception_resnet_v1",
+      "same_mapping_set": true,
+      "same_limits": true,
+      "monotonic": true,
+      "mapping_count": 5
+    },
+    {
+      "chiplets": 32,
+      "cores_per_chiplet": 4,
+      "name": "gnmt",
+      "same_mapping_set": true,
+      "same_limits": true,
+      "monotonic": true,
+      "mapping_count": 5
+    },
+    {
+      "chiplets": 32,
+      "cores_per_chiplet": 4,
+      "name": "lstm",
+      "same_mapping_set": true,
+      "same_limits": true,
+      "monotonic": true,
+      "mapping_count": 5
+    },
+    {
+      "chiplets": 32,
+      "cores_per_chiplet": 4,
+      "name": "transformer",
+      "same_mapping_set": true,
+      "same_limits": true,
+      "monotonic": true,
+      "mapping_count": 5
+    },
+    {
+      "chiplets": 32,
+      "cores_per_chiplet": 4,
+      "name": "transformer_cell",
+      "same_mapping_set": true,
+      "same_limits": true,
+      "monotonic": true,
+      "mapping_count": 5
+    },
+    {
+      "chiplets": 32,
+      "cores_per_chiplet": 4,
+      "name": "pnasnet",
+      "same_mapping_set": true,
+      "same_limits": true,
+      "monotonic": true,
+      "mapping_count": 5
+    },
+    {
+      "chiplets": 32,
+      "cores_per_chiplet": 4,
+      "name": "resnext50",
+      "same_mapping_set": true,
+      "same_limits": true,
+      "monotonic": true,
+      "mapping_count": 3
+    },
+    {
+      "chiplets": 32,
+      "cores_per_chiplet": 4,
+      "name": "resnet152",
+      "same_mapping_set": true,
+      "same_limits": true,
+      "monotonic": true,
+      "mapping_count": 3
+    },
+    {
+      "chiplets": 32,
+      "cores_per_chiplet": 4,
+      "name": "bert_block",
+      "same_mapping_set": true,
+      "same_limits": true,
+      "monotonic": true,
+      "mapping_count": 5
+    },
+    {
+      "chiplets": 32,
+      "cores_per_chiplet": 4,
+      "name": "gpt_prefill_block",
+      "same_mapping_set": true,
+      "same_limits": true,
+      "monotonic": true,
+      "mapping_count": 5
+    },
+    {
+      "chiplets": 32,
+      "cores_per_chiplet": 4,
+      "name": "gpt_decode_block",
+      "same_mapping_set": true,
+      "same_limits": true,
+      "monotonic": true,
+      "mapping_count": 5
+    },
+    {
+      "chiplets": 32,
+      "cores_per_chiplet": 4,
+      "name": "CNN",
+      "same_mapping_set": true,
+      "same_limits": true,
+      "monotonic": true,
+      "mapping_count": 37
+    },
+    {
+      "chiplets": 32,
+      "cores_per_chiplet": 4,
+      "name": "RNN",
+      "same_mapping_set": true,
+      "same_limits": true,
+      "monotonic": true,
+      "mapping_count": 10
+    },
+    {
+      "chiplets": 32,
+      "cores_per_chiplet": 4,
+      "name": "Transformer",
+      "same_mapping_set": true,
+      "same_limits": true,
+      "monotonic": true,
+      "mapping_count": 25
+    },
+    {
+      "chiplets": 32,
+      "cores_per_chiplet": 4,
+      "name": "ALL17",
+      "same_mapping_set": true,
+      "same_limits": true,
+      "monotonic": true,
+      "mapping_count": 72
+    },
+    {
+      "chiplets": 32,
+      "cores_per_chiplet": 16,
+      "name": "darknet19",
+      "same_mapping_set": true,
+      "same_limits": true,
+      "monotonic": true,
+      "mapping_count": 5
+    },
+    {
+      "chiplets": 32,
+      "cores_per_chiplet": 16,
+      "name": "vgg19",
+      "same_mapping_set": true,
+      "same_limits": true,
+      "monotonic": true,
+      "mapping_count": 4
+    },
+    {
+      "chiplets": 32,
+      "cores_per_chiplet": 16,
+      "name": "resnet50",
+      "same_mapping_set": true,
+      "same_limits": true,
+      "monotonic": true,
+      "mapping_count": 4
+    },
+    {
+      "chiplets": 32,
+      "cores_per_chiplet": 16,
+      "name": "googlenet",
+      "same_mapping_set": true,
+      "same_limits": true,
+      "monotonic": true,
+      "mapping_count": 4
+    },
+    {
+      "chiplets": 32,
+      "cores_per_chiplet": 16,
+      "name": "resnet101",
+      "same_mapping_set": true,
+      "same_limits": true,
+      "monotonic": true,
+      "mapping_count": 2
+    },
+    {
+      "chiplets": 32,
+      "cores_per_chiplet": 16,
+      "name": "densenet",
+      "same_mapping_set": true,
+      "same_limits": true,
+      "monotonic": true,
+      "mapping_count": 1
+    },
+    {
+      "chiplets": 32,
+      "cores_per_chiplet": 16,
+      "name": "inception_resnet_v1",
+      "same_mapping_set": true,
+      "same_limits": true,
+      "monotonic": true,
+      "mapping_count": 3
+    },
+    {
+      "chiplets": 32,
+      "cores_per_chiplet": 16,
+      "name": "gnmt",
+      "same_mapping_set": true,
+      "same_limits": true,
+      "monotonic": true,
+      "mapping_count": 5
+    },
+    {
+      "chiplets": 32,
+      "cores_per_chiplet": 16,
+      "name": "lstm",
+      "same_mapping_set": true,
+      "same_limits": true,
+      "monotonic": true,
+      "mapping_count": 5
+    },
+    {
+      "chiplets": 32,
+      "cores_per_chiplet": 16,
+      "name": "transformer",
+      "same_mapping_set": true,
+      "same_limits": true,
+      "monotonic": true,
+      "mapping_count": 5
+    },
+    {
+      "chiplets": 32,
+      "cores_per_chiplet": 16,
+      "name": "transformer_cell",
+      "same_mapping_set": true,
+      "same_limits": true,
+      "monotonic": true,
+      "mapping_count": 5
+    },
+    {
+      "chiplets": 32,
+      "cores_per_chiplet": 16,
+      "name": "pnasnet",
+      "same_mapping_set": true,
+      "same_limits": true,
+      "monotonic": true,
+      "mapping_count": 4
+    },
+    {
+      "chiplets": 32,
+      "cores_per_chiplet": 16,
+      "name": "resnext50",
+      "same_mapping_set": true,
+      "same_limits": true,
+      "monotonic": true,
+      "mapping_count": 3
+    },
+    {
+      "chiplets": 32,
+      "cores_per_chiplet": 16,
+      "name": "resnet152",
+      "same_mapping_set": true,
+      "same_limits": true,
+      "monotonic": true,
+      "mapping_count": 2
+    },
+    {
+      "chiplets": 32,
+      "cores_per_chiplet": 16,
+      "name": "bert_block",
+      "same_mapping_set": true,
+      "same_limits": true,
+      "monotonic": true,
+      "mapping_count": 3
+    },
+    {
+      "chiplets": 32,
+      "cores_per_chiplet": 16,
+      "name": "gpt_prefill_block",
+      "same_mapping_set": true,
+      "same_limits": true,
+      "monotonic": true,
+      "mapping_count": 2
+    },
+    {
+      "chiplets": 32,
+      "cores_per_chiplet": 16,
+      "name": "gpt_decode_block",
+      "same_mapping_set": true,
+      "same_limits": true,
+      "monotonic": true,
+      "mapping_count": 5
+    },
+    {
+      "chiplets": 32,
+      "cores_per_chiplet": 16,
+      "name": "CNN",
+      "same_mapping_set": true,
+      "same_limits": true,
+      "monotonic": true,
+      "mapping_count": 32
+    },
+    {
+      "chiplets": 32,
+      "cores_per_chiplet": 16,
+      "name": "RNN",
+      "same_mapping_set": true,
+      "same_limits": true,
+      "monotonic": true,
+      "mapping_count": 10
+    },
+    {
+      "chiplets": 32,
+      "cores_per_chiplet": 16,
+      "name": "Transformer",
+      "same_mapping_set": true,
+      "same_limits": true,
+      "monotonic": true,
+      "mapping_count": 20
+    },
+    {
+      "chiplets": 32,
+      "cores_per_chiplet": 16,
+      "name": "ALL17",
+      "same_mapping_set": true,
+      "same_limits": true,
+      "monotonic": true,
+      "mapping_count": 62
+    },
+    {
+      "chiplets": 64,
+      "cores_per_chiplet": 1,
+      "name": "darknet19",
+      "same_mapping_set": true,
+      "same_limits": true,
+      "monotonic": true,
+      "mapping_count": 5
+    },
+    {
+      "chiplets": 64,
+      "cores_per_chiplet": 1,
+      "name": "vgg19",
+      "same_mapping_set": true,
+      "same_limits": true,
+      "monotonic": true,
+      "mapping_count": 3
+    },
+    {
+      "chiplets": 64,
+      "cores_per_chiplet": 1,
+      "name": "resnet50",
+      "same_mapping_set": true,
+      "same_limits": true,
+      "monotonic": true,
+      "mapping_count": 5
+    },
+    {
+      "chiplets": 64,
+      "cores_per_chiplet": 1,
+      "name": "googlenet",
+      "same_mapping_set": true,
+      "same_limits": true,
+      "monotonic": true,
+      "mapping_count": 5
+    },
+    {
+      "chiplets": 64,
+      "cores_per_chiplet": 1,
+      "name": "resnet101",
+      "same_mapping_set": true,
+      "same_limits": true,
+      "monotonic": true,
+      "mapping_count": 5
+    },
+    {
+      "chiplets": 64,
+      "cores_per_chiplet": 1,
+      "name": "densenet",
+      "same_mapping_set": true,
+      "same_limits": true,
+      "monotonic": true,
+      "mapping_count": 4
+    },
+    {
+      "chiplets": 64,
+      "cores_per_chiplet": 1,
+      "name": "inception_resnet_v1",
+      "same_mapping_set": true,
+      "same_limits": true,
+      "monotonic": true,
+      "mapping_count": 5
+    },
+    {
+      "chiplets": 64,
+      "cores_per_chiplet": 1,
+      "name": "gnmt",
+      "same_mapping_set": true,
+      "same_limits": true,
+      "monotonic": true,
+      "mapping_count": 5
+    },
+    {
+      "chiplets": 64,
+      "cores_per_chiplet": 1,
+      "name": "lstm",
+      "same_mapping_set": true,
+      "same_limits": true,
+      "monotonic": true,
+      "mapping_count": 5
+    },
+    {
+      "chiplets": 64,
+      "cores_per_chiplet": 1,
+      "name": "transformer",
+      "same_mapping_set": true,
+      "same_limits": true,
+      "monotonic": true,
+      "mapping_count": 5
+    },
+    {
+      "chiplets": 64,
+      "cores_per_chiplet": 1,
+      "name": "transformer_cell",
+      "same_mapping_set": true,
+      "same_limits": true,
+      "monotonic": true,
+      "mapping_count": 5
+    },
+    {
+      "chiplets": 64,
+      "cores_per_chiplet": 1,
+      "name": "pnasnet",
+      "same_mapping_set": true,
+      "same_limits": true,
+      "monotonic": true,
+      "mapping_count": 5
+    },
+    {
+      "chiplets": 64,
+      "cores_per_chiplet": 1,
+      "name": "resnext50",
+      "same_mapping_set": true,
+      "same_limits": true,
+      "monotonic": true,
+      "mapping_count": 5
+    },
+    {
+      "chiplets": 64,
+      "cores_per_chiplet": 1,
+      "name": "resnet152",
+      "same_mapping_set": true,
+      "same_limits": true,
+      "monotonic": true,
+      "mapping_count": 4
+    },
+    {
+      "chiplets": 64,
+      "cores_per_chiplet": 1,
+      "name": "bert_block",
+      "same_mapping_set": true,
+      "same_limits": true,
+      "monotonic": true,
+      "mapping_count": 5
+    },
+    {
+      "chiplets": 64,
+      "cores_per_chiplet": 1,
+      "name": "gpt_prefill_block",
+      "same_mapping_set": true,
+      "same_limits": true,
+      "monotonic": true,
+      "mapping_count": 5
+    },
+    {
+      "chiplets": 64,
+      "cores_per_chiplet": 1,
+      "name": "gpt_decode_block",
+      "same_mapping_set": true,
+      "same_limits": true,
+      "monotonic": true,
+      "mapping_count": 5
+    },
+    {
+      "chiplets": 64,
+      "cores_per_chiplet": 1,
+      "name": "CNN",
+      "same_mapping_set": true,
+      "same_limits": true,
+      "monotonic": true,
+      "mapping_count": 46
+    },
+    {
+      "chiplets": 64,
+      "cores_per_chiplet": 1,
+      "name": "RNN",
+      "same_mapping_set": true,
+      "same_limits": true,
+      "monotonic": true,
+      "mapping_count": 10
+    },
+    {
+      "chiplets": 64,
+      "cores_per_chiplet": 1,
+      "name": "Transformer",
+      "same_mapping_set": true,
+      "same_limits": true,
+      "monotonic": true,
+      "mapping_count": 25
+    },
+    {
+      "chiplets": 64,
+      "cores_per_chiplet": 1,
+      "name": "ALL17",
+      "same_mapping_set": true,
+      "same_limits": true,
+      "monotonic": true,
+      "mapping_count": 81
+    },
+    {
+      "chiplets": 64,
+      "cores_per_chiplet": 4,
+      "name": "darknet19",
+      "same_mapping_set": true,
+      "same_limits": true,
+      "monotonic": true,
+      "mapping_count": 3
+    },
+    {
+      "chiplets": 64,
+      "cores_per_chiplet": 4,
+      "name": "vgg19",
+      "same_mapping_set": true,
+      "same_limits": true,
+      "monotonic": true,
+      "mapping_count": 3
+    },
+    {
+      "chiplets": 64,
+      "cores_per_chiplet": 4,
+      "name": "resnet50",
+      "same_mapping_set": true,
+      "same_limits": true,
+      "monotonic": true,
+      "mapping_count": 5
+    },
+    {
+      "chiplets": 64,
+      "cores_per_chiplet": 4,
+      "name": "googlenet",
+      "same_mapping_set": true,
+      "same_limits": true,
+      "monotonic": true,
+      "mapping_count": 5
+    },
+    {
+      "chiplets": 64,
+      "cores_per_chiplet": 4,
+      "name": "resnet101",
+      "same_mapping_set": true,
+      "same_limits": true,
+      "monotonic": true,
+      "mapping_count": 5
+    },
+    {
+      "chiplets": 64,
+      "cores_per_chiplet": 4,
+      "name": "densenet",
+      "same_mapping_set": true,
+      "same_limits": true,
+      "monotonic": true,
+      "mapping_count": 3
+    },
+    {
+      "chiplets": 64,
+      "cores_per_chiplet": 4,
+      "name": "inception_resnet_v1",
+      "same_mapping_set": true,
+      "same_limits": true,
+      "monotonic": true,
+      "mapping_count": 5
+    },
+    {
+      "chiplets": 64,
+      "cores_per_chiplet": 4,
+      "name": "gnmt",
+      "same_mapping_set": true,
+      "same_limits": true,
+      "monotonic": true,
+      "mapping_count": 5
+    },
+    {
+      "chiplets": 64,
+      "cores_per_chiplet": 4,
+      "name": "lstm",
+      "same_mapping_set": true,
+      "same_limits": true,
+      "monotonic": true,
+      "mapping_count": 5
+    },
+    {
+      "chiplets": 64,
+      "cores_per_chiplet": 4,
+      "name": "transformer",
+      "same_mapping_set": true,
+      "same_limits": true,
+      "monotonic": true,
+      "mapping_count": 2
+    },
+    {
+      "chiplets": 64,
+      "cores_per_chiplet": 4,
+      "name": "transformer_cell",
+      "same_mapping_set": true,
+      "same_limits": true,
+      "monotonic": true,
+      "mapping_count": 3
+    },
+    {
+      "chiplets": 64,
+      "cores_per_chiplet": 4,
+      "name": "pnasnet",
+      "same_mapping_set": true,
+      "same_limits": true,
+      "monotonic": true,
+      "mapping_count": 4
+    },
+    {
+      "chiplets": 64,
+      "cores_per_chiplet": 4,
+      "name": "resnext50",
+      "same_mapping_set": true,
+      "same_limits": true,
+      "monotonic": true,
+      "mapping_count": 5
+    },
+    {
+      "chiplets": 64,
+      "cores_per_chiplet": 4,
+      "name": "resnet152",
+      "same_mapping_set": true,
+      "same_limits": true,
+      "monotonic": true,
+      "mapping_count": 5
+    },
+    {
+      "chiplets": 64,
+      "cores_per_chiplet": 4,
+      "name": "bert_block",
+      "same_mapping_set": true,
+      "same_limits": true,
+      "monotonic": true,
+      "mapping_count": 5
+    },
+    {
+      "chiplets": 64,
+      "cores_per_chiplet": 4,
+      "name": "gpt_prefill_block",
+      "same_mapping_set": true,
+      "same_limits": true,
+      "monotonic": true,
+      "mapping_count": 2
+    },
+    {
+      "chiplets": 64,
+      "cores_per_chiplet": 4,
+      "name": "gpt_decode_block",
+      "same_mapping_set": true,
+      "same_limits": true,
+      "monotonic": true,
+      "mapping_count": 5
+    },
+    {
+      "chiplets": 64,
+      "cores_per_chiplet": 4,
+      "name": "CNN",
+      "same_mapping_set": true,
+      "same_limits": true,
+      "monotonic": true,
+      "mapping_count": 43
+    },
+    {
+      "chiplets": 64,
+      "cores_per_chiplet": 4,
+      "name": "RNN",
+      "same_mapping_set": true,
+      "same_limits": true,
+      "monotonic": true,
+      "mapping_count": 10
+    },
+    {
+      "chiplets": 64,
+      "cores_per_chiplet": 4,
+      "name": "Transformer",
+      "same_mapping_set": true,
+      "same_limits": true,
+      "monotonic": true,
+      "mapping_count": 17
+    },
+    {
+      "chiplets": 64,
+      "cores_per_chiplet": 4,
+      "name": "ALL17",
+      "same_mapping_set": true,
+      "same_limits": true,
+      "monotonic": true,
+      "mapping_count": 70
+    },
+    {
+      "chiplets": 64,
+      "cores_per_chiplet": 16,
+      "name": "darknet19",
+      "same_mapping_set": true,
+      "same_limits": true,
+      "monotonic": true,
+      "mapping_count": 5
+    },
+    {
+      "chiplets": 64,
+      "cores_per_chiplet": 16,
+      "name": "vgg19",
+      "same_mapping_set": true,
+      "same_limits": true,
+      "monotonic": true,
+      "mapping_count": 2
+    },
+    {
+      "chiplets": 64,
+      "cores_per_chiplet": 16,
+      "name": "resnet50",
+      "same_mapping_set": true,
+      "same_limits": true,
+      "monotonic": true,
+      "mapping_count": 2
+    },
+    {
+      "chiplets": 64,
+      "cores_per_chiplet": 16,
+      "name": "googlenet",
+      "same_mapping_set": true,
+      "same_limits": true,
+      "monotonic": true,
+      "mapping_count": 1
+    },
+    {
+      "chiplets": 64,
+      "cores_per_chiplet": 16,
+      "name": "resnet101",
+      "same_mapping_set": true,
+      "same_limits": true,
+      "monotonic": true,
+      "mapping_count": 3
+    },
+    {
+      "chiplets": 64,
+      "cores_per_chiplet": 16,
+      "name": "densenet",
+      "same_mapping_set": true,
+      "same_limits": true,
+      "monotonic": true,
+      "mapping_count": 1
+    },
+    {
+      "chiplets": 64,
+      "cores_per_chiplet": 16,
+      "name": "inception_resnet_v1",
+      "same_mapping_set": true,
+      "same_limits": true,
+      "monotonic": true,
+      "mapping_count": 5
+    },
+    {
+      "chiplets": 64,
+      "cores_per_chiplet": 16,
+      "name": "gnmt",
+      "same_mapping_set": true,
+      "same_limits": true,
+      "monotonic": true,
+      "mapping_count": 5
+    },
+    {
+      "chiplets": 64,
+      "cores_per_chiplet": 16,
+      "name": "lstm",
+      "same_mapping_set": true,
+      "same_limits": true,
+      "monotonic": true,
+      "mapping_count": 5
+    },
+    {
+      "chiplets": 64,
+      "cores_per_chiplet": 16,
+      "name": "transformer",
+      "same_mapping_set": true,
+      "same_limits": true,
+      "monotonic": true,
+      "mapping_count": 1
+    },
+    {
+      "chiplets": 64,
+      "cores_per_chiplet": 16,
+      "name": "transformer_cell",
+      "same_mapping_set": true,
+      "same_limits": true,
+      "monotonic": true,
+      "mapping_count": 2
+    },
+    {
+      "chiplets": 64,
+      "cores_per_chiplet": 16,
+      "name": "pnasnet",
+      "same_mapping_set": true,
+      "same_limits": true,
+      "monotonic": true,
+      "mapping_count": 1
+    },
+    {
+      "chiplets": 64,
+      "cores_per_chiplet": 16,
+      "name": "resnext50",
+      "same_mapping_set": true,
+      "same_limits": true,
+      "monotonic": true,
+      "mapping_count": 4
+    },
+    {
+      "chiplets": 64,
+      "cores_per_chiplet": 16,
+      "name": "resnet152",
+      "same_mapping_set": true,
+      "same_limits": true,
+      "monotonic": true,
+      "mapping_count": 3
+    },
+    {
+      "chiplets": 64,
+      "cores_per_chiplet": 16,
+      "name": "bert_block",
+      "same_mapping_set": true,
+      "same_limits": true,
+      "monotonic": true,
+      "mapping_count": 5
+    },
+    {
+      "chiplets": 64,
+      "cores_per_chiplet": 16,
+      "name": "gpt_prefill_block",
+      "same_mapping_set": true,
+      "same_limits": true,
+      "monotonic": true,
+      "mapping_count": 5
+    },
+    {
+      "chiplets": 64,
+      "cores_per_chiplet": 16,
+      "name": "gpt_decode_block",
+      "same_mapping_set": true,
+      "same_limits": true,
+      "monotonic": true,
+      "mapping_count": 5
+    },
+    {
+      "chiplets": 64,
+      "cores_per_chiplet": 16,
+      "name": "CNN",
+      "same_mapping_set": true,
+      "same_limits": true,
+      "monotonic": true,
+      "mapping_count": 27
+    },
+    {
+      "chiplets": 64,
+      "cores_per_chiplet": 16,
+      "name": "RNN",
+      "same_mapping_set": true,
+      "same_limits": true,
+      "monotonic": true,
+      "mapping_count": 10
+    },
+    {
+      "chiplets": 64,
+      "cores_per_chiplet": 16,
+      "name": "Transformer",
+      "same_mapping_set": true,
+      "same_limits": true,
+      "monotonic": true,
+      "mapping_count": 18
+    },
+    {
+      "chiplets": 64,
+      "cores_per_chiplet": 16,
+      "name": "ALL17",
+      "same_mapping_set": true,
+      "same_limits": true,
+      "monotonic": true,
+      "mapping_count": 55
+    }
+  ]
+}

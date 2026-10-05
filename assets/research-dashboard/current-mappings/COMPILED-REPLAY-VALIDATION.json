@@ -1,0 +1,55 @@
+{
+  "mappings": 886,
+  "exact_checks": 3544,
+  "benchmark": [
+    {
+      "mapping": "175f752b8933c206899e602088e4947d370a95ec84a9bc02930e4cd9b5acd94f",
+      "original_s": 0.2143054911866784,
+      "compiled_s": 0.09990079049021006,
+      "speedup": 2.1451831375416357
+    },
+    {
+      "mapping": "05953be7c58809375c012a1fe5b3f7df486a1db25e7d119304c3cf35159474da",
+      "original_s": 0.21951055619865656,
+      "compiled_s": 0.10069702006876469,
+      "speedup": 2.179911143832813
+    },
+    {
+      "mapping": "895c29d124f9a62fc1c4f7ae67c66977da845031f71e041f9271566d595e8774",
+      "original_s": 0.2191032124683261,
+      "compiled_s": 0.09822291973978281,
+      "speedup": 2.2306729737701296
+    },
+    {
+      "mapping": "905d9dd360ca3e1251d3b4b6dab74f09227927a317b5a1ca72e1630c24448187",
+      "original_s": 0.22229863982647657,
+      "compiled_s": 0.09929909277707338,
+      "speedup": 2.2386774502113265
+    },
+    {
+      "mapping": "92bd450c92d2c7b9040ad4dceab577a554e3ec691d338ff623531757005d879d",
+      "original_s": 0.21870452258735895,
+      "compiled_s": 0.10050616227090359,
+      "speedup": 2.176030978059478
+    },
+    {
+      "mapping": "ea6f4be61ed9f0fc1ac01131f007b5ec6ec00c373e5c014727a796dc2d37e3c2",
+      "original_s": 0.20020489115267992,
+      "compiled_s": 0.0937359668314457,
+      "speedup": 2.13583854650675
+    },
+    {
+      "mapping": "36eef299b02f301868c0c975039f9521148376b12d73d6878357778a11dfa1e7",
+      "original_s": 0.19960572849959135,
+      "compiled_s": 0.0931446747854352,
+      "speedup": 2.1429644685474085
+    },
+    {
+      "mapping": "87815df5b1464e4d6b645f1fdbb5b83a0344df4db81804fab830c1ba50df33e1",
+      "original_s": 0.07964513171464205,
+      "compiled_s": 0.0389259634539485,
+      "speedup": 2.046067062896632
+    }
+  ],
+  "source_sha256": "4bdb0e6f10367d071cec8aa90a7c0d42e507c8d5d0fec4318825d19c6d6d35a8"
+}

@@ -1,0 +1,28 @@
+{
+  "audited": 886,
+  "unique_architectures": 886,
+  "missing": [],
+  "fixed_expected": {
+    "technology_nm": "12",
+    "core_microarch": "0",
+    "mapping_stride": "2",
+    "batch": "1",
+    "mapping_objective": "0",
+    "package": "SI",
+    "io_type": "USR",
+    "d2d_reference_Bpc": "256",
+    "dram_type": "GDDR6X",
+    "dram_bandwidth_input_raw": "4194304",
+    "noc_Bpc": "128",
+    "mac_scale": "512",
+    "unified_sram_KiB": "2048"
+  },
+  "varying_search_rounds": [
+    10,
+    20
+  ],
+  "source_hashes": {
+    "/home/yj3616/workspace/phd-research/research-notes/max-resource-sweep-20260928/batch1-diverse-mappings-20261002/local-candidates/native-source/src/main.cpp": "11a40379c46b8e9f9a1c94faa1b789c4922b35da9b531730ce88b7e0f8c8ead7",
+    "/home/yj3616/workspace/phd-research/research-notes/max-resource-sweep-20260928/batch1-diverse-mappings-20261002/local-candidates/native-source/src/core.cpp": "0f2c307d7b0c358a60e581a18271dc0367bebb04a4dba0ebcda71dbc752874d4"
+  }
+}

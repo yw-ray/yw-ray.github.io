@@ -1,0 +1,27 @@
+{
+  "created": 1791236157.550394,
+  "chiplets": [
+    4,
+    8,
+    16,
+    32,
+    64
+  ],
+  "cores_per_chiplet": [
+    1,
+    4,
+    16
+  ],
+  "batch": 1,
+  "channels_per_port": 8,
+  "mappings": 886,
+  "requested_designs": 315,
+  "available_designs": 315,
+  "reused": 120,
+  "workers": 24,
+  "latency_limit": "floor(frozen original reference*1001/1000)",
+  "support": "All currently retained distinct mappings per workload, including fewer than3. Shared design supports all member mappings in separate executions.",
+  "normalization": "Baseline2=1.0; fabricated TX+RX capacity",
+  "original_searches": "unchanged",
+  "mapping_snapshot": "Frozen at preparation; no waiting for new mappings"
+}

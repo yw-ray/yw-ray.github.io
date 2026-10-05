@@ -1,0 +1,9 @@
+{
+  "prepared_at": "2026-10-05T23:09:27.966869+00:00",
+  "snapshot": "2026-10-05T21:35:57.550394+00:00",
+  "mappings": 886,
+  "completed": 315,
+  "total": 315,
+  "scope": "4..64 chiplets,1/4/16 cores per chiplet,batch1,ch8",
+  "entry": "current-mappings.html"
+}

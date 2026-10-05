@@ -1,0 +1,5 @@
+{
+  "feasible_mapping_design_checks": 3622,
+  "single_link_bound_violations_replayed": 585,
+  "proof": "At bandwidth<=256 all node times are at least their full-bandwidth times. Back-propagating each root deadline through sum/max nodes gives necessary per-node deadlines, hence necessary rounded channel bandwidth lower bounds. Reject only violations; otherwise run unchanged replay. Search ordering and three starts unchanged."
+}

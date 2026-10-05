@@ -1,0 +1,16 @@
+study,chiplets,chiplet_mesh,cores_per_chiplet,core_mesh_per_chiplet,total_cores,global_core_mesh,unified_sram_per_core_KiB,total_unified_sram_MiB,system_dram_Bpc,dram_endpoints,per_endpoint_dram_Bpc,noc_link_Bpc,d2d_channels_per_port,d2d_reference_per_channel_Bpc,allocation_quantum_Bpc,batch,frequency_GHz,MAC_units_per_core
+current-mapping-sweep,4,2x2,1,1x1,4,2x2,2048,8,4096,4,1024,128,8,256,8,1,1,512
+current-mapping-sweep,4,2x2,4,2x2,16,4x4,2048,32,4096,4,1024,128,8,256,8,1,1,512
+current-mapping-sweep,4,2x2,16,4x4,64,8x8,2048,128,4096,4,1024,128,8,256,8,1,1,512
+current-mapping-sweep,8,2x4,1,1x1,8,2x4,2048,16,4096,4,1024,128,8,256,8,1,1,512
+current-mapping-sweep,8,2x4,4,2x2,32,4x8,2048,64,4096,4,1024,128,8,256,8,1,1,512
+current-mapping-sweep,8,2x4,16,4x4,128,8x16,2048,256,4096,4,1024,128,8,256,8,1,1,512
+current-mapping-sweep,16,4x4,1,1x1,16,4x4,2048,32,4096,4,1024,128,8,256,8,1,1,512
+current-mapping-sweep,16,4x4,4,2x2,64,8x8,2048,128,4096,4,1024,128,8,256,8,1,1,512
+current-mapping-sweep,16,4x4,16,4x4,256,16x16,2048,512,4096,4,1024,128,8,256,8,1,1,512
+current-mapping-sweep,32,4x8,1,1x1,32,4x8,2048,64,4096,4,1024,128,8,256,8,1,1,512
+current-mapping-sweep,32,4x8,4,2x2,128,8x16,2048,256,4096,4,1024,128,8,256,8,1,1,512
+current-mapping-sweep,32,4x8,16,4x4,512,16x32,2048,1024,4096,4,1024,128,8,256,8,1,1,512
+current-mapping-sweep,64,8x8,1,1x1,64,8x8,2048,128,4096,4,1024,128,8,256,8,1,1,512
+current-mapping-sweep,64,8x8,4,2x2,256,16x16,2048,512,4096,4,1024,128,8,256,8,1,1,512
+current-mapping-sweep,64,8x8,16,4x4,1024,32x32,2048,2048,4096,4,1024,128,8,256,8,1,1,512
