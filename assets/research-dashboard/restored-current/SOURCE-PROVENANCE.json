@@ -1,9 +1,25 @@
 {
+  "previous_report": "/home/yj3616/workspace/phd-research/research-notes/max-resource-sweep-20260928/archived-method-current-20261005",
   "frozen_pool": "/home/yj3616/workspace/phd-research/research-notes/reflection-full-mapping-sweep-20261005",
-  "workers": {
-    "/home/yj3616/workspace/phd-research/research-notes/max-resource-sweep-20260928/channel8-completion-20261001/worker.py": "d510f1f414ab5e0c97331228d5a9e0ba21a71914329549a156744f7afca0a959",
-    "/home/yj3616/workspace/phd-research/research-notes/max-resource-sweep-20260928/reflection-sweep-20261001/worker.py": "ded5c2a907f26cca4c0207f74afd889ce1666049cca99453c072aa6263b24583"
-  },
-  "reference_policy": "unchanged archived original references, exact latency preservation",
-  "mapping_policy": "one per workload, min (uniform units, mapping hash); all candidates are alternatives"
+  "selection": "minimum final capacity among all evaluated candidates separately for each orientation mode; existential shared feasibility with one candidate/workload",
+  "baseline": "minimum uniform bandwidth across eligible candidates, common B2 for all methods",
+  "reference": "unchanged archived reference; exact latency",
+  "global_optimum": false,
+  "sources": {
+    "shared-worker.py": "6e55633a83d302b0124c6e9d30e748b464f36aac9ba2c241a4884fb18a71c90b",
+    "check-deployment.py": "7c712c9df99b1213a9e92beef52251283787affddad647116c15f8b3558c0f0a",
+    "verify-publication.py": "45fc341bbd307a7c4a4eb2292eea8481db6bf9255d85cb06db6dcb5970b052ca",
+    "complete-and-publish.py": "c73dc22f5c02a27dfaa5a1a06a44cab7397e2c41f73ac403f1468976eddc27b8",
+    "controller.py": "8ea75710a85a0dd610ffdf8e6e201c260821639c0c8f1873355db5c8f9a91906",
+    "reflection-worker.py": "406068f10a23434f0538e0ceb52557291d08d7d59e94c18fffc9e42acdae376e",
+    "alternative_solver.py": "b95479cdac8d0ba22e235b6b1415fb1babb8fcb55e723b4c84207c13de189b15",
+    "build-site.py": "70af32d2544aa48bbddd6412befbc6447ee8c33bde739a50358f4b5bc13e6a0e",
+    "rotation-worker.py": "8ea9bc7a1fac5cdfc9c1df9aa823f4f35a0987b387dcfd3393f17faea53497aa",
+    "preview.py": "5293399c20437991e75a6a1dbea471a844729fb73bb3e1011dd6f32ec25e6339",
+    "finish.py": "8952db1c50bb67519e17b5f36fbe471e2961f0fae7ae10c0723739c38d7aca60",
+    "plots.py": "8d5c82b1c8dd4480114d925c778978d8beebb3ed40585c15f7459d29b01073e6",
+    "pipeline.py": "7cbaa00a9585f3a11fc690c7863396b480c75e20462d36b15c37ae1e35670bf5",
+    "publish.py": "d5e536cc9b2ba25f9adc7e15e4f1eadbf08076f8dae4059c494a2e021e14a1e8",
+    "fixed_run.py": "70c5b17b8bdd34e41a1fff7f258b5ff2aa35f081a6ae1098f6ff3ffdb4367fb9"
+  }
 }

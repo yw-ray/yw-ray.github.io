@@ -24,12 +24,12 @@ experiment,Mapping search objective,Latency,,fixed native objective,ff=0; candid
 experiment,Mapping stride parameter,2,native ss,fixed,Mapper parameter; not convolution stride,native-input-audit.csv
 experiment,Latency allowance,0,percent,fixed constraint,Sizing preserves archived original reference exactly. Candidate collection allowed 0.1%; slower candidates remain catalogued but cannot be selected.,mapping-timing-checks.csv
 experiment,Pattern diversity threshold,0.05,normalized L1,fixed collection criterion,Directed D2D capacity profiles; topology-preserving rotations removed,grouped-frontier/controller.py:distance
-experiment,Mapping count per workload,1 selected from retained candidates,,fixed selection policy,"Candidates are alternatives, not all required on one design.",selected-mappings.csv; original channel8-completion worker
+experiment,Mapping count per workload,1 selected from retained candidates,,minimum final capacity selection,Select separately per orientation mode. Shared hardware supports one mapping per workload.,selected-mappings.csv; candidate-results.csv
 experiment,Seeds and mapping search rounds,Varied,,not fixed,Preserved mapping provenance; native-input-audit.csv includes observed rounds,mapping-inventory.csv; native-input-audit.csv
-design,Baseline1 templates,Uniform four-port (K=1),,baseline definition,Unused exterior-facing TX/RX included,README.txt
-design,Baseline2 templates,Uniform A/H/I (up to K=3),,baseline definition,"Corner2, edge3, interior4 ports; absent types omitted in small meshes",README.txt
+design,Baseline1 templates,Uniform four-port (K=1),,baseline definition,Unused exterior-facing TX/RX included; minimum uniform bandwidth over eligible alternatives; common denominator across methods,README.txt
+design,Baseline2 templates,Uniform A/H/I (up to K=3),,baseline definition,"Corner2, edge3, interior4 ports; absent types omitted in small meshes; minimum uniform bandwidth over eligible alternatives; common denominator across methods",README.txt
 design,Proposed templates,Asymmetric A/H/I (up to K=3),,design variable,Independent direction/channel TX/RX sizing; legal orientations,worker.py
-design,Orientation comparison,Rotation only; rotation+reflection,,controlled comparison,Same mappings and latency caps; reflection initialized from rotation result,run.py
+design,Orientation comparison,Rotation only; rotation+reflection,,controlled comparison,Select mappings independently per mode by final hardware capacity; identical deadlines and common optimized B2 denominator.,candidate-results.csv; selected-mappings.csv
 design,Reflection implementation cost,Not modeled,,assumption,Mirrored tiles assumed available without additional template/physical cost,worker.py; README.txt
 design,Area policy,"Hypothetical, area excess allowed",,assumption,Capacity analysis does not certify physical area feasibility,native mapping provenance; max-resource sweep PLAN.md
 metric,Reported capacity,Sum of fabricated TX+RX capacity,B/cycle,objective,Counts every manufactured tile instance; not speedup/link count/area,comparison-all.csv

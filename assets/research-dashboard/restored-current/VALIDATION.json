@@ -1,11 +1,30 @@
 {
   "completed": 315,
-  "configurations": 15,
-  "candidates": 886,
-  "selected_config_workloads": 255,
-  "timing_checks": 1530,
   "all_exact_references_passed": true,
-  "unchanged_archived_workers": true,
-  "control_reproduction": true,
-  "updated": "2026-10-06T00:11:30.447033+00:00"
+  "eligible_candidates": 635,
+  "excluded_candidates": 251,
+  "timing_checks": 1530,
+  "no_regressions": true,
+  "darknet_regression": {
+    "chiplets": 4,
+    "cores_per_chiplet": 16,
+    "total_cores": 64,
+    "scope": "workload",
+    "name": "darknet19",
+    "mapping_count": 1,
+    "candidate_mapping_count": 4,
+    "availability": "complete",
+    "baseline1_Bpc": 10240,
+    "baseline2_Bpc": 5120,
+    "rotation_only_Bpc": 5120,
+    "rotation_reflection_Bpc": 4608,
+    "B2_normalized_B1": 2.0,
+    "B2_normalized_B2": 1.0,
+    "B2_normalized_rotation": 1.0,
+    "B2_normalized_reflection": 0.9,
+    "rotation_reduction_vs_B2_pct": 0.0,
+    "reflection_reduction_vs_B2_pct": 9.999999999999998,
+    "rotation_source": "/home/yj3616/workspace/phd-research/research-notes/max-resource-sweep-20260928/bandwidth-min-mapping-20261005/cases/c4-core16/darknet19/rotation/design.json",
+    "reflection_source": "/home/yj3616/workspace/phd-research/research-notes/max-resource-sweep-20260928/bandwidth-min-mapping-20261005/cases/c4-core16/darknet19/reflection/design.json"
+  }
 }
