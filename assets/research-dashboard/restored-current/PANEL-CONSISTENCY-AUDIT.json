@@ -1,0 +1,10 @@
+{
+  "passed": true,
+  "candidate_panels": 886,
+  "selected_panels": 1530,
+  "individual_minimum_checks": 510,
+  "latency_allowance_pct": 0.1,
+  "mapping_ids_match": true,
+  "diagrams_match_designs": true,
+  "candidate_and_final_deadlines_identical": true
+}

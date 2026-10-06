@@ -1,0 +1,11 @@
+{
+  "passed": true,
+  "candidates": 886,
+  "candidate_timing_checks": 1772,
+  "seed_dominance_checks": 2658,
+  "comparisons": 315,
+  "subset_checks": 1740,
+  "latency_allowance_pct": 0.1,
+  "all_four_chiplet_orientations_covered": true,
+  "global_optimum_claimed": false
+}

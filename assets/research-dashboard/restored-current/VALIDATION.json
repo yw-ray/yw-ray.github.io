@@ -1,8 +1,9 @@
 {
   "completed": 315,
-  "all_exact_references_passed": true,
-  "eligible_candidates": 635,
-  "excluded_candidates": 251,
+  "all_latency_limits_passed": true,
+  "allowed_slowdown_pct": 0.1,
+  "eligible_candidates": 886,
+  "excluded_candidates": 0,
   "timing_checks": 1530,
   "no_regressions": true,
   "darknet_regression": {
@@ -24,7 +25,7 @@
     "B2_normalized_reflection": 0.9,
     "rotation_reduction_vs_B2_pct": 0.0,
     "reflection_reduction_vs_B2_pct": 9.999999999999998,
-    "rotation_source": "/home/yj3616/workspace/phd-research/research-notes/max-resource-sweep-20260928/bandwidth-min-mapping-20261005/cases/c4-core16/darknet19/rotation/design.json",
-    "reflection_source": "/home/yj3616/workspace/phd-research/research-notes/max-resource-sweep-20260928/bandwidth-min-mapping-20261005/cases/c4-core16/darknet19/reflection/design.json"
+    "rotation_source": "/home/yj3616/workspace/phd-research/research-notes/max-resource-sweep-20260928/bandwidth-allow01-audit-20261005/cases/c4-core16/darknet19/rotation/design.json",
+    "reflection_source": "/home/yj3616/workspace/phd-research/research-notes/max-resource-sweep-20260928/bandwidth-allow01-audit-20261005/cases/c4-core16/darknet19/reflection/design.json"
   }
 }
