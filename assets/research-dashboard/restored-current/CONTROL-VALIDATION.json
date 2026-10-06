@@ -1,0 +1,9 @@
+{
+  "passed": true,
+  "baseline2_Bpc": 36864,
+  "rotation_Bpc": 29696,
+  "reflection_Bpc": 27904,
+  "rotation_reduction_pct": 19.444444444444443,
+  "reflection_reduction_pct": 24.305555555555557,
+  "workers": "original archived files, unchanged"
+}

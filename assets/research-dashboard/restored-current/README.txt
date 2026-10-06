@@ -1,0 +1,15 @@
+CURRENT MAPPINGS, RESTORED ARCHIVED METHOD
+
+Scope: chiplets 4/8/16/32/64; cores/chiplet 1/4/16; batch 1; eight channels/port; eight B/cycle sizing quantum; A/H/I boundary masks. All 315 individual/group/ALL comparisons are complete.
+
+The earlier October 5 report required every retained mapping to fit one fixed hardware design. That was a different experiment and is not the requested archived-method update. This report treats retained mappings as alternatives. The unchanged archived channel8-completion worker chooses ONE mapping per workload by minimum uniform-bandwidth units and mapping-hash tie break, then runs the archived three-start rotation optimizer. Its archived certified-demand rotation companion is also run, retaining the better result for the same mappings/references/baselines, as the old chart merger did. The unchanged archived reflection worker runs on the same selected mappings. Shared designs support one selected mapping for each group member separately, not simultaneous execution.
+
+The frozen 886-candidate pool comes from reflection-full-mapping-sweep-20261005. Reference cycles match all 315 old archived chart targets exactly. The old strict reference deadline is retained; this is stricter than the earlier maximum 0.1% slowdown permission. Candidates exceeding this strict deadline cannot be selected even though they remain in the complete catalog with their collection-time 0.1% allowance clearly labelled. No new native mapping search is launched.
+
+B1 and B2 share the smallest uniform bandwidth supporting the selected mapping of each workload. B1 counts all four TX/RX directions; B2 counts connected ports only. Proposed values sum manufactured TX+RX endpoint capacity. Charts normalize every method by the corresponding B2; savings are 100*(1-capacity/B2). A new selected mapping may change B2 as well as the proposed capacity. See legacy-vs-current.csv and selected-mappings.csv. Group values are independently optimized shared hardware, never averages.
+
+Original RNN 16-chiplet/4-core control was recomputed with the unchanged workers: B2=36864, rotation=29696 (19.4444%), reflection=27904 (24.3056%). CONTROL-VALIDATION.json records this check.
+
+Traffic diagrams reuse archived workload-design SVG rendering: identical 4x4 geometry, numbers on arrows, A/H/I colors, DRAM boxes/dashed attachments and TX/RX tables. Other shapes extend the same layout. Mapping angles are zero for these unrotated native candidate snapshots; physical tile rotation/reflection comes from the actual optimized designs. Required profiles use certified componentwise demands when available, otherwise independently replay-validated per-link allocations no greater than the selected design. Noncertified profiles are labelled. Full catalog profiles retain their saved allocation and latency allowance.
+
+Large-mesh optimization is heuristic, not certified globally optimal. Reproduce with run.py, finalize.py, build-site.py, plots.py, verify-site.js. See SOURCE-PROVENANCE.json, SITE-DATA-VALIDATION.json and BROWSER-LOGIC-VALIDATION.json.

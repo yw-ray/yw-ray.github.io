@@ -1,0 +1,7 @@
+Restore the archived bandwidth calculation method and workload-design presentation.
+1. Reproduce archived RNN c16/core4 original inputs: B2 36864, rotation 29696, reflection 27904.
+2. Freeze the current 886-mapping catalog (4/8/16/32/64 chiplets; 1/4/16 cores/chiplet). Keep archived reference latency, batch 1, eight channels/port, x8 allocation and topology masks. No all-candidate support constraint.
+3. Select one eligible mapping per workload by minimum uniform bandwidth, then mapping hash tie break, as archived channel8-completion worker. Shared group jointly supports one selected mapping for each member workload, evaluated separately. Same selected mappings and reference limits for B1/B2/rotation/reflection.
+4. Run original three-start rotation sizing and archived certified-demand rotation companion; retain better comparable rotation. Run archived reflection worker for selected mappings. Keep old and new source fingerprints and actual selected IDs.
+5. Validate independent endpoints and scalar replay, export B2-normalized B1/rotation/reflection plus percentage saving charts, individual/group/ALL, and restore archived-style selected-workload design views and mapping-specific required traffic.
+6. Keep the previous all-mapping-support study as a clearly separate experiment; replace the default current report only after the restored-method outputs pass.

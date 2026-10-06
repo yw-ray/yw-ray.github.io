@@ -1,0 +1,9 @@
+{
+  "frozen_pool": "/home/yj3616/workspace/phd-research/research-notes/reflection-full-mapping-sweep-20261005",
+  "workers": {
+    "/home/yj3616/workspace/phd-research/research-notes/max-resource-sweep-20260928/channel8-completion-20261001/worker.py": "d510f1f414ab5e0c97331228d5a9e0ba21a71914329549a156744f7afca0a959",
+    "/home/yj3616/workspace/phd-research/research-notes/max-resource-sweep-20260928/reflection-sweep-20261001/worker.py": "ded5c2a907f26cca4c0207f74afd889ce1666049cca99453c072aa6263b24583"
+  },
+  "reference_policy": "unchanged archived original references, exact latency preservation",
+  "mapping_policy": "one per workload, min (uniform units, mapping hash); all candidates are alternatives"
+}
