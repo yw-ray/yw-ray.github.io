@@ -9,6 +9,7 @@
     "shared-worker.py": "6e55633a83d302b0124c6e9d30e748b464f36aac9ba2c241a4884fb18a71c90b",
     "check-deployment.py": "7c712c9df99b1213a9e92beef52251283787affddad647116c15f8b3558c0f0a",
     "verify-publication.py": "45fc341bbd307a7c4a4eb2292eea8481db6bf9255d85cb06db6dcb5970b052ca",
+    "reuse-subset-witnesses.py": "7c141687b660542b8a6a4f035fb5c232ae3f4dfbf792d704f36354be9ac6662f",
     "complete-and-publish.py": "c73dc22f5c02a27dfaa5a1a06a44cab7397e2c41f73ac403f1468976eddc27b8",
     "controller.py": "8ea75710a85a0dd610ffdf8e6e201c260821639c0c8f1873355db5c8f9a91906",
     "reflection-worker.py": "406068f10a23434f0538e0ceb52557291d08d7d59e94c18fffc9e42acdae376e",

@@ -8,3 +8,5 @@ Preserve archived-method-current-20261005 unchanged. Frozen pool886; retain iden
 5. Export315 comparisons, mode-specific selection IDs, candidate results, exclusions, old/new differences and provenance. Rebuild diagrams/charts, browser tests, publish and verify live. Existing mapping search untouched.
 
 Completed candidate-by-candidate evaluation. Shared search and noncertified fixed-candidate sizing are heuristic, not global-optimum guarantees. Rotation and reflection may select different mappings; comparison uses one common independently optimized uniform baseline. No universal support for all candidates is imposed. Fixed deadline matches archived reference and is stricter than permitted 0.1% slowdown.
+
+Subset consistency: a validated superset hardware design may be reused for a member workload/group when its total capacity is smaller. Those witnesses are included in candidate-results.csv and selected-mappings.csv; subset-reuse-audit.csv records each update. All 1,740 mode-specific subset comparisons pass.

@@ -1,0 +1,9 @@
+config,target,mode,old_Bpc,new_Bpc,source
+"(4, 4)",gpt_decode_block,reflection,5376,5120,/home/yj3616/workspace/phd-research/research-notes/max-resource-sweep-20260928/bandwidth-min-mapping-20261005/cases/c4-core4/ALL17/reflection/design.json
+"(16, 4)",googlenet,reflection,27392,27136,/home/yj3616/workspace/phd-research/research-notes/max-resource-sweep-20260928/bandwidth-min-mapping-20261005/cases/c16-core4/ALL17/reflection/design.json
+"(16, 16)",CNN,reflection,45120,44928,/home/yj3616/workspace/phd-research/research-notes/max-resource-sweep-20260928/bandwidth-min-mapping-20261005/cases/c16-core16/ALL17/reflection/design.json
+"(16, 16)",gpt_prefill_block,reflection,41984,41216,/home/yj3616/workspace/phd-research/research-notes/max-resource-sweep-20260928/bandwidth-min-mapping-20261005/cases/c16-core16/Transformer/reflection/design.json
+"(16, 16)",transformer,reflection,42496,41216,/home/yj3616/workspace/phd-research/research-notes/max-resource-sweep-20260928/bandwidth-min-mapping-20261005/cases/c16-core16/Transformer/reflection/design.json
+"(32, 1)",gpt_decode_block,reflection,45312,44800,/home/yj3616/workspace/phd-research/research-notes/max-resource-sweep-20260928/bandwidth-min-mapping-20261005/cases/c32-core1/Transformer/reflection/design.json
+"(32, 16)",gnmt,reflection,33280,32512,/home/yj3616/workspace/phd-research/research-notes/max-resource-sweep-20260928/bandwidth-min-mapping-20261005/cases/c32-core16/RNN/reflection/design.json
+"(32, 16)",resnet152,rotation,94464,94272,/home/yj3616/workspace/phd-research/research-notes/max-resource-sweep-20260928/bandwidth-min-mapping-20261005/cases/c32-core16/CNN/rotation/design.json
