@@ -1,0 +1,122 @@
+{
+  "date": "2026-10-08",
+  "workload": "darknet19",
+  "chiplets": 16,
+  "cores_per_chiplet": 1,
+  "batch": 1,
+  "scope": "Individual workload; original reflection template assignment/orientations; existing routing; installed channel count extension. Frozen 8-channel results remain unchanged.",
+  "channel_Bpc": 8,
+  "deadline": 349129,
+  "reference": 348781,
+  "original_capacity_Bpc": 6144,
+  "matched_B2_Bpc": 5376,
+  "best_capacity_Bpc": 4224,
+  "matched_reduction_pct": 21.42857142857143,
+  "old_reduction_pct": 31.25,
+  "rows": [
+    {
+      "design": "Original: uniform 8 channels",
+      "mapping": "fixed",
+      "capacity_Bpc": 6144,
+      "cycles": 348781,
+      "installed_TX_RX_endpoints": 768,
+      "connected_directed_channels": 384,
+      "reduction_vs_old_pct": 0.0,
+      "reduction_vs_matched_B2_pct": -14.28571428571428,
+      "slowdown_pct": 0.0
+    },
+    {
+      "design": "Retuned B2: uniform 7 channels",
+      "mapping": "joint",
+      "capacity_Bpc": 5376,
+      "cycles": 348781,
+      "installed_TX_RX_endpoints": 672,
+      "connected_directed_channels": 336,
+      "reduction_vs_old_pct": 12.5,
+      "reduction_vs_matched_B2_pct": 0.0,
+      "slowdown_pct": 0.0
+    },
+    {
+      "design": "Variable channels, old mapping",
+      "mapping": "fixed",
+      "capacity_Bpc": 4224,
+      "cycles": 348813,
+      "installed_TX_RX_endpoints": 528,
+      "connected_directed_channels": 240,
+      "reduction_vs_old_pct": 31.25,
+      "reduction_vs_matched_B2_pct": 21.42857142857143,
+      "slowdown_pct": 0.009174811701329055
+    },
+    {
+      "design": "Variable channels, searched mapping",
+      "mapping": "joint",
+      "capacity_Bpc": 4224,
+      "cycles": 348781,
+      "installed_TX_RX_endpoints": 528,
+      "connected_directed_channels": 240,
+      "reduction_vs_old_pct": 31.25,
+      "reduction_vs_matched_B2_pct": 21.42857142857143,
+      "slowdown_pct": 0.0
+    }
+  ],
+  "uniform_sweep": [
+    {
+      "channels": 1,
+      "cycles": 502136,
+      "capacity_Bpc": 768
+    },
+    {
+      "channels": 2,
+      "cycles": 367035,
+      "capacity_Bpc": 1536
+    },
+    {
+      "channels": 3,
+      "cycles": 355968,
+      "capacity_Bpc": 2304
+    },
+    {
+      "channels": 4,
+      "cycles": 352627,
+      "capacity_Bpc": 3072
+    },
+    {
+      "channels": 5,
+      "cycles": 350625,
+      "capacity_Bpc": 3840
+    },
+    {
+      "channels": 6,
+      "cycles": 349290,
+      "capacity_Bpc": 4608
+    },
+    {
+      "channels": 7,
+      "cycles": 348781,
+      "capacity_Bpc": 5376
+    },
+    {
+      "channels": 8,
+      "cycles": 348781,
+      "capacity_Bpc": 6144
+    }
+  ],
+  "native_validation": {
+    "checks": 22,
+    "baseline_profiles_exact": 3576,
+    "normal_checks_exact": true,
+    "blocked_link_control": "infeasible"
+  },
+  "source_artifact_sha256": {
+    "RESULT.json": "ebfe5b5275f3604c9995987db18577fb4c84916db66ee125df479eb23ff2a05b",
+    "VALIDATION.json": "a4423ca3b8fece45f35a0e8636f740c0417da4f4c086970c0b6b49e558241ff2",
+    "joint.json": "f53de880d4f49f4a4393ceb0159ab6d41c21f0b1abda22ff943ea43687b313d9",
+    "fixed.json": "fe09418a88710a80f962acf1ed0ba98126fe9b92c8a98b5d2e9f34b797d3314d"
+  },
+  "limitations": [
+    "No chip area or energy measurement.",
+    "Minimum bandwidth is unchanged; design channels are all 8 B/cycle.",
+    "No capacity gain from changing mapping: fixed and searched mappings both achieve 4224.",
+    "All 48 directed connections remain; no alternate routing search."
+  ]
+}

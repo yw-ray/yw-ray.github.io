@@ -1,0 +1,17 @@
+mapping,channels,channel_Bpc,capacity_Bpc,cycles,feasible
+fixed,1,8,768,515280,False
+fixed,2,8,1536,370790,False
+fixed,3,8,2304,357057,False
+fixed,4,8,3072,352659,False
+fixed,5,8,3840,350625,False
+fixed,6,8,4608,349290,False
+fixed,7,8,5376,348781,True
+fixed,8,8,6144,348781,True
+joint,1,8,768,502136,False
+joint,2,8,1536,367035,False
+joint,3,8,2304,355968,False
+joint,4,8,3072,352627,False
+joint,5,8,3840,350625,False
+joint,6,8,4608,349290,False
+joint,7,8,5376,348781,True
+joint,8,8,6144,348781,True

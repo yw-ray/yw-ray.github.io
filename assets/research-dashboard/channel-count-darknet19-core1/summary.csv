@@ -1,0 +1,5 @@
+design,mapping,capacity_Bpc,cycles,installed_TX_RX_endpoints,connected_directed_channels,reduction_vs_old_pct,reduction_vs_matched_B2_pct,slowdown_pct
+Original: uniform 8 channels,fixed,6144,348781,768,384,0.0,-14.28571428571428,0.0
+Retuned B2: uniform 7 channels,joint,5376,348781,672,336,12.5,0.0,0.0
+"Variable channels, old mapping",fixed,4224,348813,528,240,31.25,21.42857142857143,0.009174811701329055
+"Variable channels, searched mapping",joint,4224,348781,528,240,31.25,21.42857142857143,0.0

@@ -1,0 +1,28 @@
+config,tile,direction,TX_channels,RX_channels,TX_Bpc,RX_Bpc,tile_capacity_Bpc,instances
+Original: 8 channels,0,N,8,8,64,64,256,4
+Original: 8 channels,0,W,8,8,64,64,256,4
+Original: 8 channels,1,E,8,8,64,64,384,8
+Original: 8 channels,1,N,8,8,64,64,384,8
+Original: 8 channels,1,S,8,8,64,64,384,8
+Original: 8 channels,2,E,8,8,64,64,512,4
+Original: 8 channels,2,N,8,8,64,64,512,4
+Original: 8 channels,2,W,8,8,64,64,512,4
+Original: 8 channels,2,S,8,8,64,64,512,4
+Retuned B2: 7 channels,0,N,7,7,56,56,224,4
+Retuned B2: 7 channels,0,W,7,7,56,56,224,4
+Retuned B2: 7 channels,1,E,7,7,56,56,336,8
+Retuned B2: 7 channels,1,N,7,7,56,56,336,8
+Retuned B2: 7 channels,1,S,7,7,56,56,336,8
+Retuned B2: 7 channels,2,E,7,7,56,56,448,4
+Retuned B2: 7 channels,2,N,7,7,56,56,448,4
+Retuned B2: 7 channels,2,W,7,7,56,56,448,4
+Retuned B2: 7 channels,2,S,7,7,56,56,448,4
+Variable: 4 / 5 / 7 channels,0,N,7,4,56,32,176,4
+Variable: 4 / 5 / 7 channels,0,W,7,4,56,32,176,4
+Variable: 4 / 5 / 7 channels,1,E,7,4,56,32,280,8
+Variable: 4 / 5 / 7 channels,1,N,5,7,40,56,280,8
+Variable: 4 / 5 / 7 channels,1,S,5,7,40,56,280,8
+Variable: 4 / 5 / 7 channels,2,E,5,7,40,56,320,4
+Variable: 4 / 5 / 7 channels,2,N,4,4,32,32,320,4
+Variable: 4 / 5 / 7 channels,2,W,5,7,40,56,320,4
+Variable: 4 / 5 / 7 channels,2,S,4,4,32,32,320,4
