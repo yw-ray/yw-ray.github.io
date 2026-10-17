@@ -28,7 +28,7 @@ svg{width:100%;max-width:720px;height:auto;display:block}.fig svg{max-width:460p
 </div>
 <h3>Selection rule (best-effort mapping)</h3>
 <ul><li>For each HW, each (workload, batch) uses its <b>fastest mapping from every method’s pool</b> — e.g. route choice at b1 and ring placement at b16. The uniform HW gets exactly the same choice.</li>
-<li><b>Common HW</b> (one design for batches 1/4/16): no batch may be slower than uniform; among those, prefer mean ≥ 10% and max ≥ 20%, then the highest mean. If no asymmetric design keeps every batch ≥ 0%, uniform is kept (0%). Groups (CNN/RNN/Transformer/ALL16) apply the same rule to all (workload, batch) pairs.</li>
+<li><b>Common HW</b> (one design for batches 1/4/16): no batch may be slower than uniform; among those, prefer mean ≥ 10% and max ≥ 20%, then the highest mean. If no asymmetric design keeps every batch ≥ 0%, uniform is kept (0%). Groups (CNN/RNN/Transformer/ALL14 (all but RNN)) apply the same rule to all (workload, batch) pairs.</li>
 <li>Selected designs are re-simulated natively (oracle/native parity checked). “Provisional” rows are oracle-only until that check.</li></ul>
 <div class="scroll"><table>
 <tr><th>Level</th><th class="l">Method</th><th class="l">Search variants (pool labels)</th></tr>
@@ -160,7 +160,7 @@ function renderAblation(){const c=Number($('c2').value);const rows=data.rows.fil
 function renderChips(){const by={};for(const r of data.rows)if(r.common)(by[r.workload]??={})[r.chiplets]=r.common;
  const groups=[];for(const [w,m] of Object.entries(by))if(Object.keys(m).length>1)for(const c of Object.keys(m).sort((a,b)=>a-b))groups.push({name:`${w} C${c}`,note:isUniform(m[c].widths)?'uniform kept':null,dim:m[c].stage!=='common-final',values:Object.fromEntries(Object.entries(m[c].batches).map(([b,v])=>[b,v.speedup_pct])),mean:m[c].mean});
  $('chipChart').innerHTML=groups.length?axisChart(groups,['1','4','16'],{gw:110,label:'chiplet count',color:k=>BC[k],keyName:k=>'batch '+k}):'<p class="note">Waiting for results at a second chiplet count.</p>'}
-function renderGroups(){if(!data.groups.length){$('groups').innerHTML='<p class="note">Group selections (CNN, RNN, Transformer, ALL16) start after the per-workload stages. Final-rule groups are suffixed “-final”.</p>';return}
+function renderGroups(){if(!data.groups.length){$('groups').innerHTML='<p class="note">Group selections (CNN, RNN, Transformer, ALL14 (all but RNN)) start after the per-workload stages. Final-rule groups are suffixed “-final”.</p>';return}
  let t='<table><tr><th>Group</th><th>Chiplets</th><th class="l">HW</th><th>Mean</th><th>Min pair</th><th>Max pair</th><th class="l">Per-workload mean</th></tr>';
  for(const g of data.groups)t+=`<tr><td>${esc(g.name)}${g.final?'':' <span class="badge pend">older rule</span>'}</td><td>C${g.chiplets||8}</td><td class="l">${esc(g.widths)}</td><td>${fmt(g.mean)}</td><td class="${cls(g.min)}">${fmt(g.min)}</td><td>${fmt(g.max)}</td><td class="l note">${Object.entries(g.per_workload_mean).map(([w,v])=>`${esc(w)} ${fmt(v)}`).join(' · ')}</td></tr>`;
  $('groups').innerHTML=t+'</table>'}
