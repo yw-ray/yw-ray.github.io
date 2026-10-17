@@ -124,7 +124,7 @@ function axisChart(groups,series,opt){
   s+=`<text x="${left+i*gw+gw/2}" y="${H-bot+16}" font-size="12" text-anchor="end" transform="rotate(-30 ${left+i*gw+gw/2} ${H-bot+16})">${esc(g.name)}</text>`});
  let lx=left;series.forEach(k=>{s+=`<rect x="${lx}" y="${H-14}" width="12" height="12" fill="${opt.color(k)}"/><text x="${lx+16}" y="${H-4}" font-size="12">${esc(opt.keyName(k))}</text>`;lx+=110});
  return s+'</svg>'}
-function badge(c){if(!c)return '<span class="badge pend">pending</span>';return c.stage==='common-final'?'<span class="badge final">final · native</span>':c.stage==='common-fast'?'<span class="badge final">fast path · native</span>':'<span class="badge prov">provisional · oracle</span>'}
+function badge(c){if(!c)return '<span class="badge pend">pending</span>';return c.stage==='common-final'?'<span class="badge final">final · native</span>':c.stage.startsWith('common-fast')?'<span class="badge final">fast path · native</span>':'<span class="badge prov">provisional · oracle</span>'}
 function renderSummary(){const c8=data.rows.filter(r=>r.chiplets===8),rows=data.rows.filter(r=>r.common);const met=rows.filter(r=>r.common.meets),fin=rows.filter(r=>r.common.stage==='common-final');
  const best=rows.reduce((a,r)=>Math.max(a,r.common.max),-Infinity);
  $('summary').innerHTML=[['C8 workloads with a common HW',`${c8.filter(r=>r.common).length} / 16`],['Meeting target (no slower batch, mean ≥10%, max ≥20%)',met.length],['Native-validated (final)',fin.length],['Best common-HW batch speedup',fmt(best)]].map(([k,v])=>`<div class="stat">${esc(k)}<b>${esc(v)}</b></div>`).join('')}
