@@ -59,6 +59,14 @@ svg{width:100%;max-width:720px;height:auto;display:block}.fig svg{max-width:460p
 <p class="note">One HW per workload for batches 1/4/16. Diamonds: mean. Dashed lines: 10% (mean target), 20% (max target). Faded bars: provisional (oracle only).</p>
 <div id="commonChart"></div><div id="commonTable" class="scroll"></div></div>
 
+<div class="card"><h2>Ring-forwarding sensitivity</h2>
+<p>Gemini models links by bandwidth only, so destination-to-destination multicast forwarding (L3) costs no extra time. Each model below re-selects both sides fairly (best mapping per side; common HW chosen with no slower batch). <b>4 chunks is the main evaluation model.</b></p>
+<ul class="note"><li><b>Free</b>: original selection (forwarding has no cost).</li>
+<li><b>16 / 4 chunks</b>: the message is forwarded in 16 or 4 pipelined chunks: Σ steps (size/C)/width + (C−1)·slowest step.</li>
+<li><b>Store-and-forward</b> (1 chunk): a chip forwards only after receiving the whole message — worst case.</li>
+<li><b>No forwarding</b>: forwarding variants removed from both sides — lower bound independent of the assumption.</li></ul>
+<label>Chiplets <select id="c6"><option value="8">8</option><option value="4">4</option></select></label>
+<div id="fwdChart"></div><div id="fwdTable" class="scroll"></div></div>
 <div class="card"><h2>Speedup by method (cumulative ablation, per-batch HW)</h2>
 <label>Chiplets <select id="c2"><option value="8">8</option><option value="4">4</option></select></label><label>Workload <select id="w2"></select></label>
 <p class="note">Best speedup of each batch on its own best K=2 HW (oracle), as methods are added. Missing levels: stage not run for that batch.</p>
@@ -174,11 +182,21 @@ function diagram(c,links){const ny=c/2,D=[[1,0],[0,-1],[-1,0],[0,1]],S=110,P=40,
  return s+'<defs><marker id="ar" viewBox="0 0 10 10" refX="8" refY="5" markerUnits="userSpaceOnUse" markerWidth="9" markerHeight="9" orient="auto"><path d="M0 0L10 5L0 10z" fill="#33475b"/></marker></defs></svg><p class="note">Directed links (B/cycle). Green: wider than 256, red: narrower. Total equals uniform 256 × links. Same orientation as the method figures.</p>'}
 function renderDiagram(){const opts=[...data.rows.filter(r=>r.common&&!isUniform(r.common.widths)).map(r=>({k:`C${r.chiplets} · ${r.workload} · ${r.common.widths}`,c:r.chiplets,l:r.common.links})),...data.groups.map(g=>({k:`C${g.chiplets||8} · group ${g.name} · ${g.widths}`,c:g.chiplets||8,l:g.links}))];
  const sel=$('d5'),cur=sel.value;sel.innerHTML=opts.map(o=>`<option${o.k===cur?' selected':''}>${esc(o.k)}</option>`).join('');const o=opts.find(x=>x.k===sel.value)||opts[0];$('diagram').innerHTML=o?diagram(o.c,o.l):''}
+const FWD=[['free','Free'],['C16','16 chunks'],['C4','4 chunks'],['C1','Store-and-forward'],['none','No forwarding']];
+const FC={free:'#9aa9b8',C16:'#5b8fd0',C4:'#2f6fb0',C1:'#e08a1e',none:'#a32e25'};
+function renderForwarding(){const c=Number($('c6').value);const rows=data.rows.filter(r=>r.chiplets===c&&(r.common||Object.keys(r.forwarding||{}).length));
+ const get=(r,k)=>k==='free'?(r.common?{mean:r.common.mean,widths:r.common.widths,speedup_pct:Object.fromEntries(Object.entries(r.common.batches).map(([b,v])=>[b,v.speedup_pct]))}:null):(r.forwarding||{})[k];
+ const groups=rows.map(r=>({name:r.workload,values:Object.fromEntries(FWD.map(([k])=>[k,get(r,k)?.mean]).filter(([,v])=>v!=null))}));
+ $('fwdChart').innerHTML=axisChart(groups,FWD.map(([k])=>k),{gw:90,label:'forwarding sensitivity (mean speedup)',color:k=>FC[k],keyName:k=>FWD.find(x=>x[0]===k)[1]});
+ let t='<table><tr><th>Workload</th>'+FWD.map(([,n])=>`<th class="l">${n}<br><span class="note">HW · b1 / b4 / b16 · mean</span></th>`).join('')+'</tr>';
+ for(const r of rows){t+=`<tr><td>${esc(r.workload)}</td>`+FWD.map(([k])=>{const x=get(r,k);if(!x)return '<td class="l note">pending</td>';const sp=['1','4','16'].map(b=>x.speedup_pct?.[b]).map(v=>v==null?'–':fmt(v)).join(' / ');return `<td class="l"><span class="note">${esc(x.widths)}</span><br>${sp}<br><b class="${cls(x.mean)}">${fmt(x.mean)}</b></td>`}).join('')+'</tr>'}
+ $('fwdTable').innerHTML=t+'</table><p class="note">Speedups are native-validated (free, no forwarding) or native replays with the forwarding floor (chunk models). Batches without a value were not re-evaluated.</p>'}
+const QNAME={scheduler6:'Fast path (main results)',scheduler7:'No-forwarding selections',scheduler8:'Forwarding sweep (4 / 1 / 16 chunks)',scheduler3:'Staged ablation (paused)',scheduler4:'Staged L6 (paused)',scheduler5:'C4 staged ablation (paused)'};
 function renderStatus(){let t='<table><tr><th>Queue</th><th class="l">Updated</th><th class="l">Jobs</th><th class="l">Running</th></tr>';
- for(const [k,v] of Object.entries(data.status))t+=`<tr><td>${esc(k)}</td><td class="l">${esc(v.updated)}</td><td class="l">${Object.entries(v.counts).map(([a,b])=>`${esc(a)} ${b}`).join(' · ')}</td><td class="l note">${v.running.map(esc).join(', ')}</td></tr>`;
+ for(const [k,v] of Object.entries(data.status))t+=`<tr><td>${esc(QNAME[k]||k)}</td><td class="l">${esc(v.updated)}</td><td class="l">${Object.entries(v.counts).map(([a,b])=>`${esc(a)} ${b}`).join(' · ')}</td><td class="l note">${v.running.map(esc).join(', ')}</td></tr>`;
  $('status').innerHTML=t+'</table>'}
 function render(){if(!data)return;$('updated').textContent='Results updated '+new Date(data.updated*1000).toLocaleString('en-US')+' · the page refreshes every minute.';
- renderSummary();renderCommon();renderAblation();renderChips();renderGroups();renderDiagram();renderStatus()}
+ renderSummary();renderCommon();renderForwarding();renderAblation();renderChips();renderGroups();renderDiagram();renderStatus()}
 async function refresh(){try{const r=await fetch('asym-mapping-study.json?t='+Date.now(),{cache:'no-store'});if(!r.ok)throw new Error('HTTP '+r.status);data=await r.json();$('error').textContent='';render()}catch(e){$('error').textContent='Could not load results: '+e.message}}
-figures();for(const id of ['c1','c2','w2','d5'])$(id).onchange=render;refresh();setInterval(()=>{if(!document.hidden)refresh()},60000);
+figures();for(const id of ['c1','c2','c6','w2','d5'])$(id).onchange=render;refresh();setInterval(()=>{if(!document.hidden)refresh()},60000);
 </script></html>
