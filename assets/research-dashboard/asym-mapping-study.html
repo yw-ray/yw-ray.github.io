@@ -141,7 +141,7 @@ function axisChart(groups,series,opt){
   if(g.mean!=null){const cx=left+i*gw+gw/2,cy=y(g.mean);s+=`<path d="M${cx} ${cy-6}L${cx+6} ${cy}L${cx} ${cy+6}L${cx-6} ${cy}Z" fill="#18334d"><title>${esc(g.name)} mean ${fmt(g.mean)}</title></path>`}
   if(g.note)s+=`<text x="${left+i*gw+gw/2}" y="${y(0)-12}" text-anchor="middle" font-size="10" fill="#7a5200">${esc(g.note)}</text>`;
   s+=`<text x="${left+i*gw+gw/2}" y="${H-bot+16}" font-size="12" text-anchor="end" transform="rotate(-30 ${left+i*gw+gw/2} ${H-bot+16})">${esc(g.name)}</text>`});
- let lx=left;series.forEach(k=>{s+=`<rect x="${lx}" y="${H-14}" width="12" height="12" fill="${opt.color(k)}"/><text x="${lx+16}" y="${H-4}" font-size="12">${esc(opt.keyName(k))}</text>`;lx+=110});
+ let lx=left;series.forEach(k=>{s+=`<rect x="${lx}" y="${H-14}" width="12" height="12" fill="${opt.color(k)}"/><text x="${lx+16}" y="${H-4}" font-size="12">${esc(opt.keyName(k))}</text>`;lx+=Math.max(90,String(opt.keyName(k)).length*7+30)});
  return s+'</svg>'}
 function badge(c){if(!c)return '<span class="badge pend">pending</span>';return c.stage==='common-final'?'<span class="badge final">final · native</span>':c.stage.startsWith('common-fast')?'<span class="badge final">fast path · native</span>':'<span class="badge prov">provisional · oracle</span>'}
 function renderSummary(){const c8=data.rows.filter(r=>r.chiplets===8),rows=data.rows.filter(r=>r.common);const met=rows.filter(r=>r.common.meets),fin=rows.filter(r=>r.common.stage==='common-final');
