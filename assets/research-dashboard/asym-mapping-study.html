@@ -43,6 +43,17 @@ svg{width:100%;max-width:720px;height:auto;display:block}.fig svg{max-width:460p
 <p class="note">Each search also runs in three DP grouping modes (<code>g1</code>, <code>hybrid</code>, <code>g4</code>). Within K=2 the C8 family (a, b, c) and the C4 family (ax, ay, cx, cy; sum 1024) are the complete design spaces and are searched exhaustively.</p>
 </div>
 
+<div class="card"><h2>Methods tried and rejected</h2>
+<p class="note">Kept out of every mapping pool and selection (rule: no experiment that improves the uniform baseline).</p>
+<div class="scroll"><table>
+<tr><th class="l">Method</th><th class="l">Idea</th><th class="l">Result (own cycles on the search HW)</th><th class="l">Why rejected</th></tr>
+<tr><td class="l">λ route-cost variants (C8)</td><td class="l">Partial steering: weight counter-ring hops by λ = 0.5 / 2.</td><td class="l">GNMT b16 asym 27,236 vs best uniform 22,514</td><td class="l">No asymmetric gain.</td></tr>
+<tr><td class="l">L7 load-aware routing</td><td class="l">Per transfer choose XY/YX/chain by (link load + bytes) / width.</td><td class="l">Darknet19 b1 asym 22.7k–27.5k, uniform 30.9k (XY: ~20.7k)</td><td class="l">Worse on both sides; loads seen while routing are partial (Gemini merges per-layer NoC objects later), and routing becomes order-dependent.</td></tr>
+<tr><td class="l">L7 width-ratio split</td><td class="l">Each (src,dst) prefers cw with probability = cw-ring width share.</td><td class="l">Darknet19 b1 uniform 16.2k (best so far 20.7k), asym 21.8k</td><td class="l">Mainly speeds up the uniform baseline.</td></tr>
+<tr><td class="l">L8a traffic-class separation (C8)</td><td class="l">DRAM flows steered to the wide ring; core flows cross on the middle links.</td><td class="l">GNMT/LSTM/vgg19 b16 asym worse than before; darknet19 b4 uniform 35.1k (best so far 40.5k)</td><td class="l">No asymmetric gain at b16; improves the uniform baseline at b4.</td></tr>
+<tr><td class="l">L8b ring rotation (NN-Baton style)</td><td class="l">Read a tensor once and rotate it chip-to-chip along the wide ring.</td><td class="l">Not run</td><td class="l">Gemini already counts DRAM bytes once per multicast and L3 already forwards along the ring, so no DRAM reduction is possible in this model.</td></tr>
+</table></div>
+<p class="note">Finding: at batch 16 the DRAM-bound share of run time grows, which caps what any D2D re-provisioning (and D2D-side mapping) can gain.</p></div>
 <div class="card"><h2>Common-HW speedup by workload</h2>
 <label>Chiplets <select id="c1"><option value="8">8</option><option value="4">4</option></select></label>
 <p class="note">One HW per workload for batches 1/4/16. Diamonds: mean. Dashed lines: 10% (mean target), 20% (max target). Faded bars: provisional (oracle only).</p>
