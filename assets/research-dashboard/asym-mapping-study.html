@@ -11,7 +11,7 @@ svg{width:100%;max-width:720px;height:auto;display:block}.fig svg{max-width:460p
 .final{background:#dff3e6;color:#17663a}.prov{background:#fff2d6;color:#7a5200}.pend{background:#eceff3;color:#52667a}code{background:#eef3f9;padding:1px 4px;border-radius:4px}
 @media(max-width:1000px){.cards{grid-template-columns:1fr 1fr}.figs{grid-template-columns:1fr}}
 </style>
-<h1>Asymmetric D2D links · mapping-aware search (K=2)</h1>
+<h1>Asymmetric D2D links · co-fit campaign (HW fitted to each workload's traffic)</h1><p class="note" style="background:#eef6ff;padding:8px 12px;border-radius:6px"><b>Current campaign only (from 2026-10-18).</b> Each workload: the HW is fitted to its ring-mapped traffic, mappings are re-searched on that HW, repeated until converged; speedup is against uniform HW with the best of every mapping type. Everything published before 2026-10-18 01:55 (per-workload graphs, ablation, forwarding sensitivity, fast-path groups) is in the <b>Backup · asym study 2026-10-18 01:55</b> tab. Sections without new data stay empty until the campaign reaches them.</p>
 <p>Goal: with the <b>same total D2D capacity</b> as uniform 256 B/cycle/link, find K=2 asymmetric tile designs that run faster on all 16 workloads (9 CNN, 2 RNN, 5 Transformer) at batches 1/4/16. Every source TX equals the adjacent RX, no boundary D2D port is left unconnected, rotations only. Speedup = (best uniform cycles / asymmetric cycles − 1) × 100%. The uniform side is the fastest native-validated uniform result from any study, and it always receives the same added mapping search.</p>
 <p id="updated" class="note">Loading…</p><p id="error" class="neg"></p>
 <div class="cards" id="summary"></div>
@@ -55,7 +55,7 @@ svg{width:100%;max-width:720px;height:auto;display:block}.fig svg{max-width:460p
 </table></div>
 <p class="note">Finding: at batch 16 the DRAM-bound share of run time grows, which caps what any D2D re-provisioning (and D2D-side mapping) can gain.</p></div>
 <div class="card"><h2>Common-HW speedup by workload</h2>
-<label>Chiplets <select id="c1"><option value="8">8</option><option value="4">4</option></select></label>
+<label>Chiplets <select id="c1"><option value="8">8</option><option value="4">4</option><option value="16">16</option><option value="9">9</option><option value="32">32</option></select></label>
 <label>HW <select id="h1"><option value="own">per workload</option><option value="group">its group's shared HW</option><option value="ALL14">ALL14 shared HW</option></select></label>
 <p class="note">Bars: the selected HW. Table: mean on all three HW choices (per workload / group / ALL14; ALL14 excludes RNN). One HW per workload for batches 1/4/16. Diamonds: mean. Dashed lines: 10% (mean target), 20% (max target). Faded bars: provisional (oracle only).</p>
 <div id="commonChart"></div><div id="commonTable" class="scroll"></div></div>
@@ -66,10 +66,10 @@ svg{width:100%;max-width:720px;height:auto;display:block}.fig svg{max-width:460p
 <li><b>16 / 4 chunks</b>: the message is forwarded in 16 or 4 pipelined chunks: Σ steps (size/C)/width + (C−1)·slowest step.</li>
 <li><b>Store-and-forward</b> (1 chunk): a chip forwards only after receiving the whole message — worst case.</li>
 <li><b>No forwarding</b>: forwarding variants removed from both sides — lower bound independent of the assumption.</li></ul>
-<label>Chiplets <select id="c6"><option value="8">8</option><option value="4">4</option></select></label>
+<label>Chiplets <select id="c6"><option value="8">8</option><option value="4">4</option><option value="16">16</option><option value="9">9</option><option value="32">32</option></select></label>
 <div id="fwdChart"></div><div id="fwdTable" class="scroll"></div></div>
 <div class="card"><h2>Speedup by method (cumulative ablation, per-batch HW)</h2>
-<label>Chiplets <select id="c2"><option value="8">8</option><option value="4">4</option></select></label><label>Workload <select id="w2"></select></label>
+<label>Chiplets <select id="c2"><option value="8">8</option><option value="4">4</option><option value="16">16</option><option value="9">9</option><option value="32">32</option></select></label><label>Workload <select id="w2"></select></label>
 <p class="note">Best speedup of each batch on its own best K=2 HW (oracle), as methods are added. Missing levels: stage not run for that batch.</p>
 <div id="ablationChart"></div>
 <h3>All workloads · best per-batch speedup per level</h3><div id="heat" class="scroll"></div></div>
@@ -189,7 +189,7 @@ function diagram(c,links){const ny=c/2,D=[[1,0],[0,-1],[-1,0],[0,1]],S=110,P=40,
   s+=`<text x="${(a[0]+b[0])/2+nxv*2}" y="${(a[1]+b[1])/2+nyv*2+4}" font-size="10" text-anchor="middle">${w}</text>`}
  for(let x=0;x<2;x++)for(let y=0;y<ny;y++){const [cx,cy]=pos(x,y);s+=`<rect x="${cx-25}" y="${cy-20}" width="50" height="40" rx="7" fill="#eef3f9" stroke="#8aa0b8"/><text x="${cx}" y="${cy+4}" text-anchor="middle" font-size="11">chip ${x*ny+y}</text>`}
  return s+'<defs><marker id="ar" viewBox="0 0 10 10" refX="8" refY="5" markerUnits="userSpaceOnUse" markerWidth="9" markerHeight="9" orient="auto"><path d="M0 0L10 5L0 10z" fill="#33475b"/></marker></defs></svg><p class="note">Directed links (B/cycle). Green: wider than 256, red: narrower. Total equals uniform 256 × links. Same orientation as the method figures.</p>'}
-function renderDiagram(){const opts=[...data.rows.filter(r=>r.common&&!isUniform(r.common.widths)).map(r=>({k:`C${r.chiplets} · ${r.workload} · ${r.common.widths}`,c:r.chiplets,l:r.common.links})),...data.groups.map(g=>({k:`C${g.chiplets||8} · group ${g.name} · ${g.widths}`,c:g.chiplets||8,l:g.links}))];
+function renderDiagram(){const opts=[...data.rows.filter(r=>r.common&&r.chiplets<=8&&!isUniform(r.common.widths)).map(r=>({k:`C${r.chiplets} · ${r.workload} · ${r.common.widths}`,c:r.chiplets,l:r.common.links})),...data.groups.map(g=>({k:`C${g.chiplets||8} · group ${g.name} · ${g.widths}`,c:g.chiplets||8,l:g.links}))];
  const sel=$('d5'),cur=sel.value;sel.innerHTML=opts.map(o=>`<option${o.k===cur?' selected':''}>${esc(o.k)}</option>`).join('');const o=opts.find(x=>x.k===sel.value)||opts[0];$('diagram').innerHTML=o?diagram(o.c,o.l):''}
 const FWD=[['free','Free'],['C16','16 chunks'],['C4','4 chunks'],['C1','Store-and-forward'],['none','No forwarding']];
 const FC={free:'#9aa9b8',C16:'#5b8fd0',C4:'#2f6fb0',C1:'#e08a1e',none:'#a32e25'};
