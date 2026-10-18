@@ -136,6 +136,7 @@ function mapText(m){if(!m)return '–';if(!m.label)return m.source?'other study'
 function axisChart(groups,series,opt){
  const W=Math.max(560,groups.length*opt.gw+80),H=290,top=16,bot=110,left=60;const vals=groups.flatMap(g=>series.map(s=>g.values[s]).filter(v=>v!=null));
  const lo=Math.min(-5,...vals),hi=Math.max(25,...vals);const y=v=>top+(hi-v)/(hi-lo)*(H-top-bot);let s=`<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="${esc(opt.label)}">`;
+ { const yt=opt.ytitle||'Speedup vs uniform (%)',ym=(top+H-bot)/2;s+=`<text x="14" y="${ym}" font-size="12" fill="#33475b" text-anchor="middle" transform="rotate(-90 14 ${ym})">${esc(yt)}</text>`; }
  for(let t=Math.ceil(lo/10)*10;t<=hi;t+=10)s+=`<line x1="${left}" x2="${W-10}" y1="${y(t)}" y2="${y(t)}" stroke="#e3eaf3"/><text x="${left-6}" y="${y(t)+4}" text-anchor="end" font-size="11">${t}%</text>`;
  for(const r of [0,10,20])s+=`<line x1="${left}" x2="${W-10}" y1="${y(r)}" y2="${y(r)}" stroke="${r?'#9aa9b8':'#33475b'}" stroke-dasharray="${r?'5 4':''}"/>`;
  const gw=(W-left-10)/Math.max(1,groups.length),bw=Math.min(22,(gw-14)/series.length);
@@ -146,7 +147,7 @@ function axisChart(groups,series,opt){
   s+=`<text x="${left+i*gw+gw/2}" y="${H-bot+16}" font-size="12" text-anchor="end" transform="rotate(-30 ${left+i*gw+gw/2} ${H-bot+16})">${esc(g.name)}</text>`});
  let lx=left;series.forEach(k=>{s+=`<rect x="${lx}" y="${H-14}" width="12" height="12" fill="${opt.color(k)}"/><text x="${lx+16}" y="${H-4}" font-size="12">${esc(opt.keyName(k))}</text>`;lx+=Math.max(90,String(opt.keyName(k)).length*7+30)});
  return s+'</svg>'}
-function badge(c){if(!c)return '<span class="badge pend">pending</span>';return c.stage==='common-final'?'<span class="badge final">final · native</span>':c.stage.startsWith('common-fast')?'<span class="badge final">fast path · native</span>':'<span class="badge prov">provisional · oracle</span>'}
+function badge(c){if(!c)return '<span class="badge pend">pending</span>';if(c.stage==='common-cofit')return c.native?'<span class="badge final">co-fit · native</span>':'<span class="badge prov">co-fit · oracle</span>';return c.stage==='common-final'?'<span class="badge final">final · native</span>':c.stage.startsWith('common-fast')?'<span class="badge final">fast path · native</span>':'<span class="badge prov">provisional · oracle</span>'}
 function renderSummary(){const c8=data.rows.filter(r=>r.chiplets===8),rows=data.rows.filter(r=>r.common);const met=rows.filter(r=>r.common.meets),fin=rows.filter(r=>r.common.stage==='common-final');
  const best=rows.reduce((a,r)=>Math.max(a,r.common.max),-Infinity);
  $('summary').innerHTML=[['C8 workloads with a common HW',`${c8.filter(r=>r.common).length} / 16`],['Meeting target (no slower batch, mean ≥10%, max ≥20%)',met.length],['Native-validated (final)',fin.length],['Best common-HW batch speedup',fmt(best)]].map(([k,v])=>`<div class="stat">${esc(k)}<b>${esc(v)}</b></div>`).join('')}
@@ -174,7 +175,10 @@ function renderCommon(){const c=Number($('c1').value),hw=$('h1').value;const all
   const r=it.r;if(hw!=='own'){const g=groupSel(hw==='group'?r.group:'ALL14',c),v=groupVals(g,r.workload);
    return {name:r.workload,note:v?(isUniform(g.widths)?'uniform kept':null):hw==='ALL14'&&r.group==='RNN'?'not in ALL14':rnnNote(r)||'pending',values:v||{},mean:meanOf(v)}}
   return {name:r.workload,note:!r.common?(rnnNote(r)||'pending'):isUniform(r.common.widths)?'uniform kept':null,dim:!r.common||!r.common.native,values:r.common?Object.fromEntries(Object.entries(r.common.batches).map(([b,v])=>[b,v.speedup_pct])):{},mean:r.common?.mean}});
- $('commonChart').innerHTML=axisChart(bars,['1','4','16'],{gw:46,label:'common HW speedup',color:k=>BC[k],keyName:k=>'batch '+k});
+ // Per-workload chart: workloads only; group shared-HW bars in their own chart (2026-10-18, user).
+ const wb=bars.filter((_,i)=>items[i].kind==='w'),gb=bars.filter((_,i)=>items[i].kind==='group');
+ $('commonChart').innerHTML=axisChart(wb,['1','4','16'],{gw:46,label:'per-workload HW speedup',color:k=>BC[k],keyName:k=>'batch '+k})+
+  (gb.length?'<h3>Group shared HW · mean over the group\'s workloads</h3>'+axisChart(gb,['1','4','16'],{gw:90,label:'group HW speedup',color:k=>BC[k],keyName:k=>'batch '+k}):'');
  let t='<table><tr><th>Workload</th><th class="l">Group</th><th class="l">Status</th><th class="l">HW</th>'+['1','4','16'].map(b=>`<th>b${b}</th><th class="l">mapping b${b} (asym · uniform)</th>`).join('')+'<th>Mean</th><th>Min</th><th>Target</th><th>Group HW mean</th><th>ALL14 HW mean</th></tr>';
  for(const it of items){
   if(it.kind==='group'){const g=it.g;const meets=g&&g.min>=0&&g.mean>=10&&g.max>=20;
