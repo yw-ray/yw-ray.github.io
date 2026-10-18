@@ -56,6 +56,7 @@ svg{width:100%;max-width:720px;height:auto;display:block}.fig svg{max-width:460p
 <p class="note">Finding: at batch 16 the DRAM-bound share of run time grows, which caps what any D2D re-provisioning (and D2D-side mapping) can gain.</p></div>
 <div class="card"><h2>Common-HW speedup by workload</h2>
 <label>Chiplets <select id="c1"><option value="8">8</option><option value="4">4</option><option value="16">16</option><option value="9">9</option><option value="32">32</option></select></label>
+<label>Link module unit <select id="u1"><option value="fit">8 B/cycle (co-fit, native)</option><option value="16">16 B/cycle</option><option value="32">32 B/cycle</option><option value="64">64 B/cycle (UCIe std x16 @32 GT/s · adv x64 @8 GT/s)</option><option value="128">128 B/cycle (UCIe adv x64 @16 GT/s)</option></select></label>
 <label>HW <select id="h1"><option value="own">per workload</option><option value="group">its group's shared HW</option><option value="ALL14">ALL14 shared HW</option></select></label>
 <p class="note">Bars: the selected HW. Table: mean on all three HW choices (per workload / group / ALL14; ALL14 excludes RNN). One HW per workload for batches 1/4/16. Diamonds: mean. Dashed lines: 10% (mean target), 20% (max target). Faded bars: provisional (oracle only).</p>
 <div id="commonChart"></div><div id="commonTable" class="scroll"></div></div>
@@ -150,10 +151,17 @@ function renderSummary(){const c8=data.rows.filter(r=>r.chiplets===8),rows=data.
  const best=rows.reduce((a,r)=>Math.max(a,r.common.max),-Infinity);
  $('summary').innerHTML=[['C8 workloads with a common HW',`${c8.filter(r=>r.common).length} / 16`],['Meeting target (no slower batch, mean ≥10%, max ≥20%)',met.length],['Native-validated (final)',fin.length],['Best common-HW batch speedup',fmt(best)]].map(([k,v])=>`<div class="stat">${esc(k)}<b>${esc(v)}</b></div>`).join('')}
 // Shared-HW selection for a group name (CNN, RNN, Transformer, ALL14) at chiplet count c: newest final-rule result.
-function groupSel(name,c){return data.groups.filter(g=>(g.chiplets||8)===c&&g.final&&g.name.split('-')[0]===name).sort((a,b)=>b.updated-a.updated)[0]}
+function groupSel(name,c){const qg=typeof quantGroup==='function'?quantGroup(name,c):null;if(qg)return qg;return data.groups.filter(g=>(g.chiplets||8)===c&&g.final&&g.name.split('-')[0]===name).sort((a,b)=>b.updated-a.updated)[0]}
 function groupVals(g,w){if(!g)return null;const v=Object.fromEntries(['1','4','16'].map(b=>[b,g.pairs[`${w}/b${b}`]]).filter(([,x])=>x!=null));return Object.keys(v).length?v:null}
 const meanOf=v=>{const x=Object.values(v||{});return x.length?x.reduce((a,b)=>a+b,0)/x.length:null};
-function renderCommon(){const c=Number($('c1').value),hw=$('h1').value;const all=data.rows.filter(r=>r.chiplets===c);
+function quantRows(rows,c){const u=$('u1').value,q=data.quantize_c8;if(u==='fit'||c!==8||!q)return rows;
+ // Module-unit view (2026-10-18): every width a multiple of u B/cycle, same total module count as uniform; oracle values.
+ return rows.map(r=>{const e=q.results[r.workload]?.[u];if(!e||!e.hw)return {...r,common:e?{stage:'oracle',widths:'256-256-256',native:false,mean:0,min:0,max:0,meets:false,batches:{1:{speedup_pct:0},4:{speedup_pct:0},16:{speedup_pct:0}}}:null};
+  const bs=e.batches;return {...r,common:{stage:'module-unit oracle',widths:e.hw,native:false,mean:e.mean,min:Math.min(...bs),max:Math.max(...bs),meets:Math.min(...bs)>=0&&e.mean>=10&&Math.max(...bs)>=20,
+   batches:{1:{speedup_pct:bs[0]},4:{speedup_pct:bs[1]},16:{speedup_pct:bs[2]}}}}})}
+function quantGroup(name,c){const u=$('u1').value,q=data.quantize_c8;if(u==='fit'||c!==8||!q||!q.groups[name])return null;const e=q.groups[name][u];if(!e||!e.hw)return null;
+ return {name:name+'-u'+u,chiplets:8,final:true,widths:e.hw,pairs:e.pairs,mean:e.mean,min:e.min,max:Math.max(...Object.values(e.pairs)),native:false}}
+function renderCommon(){const c=Number($('c1').value),hw=$('h1').value;const all=quantRows(data.rows.filter(r=>r.chiplets===c),c);
  // 2026-10-18 (user): list each group's workloads, then the group's shared-HW row under them (CNN, Transformer), RNN, then ALL14.
  const ORDER=['CNN','Transformer','RNN'];const items=[];
  const gRow=(name,members)=>{const g=groupSel(name,c);if(!g)return {kind:'group',name,members,g:null};
@@ -227,5 +235,5 @@ function renderStatus(){let t='<table><tr><th>Queue</th><th class="l">Updated</t
 function render(){if(!data)return;$('updated').textContent='Results updated '+new Date(data.updated*1000).toLocaleString('en-US')+' · the page refreshes every minute.';
  renderSummary();renderCommon();renderEq();renderForwarding();renderAblation();renderChips();renderGroups();renderDiagram();renderStatus()}
 async function refresh(){try{const r=await fetch('asym-mapping-study.json?t='+Date.now(),{cache:'no-store'});if(!r.ok)throw new Error('HTTP '+r.status);data=await r.json();$('error').textContent='';render()}catch(e){$('error').textContent='Could not load results: '+e.message}}
-figures();for(const id of ['c1','h1','c2','c6','w2','d5'])$(id).onchange=render;refresh();setInterval(()=>{if(!document.hidden)refresh()},60000);
+figures();for(const id of ['c1','h1','u1','c2','c6','w2','d5'])$(id).onchange=render;refresh();setInterval(()=>{if(!document.hidden)refresh()},60000);
 </script></html>
