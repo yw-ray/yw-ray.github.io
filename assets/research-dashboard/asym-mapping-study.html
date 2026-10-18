@@ -153,18 +153,32 @@ function renderSummary(){const c8=data.rows.filter(r=>r.chiplets===8),rows=data.
 function groupSel(name,c){return data.groups.filter(g=>(g.chiplets||8)===c&&g.final&&g.name.split('-')[0]===name).sort((a,b)=>b.updated-a.updated)[0]}
 function groupVals(g,w){if(!g)return null;const v=Object.fromEntries(['1','4','16'].map(b=>[b,g.pairs[`${w}/b${b}`]]).filter(([,x])=>x!=null));return Object.keys(v).length?v:null}
 const meanOf=v=>{const x=Object.values(v||{});return x.length?x.reduce((a,b)=>a+b,0)/x.length:null};
-function renderCommon(){const c=Number($('c1').value),hw=$('h1').value;const rows=data.rows.filter(r=>r.chiplets===c);
- const groups=rows.map(r=>{if(hw!=='own'){const g=groupSel(hw==='group'?r.group:'ALL14',c),v=groupVals(g,r.workload);
-   return {name:r.workload,note:v?(isUniform(g.widths)?'uniform kept':null):hw==='ALL14'&&r.group==='RNN'?'not in ALL14':'pending',values:v||{},mean:meanOf(v)}}
-  return {name:r.workload,note:!r.common?'pending':isUniform(r.common.widths)?'uniform kept':null,dim:!r.common||!r.common.native,values:r.common?Object.fromEntries(Object.entries(r.common.batches).map(([b,v])=>[b,v.speedup_pct])):{},mean:r.common?.mean}});
- $('commonChart').innerHTML=axisChart(groups,['1','4','16'],{gw:46,label:'common HW speedup',color:k=>BC[k],keyName:k=>'batch '+k});
+function renderCommon(){const c=Number($('c1').value),hw=$('h1').value;const all=data.rows.filter(r=>r.chiplets===c);
+ // 2026-10-18 (user): list each group's workloads, then the group's shared-HW row under them (CNN, Transformer), RNN, then ALL14.
+ const ORDER=['CNN','Transformer','RNN'];const items=[];
+ const gRow=(name,members)=>{const g=groupSel(name,c);if(!g)return {kind:'group',name,members,g:null};
+  const per={};for(const b of ['1','4','16']){const v=members.map(w=>g.pairs[`${w}/b${b}`]).filter(x=>x!=null);per[b]=v.length?v.reduce((a,x)=>a+x,0)/v.length:null}
+  return {kind:'group',name,members,g,per}};
+ for(const grp of ORDER){const rs=all.filter(r=>r.group===grp);rs.forEach(r=>items.push({kind:'w',r}));if(grp!=='RNN'&&rs.length)items.push(gRow(grp,rs.map(r=>r.workload)))}
+ const allMembers=all.filter(r=>r.group!=='RNN').map(r=>r.workload);if(allMembers.length)items.push(gRow('ALL14',allMembers));
+ const rnnNote=r=>r.group==='RNN'&&!r.common?'RNN excluded':null;
+ const bars=items.map(it=>{if(it.kind==='group'){const g=it.g;return {name:`[${it.name} group]`,note:g?(isUniform(g.widths)?'uniform kept':null):'pending',values:g?Object.fromEntries(Object.entries(it.per).filter(([,v])=>v!=null)):{},mean:g?.mean,dim:!g||g.native===false}}
+  const r=it.r;if(hw!=='own'){const g=groupSel(hw==='group'?r.group:'ALL14',c),v=groupVals(g,r.workload);
+   return {name:r.workload,note:v?(isUniform(g.widths)?'uniform kept':null):hw==='ALL14'&&r.group==='RNN'?'not in ALL14':rnnNote(r)||'pending',values:v||{},mean:meanOf(v)}}
+  return {name:r.workload,note:!r.common?(rnnNote(r)||'pending'):isUniform(r.common.widths)?'uniform kept':null,dim:!r.common||!r.common.native,values:r.common?Object.fromEntries(Object.entries(r.common.batches).map(([b,v])=>[b,v.speedup_pct])):{},mean:r.common?.mean}});
+ $('commonChart').innerHTML=axisChart(bars,['1','4','16'],{gw:46,label:'common HW speedup',color:k=>BC[k],keyName:k=>'batch '+k});
  let t='<table><tr><th>Workload</th><th class="l">Group</th><th class="l">Status</th><th class="l">HW</th>'+['1','4','16'].map(b=>`<th>b${b}</th><th class="l">mapping b${b} (asym · uniform)</th>`).join('')+'<th>Mean</th><th>Min</th><th>Target</th><th>Group HW mean</th><th>ALL14 HW mean</th></tr>';
- for(const r of rows){const m=r.common;t+=`<tr><td>${esc(r.workload)}</td><td class="l">${esc(r.group)}</td><td class="l">${badge(m)}</td><td class="l">${esc(m?.widths||'–')}${m&&isUniform(m.widths)?'<br><span class="note">no asymmetric design keeps every batch ≥ 0% yet</span>':''}</td>`;
+ for(const it of items){
+  if(it.kind==='group'){const g=it.g;const meets=g&&g.min>=0&&g.mean>=10&&g.max>=20;
+   t+=`<tr style="background:#eef3f9;font-weight:600"><td>${esc(it.name)} group · shared HW</td><td class="l">${it.members.length} workloads</td><td class="l">${g?(g.native===false?'<span class="badge prov">oracle</span>':'<span class="badge final">native</span>'):'<span class="badge pend">pending</span>'}</td><td class="l">${esc(g?.widths||'–')}</td>`;
+   for(const b of ['1','4','16']){const v=it.per?.[b];t+=`<td class="${v!=null?cls(v):''}">${v!=null?fmt(v):'–'}</td><td class="l note">${g?'mean over members':''}</td>`}
+   t+=`<td>${g?fmt(g.mean):'–'}</td><td class="${g?cls(g.min):''}">${g?fmt(g.min):'–'}</td><td>${g?(meets?'✅':'—'):'–'}</td><td></td><td></td></tr>`;continue}
+  const r=it.r,m=r.common;t+=`<tr><td>${esc(r.workload)}</td><td class="l">${esc(r.group)}</td><td class="l">${m?badge(m):rnnNote(r)?'<span class="badge pend">RNN excluded</span>':badge(m)}</td><td class="l">${esc(m?.widths||'–')}${m&&isUniform(m.widths)?'<br><span class="note">no asymmetric design keeps every batch ≥ 0% yet</span>':''}</td>`;
   for(const b of ['1','4','16']){const v=m?.batches[b];t+=`<td class="${v?cls(v.speedup_pct):''}">${v?fmt(v.speedup_pct):'–'}</td><td class="l note">${v?mapText(v.asym_mapping)+' · '+mapText(v.uniform_mapping):'–'}</td>`}
   t+=`<td>${m?fmt(m.mean):'–'}</td><td class="${m?cls(m.min):''}">${m?fmt(m.min):'–'}</td><td>${m?(m.meets?'✅':'—'):'–'}</td>`;
   for(const name of [r.group,'ALL14']){const g=groupSel(name,c),v=meanOf(groupVals(g,r.workload));t+=`<td class="${v!=null?cls(v):''}" title="${g?esc(g.name+' · '+g.widths):''}">${v!=null?fmt(v):(name==='ALL14'&&r.group==='RNN'?'n/a':'–')}</td>`}
   t+='</tr>'}
- $('commonTable').innerHTML=t+'</table><p class="note">HW: a-b-c for C8, ax-ay-cx-cy for C4 (B/cycle). Mapping: DP grouping mode · search variant.</p>'}
+ $('commonTable').innerHTML=t+'</table><p class="note">Workloads are listed by group, each followed by its group\'s shared-HW row (b1/b4/b16 = mean over the group\'s workloads on that HW); ALL14 = every workload except RNN. HW: a-b-c for C8, ax-ay-cx-cy for C4 (B/cycle). Mapping: DP grouping mode · search variant.</p>'}
 function renderAblation(){const c=Number($('c2').value);const rows=data.rows.filter(r=>r.chiplets===c&&Object.keys(r.ablation).length);
  const sel=$('w2'),cur=sel.value;sel.innerHTML=rows.map(r=>`<option${r.workload===cur?' selected':''}>${esc(r.workload)}</option>`).join('');const r=rows.find(x=>x.workload===sel.value)||rows[0];
  if(r){const levels=LV.filter(L=>Object.values(r.ablation).some(a=>a.some(x=>lvl(x.level)===L)));
