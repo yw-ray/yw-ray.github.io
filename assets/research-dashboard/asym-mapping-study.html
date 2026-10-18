@@ -56,10 +56,10 @@ svg{width:100%;max-width:720px;height:auto;display:block}.fig svg{max-width:460p
 <p class="note">Finding: at batch 16 the DRAM-bound share of run time grows, which caps what any D2D re-provisioning (and D2D-side mapping) can gain.</p></div>
 <div class="card"><h2>Common-HW speedup by workload</h2>
 <label>Chiplets <select id="c1"><option value="8">8</option><option value="4">4</option><option value="16">16</option><option value="9">9</option><option value="32">32</option></select></label>
-<label>Link module unit <select id="u1"><option value="fit">8 B/cycle (co-fit, native)</option><option value="16">16 B/cycle</option><option value="32">32 B/cycle</option><option value="64">64 B/cycle (UCIe std x16 @32 GT/s · adv x64 @8 GT/s)</option></select></label>
+<label>Link module unit <select id="u1"><option value="64" selected>64 B/cycle (main: UCIe std x16 @32 GT/s · adv x64 @8 GT/s)</option><option value="fit">8 B/cycle (fine-grained co-fit)</option><option value="16">16 B/cycle</option><option value="32">32 B/cycle</option></select></label>
 <label>HW <select id="h1"><option value="own">per workload</option><option value="group">its group's shared HW</option><option value="ALL14">ALL14 shared HW</option></select></label>
 <p class="note">Bars: the selected HW. Table: mean on all three HW choices (per workload / group / ALL14; ALL14 excludes RNN). One HW per workload for batches 1/4/16. Diamonds: mean. Dashed lines: 10% (mean target), 20% (max target). Faded bars: provisional (oracle only).</p>
-<div id="commonChart"></div><div id="commonTable" class="scroll"></div></div>
+<p id="unitBanner" style="font-weight:600;background:#eef3f9;padding:6px 10px;border-radius:6px"></p><div id="commonChart"></div><div id="commonTable" class="scroll"></div></div>
 
 <div class="card"><h2>Per-workload link capacity · equal search budget (C8)</h2><p class="note">Each design gets one identical mapping search (all variants, 3 DP modes, 20 rounds, seed 5) and is judged only by it, so search effort is equal across designs. Speedup vs uniform HW with the best of every mapping type. HW = ccw ring · middle · cw ring (B/cycle). Green = every batch ≥ 0%; the first row per workload is its best design.</p><div id="eqTable" class="scroll"></div></div>
 <div class="card"><h2>Ring-forwarding sensitivity</h2>
@@ -155,14 +155,14 @@ function renderSummary(){const c8=data.rows.filter(r=>r.chiplets===8),rows=data.
 function groupSel(name,c){const qg=typeof quantGroup==='function'?quantGroup(name,c):null;if(qg)return qg;return data.groups.filter(g=>(g.chiplets||8)===c&&g.final&&g.name.split('-')[0]===name).sort((a,b)=>b.updated-a.updated)[0]}
 function groupVals(g,w){if(!g)return null;const v=Object.fromEntries(['1','4','16'].map(b=>[b,g.pairs[`${w}/b${b}`]]).filter(([,x])=>x!=null));return Object.keys(v).length?v:null}
 const meanOf=v=>{const x=Object.values(v||{});return x.length?x.reduce((a,b)=>a+b,0)/x.length:null};
-function quantRows(rows,c){const u=$('u1').value,q=data.quantize_c8;if(u==='fit'||c!==8||!q)return rows;
+function quantRows(rows,c){const u=$('u1').value,q=c===8?data.quantize_c8:c===4?data.quantize_c4:null;if(u==='fit'||!q)return rows;
  // Module-unit view (2026-10-18): every width a multiple of u B/cycle, same total module count as uniform; oracle values.
  return rows.map(r=>{const e=q.results[r.workload]?.[u];if(!e||!e.hw)return {...r,common:e?{stage:'oracle',widths:'256-256-256',native:false,mean:0,min:0,max:0,meets:false,batches:{1:{speedup_pct:0},4:{speedup_pct:0},16:{speedup_pct:0}}}:null};
   const bs=e.batches;return {...r,common:{stage:'module-unit oracle',widths:e.hw,native:false,mean:e.mean,min:Math.min(...bs),max:Math.max(...bs),meets:Math.min(...bs)>=0&&e.mean>=10&&Math.max(...bs)>=20,
    batches:{1:{speedup_pct:bs[0]},4:{speedup_pct:bs[1]},16:{speedup_pct:bs[2]}}}}})}
-function quantGroup(name,c){const u=$('u1').value,q=data.quantize_c8;if(u==='fit'||c!==8||!q||!q.groups[name])return null;const e=q.groups[name][u];if(!e||!e.hw)return null;
+function quantGroup(name,c){const u=$('u1').value,q=c===8?data.quantize_c8:c===4?data.quantize_c4:null;if(u==='fit'||!q||!q.groups[name])return null;const e=q.groups[name][u];if(!e||!e.hw)return null;
  return {name:name+'-u'+u,chiplets:8,final:true,widths:e.hw,pairs:e.pairs,mean:e.mean,min:e.min,max:Math.max(...Object.values(e.pairs)),native:false}}
-function renderCommon(){const c=Number($('c1').value),hw=$('h1').value;const all=quantRows(data.rows.filter(r=>r.chiplets===c),c);
+function renderCommon(){const c=Number($('c1').value),hw=$('h1').value;{const u=$('u1').value,k3=c===9||c===16||c===32||c===36;$('unitBanner').textContent=k3?'Current view: 64 B/cycle modules (Tx + Rx = 8 modules per link)':u==='fit'?'Current view: 8 B/cycle fine-grained co-fit':`Current view: ${u} B/cycle module unit (same module count as uniform)`+((c===4&&!data.quantize_c4)?' — C4 not computed yet, showing 8 B/cycle':'')}const all=quantRows(data.rows.filter(r=>r.chiplets===c),c);
  // 2026-10-18 (user): list each group's workloads, then the group's shared-HW row under them (CNN, Transformer), RNN, then ALL14.
  const ORDER=['CNN','Transformer','RNN'];const items=[];
  const gRow=(name,members)=>{const g=groupSel(name,c);if(!g)return {kind:'group',name,members,g:null};
