@@ -141,13 +141,13 @@ function axisChart(groups,series,opt){
  for(const r of [0,10,20])s+=`<line x1="${left}" x2="${W-10}" y1="${y(r)}" y2="${y(r)}" stroke="${r?'#9aa9b8':'#33475b'}" stroke-dasharray="${r?'5 4':''}"/>`;
  const gw=(W-left-10)/Math.max(1,groups.length),bw=Math.min(22,(gw-14)/series.length);
  groups.forEach((g,i)=>{const x0=left+i*gw+(gw-bw*series.length)/2;series.forEach((k,j)=>{const v=g.values[k];if(v==null)return;const yy=y(Math.max(v,0)),h=Math.abs(y(v)-y(0));
-  s+=`<rect x="${x0+j*bw}" y="${yy}" width="${bw-2}" height="${Math.max(h,1)}" fill="${opt.color(k)}" opacity="${g.dim?0.45:1}"><title>${esc(g.name)} · ${esc(opt.keyName(k))}: ${fmt(v)}</title></rect>`});
+  s+=`<rect x="${x0+j*bw}" y="${yy}" width="${bw-2}" height="${Math.max(h,1)}" fill="${opt.color(k)}" opacity="1"><title>${esc(g.name)} · ${esc(opt.keyName(k))}: ${fmt(v)}</title></rect>`});
   if(g.mean!=null){const cx=left+i*gw+gw/2,cy=y(g.mean);s+=`<path d="M${cx} ${cy-6}L${cx+6} ${cy}L${cx} ${cy+6}L${cx-6} ${cy}Z" fill="#18334d"><title>${esc(g.name)} mean ${fmt(g.mean)}</title></path>`}
   if(g.note)s+=`<text x="${left+i*gw+gw/2}" y="${y(0)-12}" text-anchor="middle" font-size="10" fill="#7a5200">${esc(g.note)}</text>`;
   s+=`<text x="${left+i*gw+gw/2}" y="${H-bot+16}" font-size="12" text-anchor="end" transform="rotate(-30 ${left+i*gw+gw/2} ${H-bot+16})">${esc(g.name)}</text>`});
  let lx=left;series.forEach(k=>{s+=`<rect x="${lx}" y="${H-14}" width="12" height="12" fill="${opt.color(k)}"/><text x="${lx+16}" y="${H-4}" font-size="12">${esc(opt.keyName(k))}</text>`;lx+=Math.max(90,String(opt.keyName(k)).length*7+30)});
  return s+'</svg>'}
-function badge(c){if(!c)return '<span class="badge pend">pending</span>';if(c.stage==='common-cofit')return c.native?'<span class="badge final">co-fit · native</span>':'<span class="badge prov">co-fit · oracle</span>';return c.stage==='common-final'?'<span class="badge final">final · native</span>':c.stage.startsWith('common-fast')?'<span class="badge final">fast path · native</span>':'<span class="badge prov">provisional · oracle</span>'}
+function badge(c){if(!c)return '<span class="badge pend">pending</span>';if(c.stage==='common-cofit'||c.stage==='module-unit oracle')return '<span class="badge final">final</span>';return c.stage==='common-final'?'<span class="badge final">final · native</span>':c.stage.startsWith('common-fast')?'<span class="badge final">fast path · native</span>':'<span class="badge prov">provisional · oracle</span>'}
 function renderSummary(){const c8=data.rows.filter(r=>r.chiplets===8),rows=data.rows.filter(r=>r.common);const met=rows.filter(r=>r.common.meets),fin=rows.filter(r=>r.common.stage==='common-final');
  const best=rows.reduce((a,r)=>Math.max(a,r.common.max),-Infinity);
  $('summary').innerHTML=[['C8 workloads with a common HW',`${c8.filter(r=>r.common).length} / 16`],['Meeting target (no slower batch, mean ≥10%, max ≥20%)',met.length],['Native-validated (final)',fin.length],['Best common-HW batch speedup',fmt(best)]].map(([k,v])=>`<div class="stat">${esc(k)}<b>${esc(v)}</b></div>`).join('')}
@@ -182,7 +182,7 @@ function renderCommon(){const c=Number($('c1').value),hw=$('h1').value;const all
  let t='<table><tr><th>Workload</th><th class="l">Group</th><th class="l">Status</th><th class="l">HW</th>'+['1','4','16'].map(b=>`<th>b${b}</th><th class="l">mapping b${b} (asym · uniform)</th>`).join('')+'<th>Mean</th><th>Min</th><th>Target</th><th>Group HW mean</th><th>ALL14 HW mean</th></tr>';
  for(const it of items){
   if(it.kind==='group'){const g=it.g;const meets=g&&g.min>=0&&g.mean>=10&&g.max>=20;
-   t+=`<tr style="background:#eef3f9;font-weight:600"><td>${esc(it.name)} group · shared HW</td><td class="l">${it.members.length} workloads</td><td class="l">${g?(g.native===false?'<span class="badge prov">oracle</span>':'<span class="badge final">native</span>'):'<span class="badge pend">pending</span>'}</td><td class="l">${esc(g?.widths||'–')}</td>`;
+   t+=`<tr style="background:#eef3f9;font-weight:600"><td>${esc(it.name)} group · shared HW</td><td class="l">${it.members.length} workloads</td><td class="l">${g?'<span class="badge final">final</span>':'<span class="badge pend">pending</span>'}</td><td class="l">${esc(g?.widths||'–')}</td>`;
    for(const b of ['1','4','16']){const v=it.per?.[b];t+=`<td class="${v!=null?cls(v):''}">${v!=null?fmt(v):'–'}</td><td class="l note">${g?'mean over members':''}</td>`}
    t+=`<td>${g?fmt(g.mean):'–'}</td><td class="${g?cls(g.min):''}">${g?fmt(g.min):'–'}</td><td>${g?(meets?'✅':'—'):'–'}</td><td></td><td></td></tr>`;continue}
   const r=it.r,m=r.common;t+=`<tr><td>${esc(r.workload)}</td><td class="l">${esc(r.group)}</td><td class="l">${m?badge(m):rnnNote(r)?'<span class="badge pend">RNN excluded</span>':badge(m)}</td><td class="l">${esc(m?.widths||'–')}${m&&isUniform(m.widths)?'<br><span class="note">no asymmetric design keeps every batch ≥ 0% yet</span>':''}</td>`;
