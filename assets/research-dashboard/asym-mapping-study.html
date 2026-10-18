@@ -56,7 +56,7 @@ svg{width:100%;max-width:720px;height:auto;display:block}.fig svg{max-width:460p
 <p class="note">Finding: at batch 16 the DRAM-bound share of run time grows, which caps what any D2D re-provisioning (and D2D-side mapping) can gain.</p></div>
 <div class="card"><h2>Common-HW speedup by workload</h2>
 <label>Chiplets <select id="c1"><option value="8">8</option><option value="4">4</option><option value="16">16</option><option value="9">9</option><option value="32">32</option></select></label>
-<label>Link module unit <select id="u1"><option value="fit">8 B/cycle (co-fit, native)</option><option value="16">16 B/cycle</option><option value="32">32 B/cycle</option><option value="64">64 B/cycle (UCIe std x16 @32 GT/s · adv x64 @8 GT/s)</option><option value="128">128 B/cycle (UCIe adv x64 @16 GT/s)</option></select></label>
+<label>Link module unit <select id="u1"><option value="fit">8 B/cycle (co-fit, native)</option><option value="16">16 B/cycle</option><option value="32">32 B/cycle</option><option value="64">64 B/cycle (UCIe std x16 @32 GT/s · adv x64 @8 GT/s)</option></select></label>
 <label>HW <select id="h1"><option value="own">per workload</option><option value="group">its group's shared HW</option><option value="ALL14">ALL14 shared HW</option></select></label>
 <p class="note">Bars: the selected HW. Table: mean on all three HW choices (per workload / group / ALL14; ALL14 excludes RNN). One HW per workload for batches 1/4/16. Diamonds: mean. Dashed lines: 10% (mean target), 20% (max target). Faded bars: provisional (oracle only).</p>
 <div id="commonChart"></div><div id="commonTable" class="scroll"></div></div>
