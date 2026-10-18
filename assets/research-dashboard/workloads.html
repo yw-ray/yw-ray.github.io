@@ -1,8 +1,8 @@
 <!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Workloads · research dashboard</title>
 <style>body{font:15px system-ui;margin:24px;background:#f5f7fa;color:#152238}nav{display:flex;gap:8px;margin-bottom:14px}button{padding:7px 12px;font:inherit;border:1px solid #ccd5e0;border-radius:7px;background:#fff;cursor:pointer}button[aria-selected="true"]{background:#152238;color:#fff;border-color:#152238}iframe{width:100%;border:0;display:block;min-height:900px}.note{color:#536477;font-size:13px;margin:0 0 10px}</style>
-<nav role="tablist" aria-label="Workload pages"><button id="current-tab" role="tab" aria-selected="true" aria-controls="current-panel">Current · asymmetric D2D mapping (K=2)</button><button id="backup-tab" role="tab" aria-selected="false" aria-controls="backup-panel">Backup · previous workloads page</button></nav>
+<nav role="tablist" aria-label="Workload pages"><button id="current-tab" role="tab" aria-selected="true" aria-controls="current-panel">Current · asymmetric D2D mapping (K=2)</button><button id="backup-tab" role="tab" aria-selected="false" aria-controls="backup-panel">Backup · previous workloads page</button><button id="snap202610180155-tab" role="tab" aria-selected="false" data-snap="asym-mapping-study-20261018-0155.html">Backup · asym study 2026-10-18 01:55</button></nav>
 <section id="current-panel"><iframe id="current-frame" title="Asymmetric D2D mapping study" src="asym-mapping-study.html"></iframe></section>
-<section id="backup-panel" hidden><p class="note">The previous contents of this page (current/archived workload designs, traffic patterns, bandwidth reduction, execution time), unchanged.</p><iframe id="backup-frame" title="Previous workloads page" data-src="workloads-backup.html"></iframe></section>
+<section id="snap202610180155-panel" hidden><iframe id="snap202610180155-frame" title="Snapshot 2026-10-18 01:55" data-src="asym-mapping-study-20261018-0155.html"></iframe></section><section id="backup-panel" hidden><p class="note">The previous contents of this page (current/archived workload designs, traffic patterns, bandwidth reduction, execution time), unchanged.</p><iframe id="backup-frame" title="Previous workloads page" data-src="workloads-backup.html"></iframe></section>
 <script>
 const OLD=['designs','patterns','bandwidth','execution'];
 function show(key){
@@ -16,4 +16,14 @@ document.getElementById('current-tab').onclick=()=>show('current');document.getE
 window.addEventListener('hashchange',route);route();
 // Same-origin frames: follow their content height.
 setInterval(()=>{for(const id of ['current-frame','backup-frame']){const f=document.getElementById(id);try{const h=f.contentDocument&&f.contentDocument.documentElement.scrollHeight;if(h&&Math.abs(f.offsetHeight-h)>4)f.style.height=h+'px'}catch(e){}}},800);
+
+// Dated snapshot tabs (asym study backups): data-snap buttons show their own panel.
+function showSnap(btn){for(const s of document.querySelectorAll('section'))s.hidden=true;
+ for(const b of document.querySelectorAll('nav button'))b.setAttribute('aria-selected',String(b===btn));
+ const id=btn.id.replace(/-tab$/,''),p=document.getElementById(id+'-panel');p.hidden=false;const f=document.getElementById(id+'-frame');if(!f.src)f.src=f.dataset.src;
+ history.replaceState(null,'','#'+id)}
+for(const b of document.querySelectorAll('nav button[data-snap]'))b.onclick=()=>showSnap(b);
+{const h=location.hash.slice(1);const b=h&&document.getElementById(h+'-tab');if(b&&b.dataset.snap)showSnap(b)}
+const _show=show;show=function(k){for(const s of document.querySelectorAll('section[id^="snap"]'))s.hidden=true;for(const b of document.querySelectorAll('nav button[data-snap]'))b.setAttribute('aria-selected','false');_show(k)};
+document.getElementById('current-tab').onclick=()=>show('current');document.getElementById('backup-tab').onclick=()=>show('backup');
 </script></html>

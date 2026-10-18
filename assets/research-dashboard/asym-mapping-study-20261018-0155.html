@@ -1,0 +1,211 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Asymmetric D2D mapping study</title>
+<style>
+body{font:15px system-ui;color:#18334d;background:#f5f8fc;margin:20px}h1{font-size:25px;margin:0 0 6px}h2{font-size:19px;margin:0 0 8px}h3{font-size:16px;margin:14px 0 6px}
+p,li{line-height:1.5}.card{background:#fff;border:1px solid #d4dfec;border-radius:10px;padding:16px;margin:16px 0}
+.cards{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}.stat{background:#fff;border:1px solid #d4dfec;border-radius:10px;padding:12px}.stat b{display:block;font-size:22px}
+.figs{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}.fig{border:1px solid #e1e8f1;border-radius:9px;padding:12px;background:#fbfcfe}.fig h3{margin:0 0 4px}.fig p{margin:6px 0 0;font-size:14px}
+.tag{display:inline-block;background:#18334d;color:#fff;border-radius:6px;padding:0 7px;font-size:13px;margin-right:6px}
+table{width:100%;border-collapse:collapse;font-size:14px}td,th{padding:7px 8px;border-bottom:1px solid #dae3ef;text-align:right;vertical-align:top}td:first-child,th:first-child,.l{text-align:left}
+th{background:#f0f5fb}.scroll{overflow-x:auto}.note{color:#52667a;font-size:14px}select,button{padding:6px 8px;margin:4px 12px 4px 4px;font:inherit}
+svg{width:100%;max-width:720px;height:auto;display:block}.fig svg{max-width:460px;margin:auto}.pos{color:#17663a}.neg{color:#a32e25}.badge{display:inline-block;padding:1px 7px;border-radius:9px;font-size:12px;margin-left:6px}
+.final{background:#dff3e6;color:#17663a}.prov{background:#fff2d6;color:#7a5200}.pend{background:#eceff3;color:#52667a}code{background:#eef3f9;padding:1px 4px;border-radius:4px}
+@media(max-width:1000px){.cards{grid-template-columns:1fr 1fr}.figs{grid-template-columns:1fr}}
+</style>
+<p style="background:#fff3cd;padding:8px 12px;border-radius:6px;font:14px system-ui">Frozen snapshot of 2026-10-18 01:55 (before the co-fit / equal-budget update).</p><h1>Asymmetric D2D links · mapping-aware search (K=2)</h1>
+<p>Goal: with the <b>same total D2D capacity</b> as uniform 256 B/cycle/link, find K=2 asymmetric tile designs that run faster on all 16 workloads (9 CNN, 2 RNN, 5 Transformer) at batches 1/4/16. Every source TX equals the adjacent RX, no boundary D2D port is left unconnected, rotations only. Speedup = (best uniform cycles / asymmetric cycles − 1) × 100%. The uniform side is the fastest native-validated uniform result from any study, and it always receives the same added mapping search.</p>
+<p id="updated" class="note">Loading…</p><p id="error" class="neg"></p>
+<div class="cards" id="summary"></div>
+
+<div class="card"><h2>What was added to the mapper</h2>
+<p>All methods extend Gemini's mapper (DP layer grouping + simulated-annealing spatial mapping). Each is a cumulative ablation level: a level's candidate pool is the union of every mapping found so far, re-evaluated on every K=2 width design, so a level only adds options. Figures use the C8 2×4 array; chip numbers follow the simulator.</p>
+<div class="figs">
+<div class="fig"><h3><span class="tag">K=2</span>Asymmetric design space</h3><div id="figK2"></div><p>With K=2 tiles, matched TX/RX and no reflection, C8 has exactly three width groups: <b style="color:#2e8b57">c</b> = one ring direction (“cw”, 8 links), <b style="color:#3a6fb0">a</b> = the opposite ring direction (“ccw”, 8 links), <b style="color:#8a6d3b">b</b> = middle cross links (4). 8a + 4b + 8c = 5120 B/cycle → 3,081 designs, all evaluated. Asymmetry pays off only if traffic prefers one ring direction.</p></div>
+<div class="fig"><h3><span class="tag">L0</span>Baseline search + coherent partition</h3><div id="figL0"></div><p>Gemini’s search with chiplet-swap and tensor-order moves, plus coherent tensor-partition placement (a layer’s partitions stay chiplet-major). With default XY routing the traffic is direction-symmetric (Darknet19 b1: 61.3 MB vs 61.7 MB), so a ≈ c is selected and gains are small.</p></div>
+<div class="fig"><h3><span class="tag">L1</span>Ring-flow SA operator</h3><div id="figL1"></div><p>New SA move <code>guided_ring_flow</code> (48 options: direction × 8 ring offsets × mode). It lays consecutive pipeline stages along the ring (mode placement) and/or chooses DRAM read/write homes so that DRAM streams run in the ring direction (mode DRAM).</p></div>
+<div class="fig"><h3><span class="tag">L2</span>Per-transfer XY/YX route choice</h3><div id="figL2"></div><p>Gemini only routes XY. A transfer from chip 4 to chip 3 then uses four hops of the narrow direction; YX uses the wide ring. Each transfer takes whichever of XY/YX follows the chosen ring (source routing, independent of link widths). Darknet19 b1 traffic becomes 82 MB vs 26 MB, and c ≫ a designs start to win.</p></div>
+<div class="fig"><h3><span class="tag">L3</span>Multicast ring forwarding</h3><div id="figL3"></div><p>A multicast (e.g. one DRAM read broadcast to several chips) is forwarded destination-to-destination along the ring instead of a tree, so broadcast traffic also uses only the wide direction. Assumption: destination cores can forward; serial forwarding latency is not modeled by Gemini.</p></div>
+<div class="fig"><h3><span class="tag">L4–L6</span>Hardware–mapping alternation</h3><div id="figLoop"></div><p>The SA mapper adapts to the HW it searches on. <b>L4</b> repeats all searches on a second asymmetric HW; <b>L5</b> searches again on the currently best widths and adds route scope (route choice on DRAM-only or core-only traffic); <b>L6</b> searches every batch again on the workload’s best common HW, so a batch that loses there can get a mapping fitted to it (LSTM b16: −11.9% → +0.6%).</p></div>
+</div>
+<h3>Selection rule (best-effort mapping)</h3>
+<ul><li>For each HW, each (workload, batch) uses its <b>fastest mapping from every method’s pool</b> — e.g. route choice at b1 and ring placement at b16. The uniform HW gets exactly the same choice.</li>
+<li><b>Common HW</b> (one design for batches 1/4/16): no batch may be slower than uniform; among those, prefer mean ≥ 10% and max ≥ 20%, then the highest mean. If no asymmetric design keeps every batch ≥ 0%, uniform is kept (0%). Groups (CNN/RNN/Transformer/ALL14 (all but RNN)) apply the same rule to all (workload, batch) pairs.</li>
+<li>Selected designs are re-simulated natively (oracle/native parity checked). “Provisional” rows are oracle-only until that check.</li></ul>
+<div class="scroll"><table>
+<tr><th>Level</th><th class="l">Method</th><th class="l">Search variants (pool labels)</th></tr>
+<tr><td>L0</td><td class="l">Baseline + coherent partition</td><td class="l"><code>baseline</code>, <code>partition</code></td></tr>
+<tr><td>L1</td><td class="l">Ring-flow SA operator</td><td class="l"><code>ring</code></td></tr>
+<tr><td>L2</td><td class="l">XY/YX route choice</td><td class="l"><code>routecw</code>, <code>ringcw</code></td></tr>
+<tr><td>L3</td><td class="l">Multicast ring forwarding</td><td class="l"><code>chaincw</code>, <code>ringchaincw</code></td></tr>
+<tr><td>L4</td><td class="l">Search-HW diversity (seed 2)</td><td class="l">all of the above on a second HW</td></tr>
+<tr><td>L5</td><td class="l">HW–mapping alternation + route scope (seed 3)</td><td class="l">+ <code>scopedram</code>, <code>scopecore</code> (C4 also chain λ variants)</td></tr>
+<tr><td>L6</td><td class="l">Common-HW mapping alternation (seed 4)</td><td class="l">all variants on the best common HW</td></tr>
+</table></div>
+<p class="note">Each search also runs in three DP grouping modes (<code>g1</code>, <code>hybrid</code>, <code>g4</code>). Within K=2 the C8 family (a, b, c) and the C4 family (ax, ay, cx, cy; sum 1024) are the complete design spaces and are searched exhaustively.</p>
+</div>
+
+<div class="card"><h2>Methods tried and rejected</h2>
+<p class="note">Kept out of every mapping pool and selection (rule: no experiment that improves the uniform baseline).</p>
+<div class="scroll"><table>
+<tr><th class="l">Method</th><th class="l">Idea</th><th class="l">Result (own cycles on the search HW)</th><th class="l">Why rejected</th></tr>
+<tr><td class="l">λ route-cost variants (C8)</td><td class="l">Partial steering: weight counter-ring hops by λ = 0.5 / 2.</td><td class="l">GNMT b16 asym 27,236 vs best uniform 22,514</td><td class="l">No asymmetric gain.</td></tr>
+<tr><td class="l">L7 load-aware routing</td><td class="l">Per transfer choose XY/YX/chain by (link load + bytes) / width.</td><td class="l">Darknet19 b1 asym 22.7k–27.5k, uniform 30.9k (XY: ~20.7k)</td><td class="l">Worse on both sides; loads seen while routing are partial (Gemini merges per-layer NoC objects later), and routing becomes order-dependent.</td></tr>
+<tr><td class="l">L7 width-ratio split</td><td class="l">Each (src,dst) prefers cw with probability = cw-ring width share.</td><td class="l">Darknet19 b1 uniform 16.2k (best so far 20.7k), asym 21.8k</td><td class="l">Mainly speeds up the uniform baseline.</td></tr>
+<tr><td class="l">L8a traffic-class separation (C8)</td><td class="l">DRAM flows steered to the wide ring; core flows cross on the middle links.</td><td class="l">GNMT/LSTM/vgg19 b16 asym worse than before; darknet19 b4 uniform 35.1k (best so far 40.5k)</td><td class="l">No asymmetric gain at b16; improves the uniform baseline at b4.</td></tr>
+<tr><td class="l">L8b ring rotation (NN-Baton style)</td><td class="l">Read a tensor once and rotate it chip-to-chip along the wide ring.</td><td class="l">Not run</td><td class="l">Gemini already counts DRAM bytes once per multicast and L3 already forwards along the ring, so no DRAM reduction is possible in this model.</td></tr>
+</table></div>
+<p class="note">Finding: at batch 16 the DRAM-bound share of run time grows, which caps what any D2D re-provisioning (and D2D-side mapping) can gain.</p></div>
+<div class="card"><h2>Common-HW speedup by workload</h2>
+<label>Chiplets <select id="c1"><option value="8">8</option><option value="4">4</option></select></label>
+<label>HW <select id="h1"><option value="own">per workload</option><option value="group">its group's shared HW</option><option value="ALL14">ALL14 shared HW</option></select></label>
+<p class="note">Bars: the selected HW. Table: mean on all three HW choices (per workload / group / ALL14; ALL14 excludes RNN). One HW per workload for batches 1/4/16. Diamonds: mean. Dashed lines: 10% (mean target), 20% (max target). Faded bars: provisional (oracle only).</p>
+<div id="commonChart"></div><div id="commonTable" class="scroll"></div></div>
+
+<div class="card"><h2>Ring-forwarding sensitivity</h2>
+<p>Gemini models links by bandwidth only, so destination-to-destination multicast forwarding (L3) costs no extra time. Each model below re-selects both sides fairly (best mapping per side; common HW chosen with no slower batch). <b>4 chunks is the main evaluation model.</b></p>
+<ul class="note"><li><b>Free</b>: original selection (forwarding has no cost).</li>
+<li><b>16 / 4 chunks</b>: the message is forwarded in 16 or 4 pipelined chunks: Σ steps (size/C)/width + (C−1)·slowest step.</li>
+<li><b>Store-and-forward</b> (1 chunk): a chip forwards only after receiving the whole message — worst case.</li>
+<li><b>No forwarding</b>: forwarding variants removed from both sides — lower bound independent of the assumption.</li></ul>
+<label>Chiplets <select id="c6"><option value="8">8</option><option value="4">4</option></select></label>
+<div id="fwdChart"></div><div id="fwdTable" class="scroll"></div></div>
+<div class="card"><h2>Speedup by method (cumulative ablation, per-batch HW)</h2>
+<label>Chiplets <select id="c2"><option value="8">8</option><option value="4">4</option></select></label><label>Workload <select id="w2"></select></label>
+<p class="note">Best speedup of each batch on its own best K=2 HW (oracle), as methods are added. Missing levels: stage not run for that batch.</p>
+<div id="ablationChart"></div>
+<h3>All workloads · best per-batch speedup per level</h3><div id="heat" class="scroll"></div></div>
+
+<div class="card"><h2>Speedup by chiplet count</h2>
+<p class="note">Workloads with results at more than one chiplet count. Common-HW per-batch speedup (final or provisional).</p>
+<div id="chipChart"></div></div>
+
+<div class="card"><h2>Workload groups · one shared HW</h2><div id="groups" class="scroll"></div></div>
+
+<div class="card"><h2>Selected design · link widths</h2>
+<label>Design <select id="d5"></select></label><div id="diagram"></div></div>
+
+<div class="card"><h2>Campaign status</h2><div id="status" class="scroll"></div></div>
+
+<script>
+const $=id=>document.getElementById(id),esc=s=>String(s??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const fmt=v=>v==null||isNaN(v)?'–':(v>=0?'+':'')+v.toFixed(2)+'%',cls=v=>v>=0?'pos':'neg';
+const BC={'1':'#2f6fb0','4':'#e08a1e','16':'#3c9b5a'},LV=['L0','L1','L2','L3','L0-L3','L4','L5','L6'];
+const VAR={baseline:'XY baseline',partition:'coherent partition',ring:'ring operator',routecw:'route choice',ringcw:'ring + route',chaincw:'route + mcast chain',ringchaincw:'ring + route + chain',scopedram:'route on DRAM traffic',scopecore:'route on core traffic',chainl05:'chain λ=0.5',chainl2:'chain λ=2',ringchainl05:'ring+chain λ=0.5',ringchainl2:'ring+chain λ=2'};
+const isUniform=w=>/^256(-256)+$/.test(w||'');
+/* ---------- method figures (C8 2x4, chip = cx*4+cy; drawn with cy left→right, cx=1 on top) ---------- */
+const CG='#2e8b57',CA='#3a6fb0',CB='#8a6d3b',CR='#c0563c';
+const P8=c=>[60+(c%4)*110,(c>=4?50:150)];
+function defs(){return `<defs>${[CG,CA,CB,CR,'#33475b'].map((c,i)=>`<marker id="m${i}" viewBox="0 0 10 10" refX="9" refY="5" markerUnits="userSpaceOnUse" markerWidth="9" markerHeight="9" orient="auto"><path d="M0 0L10 5L0 10z" fill="${c}"/></marker>`).join('')}</defs>`}
+const MK={[CG]:0,[CA]:1,[CB]:2,[CR]:3,'#33475b':4};
+function arrow(a,b,col,w=3,off=0,dash=''){const [x1,y1]=Array.isArray(a)?a:P8(a),[x2,y2]=Array.isArray(b)?b:P8(b);const L=Math.hypot(x2-x1,y2-y1),ux=(x2-x1)/L,uy=(y2-y1)/L,nx=-uy*off,ny=ux*off,s=Array.isArray(a)?2:30,e=Array.isArray(b)?2:30;
+ return `<line x1="${x1+ux*s+nx}" y1="${y1+uy*s+ny}" x2="${x2-ux*e+nx}" y2="${y2-uy*e+ny}" stroke="${col}" stroke-width="${w}" ${dash?`stroke-dasharray="${dash}"`:''} marker-end="url(#m${MK[col]??4})"/>`}
+function chips(label=c=>'chip '+c,fill=()=> '#eef3f9'){let s='';for(let c=0;c<8;c++){const [x,y]=P8(c);s+=`<rect x="${x-26}" y="${y-22}" width="52" height="44" rx="7" fill="${fill(c)}" stroke="#8aa0b8"/><text x="${x}" y="${y+4}" text-anchor="middle" font-size="12">${label(c)}</text>`}return s}
+function dram(){return [['DRAM0',[60,186]],['DRAM1',[390,186]],['DRAM2',[60,2]],['DRAM3',[390,2]]].map(([t,[x,y]])=>`<rect x="${x-30}" y="${y}" width="60" height="14" rx="3" fill="#f3ead9" stroke="#b49a6a"/><text x="${x}" y="${y+11}" text-anchor="middle" font-size="10">${t}</text>`).join('')}
+const svg=(h,body,w=460)=>`<svg viewBox="0 0 ${w} ${h}" role="img">${defs()}${body}</svg>`;
+const CW=[0,4,5,6,7,3,2,1,0];
+function figures(){
+ let k='';for(let i=0;i<8;i++){k+=arrow(CW[i],CW[i+1],CG,3,5)+arrow(CW[i+1],CW[i],CA,3,5)}for(const [u,v] of [[1,5],[2,6]]){k+=arrow(u,v,CB,3,5)+arrow(v,u,CB,3,5)}
+ $('figK2').innerHTML=svg(200,k+chips()+`<text x="230" y="96" text-anchor="middle" font-size="12" fill="${CG}">c: cw ring</text><text x="230" y="110" text-anchor="middle" font-size="12" fill="${CA}">a: ccw ring</text>`+`<text x="285" y="194" text-anchor="middle" font-size="11" fill="${CB}">b: middle links (chips 1↔5, 2↔6)</text>`);
+ const box=(x,y,w,t,c='#eef3f9')=>`<rect x="${x}" y="${y}" width="${w}" height="38" rx="7" fill="${c}" stroke="#8aa0b8"/><text x="${x+w/2}" y="${y+23}" text-anchor="middle" font-size="12">${t}</text>`;
+ const tag=(x,y,t)=>`<rect x="${x}" y="${y}" width="${t.length*6.6+10}" height="17" rx="5" fill="#18334d"/><text x="${x+5}" y="${y+12.5}" font-size="11" fill="#fff">${t}</text>`;
+ $('figL0').innerHTML=svg(180,box(5,20,90,'Workload DAG')+arrow([95,39],[115,39],'#33475b',2)+box(115,20,100,'DP layer groups')+arrow([215,39],[235,39],'#33475b',2)+box(235,20,105,'SA spatial map')+arrow([340,39],[360,39],'#33475b',2)+box(360,20,95,'NoC/D2D/DRAM')+
+  `<text x="287" y="74" text-anchor="middle" font-size="11">moves: core swap · chiplet swap ·</text><text x="287" y="88" text-anchor="middle" font-size="11">tensor order · coherent partition</text>`+tag(240,96,'+ L1 ring-flow')+`<text x="407" y="74" text-anchor="middle" font-size="11">routing:</text><text x="407" y="88" text-anchor="middle" font-size="11">XY only</text>`+tag(378,96,'+ L2/L3')+
+  box(150,134,220,'oracle: re-evaluate on all K=2 widths','#f0f7f2')+`<text x="10" y="157" font-size="11" fill="#52667a">L4–L6: outer loop →</text>`);
+ let r='';for(let i=0;i<8;i++)r+=arrow(CW[i],CW[i+1],CG,4,0);
+ r+=chips(c=>['S1','S8','S7','S6','S2','S3','S4','S5'][c],c=>'#eef7f1');
+ r+=dram()+arrow([60,16],[60,27],CR,2.5)+`<text x="96" y="14" font-size="11" fill="${CR}">read</text>`+arrow([390,27],[390,16],CR,2.5)+`<text x="320" y="14" font-size="11" fill="${CR}">write</text>`+arrow([390,186],[390,173],CR,2.5)+`<text x="320" y="196" font-size="11" fill="${CR}">read</text>`+arrow([60,173],[60,186],CR,2.5)+`<text x="96" y="196" font-size="11" fill="${CR}">write</text>`;
+ $('figL1').innerHTML=svg(204,r+`<text x="230" y="104" text-anchor="middle" font-size="12" fill="${CG}">stages S1→S8 follow the wide ring</text><text x="230" y="120" text-anchor="middle" font-size="11" fill="${CR}">DRAM read → write also runs in the ring direction</text>`);
+ let q=arrow(4,0,CR,3,-6,'6 4')+arrow(0,1,CR,3,-6,'6 4')+arrow(1,2,CR,3,-6,'6 4')+arrow(2,3,CR,3,-6,'6 4')+arrow(4,5,CG,4,6)+arrow(5,6,CG,4,6)+arrow(6,7,CG,4,6)+arrow(7,3,CG,4,6);
+ $('figL2').innerHTML=svg(214,q+chips(c=>c===4?'src 4':c===3?'dst 3':'chip '+c,c=>c===4||c===3?'#fff7e6':'#eef3f9')+`<text x="10" y="206" font-size="12" fill="${CR}">XY: 4→0→1→2→3 (narrow a ring)</text><text x="250" y="206" font-size="12" fill="${CG}">YX: 4→5→6→7→3 (wide c ring) ✓</text>`);
+ const mini=(dx,title,body)=>`<g transform="translate(${dx},0)"><text x="105" y="14" text-anchor="middle" font-size="12" font-weight="600">${title}</text>${body}</g>`;
+ const node=(x,y,t,f='#eef3f9')=>`<rect x="${x-19}" y="${y-15}" width="38" height="30" rx="6" fill="${f}" stroke="#8aa0b8"/><text x="${x}" y="${y+4}" text-anchor="middle" font-size="11">${t}</text>`;
+ const pts=[[25,60],[80,60],[135,60],[190,60]],src=[30,140];
+ let tree=node(...src,'DRAM','#f3ead9');pts.forEach((p,i)=>{tree+=arrow([src[0]+i*8,125],[p[0],76],CR,2)});pts.forEach((p,i)=>tree+=node(...p,'dst '+(i+1)));
+ let chain=node(...src,'DRAM','#f3ead9')+arrow([30,125],[30,76],CG,2.5);for(let i=0;i<3;i++)chain+=arrow([pts[i][0]+19,60],[pts[i+1][0]-19,60],CG,2.5);pts.forEach((p,i)=>chain+=node(...p,'dst '+(i+1)));
+ $('figL3').innerHTML=svg(176,mini(0,'Tree multicast (L0–L2)',tree+`<text x="105" y="170" text-anchor="middle" font-size="11">fan-out uses both directions</text>`)+mini(240,'Ring forwarding chain (L3)',chain+`<text x="105" y="170" text-anchor="middle" font-size="11">destinations forward along the wide ring</text>`));
+ const lb=(x,y,w,t1,t2,c)=>`<rect x="${x}" y="${y}" width="${w}" height="44" rx="7" fill="${c}" stroke="#8aa0b8"/><text x="${x+w/2}" y="${y+18}" text-anchor="middle" font-size="12">${t1}</text><text x="${x+w/2}" y="${y+34}" text-anchor="middle" font-size="11" fill="#52667a">${t2}</text>`;
+ $('figLoop').innerHTML=svg(210,lb(5,10,140,'Search HW set','start HW · L4 second HW','#eef3f9')+lb(5,100,140,'+ L5 best HW','+ L6 best common HW','#eef3f9')+arrow([145,32],[175,40],'#33475b',2)+arrow([145,120],[175,56],'#33475b',2)+
+  lb(175,20,130,'Mapping pools','all variants × modes','#eef7f1')+`<text x="240" y="82" text-anchor="middle" font-size="10" fill="#52667a">uniform HW searched too</text>`+arrow([305,42],[325,42],'#33475b',2)+lb(325,20,130,'Oracle selection','3,081 K=2 designs','#f0f7f2')+
+  arrow([390,64],[390,100],'#33475b',2)+lb(310,100,145,'Best HW per batch /','common HW (no slower batch)','#fff7e6')+arrow([310,130],[147,128],'#33475b',2,0,'5 4')+`<text x="228" y="160" text-anchor="middle" font-size="11">re-search on the selected HW (alternation)</text>`+
+  `<text x="230" y="196" text-anchor="middle" font-size="11" fill="#52667a">the final common HW is re-simulated natively</text>`)}
+/* ---------- results ---------- */
+let data=null;
+function lvl(name){const m=name.match(/^(L0-L3|L\d)/);return m?m[1]:name}
+function mapText(m){if(!m)return '–';if(!m.label)return m.source?'other study':'–';return `${esc(m.mode)} · ${esc(VAR[m.variant]||m.variant)}`}
+function axisChart(groups,series,opt){
+ const W=Math.max(560,groups.length*opt.gw+80),H=290,top=16,bot=110,left=60;const vals=groups.flatMap(g=>series.map(s=>g.values[s]).filter(v=>v!=null));
+ const lo=Math.min(-5,...vals),hi=Math.max(25,...vals);const y=v=>top+(hi-v)/(hi-lo)*(H-top-bot);let s=`<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="${esc(opt.label)}">`;
+ for(let t=Math.ceil(lo/10)*10;t<=hi;t+=10)s+=`<line x1="${left}" x2="${W-10}" y1="${y(t)}" y2="${y(t)}" stroke="#e3eaf3"/><text x="${left-6}" y="${y(t)+4}" text-anchor="end" font-size="11">${t}%</text>`;
+ for(const r of [0,10,20])s+=`<line x1="${left}" x2="${W-10}" y1="${y(r)}" y2="${y(r)}" stroke="${r?'#9aa9b8':'#33475b'}" stroke-dasharray="${r?'5 4':''}"/>`;
+ const gw=(W-left-10)/Math.max(1,groups.length),bw=Math.min(22,(gw-14)/series.length);
+ groups.forEach((g,i)=>{const x0=left+i*gw+(gw-bw*series.length)/2;series.forEach((k,j)=>{const v=g.values[k];if(v==null)return;const yy=y(Math.max(v,0)),h=Math.abs(y(v)-y(0));
+  s+=`<rect x="${x0+j*bw}" y="${yy}" width="${bw-2}" height="${Math.max(h,1)}" fill="${opt.color(k)}" opacity="${g.dim?0.45:1}"><title>${esc(g.name)} · ${esc(opt.keyName(k))}: ${fmt(v)}</title></rect>`});
+  if(g.mean!=null){const cx=left+i*gw+gw/2,cy=y(g.mean);s+=`<path d="M${cx} ${cy-6}L${cx+6} ${cy}L${cx} ${cy+6}L${cx-6} ${cy}Z" fill="#18334d"><title>${esc(g.name)} mean ${fmt(g.mean)}</title></path>`}
+  if(g.note)s+=`<text x="${left+i*gw+gw/2}" y="${y(0)-12}" text-anchor="middle" font-size="10" fill="#7a5200">${esc(g.note)}</text>`;
+  s+=`<text x="${left+i*gw+gw/2}" y="${H-bot+16}" font-size="12" text-anchor="end" transform="rotate(-30 ${left+i*gw+gw/2} ${H-bot+16})">${esc(g.name)}</text>`});
+ let lx=left;series.forEach(k=>{s+=`<rect x="${lx}" y="${H-14}" width="12" height="12" fill="${opt.color(k)}"/><text x="${lx+16}" y="${H-4}" font-size="12">${esc(opt.keyName(k))}</text>`;lx+=Math.max(90,String(opt.keyName(k)).length*7+30)});
+ return s+'</svg>'}
+function badge(c){if(!c)return '<span class="badge pend">pending</span>';return c.stage==='common-final'?'<span class="badge final">final · native</span>':c.stage.startsWith('common-fast')?'<span class="badge final">fast path · native</span>':'<span class="badge prov">provisional · oracle</span>'}
+function renderSummary(){const c8=data.rows.filter(r=>r.chiplets===8),rows=data.rows.filter(r=>r.common);const met=rows.filter(r=>r.common.meets),fin=rows.filter(r=>r.common.stage==='common-final');
+ const best=rows.reduce((a,r)=>Math.max(a,r.common.max),-Infinity);
+ $('summary').innerHTML=[['C8 workloads with a common HW',`${c8.filter(r=>r.common).length} / 16`],['Meeting target (no slower batch, mean ≥10%, max ≥20%)',met.length],['Native-validated (final)',fin.length],['Best common-HW batch speedup',fmt(best)]].map(([k,v])=>`<div class="stat">${esc(k)}<b>${esc(v)}</b></div>`).join('')}
+// Shared-HW selection for a group name (CNN, RNN, Transformer, ALL14) at chiplet count c: newest final-rule result.
+function groupSel(name,c){return data.groups.filter(g=>(g.chiplets||8)===c&&g.final&&g.name.split('-')[0]===name).sort((a,b)=>b.updated-a.updated)[0]}
+function groupVals(g,w){if(!g)return null;const v=Object.fromEntries(['1','4','16'].map(b=>[b,g.pairs[`${w}/b${b}`]]).filter(([,x])=>x!=null));return Object.keys(v).length?v:null}
+const meanOf=v=>{const x=Object.values(v||{});return x.length?x.reduce((a,b)=>a+b,0)/x.length:null};
+function renderCommon(){const c=Number($('c1').value),hw=$('h1').value;const rows=data.rows.filter(r=>r.chiplets===c);
+ const groups=rows.map(r=>{if(hw!=='own'){const g=groupSel(hw==='group'?r.group:'ALL14',c),v=groupVals(g,r.workload);
+   return {name:r.workload,note:v?(isUniform(g.widths)?'uniform kept':null):hw==='ALL14'&&r.group==='RNN'?'not in ALL14':'pending',values:v||{},mean:meanOf(v)}}
+  return {name:r.workload,note:!r.common?'pending':isUniform(r.common.widths)?'uniform kept':null,dim:!r.common||!r.common.native,values:r.common?Object.fromEntries(Object.entries(r.common.batches).map(([b,v])=>[b,v.speedup_pct])):{},mean:r.common?.mean}});
+ $('commonChart').innerHTML=axisChart(groups,['1','4','16'],{gw:46,label:'common HW speedup',color:k=>BC[k],keyName:k=>'batch '+k});
+ let t='<table><tr><th>Workload</th><th class="l">Group</th><th class="l">Status</th><th class="l">HW</th>'+['1','4','16'].map(b=>`<th>b${b}</th><th class="l">mapping b${b} (asym · uniform)</th>`).join('')+'<th>Mean</th><th>Min</th><th>Target</th><th>Group HW mean</th><th>ALL14 HW mean</th></tr>';
+ for(const r of rows){const m=r.common;t+=`<tr><td>${esc(r.workload)}</td><td class="l">${esc(r.group)}</td><td class="l">${badge(m)}</td><td class="l">${esc(m?.widths||'–')}${m&&isUniform(m.widths)?'<br><span class="note">no asymmetric design keeps every batch ≥ 0% yet</span>':''}</td>`;
+  for(const b of ['1','4','16']){const v=m?.batches[b];t+=`<td class="${v?cls(v.speedup_pct):''}">${v?fmt(v.speedup_pct):'–'}</td><td class="l note">${v?mapText(v.asym_mapping)+' · '+mapText(v.uniform_mapping):'–'}</td>`}
+  t+=`<td>${m?fmt(m.mean):'–'}</td><td class="${m?cls(m.min):''}">${m?fmt(m.min):'–'}</td><td>${m?(m.meets?'✅':'—'):'–'}</td>`;
+  for(const name of [r.group,'ALL14']){const g=groupSel(name,c),v=meanOf(groupVals(g,r.workload));t+=`<td class="${v!=null?cls(v):''}" title="${g?esc(g.name+' · '+g.widths):''}">${v!=null?fmt(v):(name==='ALL14'&&r.group==='RNN'?'n/a':'–')}</td>`}
+  t+='</tr>'}
+ $('commonTable').innerHTML=t+'</table><p class="note">HW: a-b-c for C8, ax-ay-cx-cy for C4 (B/cycle). Mapping: DP grouping mode · search variant.</p>'}
+function renderAblation(){const c=Number($('c2').value);const rows=data.rows.filter(r=>r.chiplets===c&&Object.keys(r.ablation).length);
+ const sel=$('w2'),cur=sel.value;sel.innerHTML=rows.map(r=>`<option${r.workload===cur?' selected':''}>${esc(r.workload)}</option>`).join('');const r=rows.find(x=>x.workload===sel.value)||rows[0];
+ if(r){const levels=LV.filter(L=>Object.values(r.ablation).some(a=>a.some(x=>lvl(x.level)===L)));
+  const groups=levels.map(L=>({name:L,values:Object.fromEntries(Object.entries(r.ablation).map(([b,a])=>[b,a.find(x=>lvl(x.level)===L)?.speedup_pct]).filter(([,v])=>v!=null))}));
+  $('ablationChart').innerHTML=axisChart(groups,['1','4','16'].filter(b=>r.ablation[b]),{gw:70,label:'ablation',color:k=>BC[k],keyName:k=>'batch '+k})+
+   '<div class="scroll"><table><tr><th>Batch</th>'+levels.map(L=>`<th>${L}</th>`).join('')+'</tr>'+Object.entries(r.ablation).map(([b,a])=>`<tr><td>b${b}</td>`+levels.map(L=>{const x=a.find(y=>lvl(y.level)===L);return x?`<td class="${cls(x.speedup_pct)}" title="uniform ${x.uniform} / asym ${x.asymmetric} cycles · pool ${x.pool_size}">${fmt(x.speedup_pct)}<br><span class="note">${esc(x.widths)}</span></td>`:'<td>–</td>'}).join('')+'</tr>').join('')+'</table></div>'}
+ else $('ablationChart').innerHTML='<p class="note">No ablation yet.</p>';
+ let h='<table><tr><th>Workload · batch</th>'+LV.map(L=>`<th>${L}</th>`).join('')+'</tr>';
+ for(const x of rows)for(const [b,a] of Object.entries(x.ablation)){h+=`<tr><td>${esc(x.workload)} b${b}</td>`+LV.map(L=>{const y=a.find(z=>lvl(z.level)===L);if(!y)return '<td>–</td>';const v=y.speedup_pct,al=Math.min(1,Math.abs(v)/35);return `<td style="background:${v>=0?`rgba(60,155,90,${al})`:`rgba(163,46,37,${al})`}">${fmt(v)}</td>`}).join('')+'</tr>'}
+ $('heat').innerHTML=h+'</table>'}
+function renderChips(){const by={};for(const r of data.rows)if(r.common)(by[r.workload]??={})[r.chiplets]=r.common;
+ const groups=[];for(const [w,m] of Object.entries(by))if(Object.keys(m).length>1)for(const c of Object.keys(m).sort((a,b)=>a-b))groups.push({name:`${w} C${c}`,note:isUniform(m[c].widths)?'uniform kept':null,dim:m[c].stage!=='common-final',values:Object.fromEntries(Object.entries(m[c].batches).map(([b,v])=>[b,v.speedup_pct])),mean:m[c].mean});
+ $('chipChart').innerHTML=groups.length?axisChart(groups,['1','4','16'],{gw:110,label:'chiplet count',color:k=>BC[k],keyName:k=>'batch '+k}):'<p class="note">Waiting for results at a second chiplet count.</p>'}
+function renderGroups(){if(!data.groups.length){$('groups').innerHTML='<p class="note">Group selections (CNN, RNN, Transformer, ALL14 (all but RNN)) start after the per-workload stages. Final-rule groups are suffixed “-final”.</p>';return}
+ let t='<table><tr><th>Group</th><th>Chiplets</th><th class="l">HW</th><th>Mean</th><th>Min pair</th><th>Max pair</th><th class="l">Per-workload mean</th></tr>';
+ for(const g of data.groups)t+=`<tr><td>${esc(g.name)}${g.final?'':' <span class="badge pend">older rule</span>'}</td><td>C${g.chiplets||8}</td><td class="l">${esc(g.widths)}</td><td>${fmt(g.mean)}</td><td class="${cls(g.min)}">${fmt(g.min)}</td><td>${fmt(g.max)}</td><td class="l note">${Object.entries(g.per_workload_mean).map(([w,v])=>`${esc(w)} ${fmt(v)}`).join(' · ')}</td></tr>`;
+ $('groups').innerHTML=t+'</table>'}
+function diagram(c,links){const ny=c/2,D=[[1,0],[0,-1],[-1,0],[0,1]],S=110,P=40,W=ny*S+2*P-30,H=2*S+2*P-40;const pos=(x,y)=>[P+y*S+15,P+(1-x)*(S-10)+15];
+ let s=`<svg viewBox="0 0 ${W} ${H}" style="max-width:${Math.round(W*1.1)}px" role="img" aria-label="link widths">`;const max=Math.max(...Object.values(links).map(v=>v[0]));
+ for(const [e,[w]] of Object.entries(links)){const chip=Math.floor(e/4),d=e%4,x=Math.floor(chip/ny),y=chip%ny,[dx,dy]=D[d];const [x1,y1]=pos(x,y),[x2,y2]=pos(x+dx,y+dy);
+  const L=Math.hypot(x2-x1,y2-y1),off=7,nxv=-(y2-y1)/L*off,nyv=(x2-x1)/L*off,a=[x1+nxv+(x2-x1)*0.27,y1+nyv+(y2-y1)*0.27],b=[x1+nxv+(x2-x1)*0.73,y1+nyv+(y2-y1)*0.73];
+  s+=`<line x1="${a[0]}" y1="${a[1]}" x2="${b[0]}" y2="${b[1]}" stroke="${w>256?'#3c9b5a':w<256?'#c0563c':'#7d8fa3'}" stroke-width="${1+5*w/max}" marker-end="url(#ar)"><title>edge ${e}: ${w} B/cycle</title></line>`;
+  s+=`<text x="${(a[0]+b[0])/2+nxv*2}" y="${(a[1]+b[1])/2+nyv*2+4}" font-size="10" text-anchor="middle">${w}</text>`}
+ for(let x=0;x<2;x++)for(let y=0;y<ny;y++){const [cx,cy]=pos(x,y);s+=`<rect x="${cx-25}" y="${cy-20}" width="50" height="40" rx="7" fill="#eef3f9" stroke="#8aa0b8"/><text x="${cx}" y="${cy+4}" text-anchor="middle" font-size="11">chip ${x*ny+y}</text>`}
+ return s+'<defs><marker id="ar" viewBox="0 0 10 10" refX="8" refY="5" markerUnits="userSpaceOnUse" markerWidth="9" markerHeight="9" orient="auto"><path d="M0 0L10 5L0 10z" fill="#33475b"/></marker></defs></svg><p class="note">Directed links (B/cycle). Green: wider than 256, red: narrower. Total equals uniform 256 × links. Same orientation as the method figures.</p>'}
+function renderDiagram(){const opts=[...data.rows.filter(r=>r.common&&!isUniform(r.common.widths)).map(r=>({k:`C${r.chiplets} · ${r.workload} · ${r.common.widths}`,c:r.chiplets,l:r.common.links})),...data.groups.map(g=>({k:`C${g.chiplets||8} · group ${g.name} · ${g.widths}`,c:g.chiplets||8,l:g.links}))];
+ const sel=$('d5'),cur=sel.value;sel.innerHTML=opts.map(o=>`<option${o.k===cur?' selected':''}>${esc(o.k)}</option>`).join('');const o=opts.find(x=>x.k===sel.value)||opts[0];$('diagram').innerHTML=o?diagram(o.c,o.l):''}
+const FWD=[['free','Free'],['C16','16 chunks'],['C4','4 chunks'],['C1','Store-and-forward'],['none','No forwarding']];
+const FC={free:'#9aa9b8',C16:'#5b8fd0',C4:'#2f6fb0',C1:'#e08a1e',none:'#a32e25'};
+function renderForwarding(){const c=Number($('c6').value);const rows=data.rows.filter(r=>r.chiplets===c&&(r.common||Object.keys(r.forwarding||{}).length));
+ const get=(r,k)=>k==='free'?(r.common?{mean:r.common.mean,widths:r.common.widths,speedup_pct:Object.fromEntries(Object.entries(r.common.batches).map(([b,v])=>[b,v.speedup_pct]))}:null):(r.forwarding||{})[k];
+ const groups=rows.map(r=>({name:r.workload,values:Object.fromEntries(FWD.map(([k])=>[k,get(r,k)?.mean]).filter(([,v])=>v!=null))}));
+ $('fwdChart').innerHTML=axisChart(groups,FWD.map(([k])=>k),{gw:90,label:'forwarding sensitivity (mean speedup)',color:k=>FC[k],keyName:k=>FWD.find(x=>x[0]===k)[1]});
+ let t='<table><tr><th>Workload</th>'+FWD.map(([,n])=>`<th class="l">${n}<br><span class="note">HW · b1 / b4 / b16 · mean</span></th>`).join('')+'</tr>';
+ for(const r of rows){t+=`<tr><td>${esc(r.workload)}</td>`+FWD.map(([k])=>{const x=get(r,k);if(!x)return '<td class="l note">pending</td>';const sp=['1','4','16'].map(b=>x.speedup_pct?.[b]).map(v=>v==null?'–':fmt(v)).join(' / ');return `<td class="l"><span class="note">${esc(x.widths)}</span><br>${sp}<br><b class="${cls(x.mean)}">${fmt(x.mean)}</b></td>`}).join('')+'</tr>'}
+ $('fwdTable').innerHTML=t+'</table><p class="note">Speedups are native-validated (free, no forwarding) or native replays with the forwarding floor (chunk models). Batches without a value were not re-evaluated.</p>'}
+const QNAME={scheduler6:'Fast path (main results)',scheduler7:'No-forwarding selections',scheduler8:'Forwarding sweep (4 / 1 / 16 chunks)',scheduler3:'Staged ablation (paused)',scheduler4:'Staged L6 (paused)',scheduler5:'C4 staged ablation (paused)'};
+function renderStatus(){let t='<table><tr><th>Queue</th><th class="l">Updated</th><th class="l">Jobs</th><th class="l">Running</th></tr>';
+ for(const [k,v] of Object.entries(data.status))t+=`<tr><td>${esc(QNAME[k]||k)}</td><td class="l">${esc(v.updated)}</td><td class="l">${Object.entries(v.counts).map(([a,b])=>`${esc(a)} ${b}`).join(' · ')}</td><td class="l note">${v.running.map(esc).join(', ')}</td></tr>`;
+ $('status').innerHTML=t+'</table>'}
+function render(){if(!data)return;$('updated').textContent='Results updated '+new Date(data.updated*1000).toLocaleString('en-US')+' · the page refreshes every minute.';
+ renderSummary();renderCommon();renderForwarding();renderAblation();renderChips();renderGroups();renderDiagram();renderStatus()}
+async function refresh(){try{const r=await fetch('asym-mapping-study-20261018-0155.json?t='+Date.now(),{cache:'no-store'});if(!r.ok)throw new Error('HTTP '+r.status);data=await r.json();$('error').textContent='';render()}catch(e){$('error').textContent='Could not load results: '+e.message}}
+figures();for(const id of ['c1','h1','c2','c6','w2','d5'])$(id).onchange=render;refresh();setInterval(()=>{if(!document.hidden)refresh()},60000);
+</script></html>
