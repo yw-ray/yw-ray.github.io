@@ -60,6 +60,7 @@ svg{width:100%;max-width:720px;height:auto;display:block}.fig svg{max-width:460p
 <p class="note">Bars: the selected HW. Table: mean on all three HW choices (per workload / group / ALL14; ALL14 excludes RNN). One HW per workload for batches 1/4/16. Diamonds: mean. Dashed lines: 10% (mean target), 20% (max target). Faded bars: provisional (oracle only).</p>
 <div id="commonChart"></div><div id="commonTable" class="scroll"></div></div>
 
+<div class="card"><h2>Per-workload link capacity · equal search budget (C8)</h2><p class="note">Each design gets one identical mapping search (all variants, 3 DP modes, 20 rounds, seed 5) and is judged only by it, so search effort is equal across designs. Speedup vs uniform HW with the best of every mapping type. HW = ccw ring · middle · cw ring (B/cycle). Green = every batch ≥ 0%; the first row per workload is its best design.</p><div id="eqTable" class="scroll"></div></div>
 <div class="card"><h2>Ring-forwarding sensitivity</h2>
 <p>Gemini models links by bandwidth only, so destination-to-destination multicast forwarding (L3) costs no extra time. Each model below re-selects both sides fairly (best mapping per side; common HW chosen with no slower batch). <b>4 chunks is the main evaluation model.</b></p>
 <ul class="note"><li><b>Free</b>: original selection (forwarding has no cost).</li>
@@ -177,6 +178,11 @@ function renderAblation(){const c=Number($('c2').value);const rows=data.rows.fil
 function renderChips(){const by={};for(const r of data.rows)if(r.common)(by[r.workload]??={})[r.chiplets]=r.common;
  const groups=[];for(const [w,m] of Object.entries(by))if(Object.keys(m).length>1)for(const c of Object.keys(m).sort((a,b)=>a-b))groups.push({name:`${w} C${c}`,note:isUniform(m[c].widths)?'uniform kept':null,dim:m[c].stage!=='common-final',values:Object.fromEntries(Object.entries(m[c].batches).map(([b,v])=>[b,v.speedup_pct])),mean:m[c].mean});
  $('chipChart').innerHTML=groups.length?axisChart(groups,['1','4','16'],{gw:110,label:'chiplet count',color:k=>BC[k],keyName:k=>'batch '+k}):'<p class="note">Waiting for results at a second chiplet count.</p>'}
+function renderEq(){const e=data.eqcompare_c8;if(!e){$('eqTable').innerHTML='<p class="note">Running.</p>';return}
+ let t='<table><tr><th>Workload</th><th>Rank</th><th class="l">HW</th><th>b1</th><th>b4</th><th>b16</th><th>Mean</th><th>Min</th></tr>';
+ for(const [w,v] of Object.entries(e)){v.ranked.forEach((r,i)=>{const s=r.speedup_vs_best_uniform;t+=`<tr${i===0?' style="font-weight:600"':''}><td>${i===0?esc(w):''}</td><td>${i+1}</td><td class="l">${esc(r.hw)}</td>`+s.map(x=>`<td class="${cls(x)}">${fmt(x)}</td>`).join('')+`<td>${fmt(r.mean)}</td><td class="${cls(r.min)}">${fmt(r.min)}</td></tr>`});
+  if(v.incomplete.length)t+=`<tr><td></td><td colspan="7" class="l note">running: ${v.incomplete.map(esc).join(', ')}</td></tr>`}
+ $('eqTable').innerHTML=t+'</table>'}
 function renderGroups(){if(!data.groups.length){$('groups').innerHTML='<p class="note">Group selections (CNN, RNN, Transformer, ALL14 (all but RNN)) start after the per-workload stages. Final-rule groups are suffixed “-final”.</p>';return}
  let t='<table><tr><th>Group</th><th>Chiplets</th><th class="l">HW</th><th>Mean</th><th>Min pair</th><th>Max pair</th><th class="l">Per-workload mean</th></tr>';
  for(const g of data.groups)t+=`<tr><td>${esc(g.name)}${g.final?'':' <span class="badge pend">older rule</span>'}</td><td>C${g.chiplets||8}</td><td class="l">${esc(g.widths)}</td><td>${fmt(g.mean)}</td><td class="${cls(g.min)}">${fmt(g.min)}</td><td>${fmt(g.max)}</td><td class="l note">${Object.entries(g.per_workload_mean).map(([w,v])=>`${esc(w)} ${fmt(v)}`).join(' · ')}</td></tr>`;
@@ -205,7 +211,7 @@ function renderStatus(){let t='<table><tr><th>Queue</th><th class="l">Updated</t
  for(const [k,v] of Object.entries(data.status))t+=`<tr><td>${esc(QNAME[k]||k)}</td><td class="l">${esc(v.updated)}</td><td class="l">${Object.entries(v.counts).map(([a,b])=>`${esc(a)} ${b}`).join(' · ')}</td><td class="l note">${v.running.map(esc).join(', ')}</td></tr>`;
  $('status').innerHTML=t+'</table>'}
 function render(){if(!data)return;$('updated').textContent='Results updated '+new Date(data.updated*1000).toLocaleString('en-US')+' · the page refreshes every minute.';
- renderSummary();renderCommon();renderForwarding();renderAblation();renderChips();renderGroups();renderDiagram();renderStatus()}
+ renderSummary();renderCommon();renderEq();renderForwarding();renderAblation();renderChips();renderGroups();renderDiagram();renderStatus()}
 async function refresh(){try{const r=await fetch('asym-mapping-study.json?t='+Date.now(),{cache:'no-store'});if(!r.ok)throw new Error('HTTP '+r.status);data=await r.json();$('error').textContent='';render()}catch(e){$('error').textContent='Could not load results: '+e.message}}
 figures();for(const id of ['c1','h1','c2','c6','w2','d5'])$(id).onchange=render;refresh();setInterval(()=>{if(!document.hidden)refresh()},60000);
 </script></html>
