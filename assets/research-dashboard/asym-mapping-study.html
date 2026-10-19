@@ -55,7 +55,7 @@ svg{width:100%;max-width:720px;height:auto;display:block}.fig svg{max-width:460p
 </table></div>
 <p class="note">Finding: at batch 16 the DRAM-bound share of run time grows, which caps what any D2D re-provisioning (and D2D-side mapping) can gain.</p></div>
 <div class="card"><h2>Common-HW speedup by workload</h2>
-<label>Chiplets <select id="c1"><option value="8">8</option><option value="4">4</option><option value="16">16</option><option value="9">9</option><option value="15">15</option><option value="32">32</option></select></label>
+<label>Chiplets <select id="c1"><option value="4">4</option><option value="8" selected>8</option><option value="9">9</option><option value="15">15</option><option value="16">16</option><option value="32">32</option></select></label>
 <label>Link module unit <select id="u1"><option value="64" selected>64 B/cycle (main: UCIe std x16 @32 GT/s · adv x64 @8 GT/s)</option><option value="fit">8 B/cycle (fine-grained co-fit)</option><option value="16">16 B/cycle</option><option value="32">32 B/cycle</option></select></label>
 <label>HW <select id="h1"><option value="own">per workload</option><option value="group">its group's shared HW</option><option value="ALL14">ALL14 shared HW</option></select></label>
 <p class="note">Bars: the selected HW. Table: mean on all three HW choices (per workload / group / ALL14; ALL14 excludes RNN). One HW per workload for batches 1/4/16. Diamonds: mean. Dashed lines: 10% (mean target), 20% (max target). Faded bars: provisional (oracle only).</p>
@@ -68,10 +68,10 @@ svg{width:100%;max-width:720px;height:auto;display:block}.fig svg{max-width:460p
 <li><b>16 / 4 chunks</b>: the message is forwarded in 16 or 4 pipelined chunks: Σ steps (size/C)/width + (C−1)·slowest step.</li>
 <li><b>Store-and-forward</b> (1 chunk): a chip forwards only after receiving the whole message — worst case.</li>
 <li><b>No forwarding</b>: forwarding variants removed from both sides — lower bound independent of the assumption.</li></ul>
-<label>Chiplets <select id="c6"><option value="8">8</option><option value="4">4</option><option value="16">16</option><option value="9">9</option><option value="15">15</option><option value="32">32</option></select></label>
+<label>Chiplets <select id="c6"><option value="4">4</option><option value="8" selected>8</option><option value="9">9</option><option value="15">15</option><option value="16">16</option><option value="32">32</option></select></label>
 <div id="fwdChart"></div><div id="fwdTable" class="scroll"></div></div>
 <div class="card"><h2>Speedup by method (cumulative ablation, per-batch HW)</h2>
-<label>Chiplets <select id="c2"><option value="8">8</option><option value="4">4</option><option value="16">16</option><option value="9">9</option><option value="15">15</option><option value="32">32</option></select></label><label>Workload <select id="w2"></select></label>
+<label>Chiplets <select id="c2"><option value="4">4</option><option value="8" selected>8</option><option value="9">9</option><option value="15">15</option><option value="16">16</option><option value="32">32</option></select></label><label>Workload <select id="w2"></select></label>
 <p class="note">Best speedup of each batch on its own best K=2 HW (oracle), as methods are added. Missing levels: stage not run for that batch.</p>
 <div id="ablationChart"></div>
 <h3>All workloads · best per-batch speedup per level</h3><div id="heat" class="scroll"></div></div>
