@@ -136,6 +136,24 @@ svg{width:100%;max-width:720px;height:auto;display:block}.fig svg{max-width:460p
 <p class="note">Bars: the selected HW. Table: mean on all three HW choices (per workload / group / ALL14; ALL14 excludes RNN). One HW per workload for batches 1/4/16. Diamonds: mean. Dashed lines: 10% (mean target), 20% (max target). Faded bars: provisional (oracle only).</p>
 <p id="unitBanner" style="font-weight:600;background:#eef3f9;padding:6px 10px;border-radius:6px"></p><div id="commonChart"></div><div id="commonTable" class="scroll"></div></div>
 
+<!--b16hw--><div class="card" id="b16hw"><h2>Batch-16 target HW</h2>
+<p class="note">Per workload, the asymmetric HW with the best batch-16 speedup among every design of the rule (64 B/cycle modules, every TX equals the adjacent RX, total capacity equal to uniform). b1 and B4 are the same HW, shown for reference only. Common HW: best worst-case B16 over the workloads (gpt_decode_block excluded). Whole-array mappings, uniform side = best mapping of the same pool, oracle values. Max port: largest link on the chiplet edge in 64 B/cycle modules (uniform = 8).</p>
+<label>Array <select id="b16a"></select></label><p id="b16meta" class="note"></p><div id="b16chart"></div><div id="b16table" class="scroll"></div></div>
+<script>
+(()=>{let D=null;const q=id=>document.getElementById(id),f=x=>(x>=0?'+':'')+x.toFixed(1),c=x=>x>0.05?'pos':x<-0.05?'neg':'';
+function draw(){const a=D.arrays[Number(q('b16a').value)];if(a.pending){q('b16meta').textContent='Running.';q('b16chart').innerHTML='';q('b16table').innerHTML='';return}
+ q('b16meta').innerHTML=`${a.workloads} workloads · ${a.designs} designs · HW name order ${a.order}`;
+ const R=a.rows,mx=Math.max(5,...R.map(r=>Math.abs(r.b16)),...Object.values(a.common.b16).map(Math.abs)),W=720,rh=22,lab=150,H=R.length*rh+30,sx=v=>lab+(W-lab-20)*(v+mx)/(2*mx);
+ let s=`<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="batch-16 speedup"><line x1="${sx(0)}" x2="${sx(0)}" y1="4" y2="${H-20}" stroke="#8aa0b8"/>`;
+ R.forEach((r,i)=>{const y=8+i*rh,v=r.b16,cv=a.common.b16[r.workload];s+=`<text x="${lab-6}" y="${y+13}" text-anchor="end" font-size="12">${r.workload}</text><rect x="${Math.min(sx(0),sx(v))}" y="${y+2}" width="${Math.abs(sx(v)-sx(0))}" height="${rh-8}" rx="3" fill="${v>=0?'#2f7d4f':'#b4483c'}"/>`+(cv!=null?`<path d="M${sx(cv)} ${y+1}l4 8l-4 8l-4-8z" fill="#18334d"/>`:'')+`<text x="${sx(Math.max(v,0))+6}" y="${y+13}" font-size="11">${f(v)}</text>`});
+ s+=`<text x="${lab}" y="${H-4}" font-size="11" fill="#52667a">bars: per-workload B16 HW · diamonds: common HW ${a.common.hw}</text></svg>`;q('b16chart').innerHTML=s;
+ let t='<table><tr><th>Workload</th><th class="l">B16 HW</th><th>B16 %</th><th>b1 %</th><th>B4 %</th><th>Max port</th><th>Common HW B16 %</th></tr>';
+ for(const r of R)t+=`<tr><td>${r.workload}</td><td class="l"><code>${r.uniform?'uniform':r.hw}</code></td><td class="${c(r.b16)}">${f(r.b16)}</td><td class="${c(r.b1)}">${f(r.b1)}</td><td class="${c(r.b4)}">${f(r.b4)}</td><td>${r.max_port}</td><td class="${c(a.common.b16[r.workload])}">${f(a.common.b16[r.workload])}</td></tr>`;
+ const v=Object.entries(a.common.b16).filter(([w])=>w!=='gpt_decode_block').map(([,x])=>x);
+ t+=`<tr><th>Common HW</th><th class="l"><code>${a.common.hw}</code></th><th colspan="3" class="l">B16 mean ${f(v.reduce((s,x)=>s+x,0)/v.length)} · min ${f(Math.min(...v))} · ≥ 0 in ${v.filter(x=>x>=-0.05).length}/${v.length}</th><th>${a.common.max_port}</th><th></th></tr></table>`;q('b16table').innerHTML=t}
+async function load(){try{const r=await fetch('b16-hw.json?t='+Date.now(),{cache:'no-store'});D=await r.json();const s=q('b16a'),v=s.value;s.innerHTML=D.arrays.map((a,i)=>`<option value="${i}">${a.name}${a.pending?' (running)':''}</option>`).join('');s.value=v||String(D.arrays.findIndex(a=>a.name==='C8'));draw()}catch(e){q('b16meta').textContent='Could not load b16-hw.json'}}
+q('b16a').onchange=draw;load();setInterval(load,60000)})();
+</script><!--/b16hw-->
 <div class="card"><h2>Per-workload link capacity · equal search budget (C8)</h2><p class="note">Each design gets one identical mapping search (all variants, 3 DP modes, 20 rounds, seed 5) and is judged only by it, so search effort is equal across designs. Speedup vs uniform HW with the best of every mapping type. HW = ccw ring · middle · cw ring (B/cycle). Green = every batch ≥ 0%; the first row per workload is its best design.</p><div id="eqTable" class="scroll"></div></div>
 <div class="card"><h2>Ring-forwarding sensitivity</h2>
 <p>Gemini models links by bandwidth only, so destination-to-destination multicast forwarding (L3) costs no extra time. Each model below re-selects both sides fairly (best mapping per side; common HW chosen with no slower batch). <b>4 chunks is the main evaluation model.</b></p>
