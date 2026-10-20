@@ -282,7 +282,7 @@ function renderCommon(){const c=Number($('c1').value),hw=$('h1').value;{const u=
   for(const b of ['1','4','16']){const v=m?.batches[b];t+=`<td class="${v?cls(v.speedup_pct):''}">${v?fmt(v.speedup_pct):'–'}</td><td class="l note">${v?mapText(v.asym_mapping)+' · '+mapText(v.uniform_mapping):'–'}</td>`}
   t+=`<td>${m?fmt(m.mean):'–'}</td><td class="${m?cls(m.min):''}">${m?fmt(m.min):'–'}</td><td>${m?(m.meets?'✅':'—'):'–'}</td>`;
   for(const name of [r.group,'ALL14']){const g=groupSel(name,c),v=meanOf(groupVals(g,r.workload));t+=`<td class="${v!=null?cls(v):''}" title="${g?esc(g.name+' · '+g.widths):''}">${v!=null?fmt(v):(name==='ALL14'&&r.group==='RNN'?'n/a':'–')}</td>`}
-  {const ts=m&&(m.data_updated||m.updated);t+=`<td class="l note">${ts?new Date(ts*1000).toLocaleString([], {month:'short',day:'numeric',hour:'2-digit',minute:'2-digit'}):'–'}</td>`}
+  {const ts=m&&(m.data_updated||m.updated);t+=`<td class="l note">${ts?new Date(ts*1000).toLocaleString('en-US', {month:'short',day:'numeric',hour:'2-digit',minute:'2-digit',hour12:false,timeZone:'America/New_York'})+' ET':'–'}</td>`}
   t+='</tr>'}
  $('commonTable').innerHTML=t+'</table><p class="note">Workloads are listed by group, each followed by its group\'s shared-HW row (b1/b4/b16 = mean over the group\'s workloads on that HW); ALL14 = every workload except RNN. HW: a-b-c for C8, ax-ay-cx-cy for C4 (B/cycle). Mapping columns: selected mapping of the asymmetric HW · best mapping of uniform HW, each as DP grouping mode · variant (variants and their data flow are listed in the week summary, section 2).</p>'}
 function renderAblation(){const c=Number($('c2').value);const rows=data.rows.filter(r=>r.chiplets===c&&Object.keys(r.ablation).length);
