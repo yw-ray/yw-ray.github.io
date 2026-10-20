@@ -16,6 +16,49 @@ svg{width:100%;max-width:720px;height:auto;display:block}.fig svg{max-width:460p
 <p id="updated" class="note">Loading…</p><p id="error" class="neg"></p>
 <div class="cards" id="summary"></div>
 
+<div class="card" id="week-summary"><h2>Week summary · 2026-10-13 to 10-19</h2>
+<p class="note">Snapshot 2026-10-19 20:30. C9/C15/C16 values are oracle (not native-validated); C4/C8 per-workload values are native-validated co-fit selections.</p>
+<h3>1. HW constraints (all arrays)</h3>
+<ul>
+<li>Same total D2D capacity as uniform (256 B/cycle per directed link).</li>
+<li>Reusable tiles, rotation only (no mirrored tiles). K = number of tile kinds: C4/C8 K=2, C9/C15/C16/C32 K=3 (corner, edge, interior).</li>
+<li>Every TX width equals the adjacent RX width. No boundary port left unconnected.</li>
+<li>Widths in 64 B/cycle modules (uniform link = 4 modules per direction).</li>
+<li>These rules tie links into equality groups. A design is one width per group (HW name = widths in group order).</li>
+</ul>
+<h3>2. Mapping and multicast methods (both sides get every method)</h3>
+<div class="scroll"><table>
+<tr><th class="l">Variant</th><th class="l">Placement</th><th class="l">Unicast route</th><th class="l">Multicast</th></tr>
+<tr><td class="l"><code>partition</code></td><td class="l">Gemini SA + coherent tensor partition</td><td class="l">XY</td><td class="l">XY tree</td></tr>
+<tr><td class="l"><code>ring</code>, <code>ringcw</code></td><td class="l">pipeline stages and DRAM homes along the clockwise perimeter ring</td><td class="l">XY / per transfer XY or YX toward the cw ring</td><td class="l">XY tree</td></tr>
+<tr><td class="l"><code>chaincw</code>, <code>ringchaincw</code></td><td class="l">Gemini / ring</td><td class="l">XY or YX toward the cw ring</td><td class="l">ring chain: forwarded destination to destination along the ring</td></tr>
+<tr><td class="l"><code>routewide</code>, <code>chainwide</code></td><td class="l">Gemini</td><td class="l">XY or YX avoiding this HW's narrow links</td><td class="l">tree / chain avoiding narrow links</td></tr>
+<tr><td class="l"><code>scopedram</code>, <code>classsep</code></td><td class="l">Gemini / ring</td><td class="l">ring routing for DRAM traffic only; core-to-core on middle links (classsep)</td><td class="l">tree or chain</td></tr>
+<tr><td class="l"><code>quadchain</code>, <code>quadload</code> (C16)</td><td class="l">four 2×2 rings (C4-like blocks)</td><td class="l">cw / XY or YX by load ÷ width</td><td class="l">chain in quad order</td></tr>
+</table></div>
+<p class="note">Chain forwarding cost: Gemini models links by bandwidth only. Sensitivity runs: store-and-forward, 4-chunk (main model), 16-chunk, and a no-forwarding bound (C8 still ≈8–9% mean, no slower batch).</p>
+<p class="note">Rejected (no gain once uniform gets the same method, or speeds up uniform more): λ route cost, load-aware routing, width-ratio split, snake/comb placement (dropped from both sides 10-19), halves, detour routing, DRAM-home halves, strict ring order, free per-link widths, 384 budget, spiral rings, DRAM port-perpendicular routing.</p>
+<h3>3. Results by chiplet count (b1 / b4 / b16 vs uniform + best of every mapping)</h3>
+<div class="scroll"><table>
+<tr><th class="l">Array</th><th class="l">DRAM</th><th class="l">Width groups</th><th class="l">HW</th><th class="l">Result</th></tr>
+<tr><td class="l">C4 (2×2)</td><td class="l">left/right</td><td class="l">4: cw-x, cw-y, ccw-x, ccw-y</td><td class="l">384-384-128-128</td><td class="l">11 of 14 workloads meet the target. CNN shared HW +14.4% mean, worst +0.4%. gnmt +2.4%, lstm +2.0%. gpt_decode no gain.</td></tr>
+<tr><td class="l">C8 (2×4)</td><td class="l">left/right</td><td class="l">3: ccw ring 8, middle 4, cw ring 8</td><td class="l">128-256-384</td><td class="l">13 of 14 meet the target (means 19–28%). CNN shared HW +23.1% mean, worst +5.4%. gpt_decode +3.4%, gnmt +1.0%, lstm +1.3% (one batch &lt; 0).</td></tr>
+<tr><td class="l">C9 (3×3)</td><td class="l">left/right</td><td class="l">6: perimeter cw/ccw (two sets), out, in</td><td class="l">128-320-256-128-384-320</td><td class="l">Transformers +3 to +7% mean, CNNs ≈0, resnet101 −4.9%.</td></tr>
+<tr><td class="l">C9 (3×3)</td><td class="l">mid-side chip of each side</td><td class="l">same</td><td class="l">per workload: above or 128-384-256-128-384-256</td><td class="l">6 workloads done, 4 with every batch ≥ 0. Means +4.6 to +11.9% (gpt_prefill +11.9, resnet50 +7.8). 8 more running.</td></tr>
+<tr><td class="l">C15 (3×5)</td><td class="l">left/right</td><td class="l">3: perimeter ccw 12, cw 12, interior 20 (symmetric)</td><td class="l">128-384-256</td><td class="l">7 of 9 workloads ≥ +10% mean (googlenet +17.7, resnext50 +16.7, resnet50 +15.6). gpt_decode −5.6%.</td></tr>
+<tr><td class="l">C16 (4×4)</td><td class="l">left/right</td><td class="l">6 (pinwheel): perimeter ccw/cw 12/12, out/in 8/8, inner ring ccw/cw 4/4</td><td class="l">—</td><td class="l">No gain: uniform kept, capacity-moving designs −7 to −41%.</td></tr>
+<tr><td class="l">C16 (4×4)</td><td class="l">middle of each side</td><td class="l">same</td><td class="l">per workload: 128-256-384-256-256-256 or 128-256-384-192-256-320</td><td class="l">13 workloads: 6 with every batch ≥ 0 but means +1 to +10%. gpt_decode −4.9%. Searches still filling.</td></tr>
+<tr><td class="l">C32 (4×8)</td><td class="l">left/right</td><td class="l">5: perimeter 20/20, block rings 12/12, symmetric 40</td><td class="l">—</td><td class="l">Paused after a darknet19 pilot.</td></tr>
+</table></div>
+<h3>4. Findings</h3>
+<ul>
+<li>Asymmetric links pay off when D2D traffic keeps one direction across segments and that direction matches the tile rotation (single perimeter ring: C4, C8, C15).</li>
+<li>An interior ring (C16) carries nearly symmetric traffic, so moving capacity into one direction hurts the other.</li>
+<li>DRAM placement matters: rotation-symmetric DRAM (mid-side) helps C9 and C16 compared with left/right DRAM.</li>
+<li>Batch 16 is the weakest batch everywhere (DRAM-bound share grows).</li>
+</ul></div>
+
+
 <div class="card"><h2>What was added to the mapper</h2>
 <p>All methods extend Gemini's mapper (DP layer grouping + simulated-annealing spatial mapping). Each is a cumulative ablation level: a level's candidate pool is the union of every mapping found so far, re-evaluated on every K=2 width design, so a level only adds options. Figures use the C8 2×4 array; chip numbers follow the simulator.</p>
 <div class="figs">
