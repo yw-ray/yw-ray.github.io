@@ -137,7 +137,7 @@ svg{width:100%;max-width:720px;height:auto;display:block}.fig svg{max-width:460p
 <p id="unitBanner" style="font-weight:600;background:#eef3f9;padding:6px 10px;border-radius:6px"></p><div id="commonChart"></div><div id="commonTable" class="scroll"></div></div>
 
 <!--b16hw--><div class="card" id="b16hw"><h2>Batch-16 target HW</h2>
-<p class="note">Per workload, the asymmetric HW with the best batch-16 speedup among every design of the rule (64 B/cycle modules, every TX equals the adjacent RX, total capacity equal to uniform). b1 and B4 are the same HW, shown for reference only. Common HW: best worst-case B16 over the workloads (gpt_decode_block excluded). Whole-array mappings, uniform side = best mapping of the same pool, oracle values. Max port: largest link on the chiplet edge in 64 B/cycle modules (uniform = 8).</p>
+<p class="note">Per workload, the asymmetric HW with the best batch-16 speedup whose mean over b1/B4/B16 stays above 0 (b1 may be slower), among every design of the rule (64 B/cycle modules, every TX equals the adjacent RX, total capacity equal to uniform). b1 and B4 are the same HW, shown for reference only. Common HW: best worst-case B16 over the workloads with every workload's three-batch mean ≥ 0 (gpt_decode_block excluded). Whole-array mappings, uniform side = best mapping of the same pool, oracle values. Max port: largest link on the chiplet edge in 64 B/cycle modules (uniform = 8).</p>
 <label>Array <select id="b16a"></select></label><p id="b16meta" class="note"></p><div id="b16chart"></div><div id="b16table" class="scroll"></div></div>
 <script>
 (()=>{let D=null;const q=id=>document.getElementById(id),f=x=>(x>=0?'+':'')+x.toFixed(1),c=x=>x>0.05?'pos':x<-0.05?'neg':'';
