@@ -11,7 +11,7 @@ function show(key){
  if(backup){const f=document.getElementById('backup-frame');const want='workloads-backup.html'+(OLD.includes(key)?'#'+key:'');if(!f.src||OLD.includes(key))f.src=want}
  history.replaceState(null,'','#'+(backup?(OLD.includes(key)?key:'backup'):'current'));
 }
-function route(){const h=location.hash.slice(1);show(h===''||h==='current'?'current':h)}
+function route(){const h=location.hash.slice(1);const t=h&&document.getElementById(h+'-tab');if(t&&t.dataset.snap){showSnap(t);return}show(h===''||h==='current'?'current':h)}
 document.getElementById('current-tab').onclick=()=>show('current');document.getElementById('backup-tab').onclick=()=>show('backup');
 window.addEventListener('hashchange',route);route();
 // Same-origin frames: follow their content height.
