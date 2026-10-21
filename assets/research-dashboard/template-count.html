@@ -6,7 +6,7 @@
 :root[data-theme="dark"]{--bg:#0f1620;--card:#17212d;--ink:#e3e9f0;--muted:#9aabbd;--line:#2a3746;--pos:#5cc489;--neg:#f0857a;--zero:#9aabbd}
 body{font:15px/1.5 system-ui,-apple-system,"Segoe UI",sans-serif;margin:0;padding:20px 16px 40px;background:var(--bg);color:var(--ink)}
 main{max-width:1080px;margin:0 auto;display:grid;gap:16px}
-h1{font-size:22px;margin:0} h2{font-size:17px;margin:0 0 8px} p{margin:6px 0} .muted{color:var(--muted);font-size:13.5px}
+h1{font-size:22px;margin:0} h2{font-size:17px;margin:0 0 8px} h3{font-size:14.5px;margin:14px 0 4px} p{margin:6px 0} .muted{color:var(--muted);font-size:13.5px}
 .card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:14px 16px;min-width:0}
 .scroll{overflow-x:auto} table{border-collapse:collapse;width:100%;min-width:600px} th,td{border-bottom:1px solid var(--line);padding:7px 10px;text-align:left;vertical-align:top}
 thead th{font-size:12px;letter-spacing:.03em;text-transform:uppercase;color:var(--muted);font-weight:600}
@@ -28,6 +28,10 @@ workloads, so they move until every search of a design is done. Updated 2026-10-
 <tr><td>K=2 exhaustive best</td><td class="muted">existing pools</td><td class="g">+3.2 / +15.4</td><td class="g pos"><b>+3.4</b></td><td class="g pos">+15.5</td><td class="g neg">-11.1</td><td class="g">1</td></tr>
 <tr><td>K=4</td><td class="muted">42 / 42 pairs</td><td class="g">+1.6 / +10.0</td><td class="g pos"><b>+3.5</b></td><td class="g pos">+12.2</td><td class="g neg">-5.7</td><td class="g">2</td></tr>
 </tbody></table></div>
+<h3>Best at K (every design representable at K, re-scored)</h3><div class="scroll"><table><thead><tr><th>K</th><th>Best design</th><th>b16</th><th>all</th><th>min</th><th>pairs &lt; 0</th></tr></thead><tbody>
+<tr><td>2</td><td>K=2 (paper shared design)</td><td class="g pos"><b>+3.4</b></td><td class="g pos">+15.5</td><td class="g neg">-11.1</td><td class="g">1</td></tr>
+<tr><td>4</td><td>K=4</td><td class="g pos"><b>+3.5</b></td><td class="g pos">+12.2</td><td class="g neg">-5.7</td><td class="g">2</td></tr>
+</tbody></table></div><p class="muted">Rows above are single designs (larger-K rows are restricted to designs that need the larger K). This table is their envelope, so it shows where the gain saturates.</p>
 <details><summary>Batch-16 speedup per workload (after re-search; ✓ = this design's search finished for all batches)</summary><div class="scroll"><table class="w"><thead><tr><th>Workload</th><th>K=2 (paper shared design)</th><th>K=2 exhaustive best</th><th>K=4</th></tr></thead><tbody>
 <tr><td>darknet19</td><td class="g pos">+1.0</td><td class="g pos">+1.0</td><td class="g pos">+0.1 ✓</td></tr>
 <tr><td>vgg19</td><td class="g pos">+0.4</td><td class="g pos">+0.4</td><td class="g pos">+0.4 ✓</td></tr>
@@ -52,6 +56,10 @@ workloads, so they move until every search of a design is done. Updated 2026-10-
 <tr><td>K=2 exhaustive best</td><td class="muted">existing pools</td><td class="g">+17.9 / +23.1</td><td class="g pos"><b>+18.0</b></td><td class="g pos">+23.2</td><td class="g neg">-0.1</td><td class="g">1</td></tr>
 <tr><td>K=8</td><td class="muted">25 / 42 pairs</td><td class="g">+15.7 / +22.1</td><td class="g pos"><b>+17.5</b></td><td class="g pos">+23.9</td><td class="g pos">+0.4</td><td class="g">0</td></tr>
 </tbody></table></div>
+<h3>Best at K (every design representable at K, re-scored)</h3><div class="scroll"><table><thead><tr><th>K</th><th>Best design</th><th>b16</th><th>all</th><th>min</th><th>pairs &lt; 0</th></tr></thead><tbody>
+<tr><td>2</td><td>K=2 (paper shared design)</td><td class="g pos"><b>+18.0</b></td><td class="g pos">+23.2</td><td class="g neg">-0.1</td><td class="g">1</td></tr>
+<tr><td>8</td><td>K=2 (paper shared design)</td><td class="g pos"><b>+18.0</b></td><td class="g pos">+23.2</td><td class="g neg">-0.1</td><td class="g">1</td></tr>
+</tbody></table></div><p class="muted">Rows above are single designs (larger-K rows are restricted to designs that need the larger K). This table is their envelope, so it shows where the gain saturates.</p>
 <details><summary>Batch-16 speedup per workload (after re-search; ✓ = this design's search finished for all batches)</summary><div class="scroll"><table class="w"><thead><tr><th>Workload</th><th>K=2 (paper shared design)</th><th>K=2 exhaustive best</th><th>K=8</th></tr></thead><tbody>
 <tr><td>darknet19</td><td class="g pos">+18.0</td><td class="g pos">+18.0</td><td class="g pos">+17.4 ✓</td></tr>
 <tr><td>vgg19</td><td class="g pos">+7.1</td><td class="g pos">+7.1</td><td class="g pos">+7.3 ✓</td></tr>
@@ -76,6 +84,10 @@ workloads, so they move until every search of a design is done. Updated 2026-10-
 <tr><td>K=3 exhaustive best</td><td class="muted">existing pools</td><td class="g">+10.2 / +15.6</td><td class="g pos"><b>+11.0</b></td><td class="g pos">+16.3</td><td class="g pos">+0.9</td><td class="g">0</td></tr>
 <tr><td>K=9</td><td class="muted">10 / 42 pairs</td><td class="g">+10.1 / +14.3</td><td class="g pos"><b>+11.2</b></td><td class="g pos">+15.5</td><td class="g pos">+1.6</td><td class="g">0</td></tr>
 </tbody></table></div>
+<h3>Best at K (every design representable at K, re-scored)</h3><div class="scroll"><table><thead><tr><th>K</th><th>Best design</th><th>b16</th><th>all</th><th>min</th><th>pairs &lt; 0</th></tr></thead><tbody>
+<tr><td>3</td><td>K=3 exhaustive best</td><td class="g pos"><b>+11.0</b></td><td class="g pos">+16.3</td><td class="g pos">+0.9</td><td class="g">0</td></tr>
+<tr><td>9</td><td>K=9</td><td class="g pos"><b>+11.2</b></td><td class="g pos">+15.5</td><td class="g pos">+1.6</td><td class="g">0</td></tr>
+</tbody></table></div><p class="muted">Rows above are single designs (larger-K rows are restricted to designs that need the larger K). This table is their envelope, so it shows where the gain saturates.</p>
 <details><summary>Batch-16 speedup per workload (after re-search; ✓ = this design's search finished for all batches)</summary><div class="scroll"><table class="w"><thead><tr><th>Workload</th><th>K=3 (paper shared design)</th><th>K=3 exhaustive best</th><th>K=9</th></tr></thead><tbody>
 <tr><td>darknet19</td><td class="g neg">-2.4</td><td class="g pos">+0.9</td><td class="g pos">+1.6 ✓</td></tr>
 <tr><td>vgg19</td><td class="g pos">+10.0</td><td class="g pos">+7.1</td><td class="g pos">+8.0</td></tr>
