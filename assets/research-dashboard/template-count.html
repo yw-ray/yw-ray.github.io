@@ -21,18 +21,18 @@ pooled mappings, and mappings were then searched on it (14 workloads, batches 1/
 uniform side, 30 SA rounds, asymmetric side only). All designs are then re-scored on the same grown pools.</p>
 <p class="muted">Speedup vs. uniform (best of every pooled mapping). Rule: maximize mean b16 over 14 workloads with mean over
 all 42 pairs ≥ 0. "Before" = pooled mappings only (ksweep2/ksweep3). Results appear as searches finish; means use all 14
-workloads, so they move until every search of a design is done. Updated 2026-10-21 12:11.</p></header>
+workloads, so they move until every search of a design is done. Updated 2026-10-21 12:14.</p></header>
 <section class="card"><h2>2×2 · 4 chiplets</h2>
 <div class="scroll"><table><thead><tr><th>Design</th><th>Mapping search</th><th>Before re-search<br>b16 / all (%)</th><th>After re-search<br>b16</th><th>all</th><th>min</th><th>pairs &lt; 0</th></tr></thead><tbody>
 <tr><td>K=2 (paper shared design)</td><td class="muted">existing pools</td><td class="g">+3.2 / +15.4</td><td class="g pos"><b>+3.4</b></td><td class="g pos">+15.5</td><td class="g neg">-11.1</td><td class="g">1</td></tr>
 <tr><td>K=2 exhaustive best</td><td class="muted">existing pools</td><td class="g">+3.2 / +15.4</td><td class="g pos"><b>+3.4</b></td><td class="g pos">+15.5</td><td class="g neg">-11.1</td><td class="g">1</td></tr>
-<tr><td>K=4</td><td class="muted">7 / 42 pairs</td><td class="g">+1.6 / +10.0</td><td class="g pos"><b>+2.6</b></td><td class="g pos">+11.0</td><td class="g neg">-5.7</td><td class="g">2</td></tr>
+<tr><td>K=4</td><td class="muted">9 / 42 pairs</td><td class="g">+1.6 / +10.0</td><td class="g pos"><b>+2.9</b></td><td class="g pos">+11.1</td><td class="g neg">-5.7</td><td class="g">2</td></tr>
 </tbody></table></div>
 <details><summary>Batch-16 speedup per workload (after re-search; ✓ = this design's search finished for all batches)</summary><div class="scroll"><table class="w"><thead><tr><th>Workload</th><th>K=2 (paper shared design)</th><th>K=2 exhaustive best</th><th>K=4</th></tr></thead><tbody>
 <tr><td>darknet19</td><td class="g pos">+1.0</td><td class="g pos">+1.0</td><td class="g pos">+0.1 ✓</td></tr>
 <tr><td>vgg19</td><td class="g pos">+0.4</td><td class="g pos">+0.4</td><td class="g pos">+0.4</td></tr>
 <tr><td>resnet50</td><td class="g pos">+5.5</td><td class="g pos">+5.5</td><td class="g pos">+5.4</td></tr>
-<tr><td>googlenet</td><td class="g pos">+2.6</td><td class="g pos">+2.6</td><td class="g pos">+0.5</td></tr>
+<tr><td>googlenet</td><td class="g pos">+2.6</td><td class="g pos">+2.6</td><td class="g pos">+3.6</td></tr>
 <tr><td>resnet101</td><td class="g pos">+1.3</td><td class="g pos">+1.3</td><td class="g pos">+3.2</td></tr>
 <tr><td>densenet</td><td class="g pos">+5.6</td><td class="g pos">+5.6</td><td class="g pos">+0.8</td></tr>
 <tr><td>inception_resnet_v1</td><td class="g pos">+7.5</td><td class="g pos">+7.5</td><td class="g pos">+4.7</td></tr>
@@ -42,9 +42,9 @@ workloads, so they move until every search of a design is done. Updated 2026-10-
 <tr><td>transformer_cell</td><td class="g pos">+10.5</td><td class="g pos">+10.5</td><td class="g pos">+7.7</td></tr>
 <tr><td>bert_block</td><td class="g pos">+2.3</td><td class="g pos">+2.3</td><td class="g pos">+2.7 ✓</td></tr>
 <tr><td>gpt_prefill_block</td><td class="g pos">+2.4</td><td class="g pos">+2.4</td><td class="g pos">+0.6</td></tr>
-<tr><td>gpt_decode_block</td><td class="g neg">-11.1</td><td class="g neg">-11.1</td><td class="g neg">-0.8</td></tr>
+<tr><td>gpt_decode_block</td><td class="g neg">-11.1</td><td class="g neg">-11.1</td><td class="g neg">-0.8 ✓</td></tr>
 </tbody></table></div></details>
-<p class="muted">Re-scored 2026-10-21 12:11 on the current pools (every finished bank, both sides).</p>
+<p class="muted">Re-scored 2026-10-21 12:14 on the current pools (every finished bank, both sides).</p>
 </section>
 <section class="card"><h2>2×4 · 8 chiplets</h2>
 <div class="scroll"><table><thead><tr><th>Design</th><th>Mapping search</th><th>Before re-search<br>b16 / all (%)</th><th>After re-search<br>b16</th><th>all</th><th>min</th><th>pairs &lt; 0</th></tr></thead><tbody>
