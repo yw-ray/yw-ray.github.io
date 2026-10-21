@@ -29,40 +29,20 @@ uniform side, 30 SA rounds, asymmetric side only). All designs are then re-score
 <p class="muted">Speedup vs. uniform (best of every pooled mapping). Rule: maximize mean b16 over 14 workloads with mean over
 all 42 pairs ≥ 0. "Before" = pooled mappings only (ksweep2/ksweep3). Results appear as searches finish; means use all 14
 workloads, so they move until every search of a design is done. Updated 2026-10-21 14:49.</p></header>
-<section class="card"><h2>Saturation: best design at each K</h2><svg viewBox="0 0 680 300" role="img" aria-label="Best batch-16 speedup versus template count K" class="chart">
-<line x1="46" x2="610" y1="262.0" y2="262.0" class="grid"/><text x="40" y="266.0" text-anchor="end" class="tick">0</text>
-<line x1="46" x2="610" y1="199.5" y2="199.5" class="grid"/><text x="40" y="203.5" text-anchor="end" class="tick">5</text>
-<line x1="46" x2="610" y1="137.0" y2="137.0" class="grid"/><text x="40" y="141.0" text-anchor="end" class="tick">10</text>
-<line x1="46" x2="610" y1="74.5" y2="74.5" class="grid"/><text x="40" y="78.5" text-anchor="end" class="tick">15</text>
-<line x1="46" x2="610" y1="12.0" y2="12.0" class="grid"/><text x="40" y="16.0" text-anchor="end" class="tick">20</text>
-<text x="46.0" y="278" text-anchor="middle" class="tick">1</text>
-<text x="83.6" y="278" text-anchor="middle" class="tick">2</text>
-<text x="158.8" y="278" text-anchor="middle" class="tick">4</text>
-<text x="234.0" y="278" text-anchor="middle" class="tick">6</text>
-<text x="309.2" y="278" text-anchor="middle" class="tick">8</text>
-<text x="384.4" y="278" text-anchor="middle" class="tick">10</text>
-<text x="459.6" y="278" text-anchor="middle" class="tick">12</text>
-<text x="534.8" y="278" text-anchor="middle" class="tick">14</text>
-<text x="610.0" y="278" text-anchor="middle" class="tick">16</text>
-<text x="328.0" y="296" text-anchor="middle" class="tick">Template count K</text><text transform="translate(12 137.0) rotate(-90)" text-anchor="middle" class="tick">Best b16 speedup vs. uniform (%)</text>
-<polyline class="ln s4" points="83.6,219.1 158.8,218.5"/>
-<circle class="pt s4" cx="83.6" cy="219.1" r="5"><title>2×2, K=2: b16 +3.4%, all +15.5% (K=2 (paper shared design))</title></circle>
-<circle class="pt s4" cx="158.8" cy="218.5" r="5"><title>2×2, K=4: b16 +3.5%, all +12.2% (K=4)</title></circle>
-<text x="167.8" y="222.5" class="dl">2×2</text>
-<polyline class="ln s8" points="83.6,36.5 309.2,36.5"/>
-<circle class="pt s8" cx="83.6" cy="36.5" r="5"><title>2×4, K=2: b16 +18.0%, all +23.3% (K=2 (paper shared design))</title></circle>
-<circle class="pt s8 open" cx="309.2" cy="36.5" r="5"><title>2×4, K=8: b16 +18.0%, all +23.3% (K=2 (paper shared design)), searches running</title></circle>
-<text x="318.2" y="40.5" class="dl">2×4</text>
-<polyline class="ln s9" points="121.2,121.1 346.8,109.1"/>
-<circle class="pt s9" cx="121.2" cy="121.1" r="5"><title>3×3, K=3: b16 +11.3%, all +16.6% (K=3 exhaustive best)</title></circle>
-<circle class="pt s9 open" cx="346.8" cy="109.1" r="5"><title>3×3, K=9: b16 +12.2%, all +16.4% (K=9), searches running</title></circle>
-<text x="355.8" y="113.1" class="dl">3×3</text>
-<polyline class="ln s15" points="121.2,152.0 572.4,152.0"/>
-<circle class="pt s15" cx="121.2" cy="152.0" r="5"><title>3×5, K=3: b16 +8.8%, all +12.5% (K=3 (paper shared design))</title></circle>
-<circle class="pt s15 open" cx="572.4" cy="152.0" r="5"><title>3×5, K=15: b16 +8.8%, all +12.5% (K=3 (paper shared design)), searches running</title></circle>
-<text x="581.4" y="156.0" class="dl">3×5</text>
-</svg><div class="legend"><span><i class="s4"></i>2×2 (4 chiplets)</span><span><i class="s8"></i>2×4 (8 chiplets)</span><span><i class="s9"></i>3×3 (9 chiplets)</span><span><i class="s15"></i>3×5 (15 chiplets)</span><span><i class="hollow"></i>searches still running</span></div><p class="muted">Each point is the best design (rule above) among all designs representable at that K, re-scored on the current pools. Hover a point for its design.</p></section>
 <section class="card"><h2>2×2 · 4 chiplets</h2>
+<svg viewBox="0 0 640 220" role="img" aria-label="2×2: best batch-16 speedup versus template count K" class="chart s4">
+<line x1="46" x2="624" y1="182.0" y2="182.0" class="grid"/><text x="40" y="186.0" text-anchor="end" class="tick">0</text>
+<line x1="46" x2="624" y1="97.0" y2="97.0" class="grid"/><text x="40" y="101.0" text-anchor="end" class="tick">5</text>
+<line x1="46" x2="624" y1="12.0" y2="12.0" class="grid"/><text x="40" y="16.0" text-anchor="end" class="tick">10</text>
+<text x="46.0" y="198" text-anchor="middle" class="tick">1</text>
+<text x="238.7" y="198" text-anchor="middle" class="tick">2</text>
+<text x="431.3" y="198" text-anchor="middle" class="tick">3</text>
+<text x="624.0" y="198" text-anchor="middle" class="tick">4</text>
+<text x="335.0" y="216" text-anchor="middle" class="tick">Template count K</text><text transform="translate(12 97.0) rotate(-90)" text-anchor="middle" class="tick">Best b16 speedup (%)</text>
+<polyline class="ln" points="238.7,123.6 624.0,122.9"/>
+<circle class="pt" cx="238.7" cy="123.6" r="5"><title>K=2: b16 +3.4%, all +15.5% (K=2 (paper shared design))</title></circle><text x="238.7" y="113.6" text-anchor="middle" class="dl">+3.4</text>
+<circle class="pt" cx="624.0" cy="122.9" r="5"><title>K=4: b16 +3.5%, all +12.2% (K=4)</title></circle><text x="624.0" y="112.9" text-anchor="middle" class="dl">+3.5</text>
+</svg><p class="muted">Best design at each K (every design representable at K, re-scored on the current pools). Hollow marker: searches of that K still running. Hover a point for its design.</p>
 <div class="scroll"><table><thead><tr><th>Design</th><th>Mapping search</th><th>Before re-search<br>b16 / all (%)</th><th>After re-search<br>b16</th><th>all</th><th>min</th><th>pairs &lt; 0</th></tr></thead><tbody>
 <tr><td>K=2 (paper shared design)</td><td class="muted">existing pools</td><td class="g">+3.2 / +15.4</td><td class="g pos"><b>+3.4</b></td><td class="g pos">+15.5</td><td class="g neg">-11.1</td><td class="g">1</td></tr>
 <tr><td>K=2 exhaustive best</td><td class="muted">existing pools</td><td class="g">+3.2 / +15.4</td><td class="g pos"><b>+3.4</b></td><td class="g pos">+15.5</td><td class="g neg">-11.1</td><td class="g">1</td></tr>
@@ -91,6 +71,25 @@ workloads, so they move until every search of a design is done. Updated 2026-10-
 <p class="muted">Re-scored 2026-10-21 13:34 on the current pools (every finished bank, both sides).</p>
 </section>
 <section class="card"><h2>2×4 · 8 chiplets</h2>
+<svg viewBox="0 0 640 220" role="img" aria-label="2×4: best batch-16 speedup versus template count K" class="chart s8">
+<line x1="46" x2="624" y1="182.0" y2="182.0" class="grid"/><text x="40" y="186.0" text-anchor="end" class="tick">0</text>
+<line x1="46" x2="624" y1="139.5" y2="139.5" class="grid"/><text x="40" y="143.5" text-anchor="end" class="tick">5</text>
+<line x1="46" x2="624" y1="97.0" y2="97.0" class="grid"/><text x="40" y="101.0" text-anchor="end" class="tick">10</text>
+<line x1="46" x2="624" y1="54.5" y2="54.5" class="grid"/><text x="40" y="58.5" text-anchor="end" class="tick">15</text>
+<line x1="46" x2="624" y1="12.0" y2="12.0" class="grid"/><text x="40" y="16.0" text-anchor="end" class="tick">20</text>
+<text x="46.0" y="198" text-anchor="middle" class="tick">1</text>
+<text x="128.6" y="198" text-anchor="middle" class="tick">2</text>
+<text x="211.1" y="198" text-anchor="middle" class="tick">3</text>
+<text x="293.7" y="198" text-anchor="middle" class="tick">4</text>
+<text x="376.3" y="198" text-anchor="middle" class="tick">5</text>
+<text x="458.9" y="198" text-anchor="middle" class="tick">6</text>
+<text x="541.4" y="198" text-anchor="middle" class="tick">7</text>
+<text x="624.0" y="198" text-anchor="middle" class="tick">8</text>
+<text x="335.0" y="216" text-anchor="middle" class="tick">Template count K</text><text transform="translate(12 97.0) rotate(-90)" text-anchor="middle" class="tick">Best b16 speedup (%)</text>
+<polyline class="ln" points="128.6,28.7 624.0,28.7"/>
+<circle class="pt" cx="128.6" cy="28.7" r="5"><title>K=2: b16 +18.0%, all +23.3% (K=2 (paper shared design))</title></circle><text x="128.6" y="18.7" text-anchor="middle" class="dl">+18.0</text>
+<circle class="pt open" cx="624.0" cy="28.7" r="5"><title>K=8: b16 +18.0%, all +23.3% (K=2 (paper shared design)), searches running</title></circle><text x="624.0" y="18.7" text-anchor="middle" class="dl">+18.0</text>
+</svg><p class="muted">Best design at each K (every design representable at K, re-scored on the current pools). Hollow marker: searches of that K still running. Hover a point for its design.</p>
 <div class="scroll"><table><thead><tr><th>Design</th><th>Mapping search</th><th>Before re-search<br>b16 / all (%)</th><th>After re-search<br>b16</th><th>all</th><th>min</th><th>pairs &lt; 0</th></tr></thead><tbody>
 <tr><td>K=2 (paper shared design)</td><td class="muted">existing pools</td><td class="g">+17.9 / +23.1</td><td class="g pos"><b>+18.0</b></td><td class="g pos">+23.3</td><td class="g neg">-0.1</td><td class="g">1</td></tr>
 <tr><td>K=2 exhaustive best</td><td class="muted">existing pools</td><td class="g">+17.9 / +23.1</td><td class="g pos"><b>+18.0</b></td><td class="g pos">+23.3</td><td class="g neg">-0.1</td><td class="g">1</td></tr>
@@ -119,6 +118,25 @@ workloads, so they move until every search of a design is done. Updated 2026-10-
 <p class="muted">Re-scored 2026-10-21 14:46 on the current pools (every finished bank, both sides).</p>
 </section>
 <section class="card"><h2>3×3 · 9 chiplets</h2>
+<svg viewBox="0 0 640 220" role="img" aria-label="3×3: best batch-16 speedup versus template count K" class="chart s9">
+<line x1="46" x2="624" y1="182.0" y2="182.0" class="grid"/><text x="40" y="186.0" text-anchor="end" class="tick">0</text>
+<line x1="46" x2="624" y1="125.3" y2="125.3" class="grid"/><text x="40" y="129.3" text-anchor="end" class="tick">5</text>
+<line x1="46" x2="624" y1="68.7" y2="68.7" class="grid"/><text x="40" y="72.7" text-anchor="end" class="tick">10</text>
+<line x1="46" x2="624" y1="12.0" y2="12.0" class="grid"/><text x="40" y="16.0" text-anchor="end" class="tick">15</text>
+<text x="46.0" y="198" text-anchor="middle" class="tick">1</text>
+<text x="118.2" y="198" text-anchor="middle" class="tick">2</text>
+<text x="190.5" y="198" text-anchor="middle" class="tick">3</text>
+<text x="262.8" y="198" text-anchor="middle" class="tick">4</text>
+<text x="335.0" y="198" text-anchor="middle" class="tick">5</text>
+<text x="407.2" y="198" text-anchor="middle" class="tick">6</text>
+<text x="479.5" y="198" text-anchor="middle" class="tick">7</text>
+<text x="551.8" y="198" text-anchor="middle" class="tick">8</text>
+<text x="624.0" y="198" text-anchor="middle" class="tick">9</text>
+<text x="335.0" y="216" text-anchor="middle" class="tick">Template count K</text><text transform="translate(12 97.0) rotate(-90)" text-anchor="middle" class="tick">Best b16 speedup (%)</text>
+<polyline class="ln" points="190.5,54.3 624.0,43.4"/>
+<circle class="pt" cx="190.5" cy="54.3" r="5"><title>K=3: b16 +11.3%, all +16.6% (K=3 exhaustive best)</title></circle><text x="190.5" y="44.3" text-anchor="middle" class="dl">+11.3</text>
+<circle class="pt open" cx="624.0" cy="43.4" r="5"><title>K=9: b16 +12.2%, all +16.4% (K=9), searches running</title></circle><text x="624.0" y="33.4" text-anchor="middle" class="dl">+12.2</text>
+</svg><p class="muted">Best design at each K (every design representable at K, re-scored on the current pools). Hollow marker: searches of that K still running. Hover a point for its design.</p>
 <div class="scroll"><table><thead><tr><th>Design</th><th>Mapping search</th><th>Before re-search<br>b16 / all (%)</th><th>After re-search<br>b16</th><th>all</th><th>min</th><th>pairs &lt; 0</th></tr></thead><tbody>
 <tr><td>K=3 (paper shared design)</td><td class="muted">existing pools</td><td class="g">+7.8 / +16.2</td><td class="g pos"><b>+8.1</b></td><td class="g pos">+16.5</td><td class="g neg">-7.6</td><td class="g">3</td></tr>
 <tr><td>K=3 exhaustive best</td><td class="muted">existing pools</td><td class="g">+10.2 / +15.6</td><td class="g pos"><b>+11.3</b></td><td class="g pos">+16.6</td><td class="g pos">+0.9</td><td class="g">0</td></tr>
@@ -147,6 +165,24 @@ workloads, so they move until every search of a design is done. Updated 2026-10-
 <p class="muted">Re-scored 2026-10-21 14:48 on the current pools (every finished bank, both sides).</p>
 </section>
 <section class="card"><h2>3×5 · 15 chiplets</h2>
+<svg viewBox="0 0 640 220" role="img" aria-label="3×5: best batch-16 speedup versus template count K" class="chart s15">
+<line x1="46" x2="624" y1="182.0" y2="182.0" class="grid"/><text x="40" y="186.0" text-anchor="end" class="tick">0</text>
+<line x1="46" x2="624" y1="97.0" y2="97.0" class="grid"/><text x="40" y="101.0" text-anchor="end" class="tick">5</text>
+<line x1="46" x2="624" y1="12.0" y2="12.0" class="grid"/><text x="40" y="16.0" text-anchor="end" class="tick">10</text>
+<text x="46.0" y="198" text-anchor="middle" class="tick">1</text>
+<text x="87.3" y="198" text-anchor="middle" class="tick">2</text>
+<text x="169.9" y="198" text-anchor="middle" class="tick">4</text>
+<text x="252.4" y="198" text-anchor="middle" class="tick">6</text>
+<text x="335.0" y="198" text-anchor="middle" class="tick">8</text>
+<text x="417.6" y="198" text-anchor="middle" class="tick">10</text>
+<text x="500.1" y="198" text-anchor="middle" class="tick">12</text>
+<text x="582.7" y="198" text-anchor="middle" class="tick">14</text>
+<text x="624.0" y="198" text-anchor="middle" class="tick">15</text>
+<text x="335.0" y="216" text-anchor="middle" class="tick">Template count K</text><text transform="translate(12 97.0) rotate(-90)" text-anchor="middle" class="tick">Best b16 speedup (%)</text>
+<polyline class="ln" points="128.6,32.4 624.0,32.4"/>
+<circle class="pt" cx="128.6" cy="32.4" r="5"><title>K=3: b16 +8.8%, all +12.5% (K=3 (paper shared design))</title></circle><text x="128.6" y="22.4" text-anchor="middle" class="dl">+8.8</text>
+<circle class="pt open" cx="624.0" cy="32.4" r="5"><title>K=15: b16 +8.8%, all +12.5% (K=3 (paper shared design)), searches running</title></circle><text x="624.0" y="22.4" text-anchor="middle" class="dl">+8.8</text>
+</svg><p class="muted">Best design at each K (every design representable at K, re-scored on the current pools). Hollow marker: searches of that K still running. Hover a point for its design.</p>
 <div class="scroll"><table><thead><tr><th>Design</th><th>Mapping search</th><th>Before re-search<br>b16 / all (%)</th><th>After re-search<br>b16</th><th>all</th><th>min</th><th>pairs &lt; 0</th></tr></thead><tbody>
 <tr><td>K=3 (paper shared design)</td><td class="muted">existing pools</td><td class="g">+8.8 / +12.5</td><td class="g pos"><b>+8.8</b></td><td class="g pos">+12.5</td><td class="g neg">-17.4</td><td class="g">5</td></tr>
 <tr><td>K=3 exhaustive best</td><td class="muted">existing pools</td><td class="g">+8.8 / +12.5</td><td class="g pos"><b>+8.8</b></td><td class="g pos">+12.5</td><td class="g neg">-17.4</td><td class="g">5</td></tr>
@@ -175,6 +211,7 @@ workloads, so they move until every search of a design is done. Updated 2026-10-
 <p class="muted">Re-scored 2026-10-21 14:49 on the current pools (every finished bank, both sides).</p>
 </section>
 <section class="card"><h2>4×4 · 16 chiplets</h2>
+
 <div class="scroll"><table><thead><tr><th>Design</th><th>Mapping search</th><th>Before re-search<br>b16 / all (%)</th><th>After re-search<br>b16</th><th>all</th><th>min</th><th>pairs &lt; 0</th></tr></thead><tbody>
 <tr><td>K=3 (paper shared design)</td><td class="muted">existing pools</td><td class="g">+2.0 / +5.4</td><td class="g na" colspan="4">waiting for searches</td></tr>
 <tr><td>K=3 exhaustive best</td><td class="muted">existing pools</td><td class="g">+2.0 / +5.3</td><td class="g na" colspan="4">waiting for searches</td></tr>
