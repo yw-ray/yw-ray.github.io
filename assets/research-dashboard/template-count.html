@@ -28,7 +28,7 @@ pooled mappings, and mappings were then searched on it (14 workloads, batches 1/
 uniform side, 30 SA rounds, asymmetric side only). All designs are then re-scored on the same grown pools.</p>
 <p class="muted">Speedup vs. uniform (best of every pooled mapping). Rule: maximize mean b16 over 14 workloads with mean over
 all 42 pairs ≥ 0. "Before" = pooled mappings only (ksweep2/ksweep3). Results appear as searches finish; means use all 14
-workloads, so they move until every search of a design is done. Updated 2026-10-21 14:49.</p></header>
+workloads, so they move until every search of a design is done. Updated 2026-10-21 15:18.</p></header>
 <section class="card"><h2>2×2 · 4 chiplets</h2>
 <svg viewBox="0 0 640 220" role="img" aria-label="2×2: best batch-16 speedup versus template count K" class="chart s4">
 <line x1="46" x2="624" y1="182.0" y2="182.0" class="grid"/><text x="40" y="186.0" text-anchor="end" class="tick">0</text>
@@ -46,6 +46,7 @@ workloads, so they move until every search of a design is done. Updated 2026-10-
 <div class="scroll"><table><thead><tr><th>Design</th><th>Mapping search</th><th>Before re-search<br>b16 / all (%)</th><th>After re-search<br>b16</th><th>all</th><th>min</th><th>pairs &lt; 0</th></tr></thead><tbody>
 <tr><td>K=2 (paper shared design)</td><td class="muted">existing pools</td><td class="g">+3.2 / +15.4</td><td class="g pos"><b>+3.4</b></td><td class="g pos">+15.5</td><td class="g neg">-11.1</td><td class="g">1</td></tr>
 <tr><td>K=2 exhaustive best</td><td class="muted">existing pools</td><td class="g">+3.2 / +15.4</td><td class="g pos"><b>+3.4</b></td><td class="g pos">+15.5</td><td class="g neg">-11.1</td><td class="g">1</td></tr>
+<tr><td>K=1</td><td class="muted">existing pools</td><td class="g">+0.0 / +0.0</td><td class="g na" colspan="4">waiting for searches</td></tr>
 <tr><td>K=4</td><td class="muted">42 / 42 pairs</td><td class="g">+1.6 / +10.0</td><td class="g pos"><b>+3.5</b></td><td class="g pos">+12.2</td><td class="g neg">-5.7</td><td class="g">2</td></tr>
 </tbody></table></div>
 <h3>Best at K (every design representable at K, re-scored)</h3><div class="scroll"><table><thead><tr><th>K</th><th>Best design</th><th>b16</th><th>all</th><th>min</th><th>pairs &lt; 0</th></tr></thead><tbody>
@@ -86,27 +87,27 @@ workloads, so they move until every search of a design is done. Updated 2026-10-
 <text x="541.4" y="198" text-anchor="middle" class="tick">7</text>
 <text x="624.0" y="198" text-anchor="middle" class="tick">8</text>
 <text x="335.0" y="216" text-anchor="middle" class="tick">Template count K</text><text transform="translate(12 97.0) rotate(-90)" text-anchor="middle" class="tick">Best b16 speedup (%)</text>
-<polyline class="ln" points="128.6,28.7 624.0,28.7"/>
+<polyline class="ln" points="128.6,28.7 624.0,28.0"/>
 <circle class="pt" cx="128.6" cy="28.7" r="5"><title>K=2: b16 +18.0%, all +23.3% (K=2 (paper shared design))</title></circle><text x="128.6" y="18.7" text-anchor="middle" class="dl">+18.0</text>
-<circle class="pt open" cx="624.0" cy="28.7" r="5"><title>K=8: b16 +18.0%, all +23.3% (K=2 (paper shared design)), searches running</title></circle><text x="624.0" y="18.7" text-anchor="middle" class="dl">+18.0</text>
+<circle class="pt open" cx="624.0" cy="28.0" r="5"><title>K=8: b16 +18.1%, all +24.2% (K=8), searches running</title></circle><text x="624.0" y="18.0" text-anchor="middle" class="dl">+18.1</text>
 </svg><p class="muted">Best design at each K (every design representable at K, re-scored on the current pools). Hollow marker: searches of that K still running. Hover a point for its design.</p>
 <div class="scroll"><table><thead><tr><th>Design</th><th>Mapping search</th><th>Before re-search<br>b16 / all (%)</th><th>After re-search<br>b16</th><th>all</th><th>min</th><th>pairs &lt; 0</th></tr></thead><tbody>
 <tr><td>K=2 (paper shared design)</td><td class="muted">existing pools</td><td class="g">+17.9 / +23.1</td><td class="g pos"><b>+18.0</b></td><td class="g pos">+23.3</td><td class="g neg">-0.1</td><td class="g">1</td></tr>
 <tr><td>K=2 exhaustive best</td><td class="muted">existing pools</td><td class="g">+17.9 / +23.1</td><td class="g pos"><b>+18.0</b></td><td class="g pos">+23.3</td><td class="g neg">-0.1</td><td class="g">1</td></tr>
-<tr><td>K=8</td><td class="muted">30 / 42 pairs</td><td class="g">+15.7 / +22.1</td><td class="g pos"><b>+17.9</b></td><td class="g pos">+24.1</td><td class="g pos">+0.4</td><td class="g">0</td></tr>
+<tr><td>K=8</td><td class="muted">33 / 42 pairs</td><td class="g">+15.7 / +22.1</td><td class="g pos"><b>+18.1</b></td><td class="g pos">+24.2</td><td class="g pos">+0.4</td><td class="g">0</td></tr>
 </tbody></table></div>
 <h3>Best at K (every design representable at K, re-scored)</h3><div class="scroll"><table><thead><tr><th>K</th><th>Best design</th><th>b16</th><th>all</th><th>min</th><th>pairs &lt; 0</th></tr></thead><tbody>
 <tr><td>2</td><td>K=2 (paper shared design)</td><td class="g pos"><b>+18.0</b></td><td class="g pos">+23.3</td><td class="g neg">-0.1</td><td class="g">1</td></tr>
-<tr><td>8</td><td>K=2 (paper shared design)</td><td class="g pos"><b>+18.0</b></td><td class="g pos">+23.3</td><td class="g neg">-0.1</td><td class="g">1</td></tr>
+<tr><td>8</td><td>K=8</td><td class="g pos"><b>+18.1</b></td><td class="g pos">+24.2</td><td class="g pos">+0.4</td><td class="g">0</td></tr>
 </tbody></table></div><p class="muted">Rows above are single designs (larger-K rows are restricted to designs that need the larger K). This table is their envelope, so it shows where the gain saturates.</p>
 <details><summary>Batch-16 speedup per workload (after re-search; ✓ = this design's search finished for all batches)</summary><div class="scroll"><table class="w"><thead><tr><th>Workload</th><th>K=2 (paper shared design)</th><th>K=2 exhaustive best</th><th>K=8</th></tr></thead><tbody>
 <tr><td>darknet19</td><td class="g pos">+18.0</td><td class="g pos">+18.0</td><td class="g pos">+17.4 ✓</td></tr>
 <tr><td>vgg19</td><td class="g pos">+7.1</td><td class="g pos">+7.1</td><td class="g pos">+7.3 ✓</td></tr>
 <tr><td>resnet50</td><td class="g pos">+20.1</td><td class="g pos">+20.1</td><td class="g pos">+20.3 ✓</td></tr>
 <tr><td>googlenet</td><td class="g pos">+20.2</td><td class="g pos">+20.2</td><td class="g pos">+24.7 ✓</td></tr>
-<tr><td>resnet101</td><td class="g pos">+25.1</td><td class="g pos">+25.1</td><td class="g pos">+28.0</td></tr>
+<tr><td>resnet101</td><td class="g pos">+25.1</td><td class="g pos">+25.1</td><td class="g pos">+28.0 ✓</td></tr>
 <tr><td>densenet</td><td class="g pos">+24.3</td><td class="g pos">+24.3</td><td class="g pos">+23.1</td></tr>
-<tr><td>inception_resnet_v1</td><td class="g pos">+23.2</td><td class="g pos">+23.2</td><td class="g pos">+19.5</td></tr>
+<tr><td>inception_resnet_v1</td><td class="g pos">+23.2</td><td class="g pos">+23.2</td><td class="g pos">+22.1</td></tr>
 <tr><td>resnext50</td><td class="g pos">+13.8</td><td class="g pos">+13.8</td><td class="g pos">+12.9 ✓</td></tr>
 <tr><td>resnet152</td><td class="g pos">+19.9</td><td class="g pos">+19.9</td><td class="g pos">+24.2</td></tr>
 <tr><td>transformer</td><td class="g pos">+21.2</td><td class="g pos">+21.2</td><td class="g pos">+17.3</td></tr>
@@ -115,7 +116,7 @@ workloads, so they move until every search of a design is done. Updated 2026-10-
 <tr><td>gpt_prefill_block</td><td class="g pos">+5.7</td><td class="g pos">+5.7</td><td class="g pos">+11.3 ✓</td></tr>
 <tr><td>gpt_decode_block</td><td class="g neg">-0.1</td><td class="g neg">-0.1</td><td class="g pos">+0.4 ✓</td></tr>
 </tbody></table></div></details>
-<p class="muted">Re-scored 2026-10-21 14:46 on the current pools (every finished bank, both sides).</p>
+<p class="muted">Re-scored 2026-10-21 15:15 on the current pools (every finished bank, both sides).</p>
 </section>
 <section class="card"><h2>3×3 · 9 chiplets</h2>
 <svg viewBox="0 0 640 220" role="img" aria-label="3×3: best batch-16 speedup versus template count K" class="chart s9">
@@ -133,36 +134,36 @@ workloads, so they move until every search of a design is done. Updated 2026-10-
 <text x="551.8" y="198" text-anchor="middle" class="tick">8</text>
 <text x="624.0" y="198" text-anchor="middle" class="tick">9</text>
 <text x="335.0" y="216" text-anchor="middle" class="tick">Template count K</text><text transform="translate(12 97.0) rotate(-90)" text-anchor="middle" class="tick">Best b16 speedup (%)</text>
-<polyline class="ln" points="190.5,54.3 624.0,43.4"/>
-<circle class="pt" cx="190.5" cy="54.3" r="5"><title>K=3: b16 +11.3%, all +16.6% (K=3 exhaustive best)</title></circle><text x="190.5" y="44.3" text-anchor="middle" class="dl">+11.3</text>
-<circle class="pt open" cx="624.0" cy="43.4" r="5"><title>K=9: b16 +12.2%, all +16.4% (K=9), searches running</title></circle><text x="624.0" y="33.4" text-anchor="middle" class="dl">+12.2</text>
+<polyline class="ln" points="190.5,49.7 624.0,35.6"/>
+<circle class="pt" cx="190.5" cy="49.7" r="5"><title>K=3: b16 +11.7%, all +16.9% (K=3 exhaustive best)</title></circle><text x="190.5" y="39.7" text-anchor="middle" class="dl">+11.7</text>
+<circle class="pt open" cx="624.0" cy="35.6" r="5"><title>K=9: b16 +12.9%, all +16.9% (K=9), searches running</title></circle><text x="624.0" y="25.6" text-anchor="middle" class="dl">+12.9</text>
 </svg><p class="muted">Best design at each K (every design representable at K, re-scored on the current pools). Hollow marker: searches of that K still running. Hover a point for its design.</p>
 <div class="scroll"><table><thead><tr><th>Design</th><th>Mapping search</th><th>Before re-search<br>b16 / all (%)</th><th>After re-search<br>b16</th><th>all</th><th>min</th><th>pairs &lt; 0</th></tr></thead><tbody>
 <tr><td>K=3 (paper shared design)</td><td class="muted">existing pools</td><td class="g">+7.8 / +16.2</td><td class="g pos"><b>+8.1</b></td><td class="g pos">+16.5</td><td class="g neg">-7.6</td><td class="g">3</td></tr>
-<tr><td>K=3 exhaustive best</td><td class="muted">existing pools</td><td class="g">+10.2 / +15.6</td><td class="g pos"><b>+11.3</b></td><td class="g pos">+16.6</td><td class="g pos">+0.9</td><td class="g">0</td></tr>
-<tr><td>K=9</td><td class="muted">16 / 42 pairs</td><td class="g">+10.1 / +14.3</td><td class="g pos"><b>+12.2</b></td><td class="g pos">+16.4</td><td class="g pos">+1.6</td><td class="g">0</td></tr>
+<tr><td>K=3 exhaustive best</td><td class="muted">existing pools</td><td class="g">+10.2 / +15.6</td><td class="g pos"><b>+11.7</b></td><td class="g pos">+16.9</td><td class="g pos">+0.9</td><td class="g">0</td></tr>
+<tr><td>K=9</td><td class="muted">25 / 42 pairs</td><td class="g">+10.1 / +14.3</td><td class="g pos"><b>+12.9</b></td><td class="g pos">+16.9</td><td class="g pos">+1.6</td><td class="g">0</td></tr>
 </tbody></table></div>
 <h3>Best at K (every design representable at K, re-scored)</h3><div class="scroll"><table><thead><tr><th>K</th><th>Best design</th><th>b16</th><th>all</th><th>min</th><th>pairs &lt; 0</th></tr></thead><tbody>
-<tr><td>3</td><td>K=3 exhaustive best</td><td class="g pos"><b>+11.3</b></td><td class="g pos">+16.6</td><td class="g pos">+0.9</td><td class="g">0</td></tr>
-<tr><td>9</td><td>K=9</td><td class="g pos"><b>+12.2</b></td><td class="g pos">+16.4</td><td class="g pos">+1.6</td><td class="g">0</td></tr>
+<tr><td>3</td><td>K=3 exhaustive best</td><td class="g pos"><b>+11.7</b></td><td class="g pos">+16.9</td><td class="g pos">+0.9</td><td class="g">0</td></tr>
+<tr><td>9</td><td>K=9</td><td class="g pos"><b>+12.9</b></td><td class="g pos">+16.9</td><td class="g pos">+1.6</td><td class="g">0</td></tr>
 </tbody></table></div><p class="muted">Rows above are single designs (larger-K rows are restricted to designs that need the larger K). This table is their envelope, so it shows where the gain saturates.</p>
 <details><summary>Batch-16 speedup per workload (after re-search; ✓ = this design's search finished for all batches)</summary><div class="scroll"><table class="w"><thead><tr><th>Workload</th><th>K=3 (paper shared design)</th><th>K=3 exhaustive best</th><th>K=9</th></tr></thead><tbody>
 <tr><td>darknet19</td><td class="g neg">-2.4</td><td class="g pos">+0.9</td><td class="g pos">+1.6 ✓</td></tr>
-<tr><td>vgg19</td><td class="g pos">+10.0</td><td class="g pos">+7.1</td><td class="g pos">+8.0</td></tr>
+<tr><td>vgg19</td><td class="g pos">+10.2</td><td class="g pos">+9.1</td><td class="g pos">+9.8 ✓</td></tr>
 <tr><td>resnet50</td><td class="g pos">+19.6</td><td class="g pos">+22.4</td><td class="g pos">+24.5</td></tr>
 <tr><td>googlenet</td><td class="g pos">+14.8</td><td class="g pos">+14.2</td><td class="g pos">+13.5 ✓</td></tr>
-<tr><td>resnet101</td><td class="g pos">+16.3</td><td class="g pos">+17.4</td><td class="g pos">+17.4</td></tr>
+<tr><td>resnet101</td><td class="g pos">+16.4</td><td class="g pos">+20.9</td><td class="g pos">+22.4</td></tr>
 <tr><td>densenet</td><td class="g pos">+13.1</td><td class="g pos">+12.2</td><td class="g pos">+13.3</td></tr>
 <tr><td>inception_resnet_v1</td><td class="g pos">+5.8</td><td class="g pos">+12.3</td><td class="g pos">+12.7</td></tr>
-<tr><td>resnext50</td><td class="g pos">+4.9</td><td class="g pos">+9.7</td><td class="g pos">+11.9</td></tr>
+<tr><td>resnext50</td><td class="g pos">+4.9</td><td class="g pos">+9.7</td><td class="g pos">+14.8</td></tr>
 <tr><td>resnet152</td><td class="g pos">+12.6</td><td class="g pos">+14.7</td><td class="g pos">+14.8</td></tr>
 <tr><td>transformer</td><td class="g pos">+2.2</td><td class="g pos">+13.1</td><td class="g pos">+11.7</td></tr>
-<tr><td>transformer_cell</td><td class="g pos">+11.7</td><td class="g pos">+17.8</td><td class="g pos">+18.1</td></tr>
+<tr><td>transformer_cell</td><td class="g pos">+11.7</td><td class="g pos">+17.8</td><td class="g pos">+18.1 ✓</td></tr>
 <tr><td>bert_block</td><td class="g pos">+5.0</td><td class="g pos">+6.4</td><td class="g pos">+10.1 ✓</td></tr>
 <tr><td>gpt_prefill_block</td><td class="g pos">+6.8</td><td class="g pos">+5.8</td><td class="g pos">+5.8 ✓</td></tr>
 <tr><td>gpt_decode_block</td><td class="g neg">-7.6</td><td class="g pos">+3.9</td><td class="g pos">+7.7 ✓</td></tr>
 </tbody></table></div></details>
-<p class="muted">Re-scored 2026-10-21 14:48 on the current pools (every finished bank, both sides).</p>
+<p class="muted">Re-scored 2026-10-21 15:17 on the current pools (every finished bank, both sides).</p>
 </section>
 <section class="card"><h2>3×5 · 15 chiplets</h2>
 <svg viewBox="0 0 640 220" role="img" aria-label="3×5: best batch-16 speedup versus template count K" class="chart s15">
@@ -179,21 +180,21 @@ workloads, so they move until every search of a design is done. Updated 2026-10-
 <text x="582.7" y="198" text-anchor="middle" class="tick">14</text>
 <text x="624.0" y="198" text-anchor="middle" class="tick">15</text>
 <text x="335.0" y="216" text-anchor="middle" class="tick">Template count K</text><text transform="translate(12 97.0) rotate(-90)" text-anchor="middle" class="tick">Best b16 speedup (%)</text>
-<polyline class="ln" points="128.6,32.4 624.0,32.4"/>
-<circle class="pt" cx="128.6" cy="32.4" r="5"><title>K=3: b16 +8.8%, all +12.5% (K=3 (paper shared design))</title></circle><text x="128.6" y="22.4" text-anchor="middle" class="dl">+8.8</text>
-<circle class="pt open" cx="624.0" cy="32.4" r="5"><title>K=15: b16 +8.8%, all +12.5% (K=3 (paper shared design)), searches running</title></circle><text x="624.0" y="22.4" text-anchor="middle" class="dl">+8.8</text>
+<polyline class="ln" points="128.6,27.3 624.0,27.3"/>
+<circle class="pt" cx="128.6" cy="27.3" r="5"><title>K=3: b16 +9.1%, all +12.6% (K=3 (paper shared design))</title></circle><text x="128.6" y="17.3" text-anchor="middle" class="dl">+9.1</text>
+<circle class="pt open" cx="624.0" cy="27.3" r="5"><title>K=15: b16 +9.1%, all +12.6% (K=3 (paper shared design)), searches running</title></circle><text x="624.0" y="17.3" text-anchor="middle" class="dl">+9.1</text>
 </svg><p class="muted">Best design at each K (every design representable at K, re-scored on the current pools). Hollow marker: searches of that K still running. Hover a point for its design.</p>
 <div class="scroll"><table><thead><tr><th>Design</th><th>Mapping search</th><th>Before re-search<br>b16 / all (%)</th><th>After re-search<br>b16</th><th>all</th><th>min</th><th>pairs &lt; 0</th></tr></thead><tbody>
-<tr><td>K=3 (paper shared design)</td><td class="muted">existing pools</td><td class="g">+8.8 / +12.5</td><td class="g pos"><b>+8.8</b></td><td class="g pos">+12.5</td><td class="g neg">-17.4</td><td class="g">5</td></tr>
-<tr><td>K=3 exhaustive best</td><td class="muted">existing pools</td><td class="g">+8.8 / +12.5</td><td class="g pos"><b>+8.8</b></td><td class="g pos">+12.5</td><td class="g neg">-17.4</td><td class="g">5</td></tr>
-<tr><td>K=15</td><td class="muted">3 / 42 pairs</td><td class="g">+8.0 / +11.7</td><td class="g pos"><b>+8.0</b></td><td class="g pos">+11.7</td><td class="g neg">-17.4</td><td class="g">5</td></tr>
+<tr><td>K=3 (paper shared design)</td><td class="muted">existing pools</td><td class="g">+8.8 / +12.5</td><td class="g pos"><b>+9.1</b></td><td class="g pos">+12.6</td><td class="g neg">-17.4</td><td class="g">5</td></tr>
+<tr><td>K=3 exhaustive best</td><td class="muted">existing pools</td><td class="g">+8.8 / +12.5</td><td class="g pos"><b>+9.1</b></td><td class="g pos">+12.6</td><td class="g neg">-17.4</td><td class="g">5</td></tr>
+<tr><td>K=15</td><td class="muted">10 / 42 pairs</td><td class="g">+8.0 / +11.7</td><td class="g pos"><b>+8.4</b></td><td class="g pos">+12.4</td><td class="g neg">-17.4</td><td class="g">5</td></tr>
 </tbody></table></div>
 <h3>Best at K (every design representable at K, re-scored)</h3><div class="scroll"><table><thead><tr><th>K</th><th>Best design</th><th>b16</th><th>all</th><th>min</th><th>pairs &lt; 0</th></tr></thead><tbody>
-<tr><td>3</td><td>K=3 (paper shared design)</td><td class="g pos"><b>+8.8</b></td><td class="g pos">+12.5</td><td class="g neg">-17.4</td><td class="g">5</td></tr>
-<tr><td>15</td><td>K=3 (paper shared design)</td><td class="g pos"><b>+8.8</b></td><td class="g pos">+12.5</td><td class="g neg">-17.4</td><td class="g">5</td></tr>
+<tr><td>3</td><td>K=3 (paper shared design)</td><td class="g pos"><b>+9.1</b></td><td class="g pos">+12.6</td><td class="g neg">-17.4</td><td class="g">5</td></tr>
+<tr><td>15</td><td>K=3 (paper shared design)</td><td class="g pos"><b>+9.1</b></td><td class="g pos">+12.6</td><td class="g neg">-17.4</td><td class="g">5</td></tr>
 </tbody></table></div><p class="muted">Rows above are single designs (larger-K rows are restricted to designs that need the larger K). This table is their envelope, so it shows where the gain saturates.</p>
 <details><summary>Batch-16 speedup per workload (after re-search; ✓ = this design's search finished for all batches)</summary><div class="scroll"><table class="w"><thead><tr><th>Workload</th><th>K=3 (paper shared design)</th><th>K=3 exhaustive best</th><th>K=15</th></tr></thead><tbody>
-<tr><td>darknet19</td><td class="g pos">+13.4</td><td class="g pos">+13.4</td><td class="g pos">+11.6</td></tr>
+<tr><td>darknet19</td><td class="g pos">+13.4</td><td class="g pos">+13.4</td><td class="g pos">+11.6 ✓</td></tr>
 <tr><td>vgg19</td><td class="g pos">+0.2</td><td class="g pos">+0.2</td><td class="g pos">+0.2</td></tr>
 <tr><td>resnet50</td><td class="g pos">+12.9</td><td class="g pos">+12.9</td><td class="g pos">+11.4</td></tr>
 <tr><td>googlenet</td><td class="g pos">+17.9</td><td class="g pos">+17.9</td><td class="g pos">+13.7</td></tr>
@@ -206,9 +207,9 @@ workloads, so they move until every search of a design is done. Updated 2026-10-
 <tr><td>transformer_cell</td><td class="g pos">+10.0</td><td class="g pos">+10.0</td><td class="g pos">+9.0</td></tr>
 <tr><td>bert_block</td><td class="g pos">+11.7</td><td class="g pos">+11.7</td><td class="g pos">+12.9 ✓</td></tr>
 <tr><td>gpt_prefill_block</td><td class="g pos">+5.4</td><td class="g pos">+5.4</td><td class="g pos">+4.8</td></tr>
-<tr><td>gpt_decode_block</td><td class="g pos">+9.5</td><td class="g pos">+9.5</td><td class="g pos">+9.3</td></tr>
+<tr><td>gpt_decode_block</td><td class="g pos">+13.7</td><td class="g pos">+13.7</td><td class="g pos">+15.6 ✓</td></tr>
 </tbody></table></div></details>
-<p class="muted">Re-scored 2026-10-21 14:49 on the current pools (every finished bank, both sides).</p>
+<p class="muted">Re-scored 2026-10-21 15:18 on the current pools (every finished bank, both sides).</p>
 </section>
 <section class="card"><h2>4×4 · 16 chiplets</h2>
 
