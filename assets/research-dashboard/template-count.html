@@ -11,6 +11,13 @@ h1{font-size:22px;margin:0} h2{font-size:17px;margin:0 0 8px} h3{font-size:14.5p
 .scroll{overflow-x:auto} table{border-collapse:collapse;width:100%;min-width:600px} th,td{border-bottom:1px solid var(--line);padding:7px 10px;text-align:left;vertical-align:top}
 thead th{font-size:12px;letter-spacing:.03em;text-transform:uppercase;color:var(--muted);font-weight:600}
 .g{font-variant-numeric:tabular-nums;text-align:right} .pos{color:var(--pos)} .neg{color:var(--neg)} .zero,.na{color:var(--zero)}
+.chart{width:100%;height:auto;display:block} .grid{stroke:var(--line)} .tick,.dl{fill:var(--muted);font-size:12px}
+.dl{fill:var(--ink)} .ln{fill:none;stroke:var(--c);stroke-width:2} .pt{fill:var(--c);stroke:var(--card);stroke-width:2}
+.pt.open{fill:var(--card);stroke:var(--c)} .s4{--c:#2a78d6}.s8{--c:#eb6834}.s9{--c:#1baf7a}.s15{--c:#eda100}.s16{--c:#e87ba4}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .s4{--c:#3987e5}}:root[data-theme="dark"] .s4{--c:#3987e5}@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .s8{--c:#d95926}}:root[data-theme="dark"] .s8{--c:#d95926}@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .s9{--c:#199e70}}:root[data-theme="dark"] .s9{--c:#199e70}@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .s15{--c:#c98500}}:root[data-theme="dark"] .s15{--c:#c98500}@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .s16{--c:#d55181}}:root[data-theme="dark"] .s16{--c:#d55181}
+.legend{display:flex;flex-wrap:wrap;gap:6px 16px;font-size:13px;color:var(--muted);margin-top:4px}
+.legend i{display:inline-block;width:10px;height:10px;border-radius:50%;background:var(--c);margin-right:6px}
+.legend i.hollow{background:none;border:2px solid var(--muted);width:6px;height:6px}
 details{margin-top:10px} summary{cursor:pointer;color:var(--muted);font-size:13.5px} table.w td,table.w th{padding:5px 8px;font-size:13.5px}
 </style>
 <main>
@@ -22,6 +29,35 @@ uniform side, 30 SA rounds, asymmetric side only). All designs are then re-score
 <p class="muted">Speedup vs. uniform (best of every pooled mapping). Rule: maximize mean b16 over 14 workloads with mean over
 all 42 pairs ≥ 0. "Before" = pooled mappings only (ksweep2/ksweep3). Results appear as searches finish; means use all 14
 workloads, so they move until every search of a design is done. Updated 2026-10-21 14:16.</p></header>
+<section class="card"><h2>Saturation: best design at each K</h2><svg viewBox="0 0 680 300" role="img" aria-label="Best batch-16 speedup versus template count K" class="chart">
+<line x1="46" x2="610" y1="262.0" y2="262.0" class="grid"/><text x="40" y="266.0" text-anchor="end" class="tick">0</text>
+<line x1="46" x2="610" y1="199.5" y2="199.5" class="grid"/><text x="40" y="203.5" text-anchor="end" class="tick">5</text>
+<line x1="46" x2="610" y1="137.0" y2="137.0" class="grid"/><text x="40" y="141.0" text-anchor="end" class="tick">10</text>
+<line x1="46" x2="610" y1="74.5" y2="74.5" class="grid"/><text x="40" y="78.5" text-anchor="end" class="tick">15</text>
+<line x1="46" x2="610" y1="12.0" y2="12.0" class="grid"/><text x="40" y="16.0" text-anchor="end" class="tick">20</text>
+<text x="46.0" y="278" text-anchor="middle" class="tick">1</text>
+<text x="83.6" y="278" text-anchor="middle" class="tick">2</text>
+<text x="158.8" y="278" text-anchor="middle" class="tick">4</text>
+<text x="234.0" y="278" text-anchor="middle" class="tick">6</text>
+<text x="309.2" y="278" text-anchor="middle" class="tick">8</text>
+<text x="384.4" y="278" text-anchor="middle" class="tick">10</text>
+<text x="459.6" y="278" text-anchor="middle" class="tick">12</text>
+<text x="534.8" y="278" text-anchor="middle" class="tick">14</text>
+<text x="610.0" y="278" text-anchor="middle" class="tick">16</text>
+<text x="328.0" y="296" text-anchor="middle" class="tick">Template count K</text><text transform="translate(12 137.0) rotate(-90)" text-anchor="middle" class="tick">Best b16 speedup vs. uniform (%)</text>
+<polyline class="ln s4" points="83.6,219.1 158.8,218.5"/>
+<circle class="pt s4" cx="83.6" cy="219.1" r="5"><title>2×2, K=2: b16 +3.4%, all +15.5% (K=2 (paper shared design))</title></circle>
+<circle class="pt s4" cx="158.8" cy="218.5" r="5"><title>2×2, K=4: b16 +3.5%, all +12.2% (K=4)</title></circle>
+<text x="167.8" y="222.5" class="dl">2×2</text>
+<polyline class="ln s8" points="83.6,37.3 309.2,37.3"/>
+<circle class="pt s8" cx="83.6" cy="37.3" r="5"><title>2×4, K=2: b16 +18.0%, all +23.2% (K=2 (paper shared design))</title></circle>
+<circle class="pt s8 open" cx="309.2" cy="37.3" r="5"><title>2×4, K=8: b16 +18.0%, all +23.2% (K=2 (paper shared design)), searches running</title></circle>
+<text x="318.2" y="41.3" class="dl">2×4</text>
+<polyline class="ln s9" points="121.2,123.9 346.8,121.7"/>
+<circle class="pt s9" cx="121.2" cy="123.9" r="5"><title>3×3, K=3: b16 +11.0%, all +16.3% (K=3 exhaustive best)</title></circle>
+<circle class="pt s9 open" cx="346.8" cy="121.7" r="5"><title>3×3, K=9: b16 +11.2%, all +15.5% (K=9), searches running</title></circle>
+<text x="355.8" y="125.7" class="dl">3×3</text>
+</svg><div class="legend"><span><i class="s4"></i>2×2 (4 chiplets)</span><span><i class="s8"></i>2×4 (8 chiplets)</span><span><i class="s9"></i>3×3 (9 chiplets)</span><span><i class="hollow"></i>searches still running</span></div><p class="muted">Each point is the best design (rule above) among all designs representable at that K, re-scored on the current pools. Hover a point for its design.</p></section>
 <section class="card"><h2>2×2 · 4 chiplets</h2>
 <div class="scroll"><table><thead><tr><th>Design</th><th>Mapping search</th><th>Before re-search<br>b16 / all (%)</th><th>After re-search<br>b16</th><th>all</th><th>min</th><th>pairs &lt; 0</th></tr></thead><tbody>
 <tr><td>K=2 (paper shared design)</td><td class="muted">existing pools</td><td class="g">+3.2 / +15.4</td><td class="g pos"><b>+3.4</b></td><td class="g pos">+15.5</td><td class="g neg">-11.1</td><td class="g">1</td></tr>
