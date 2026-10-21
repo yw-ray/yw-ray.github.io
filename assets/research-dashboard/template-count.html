@@ -23,7 +23,7 @@ details{margin-top:10px} summary{cursor:pointer;color:var(--muted);font-size:13.
 <main>
 <header class="card"><h1>Template count K: mapping re-search</h1>
 <p>Does a larger number of chiplet templates K help once mappings are re-searched for its D2D capacities?
-For each array, the best design that uses the freedom of the larger K (not representable at the base K) was picked with the
+Every design uses matched ports only (each link's TX modules equal the RX modules at the other end, so no capacity is lost; total module count equals uniform). For each array, the best design that uses the freedom of the larger K (not representable at the base K) was picked with the
 pooled mappings, and mappings were then searched on it (14 workloads, batches 1/4/16, every non-snake variant of the
 uniform side, 30 SA rounds, asymmetric side only). All designs are then re-scored on the same grown pools.</p>
 <p class="muted">Speedup vs. uniform (best of every pooled mapping). Rule: maximize mean b16 over 14 workloads with mean over
