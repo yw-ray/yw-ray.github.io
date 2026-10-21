@@ -1,0 +1,70 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Template Count Sweep</title>
+<style>
+:root{--bg:#f5f7fa;--card:#fff;--ink:#152238;--muted:#536477;--line:#dbe2ea;--pos:#13703a;--neg:#b42318;--zero:#536477}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0f1620;--card:#17212d;--ink:#e3e9f0;--muted:#9aabbd;--line:#2a3746;--pos:#5cc489;--neg:#f0857a;--zero:#9aabbd}}
+:root[data-theme="dark"]{--bg:#0f1620;--card:#17212d;--ink:#e3e9f0;--muted:#9aabbd;--line:#2a3746;--pos:#5cc489;--neg:#f0857a;--zero:#9aabbd}
+body{font:15px/1.5 system-ui,-apple-system,"Segoe UI",sans-serif;margin:0;padding:20px 16px 40px;background:var(--bg);color:var(--ink)}
+main{max-width:1080px;margin:0 auto;display:grid;gap:16px}
+h1{font-size:22px;margin:0} h2{font-size:17px;margin:0 0 8px} p{margin:6px 0} .muted{color:var(--muted);font-size:13.5px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:14px 16px;min-width:0}
+.scroll{overflow-x:auto} table{border-collapse:collapse;width:100%;min-width:600px} th,td{border-bottom:1px solid var(--line);padding:7px 10px;text-align:left;vertical-align:top}
+thead th{font-size:12px;letter-spacing:.03em;text-transform:uppercase;color:var(--muted);font-weight:600}
+.g{font-variant-numeric:tabular-nums;text-align:right} .pos{color:var(--pos)} .neg{color:var(--neg)} .zero,.na{color:var(--zero)}
+details{margin-top:10px} summary{cursor:pointer;color:var(--muted);font-size:13.5px} table.w td,table.w th{padding:5px 8px;font-size:13.5px}
+</style>
+<main>
+<header class="card"><h1>Template count K: mapping re-search</h1>
+<p>Does a larger number of chiplet templates K help once mappings are re-searched for its D2D capacities?
+For each array, the best design that uses the freedom of the larger K (not representable at the base K) was picked with the
+pooled mappings, and mappings were then searched on it (14 workloads, batches 1/4/16, every non-snake variant of the
+uniform side, 30 SA rounds, asymmetric side only). All designs are then re-scored on the same grown pools.</p>
+<p class="muted">Speedup vs. uniform (best of every pooled mapping). Rule: maximize mean b16 over 14 workloads with mean over
+all 42 pairs ≥ 0. "Before" = pooled mappings only (ksweep2/ksweep3). Results appear as searches finish; means use all 14
+workloads, so they move until every search of a design is done. Updated 2026-10-21 12:11.</p></header>
+<section class="card"><h2>2×2 · 4 chiplets</h2>
+<div class="scroll"><table><thead><tr><th>Design</th><th>Mapping search</th><th>Before re-search<br>b16 / all (%)</th><th>After re-search<br>b16</th><th>all</th><th>min</th><th>pairs &lt; 0</th></tr></thead><tbody>
+<tr><td>K=2 (paper shared design)</td><td class="muted">existing pools</td><td class="g">+3.2 / +15.4</td><td class="g pos"><b>+3.4</b></td><td class="g pos">+15.5</td><td class="g neg">-11.1</td><td class="g">1</td></tr>
+<tr><td>K=2 exhaustive best</td><td class="muted">existing pools</td><td class="g">+3.2 / +15.4</td><td class="g pos"><b>+3.4</b></td><td class="g pos">+15.5</td><td class="g neg">-11.1</td><td class="g">1</td></tr>
+<tr><td>K=4</td><td class="muted">7 / 42 pairs</td><td class="g">+1.6 / +10.0</td><td class="g pos"><b>+2.6</b></td><td class="g pos">+11.0</td><td class="g neg">-5.7</td><td class="g">2</td></tr>
+</tbody></table></div>
+<details><summary>Batch-16 speedup per workload (after re-search; ✓ = this design's search finished for all batches)</summary><div class="scroll"><table class="w"><thead><tr><th>Workload</th><th>K=2 (paper shared design)</th><th>K=2 exhaustive best</th><th>K=4</th></tr></thead><tbody>
+<tr><td>darknet19</td><td class="g pos">+1.0</td><td class="g pos">+1.0</td><td class="g pos">+0.1 ✓</td></tr>
+<tr><td>vgg19</td><td class="g pos">+0.4</td><td class="g pos">+0.4</td><td class="g pos">+0.4</td></tr>
+<tr><td>resnet50</td><td class="g pos">+5.5</td><td class="g pos">+5.5</td><td class="g pos">+5.4</td></tr>
+<tr><td>googlenet</td><td class="g pos">+2.6</td><td class="g pos">+2.6</td><td class="g pos">+0.5</td></tr>
+<tr><td>resnet101</td><td class="g pos">+1.3</td><td class="g pos">+1.3</td><td class="g pos">+3.2</td></tr>
+<tr><td>densenet</td><td class="g pos">+5.6</td><td class="g pos">+5.6</td><td class="g pos">+0.8</td></tr>
+<tr><td>inception_resnet_v1</td><td class="g pos">+7.5</td><td class="g pos">+7.5</td><td class="g pos">+4.7</td></tr>
+<tr><td>resnext50</td><td class="g pos">+6.8</td><td class="g pos">+6.8</td><td class="g pos">+3.7</td></tr>
+<tr><td>resnet152</td><td class="g pos">+2.9</td><td class="g pos">+2.9</td><td class="g pos">+1.9</td></tr>
+<tr><td>transformer</td><td class="g pos">+9.7</td><td class="g pos">+9.7</td><td class="g pos">+6.1</td></tr>
+<tr><td>transformer_cell</td><td class="g pos">+10.5</td><td class="g pos">+10.5</td><td class="g pos">+7.7</td></tr>
+<tr><td>bert_block</td><td class="g pos">+2.3</td><td class="g pos">+2.3</td><td class="g pos">+2.7 ✓</td></tr>
+<tr><td>gpt_prefill_block</td><td class="g pos">+2.4</td><td class="g pos">+2.4</td><td class="g pos">+0.6</td></tr>
+<tr><td>gpt_decode_block</td><td class="g neg">-11.1</td><td class="g neg">-11.1</td><td class="g neg">-0.8</td></tr>
+</tbody></table></div></details>
+<p class="muted">Re-scored 2026-10-21 12:11 on the current pools (every finished bank, both sides).</p>
+</section>
+<section class="card"><h2>2×4 · 8 chiplets</h2>
+<div class="scroll"><table><thead><tr><th>Design</th><th>Mapping search</th><th>Before re-search<br>b16 / all (%)</th><th>After re-search<br>b16</th><th>all</th><th>min</th><th>pairs &lt; 0</th></tr></thead><tbody>
+<tr><td>K=2 (paper shared design)</td><td class="muted">existing pools</td><td class="g">+17.9 / +23.1</td><td class="g na" colspan="4">waiting for searches</td></tr>
+<tr><td>K=2 exhaustive best</td><td class="muted">existing pools</td><td class="g">+17.9 / +23.1</td><td class="g na" colspan="4">waiting for searches</td></tr>
+<tr><td>K=8</td><td class="muted">0 / 42 pairs</td><td class="g">+15.7 / +22.1</td><td class="g na" colspan="4">waiting for searches</td></tr>
+</tbody></table></div>
+</section>
+<section class="card"><h2>3×3 · 9 chiplets</h2>
+<div class="scroll"><table><thead><tr><th>Design</th><th>Mapping search</th><th>Before re-search<br>b16 / all (%)</th><th>After re-search<br>b16</th><th>all</th><th>min</th><th>pairs &lt; 0</th></tr></thead><tbody>
+<tr><td>K=3 (paper shared design)</td><td class="muted">existing pools</td><td class="g">+7.8 / +16.2</td><td class="g na" colspan="4">waiting for searches</td></tr>
+<tr><td>K=3 exhaustive best</td><td class="muted">existing pools</td><td class="g">+10.2 / +15.6</td><td class="g na" colspan="4">waiting for searches</td></tr>
+<tr><td>K=9</td><td class="muted">0 / 42 pairs</td><td class="g">+10.1 / +14.3</td><td class="g na" colspan="4">waiting for searches</td></tr>
+</tbody></table></div>
+</section>
+<section class="card"><h2>4×4 · 16 chiplets</h2>
+<div class="scroll"><table><thead><tr><th>Design</th><th>Mapping search</th><th>Before re-search<br>b16 / all (%)</th><th>After re-search<br>b16</th><th>all</th><th>min</th><th>pairs &lt; 0</th></tr></thead><tbody>
+<tr><td>K=3 (paper shared design)</td><td class="muted">existing pools</td><td class="g">+2.0 / +5.4</td><td class="g na" colspan="4">waiting for searches</td></tr>
+<tr><td>K=3 exhaustive best</td><td class="muted">existing pools</td><td class="g">+2.0 / +5.3</td><td class="g na" colspan="4">waiting for searches</td></tr>
+<tr><td>K=6</td><td class="muted">0 / 42 pairs</td><td class="g">+2.5 / +5.7</td><td class="g na" colspan="4">waiting for searches</td></tr>
+</tbody></table></div>
+</section>
+</main></html>
