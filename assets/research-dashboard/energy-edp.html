@@ -23,7 +23,7 @@ ul{margin:6px 0;padding-left:20px;font-size:13.5px}
 <div class="scroll"><table id="sum"></table></div></section>
 <section class="card"><h2 id="wt">Per workload</h2><span class="seg" id="arr" role="group" aria-label="array"></span>
 <span class="seg" id="met" role="group" aria-label="metric" style="margin-left:12px"><button data-v="edp" aria-pressed="true">EDP improvement</button><button data-v="speedup" aria-pressed="false">Speedup</button><button data-v="energy" aria-pressed="false">Energy change</button></span>
-<div class="legend" style="margin-top:8px"><span><i style="background:#fff;background-image:repeating-linear-gradient(45deg,#152238 0 1px,transparent 1px 4px)"></i>B1</span><span><i style="background:#b0b0b0"></i>B4</span><span><i style="background:#404040"></i>B16</span></div>
+<div class="legend" style="margin-top:8px"><span><i style="background:#fff;background-image:repeating-linear-gradient(45deg,#152238 0 1px,transparent 1px 4px)"></i>B1</span><span><i style="background:#b0b0b0"></i>B4</span><span><i style="background:#404040"></i>B16</span><span><svg width="12" height="12" style="vertical-align:-2px;margin-right:4px"><path d="M6 1L11 6L6 11L1 6Z" fill="#fff" stroke="#152238" stroke-width="1.5"/></svg>Mean of B1, B4, B16 (number above)</span></div>
 <div class="scroll"><svg id="wbars" role="img" aria-label="per-workload values by batch"></svg></div>
 <p class="muted">Cells: speedup / energy change / EDP improvement (%). Red = EDP worse than uniform. Hover a cell for the energy split (change of NoC, D2D and DRAM energy as % of the uniform total).</p>
 <div class="scroll"><table id="wl"></table></div></section>
@@ -45,11 +45,13 @@ function bars(){const W=Math.max(520,A.length*150),H=190,ox=40,oy=14,ih=H-oy-34;
  q('sum').innerHTML=t+'<tr><td class="l muted" colspan="10">NoC / D2D / DRAM: mean change of that energy as % of the uniform total energy.</td></tr>'}
 function wbars(){const a=D.arrays[cur],by={};for(const p of a.pairs)(by[p.workload]??={})[p.batch]=p;
  const ws=Object.keys(NAMES).filter(w=>by[w]),v=ws.map(w=>['1','4','16'].map(b=>by[w][b]?by[w][b][met]:null)),fl=v.flat().filter(x=>x!=null);
- const hi=Math.max(10,Math.ceil(Math.max(...fl)/10)*10),lo=Math.min(0,Math.floor(Math.min(...fl)/10)*10),gw=62,ox=40,oy=12,ih=200,W=ox+gw*ws.length+8,H=oy+ih+62,y=t=>oy+ih*(hi-t)/(hi-lo);
+ const hi=Math.max(10,Math.ceil((Math.max(...fl)+6)/10)*10),lo=Math.min(0,Math.floor(Math.min(...fl)/10)*10),gw=62,ox=40,oy=12,ih=200,W=ox+gw*ws.length+8,H=oy+ih+62,y=t=>oy+ih*(hi-t)/(hi-lo);
  let o='<defs><pattern id="hatch2" width="4" height="4" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><line x1="0" y1="0" x2="0" y2="4" stroke="#152238" stroke-width="1"/></pattern></defs>';
  for(let t=lo;t<=hi;t+=10)o+=`<line x1="${ox}" x2="${W-8}" y1="${y(t)}" y2="${y(t)}" stroke="${t===0?'#152238':'#e4e3df'}" stroke-width="${t===0?1:.6}"/><text x="${ox-4}" y="${y(t)+4}" font-size="11" text-anchor="end" fill="#536477">${t}</text>`;
  const fills=['url(#hatch2)','#b0b0b0','#404040'],bw=14,lab={edp:'EDP improvement',speedup:'speedup',energy:'energy change'}[met];
  ws.forEach((w,i)=>{const cx=ox+gw*(i+.5);v[i].forEach((x,k)=>{if(x==null)return;const X=cx+(k-1)*(bw+2)-bw/2;o+=`<rect x="${X}" y="${y(Math.max(x,0))}" width="${bw}" height="${Math.abs(y(x)-y(0))}" fill="${fills[k]}" stroke="${x<0&&met!=='energy'?'#9a3412':'#152238'}" stroke-width="${x<0&&met!=='energy'?1.4:.8}"><title>${NAMES[w]} B${['1','4','16'][k]}: ${lab} ${f(x)}%</title></rect>`});
+  const ok=v[i].filter(x=>x!=null);if(ok.length){const m=ok.reduce((a_,b_)=>a_+b_,0)/ok.length,ym=y(m),top=Math.min(ym,...ok.map(x=>y(Math.max(x,0))));
+   o+=`<path d="M${cx} ${ym-5}L${cx+5} ${ym}L${cx} ${ym+5}L${cx-5} ${ym}Z" fill="#fff" stroke="#152238" stroke-width="1.5"><title>${NAMES[w]}: mean ${lab} ${f(m)}%</title></path><text x="${cx}" y="${top-4}" font-size="10.5" text-anchor="middle" fill="#152238" font-weight="600">${f(m)}</text>`}
   o+=`<text transform="translate(${cx+4},${oy+ih+8}) rotate(-35)" font-size="11" text-anchor="end" fill="#152238">${NAMES[w]}</text>`});
  o+=`<text transform="translate(12,${oy+ih/2}) rotate(-90)" font-size="11" text-anchor="middle" fill="#536477">${lab} (%)</text>`;
  const s=q('wbars');s.setAttribute('viewBox',`0 0 ${W} ${H}`);s.setAttribute('width',W);s.setAttribute('height',H);s.innerHTML=o;
