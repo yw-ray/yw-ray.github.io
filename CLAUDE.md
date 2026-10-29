@@ -126,7 +126,7 @@ commit → push to `dev` → GitHub Pages rebuilds from production
 Use this identity for commits in this repo:
 
 - Author name: `Youngwoo Jeong`
-- Author email: `tori961227@gmail.com`
+- Author email: `youngwoo.jeong@nyu.edu`
 - GitHub account/repo owner: `yw-ray`
 
 Do not use the global `jini221220@gmail.com` identity for this repository.

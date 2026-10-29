@@ -9,7 +9,7 @@
 #========================================#
 
 title: "Youngwoo (Ray) Jeong"
-email: tori961227@gmail.com
+email: youngwoo.jeong@nyu.edu
 description: Personal website of Youngwoo (Ray) Jeong
 baseurl:                                       # the subpath of your site, e.g. /blog
 url: "https://yw-ray.github.io"               # the base hostname & protocol for your site, e.g. http://example.com
@@ -30,7 +30,7 @@ stackoverflow:
 website:
 codepen:
 medium:
-email: tori961227@gmail.com
+email: youngwoo.jeong@nyu.edu
 keybase:
 pgp:
 ctftime:
