@@ -1,29 +1,21 @@
 <!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Workloads · research dashboard</title>
 <style>body{font:15px system-ui;margin:24px;background:#f5f7fa;color:#152238}nav{display:flex;gap:8px;margin-bottom:14px}button{padding:7px 12px;font:inherit;border:1px solid #ccd5e0;border-radius:7px;background:#fff;cursor:pointer}button[aria-selected="true"]{background:#152238;color:#fff;border-color:#152238}iframe{width:100%;border:0;display:block;min-height:900px}.note{color:#536477;font-size:13px;margin:0 0 10px}</style>
-<nav role="tablist" aria-label="Workload pages"><button id="current-tab" role="tab" aria-selected="true" aria-controls="current-panel">Current · asymmetric D2D mapping (K=2)</button><button id="chunk4-tab" role="tab" aria-selected="false" data-snap="chunk4.html?v=20261022140735">4 chunks · shared HW</button><button id="c16dram-tab" role="tab" aria-selected="false" data-snap="c16-dram-placement.html">C16 · DRAM placement</button><button id="kremap-tab" role="tab" aria-selected="false" data-snap="template-count.html">Template count K</button><button id="demand-tab" role="tab" aria-selected="false" data-snap="traffic-demand.html?v=20261023133353">Traffic demand</button><button id="edp-tab" role="tab" aria-selected="false" data-snap="energy-edp.html?v=20261022032343">Energy · EDP</button><button id="backup-tab" role="tab" aria-selected="false" aria-controls="backup-panel">Backup · previous workloads page</button><button id="snap202610180155-tab" role="tab" aria-selected="false" data-snap="asym-mapping-study-20261018-0155.html">Backup · asym study 2026-10-18 01:55</button></nav>
-<section id="current-panel"><iframe id="current-frame" title="Asymmetric D2D mapping study" src="asym-mapping-study.html"></iframe></section>
-<section id="chunk4-panel" hidden><iframe id="chunk4-frame" title="4-chunk results" data-src="chunk4.html?v=20261022140735"></iframe></section><section id="c16dram-panel" hidden><iframe id="c16dram-frame" title="C16 DRAM placement" data-src="c16-dram-placement.html"></iframe></section><section id="kremap-panel" hidden><iframe id="kremap-frame" title="Template count K" data-src="template-count.html"></iframe></section><section id="demand-panel" hidden><iframe id="demand-frame" title="Traffic demand" data-src="traffic-demand.html?v=20261023133353"></iframe></section><section id="edp-panel" hidden><iframe id="edp-frame" title="Energy and EDP" data-src="energy-edp.html?v=20261022032343"></iframe></section><section id="snap202610180155-panel" hidden><iframe id="snap202610180155-frame" title="Snapshot 2026-10-18 01:55" data-src="asym-mapping-study-20261018-0155.html"></iframe></section><section id="backup-panel" hidden><p class="note">The previous contents of this page (current/archived workload designs, traffic patterns, bandwidth reduction, execution time), unchanged.</p><iframe id="backup-frame" title="Previous workloads page" data-src="workloads-backup.html"></iframe></section>
+<nav role="tablist" aria-label="Workload pages"><button id="chunk4-tab" role="tab" aria-selected="true" data-src="chunk4.html?v=20261022140735">4 chunks · shared HW</button><button id="c16dram-tab" role="tab" aria-selected="false" data-src="c16-dram-placement.html">C16 · DRAM placement</button><button id="kremap-tab" role="tab" aria-selected="false" data-src="template-count.html">Template count K</button><button id="demand-tab" role="tab" aria-selected="false" data-src="traffic-demand.html?v=20261023133353">Traffic demand</button><button id="edp-tab" role="tab" aria-selected="false" data-src="energy-edp.html?v=20261022032343">Energy · EDP</button><button id="backup-tab" role="tab" aria-selected="false" data-src="workloads-backup.html">Backup · previous workloads page</button></nav>
+<p id="backup-note" class="note" hidden>The previous contents of this page (current/archived workload designs, traffic patterns, bandwidth reduction, execution time), unchanged.</p><iframe id="frame" title="Workload page"></iframe>
 <script>
 const OLD=['designs','patterns','bandwidth','execution'];
-function show(key){
- const backup=key!=='current';document.getElementById('current-panel').hidden=backup;document.getElementById('backup-panel').hidden=!backup;
- document.getElementById('current-tab').setAttribute('aria-selected',String(!backup));document.getElementById('backup-tab').setAttribute('aria-selected',String(backup));
- if(backup){const f=document.getElementById('backup-frame');const want='workloads-backup.html'+(OLD.includes(key)?'#'+key:'');if(!f.src||OLD.includes(key))f.src=want}
- history.replaceState(null,'','#'+(backup?(OLD.includes(key)?key:'backup'):'current'));
+const frame=document.getElementById('frame'),tabs=[...document.querySelectorAll('nav button')];
+function show(id,anchor){
+ const btn=document.getElementById(id+'-tab')||tabs[0];
+ for(const b of tabs)b.setAttribute('aria-selected',String(b===btn));
+ document.getElementById('backup-note').hidden=btn.id!=='backup-tab';
+ const want=btn.dataset.src+(anchor?'#'+anchor:'');
+ if(frame.getAttribute('src')!==want){frame.style.height='';frame.src=want}
+ history.replaceState(null,'','#'+(anchor||btn.id.replace(/-tab$/,'')));
 }
-function route(){const h=location.hash.slice(1);const t=h&&document.getElementById(h+'-tab');if(t&&t.dataset.snap){showSnap(t);return}show(h===''||h==='current'?'current':h)}
-document.getElementById('current-tab').onclick=()=>show('current');document.getElementById('backup-tab').onclick=()=>show('backup');
+function route(){const h=location.hash.slice(1);if(OLD.includes(h))show('backup',h);else show(h)}
+for(const b of tabs)b.onclick=()=>show(b.id.replace(/-tab$/,''));
 window.addEventListener('hashchange',route);route();
-// Same-origin frames: follow their content height.
-setInterval(()=>{for(const f of document.querySelectorAll('iframe')){try{const h=f.contentDocument&&f.contentDocument.documentElement.scrollHeight;if(h&&Math.abs(f.offsetHeight-h)>4)f.style.height=h+'px'}catch(e){}}},800);
-
-// Dated snapshot tabs (asym study backups): data-snap buttons show their own panel.
-function showSnap(btn){for(const s of document.querySelectorAll('section'))s.hidden=true;
- for(const b of document.querySelectorAll('nav button'))b.setAttribute('aria-selected',String(b===btn));
- const id=btn.id.replace(/-tab$/,''),p=document.getElementById(id+'-panel');p.hidden=false;const f=document.getElementById(id+'-frame');if(!f.src)f.src=f.dataset.src;
- history.replaceState(null,'','#'+id)}
-for(const b of document.querySelectorAll('nav button[data-snap]'))b.onclick=()=>showSnap(b);
-{const h=location.hash.slice(1);const b=h&&document.getElementById(h+'-tab');if(b&&b.dataset.snap)showSnap(b)}
-const _show=show;show=function(k){for(const s of document.querySelectorAll('section[id^="snap"]'))s.hidden=true;for(const b of document.querySelectorAll('nav button[data-snap]'))b.setAttribute('aria-selected','false');_show(k)};
-document.getElementById('current-tab').onclick=()=>show('current');document.getElementById('backup-tab').onclick=()=>show('backup');
+// Same-origin frame: follow its content height.
+setInterval(()=>{try{const h=frame.contentDocument&&frame.contentDocument.documentElement.scrollHeight;if(h&&Math.abs(frame.offsetHeight-h)>4)frame.style.height=h+'px'}catch(e){}},800);
 </script></html>
